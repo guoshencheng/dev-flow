@@ -1,0 +1,12 @@
+[
+  {
+    "type": "error",
+    "message": "{\"detail\":\"The 'gpt-6.1-sol' model is not supported when using Codex with a ChatGPT account.\"}"
+  },
+  {
+    "type": "turn.failed",
+    "error": {
+      "message": "{\"detail\":\"The 'gpt-6.1-sol' model is not supported when using Codex with a ChatGPT account.\"}"
+    }
+  }
+]

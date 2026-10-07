@@ -1,0 +1,11 @@
+{
+  "reviewer": "主 Agent 独立读取两轮产物并核对来源与保护边界",
+  "source_change": "contracts/import.md 仅由评测准备将版本 0.3 改为 0.4、上限 1000 改为 200；执行者未修改契约",
+  "targeted_updates": "产品入口、现行规则、选择提示、状态守卫、验收和来源版本一致更新",
+  "boundary_cases": "199、200、201，以及 201 总行 / 199 有效的混合场景",
+  "stable_assets": "AC-IMPORT-01 至 17、AC-EDIT-01、其余规则和状态编号保留",
+  "historical_evidence": "旧 1001 行阈值证据明确失效；其他未变语义的纸面走查保留且标明历史范围",
+  "write_scope": "受保护 AGENTS.md、contracts/import.md、src/existing.txt 与第二轮输入一致",
+  "evidence_boundary": "明确没有实际应用、接口、用户研究或原生角色派发证明",
+  "result": "新上下文项目资产复用与定向变更案例通过；真实项目与原生派发待验证"
+}

@@ -1,0 +1,15 @@
+{
+  "execution": "新上下文 Sol medium 执行 dev-product Skill，仅通过项目文件取得此前知识",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "medium",
+  "native_dispatch_verified": false,
+  "artifacts": {
+    "AGENTS.md": "740f8b44ad1e9d9973de44f9abacbf67fca7e368d45fc8fc22513f50df8bae21",
+    "contracts/import.md": "5243be2548672b84877b539e46bef931bf9cf3309becc99f86fcd128caabd940",
+    "docs/product.md": "4698fbebb028dfb48a0f0410efba29d6e541b63dc554900857b0a4a2dd4f8318",
+    "docs/dev-flow/csv-import-handoff.md": "0ab9034e29570dde497ce90644b925c4d4cf5d505f3c8547b88715b547f9a713",
+    "docs/dev-flow/csv-import.md": "968ef56563490fa5d34a47e2d878e70d6fb66fab76ccbb894b9947a6b2a04b01",
+    "docs/dev-flow/csv-import-acceptance.md": "f04611e6c0fdaa5be16d8d2a5c5a97ef6c362f8312f8d23f0e02b20aae5fdf7f",
+    "src/existing.txt": "a27e07f2a377a2c63040f173ac8e0c4d2845fa8c280810674e88cd2cde0674c0"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "tool": "codex debug prompt-input",
+  "cwd": "business-guide",
+  "result": "新上下文 Skill 目录发现 dev-product",
+  "entry": "- dev-product: 产品与交互设计：为新增或调整的用户行为确定流程、页面语义、交互状态、业务规则与验收条件，并维护项目产品资产；适用于需求澄清、交互设计、设计评审和可用性验证。 (file: r1/dev-product/SKILL.md)",
+  "native_agent_discovery": "此预览不证明原生角色发现或派发"
+}

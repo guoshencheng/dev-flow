@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-07",
+  "config": "TOML 必需字段与 Sol medium 组合通过",
+  "skills": "dev-flow 与 dev-product 的 quick_validate 通过",
+  "references": "31 份 Markdown 的文件引用通过",
+  "snapshot_integrity": "两轮保存产物指纹一致",
+  "protected_sources": "受保护文件不变；权威契约仅包含评测准备的版本和上限变更",
+  "acceptance_ids": "两轮 17 个导入编号稳定，原编辑验收保留",
+  "global_links": {
+    "/Users/guoshencheng/.agents/skills/dev-flow": "/Users/guoshencheng/Documents/work/dev-flow/skills/dev-flow",
+    "/Users/guoshencheng/.agents/skills/dev-product": "/Users/guoshencheng/Documents/work/dev-flow/skills/dev-product",
+    "/Users/guoshencheng/.codex/agents/dev_product.toml": "/Users/guoshencheng/Documents/work/dev-flow/agents/dev_product.toml"
+  },
+  "source_sha256": {
+    "agents/dev_product.toml": "8fae56b220f72468257190384aa114119c0f1edd46f36fd63c00d22b37fa750d",
+    "skills/dev-product/SKILL.md": "e8bed51605c2ed008f0026e5825f8fabc4be1760f8bf15ad321daed3f542516e",
+    "skills/dev-product/agents/openai.yaml": "618e3126a1831f854f6ea7739d5e73c13d67b6242a51a204965d1e2747206465",
+    "skills/dev-product/references/flows-and-interactions.md": "58d7b8b586f2e1a5979cde49a5d7460c682d53e9275f645f93d74d9c1f4a8351",
+    "skills/dev-product/references/project-assets.md": "6c9227bc9db55de656ed4857cef03c3ba9ff10c1363fbba025963fbe908142e2",
+    "skills/dev-product/references/rules-and-acceptance.md": "f5b9364e70ed6eb8671561c77b230fb95d0cb9aa58684ce839912c93fe24cc7b",
+    "skills/dev-product/references/validation-and-handoff.md": "e6a4bf8ad364f92a8c4818f81839dcdb446d09dc6885e0d7cd93a8f6a0708554"
+  },
+  "native_dispatch_verified": false
+}

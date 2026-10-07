@@ -1,0 +1,9 @@
+{
+  "source": "docs/dev-flow/csv-import.md",
+  "flow_and_state_contract": "已读取并核对",
+  "acceptance": "17 个场景覆盖成功、校验、权限、重复提交、结果未知与编辑回归",
+  "original_behavior": "AC-EDIT-01 保留",
+  "evidence_boundary": "明确纸面走查，未声明实际 UI、接口或用户验证",
+  "dependencies": "解析、未接收判定与记录恢复细节明确为架构依赖",
+  "result": "隔离设计案例通过；原生加载与真实 UI 验证不在此结论范围"
+}

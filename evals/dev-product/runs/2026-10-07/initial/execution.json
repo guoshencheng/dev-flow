@@ -1,0 +1,19 @@
+{
+  "execution": "Sol medium 独立子 Agent 执行 dev-product Skill；原生角色派发未验证",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "medium",
+  "native_cli": {
+    "version": "0.156.1",
+    "exit_code": 1,
+    "result": "模型账号通道拒绝，未发生原生角色派发"
+  },
+  "artifacts": {
+    "AGENTS.md": "740f8b44ad1e9d9973de44f9abacbf67fca7e368d45fc8fc22513f50df8bae21",
+    "contracts/import.md": "2ab883b07a3ee1b9dc28cf62e6191e30e7b6649eb9cd627f5832d1313be33479",
+    "docs/product.md": "3e17a68f8e603f39affe765d1a35ded5b4655153d49596155282be5769b6136b",
+    "docs/dev-flow/csv-import-handoff.md": "2d86387b751caa703f6eafa8431974560b3464676303e6c3a2388c22348f3f57",
+    "docs/dev-flow/csv-import.md": "ab9d391005fa5a0511ce442223ba50571c6014cfd7730b5ea078a1c4ecb1e9e1",
+    "docs/dev-flow/csv-import-acceptance.md": "2dcd46b78acfc9306bbf02528f51aab3e74f744ca8955a5e884bd6745d29f9cc",
+    "src/existing.txt": "a27e07f2a377a2c63040f173ac8e0c4d2845fa8c280810674e88cd2cde0674c0"
+  }
+}
