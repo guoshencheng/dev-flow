@@ -1,0 +1,6 @@
+body { margin: 0; background: #fafafa; color: #171717; font-family: system-ui, sans-serif; }
+.web-example { max-width: 540px; margin: 0 auto; padding: 64px 20px; }
+.web-header { margin-bottom: 32px; }
+.web-header h1 { font-size: clamp(28px, 6vw, 36px); font-weight: 650; margin: 12px 0; letter-spacing: -0.035em; }
+.web-header p, .web-result { color: #525252; font-size: 15px; line-height: 1.6; }
+.web-result { margin: 20px 0; }

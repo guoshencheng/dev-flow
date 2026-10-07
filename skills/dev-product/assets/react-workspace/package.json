@@ -1,0 +1,32 @@
+{
+  "name": "@dev-flow/react-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev:antd": "npm run dev --workspace @dev-flow/antd-lab",
+    "dev:web": "npm run dev --workspace @dev-flow/web-lab",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "pack:antd": "npm pack --workspace @dev-flow/ui-antd",
+    "pack:web": "npm pack --workspace @dev-flow/ui-web",
+    "check:packages": "node scripts/check-packages.mjs"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.3.3",
+    "@types/node": "26.6.4",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "tailwindcss": "4.3.3",
+    "typescript": "7.0.2",
+    "vite": "8.3.3"
+  }
+}

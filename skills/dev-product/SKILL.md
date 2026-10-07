@@ -17,12 +17,14 @@ description: 产品与交互设计：确定用户流程、页面语义、交互�
 
 需要分析用户类型与工作方式时，读取[C/B 端设计指导](references/consumer-and-business-design.md)，按任务、频率、熟练度、数据与权限选择模式。寻找参考或探索重要取舍时，读取[参考研究与方案创造](references/reference-research-and-ideation.md)，建立有来源与适用边界的候选，不把截图推断当成实际行为。
 
+涉及 UI 工程时读取共同[技术与共享组件约定](../dev-flow/references/ui-stack-and-components.md)：新建 Web 原型默认 Vite + React，B 端按 Ant Design 规范优先使用 antd，C 端 Web 优先 shadcn/ui；其他 C 端应用先浏览参考再设计和研发。组件复用与建设读取随包[React 工作区](assets/react-workspace/README.md)和组件清单，通用源码与来源在 Git 中维护，项目保留采用版本。
+
 ## 按需要形成交互契约
 
 1. 明确目标用户的具体任务、入口和成功结果，界定本次范围及相关约束；根据当前工程选择必要页面与导航变化。
 2. 给出核心流程和相关分支，明确每一步的前置条件、操作、反馈、退出和恢复；读取[流程与状态指导](references/flows-and-interactions.md)。
 3. 对相关业务概念、字段、权限与状态定义规则，再形成可观察验收场景；读取[规则与验收指导](references/rules-and-acceptance.md)。
-4. 需要直观讨论时，按[HTML 原型与设计稿指南](references/html-prototyping.md)根据本次需求构建或修改页面，并选择现成的 HTTP 工具或开发服务启动预览；优先复用项目工程。静态设计稿检查实际渲染，可操作原型还需操作关键场景，提供真实入口、版本和模拟范围。随包示例为可选起点。其他情况使用当前应用或适当走查；验证方式与下游交接按[可用性指导](references/validation-and-handoff.md)。
+4. 需要直观讨论时，按[原型与设计稿指南](references/html-prototyping.md)根据本次需求构建或修改页面；优先复用项目工程，新建采用 Vite + React 并实际启动预览。静态设计稿检查实际渲染，可操作原型还需操作关键场景，提供真实入口、版本和模拟范围。随包示例为可选参考。其他情况使用当前应用或适当走查；验证方式与下游交接按[可用性指导](references/validation-and-handoff.md)。
 5. 按[项目资产协议](references/project-assets.md)复用或更新权威资产，提交视觉、架构、研发、测试能继续执行的交接。
 
 上述是成果关系，允许按实际输入合并操作或进入已有阶段。局部变更只维护受影响规则、状态和场景，保留有效资产与验收编号。

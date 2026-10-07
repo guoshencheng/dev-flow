@@ -1,0 +1,83 @@
+{
+  "versions": {
+    "constitution": "0.3",
+    "product": "0.5",
+    "components": "0.1.0"
+  },
+  "execution": "当前主 Agent",
+  "node": "26.4.0",
+  "npm": "11.17.0",
+  "checks": {
+    "typecheck": "passed",
+    "build": "passed",
+    "packages": "passed",
+    "skills": "passed",
+    "global_links": "passed"
+  },
+  "package_consumer": {
+    "independent": true,
+    "skipLibCheck": true,
+    "public_type_negative_cases": true,
+    "entries": [
+      "consumer",
+      "business"
+    ]
+  },
+  "browser": {
+    "type": "Codex In-app Browser",
+    "consumer_width": 390,
+    "consumer_scroll_width": 390,
+    "keyboard": [
+      "B: Space/Enter",
+      "C: Enter"
+    ],
+    "console_errors_or_warnings": []
+  },
+  "limitations": [
+    "依赖声明内部一致性未通过全量检查",
+    "真实项目采用未验证",
+    "原生角色派发未验证",
+    "远程获取与包发布未执行"
+  ],
+  "sha256": {
+    "skills/dev-product/assets/react-workspace/README.md": "9ed0d5921a6cbdc03ec118ed63161c0e5f517ebca0d837ba78be2783adfdd7b5",
+    "skills/dev-product/assets/react-workspace/apps/antd-lab/index.html": "d45b854dea41e934cb3de2bf2e2e55fc2d8d9e9fff992bf062aed300fcc997d6",
+    "skills/dev-product/assets/react-workspace/apps/antd-lab/package.json": "64af94c7df8069c6521e792245100e58fd7d1afbf1fed6f95dc8b40a626c87cb",
+    "skills/dev-product/assets/react-workspace/apps/antd-lab/src/main.tsx": "94377622f5ee03570cbd4978d2cc6a9792ca43a361c516400a265078aa03de43",
+    "skills/dev-product/assets/react-workspace/apps/antd-lab/src/styles.css": "a7d713ae4caa95462e1ec49fa9f5919f23633099240be728e50d1270723dbfd8",
+    "skills/dev-product/assets/react-workspace/apps/antd-lab/tsconfig.json": "5839bd3f8b4798775809bb51ece24ce09c8239eb035c1bcf560cc2ede73b46c5",
+    "skills/dev-product/assets/react-workspace/apps/antd-lab/vite.config.ts": "650949727dc6f52e65630da53d69f5cd1aada8239c2a57d79ec58551c7b21382",
+    "skills/dev-product/assets/react-workspace/apps/web-lab/index.html": "ef051459fe072dede87d0b33280c85f4cea1a59a3d065bc895ce9e336ac60c19",
+    "skills/dev-product/assets/react-workspace/apps/web-lab/package.json": "2c72f7924d5f294f3cd58ac8f126647401df246677348e5961ec3eaea7a8f411",
+    "skills/dev-product/assets/react-workspace/apps/web-lab/src/main.tsx": "409b60172ab0bcac8b675f22cfb4845c2eb3a5bf21893751e57a7c37469ccd4f",
+    "skills/dev-product/assets/react-workspace/apps/web-lab/src/styles.css": "b158feca3c89e31d03dd81e24978483ae3d2858c6ea0f7db9add29c60e4a414c",
+    "skills/dev-product/assets/react-workspace/apps/web-lab/tsconfig.json": "767f1ad1c9160eb08b1267cd094e069365fbebfaa3aa21cc81ebdbc46d26ed4d",
+    "skills/dev-product/assets/react-workspace/apps/web-lab/vite.config.ts": "0a799a426d2b4bf0e1186f4c38890e894acf8377d343a3164155f74444ce114f",
+    "skills/dev-product/assets/react-workspace/catalog.md": "c32bcbe0e65c5ee3294406c449224f77f5b4ae2957d9e9946e841a16a3233f63",
+    "skills/dev-product/assets/react-workspace/package-lock.json": "9864c1fff9a5843375df9b475a75a51ee24e61cf3dd82bdc8acbb09cf615962a",
+    "skills/dev-product/assets/react-workspace/package.json": "0498141736e02639ba40ad0b502606f3662ee6887edc7cb55b728b7bb79136e2",
+    "skills/dev-product/assets/react-workspace/packages/ui-antd/README.md": "01421135a9d024a068ff60b4cc4cd78677765bb2d7979a28a0604ab9402c2868",
+    "skills/dev-product/assets/react-workspace/packages/ui-antd/package.json": "4e985356d8bb8319062ad1ba8e2d35ab50af5a0b24dcd1a3b0deb58e34a13f9c",
+    "skills/dev-product/assets/react-workspace/packages/ui-antd/src/index.ts": "e424f92230157c0d6c15715b99e9a228d6c4a54dc13abda92b5bdf9ce58db705",
+    "skills/dev-product/assets/react-workspace/packages/ui-antd/src/selection-summary.tsx": "af3bd8a8e88665b4a313ac0b4fc6540bf2f8dacc02f8289955fe168eb2c150a6",
+    "skills/dev-product/assets/react-workspace/packages/ui-antd/tsconfig.json": "1a04b0886dedcd8cbb0d30c76a8e0ea7fd09710e2bde37bfb45756c5263b2822",
+    "skills/dev-product/assets/react-workspace/packages/ui-antd/vite.config.ts": "b01d3c79fbd877ccd05d8e075a989ab10f90469a9fe51f1590c5aadf1ce4f667",
+    "skills/dev-product/assets/react-workspace/packages/ui-web/LICENSE.shadcn": "1564074e13439397221ffd522e2e504d56561994a23d371aa5e3ad43e4f5423f",
+    "skills/dev-product/assets/react-workspace/packages/ui-web/README.md": "e9b7445b878182d455bb9e10370ca112720e7829aa031057b53aaa2973911367",
+    "skills/dev-product/assets/react-workspace/packages/ui-web/THIRD_PARTY_NOTICES.md": "06bc2e58e331628bb0cab57497c60c23a0b68ad8c1716adc06989ca230928bee",
+    "skills/dev-product/assets/react-workspace/packages/ui-web/components.json": "306c26b8a0f04dda597cb8220ed79bba7efd9c7e4957a7cea9daf69e9a507c60",
+    "skills/dev-product/assets/react-workspace/packages/ui-web/package.json": "7ea5a8f6cdc57104ecb236531dff4cb68347842954a9837e3ba12d954cdff5f4",
+    "skills/dev-product/assets/react-workspace/packages/ui-web/src/action-card.tsx": "26e5c78ed48ff3bb60a91760ca2700e18c03e10e8b1fd099007ef37cabc0413f",
+    "skills/dev-product/assets/react-workspace/packages/ui-web/src/components/ui/button.tsx": "2225154bfac1c4523cac2085ab60ea0959ef6421a671d96a5bbf06ca309443db",
+    "skills/dev-product/assets/react-workspace/packages/ui-web/src/components/ui/card.tsx": "f6f275e64d5ee78693dcd073c4d4707cd894138ae81d013ac7e7e47cf62a46d2",
+    "skills/dev-product/assets/react-workspace/packages/ui-web/src/index.ts": "40ba0729f0ee87254cdf9be8c4859f7ebaa1e15600405043934f4fa1991bbda0",
+    "skills/dev-product/assets/react-workspace/packages/ui-web/src/lib/utils.ts": "e46429536f43f5910f5b2b0c50bb2769b510a4558bb4b5d20a3b0a9091dbf7c3",
+    "skills/dev-product/assets/react-workspace/packages/ui-web/src/styles.css": "19b3ddd34ecb7e05f1d5f6d626500802cbed2b7146c5b9364d2568c59bad9033",
+    "skills/dev-product/assets/react-workspace/packages/ui-web/tsconfig.json": "1f9981929bc77ebe12672e519c9e17b70209bf3061eb5cdb3a5b41fcb3407214",
+    "skills/dev-product/assets/react-workspace/packages/ui-web/vite.config.ts": "fbb5227cd2c8c6d5d173ec1d89926a3367ad5ef165b3459233499a55446db2ec",
+    "skills/dev-product/assets/react-workspace/scripts/check-packages.mjs": "f21a80512f2e77fd00ca57c838e70806abf2860128f5f51447112a2fa3fb56f1",
+    "skills/dev-product/assets/react-workspace/tsconfig.base.json": "4f04893ae12f7834b5b30b1a6a4b9c10760005de2f8494989c8101aa52dd4b85"
+  },
+  "started_date": "2026-10-07",
+  "completed_date": "2026-10-08"
+}
