@@ -1,0 +1,33 @@
+{
+  "prototype": {
+    "id": "discussion-prototype",
+    "title": "产品与交互原型 · 讨论脚手架",
+    "version": "0.1",
+    "status": "候选",
+    "question": "确认信息放在弹窗还是同页，哪种方式更易理解并完成任务？",
+    "source": "内置虚构示例；使用时替换为本项目的规则、目标与来源版本",
+    "acceptance": [
+      "AC-DEMO-01：明确确认后进入模拟结果",
+      "AC-DEMO-02：未知结果先查询，不盲目重复提交"
+    ],
+    "simulation": "全部行为只在当前浏览器内模拟，无生产接口、真实预约或后台任务"
+  },
+  "feedback": [
+    {
+      "id": "FB-001",
+      "prototype": "discussion-prototype",
+      "version": "0.1",
+      "flow": "business",
+      "variant": "inline",
+      "state": "entry",
+      "outcome": "failed",
+      "width": "full",
+      "viewport": {
+        "width": 456,
+        "height": 786
+      },
+      "kind": "代理走查",
+      "text": "代理走查：确认页保留所选对象及数量，失败恢复后的选择与焦点已检查。"
+    }
+  ]
+}

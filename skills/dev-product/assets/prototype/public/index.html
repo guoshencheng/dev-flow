@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>产品与交互讨论</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#workspace">跳到原型</a>
+  <header class="top">
+    <div><span class="eyebrow">DEV PRODUCT · INTERACTION LAB</span><h1 id="title">产品与交互讨论</h1></div>
+    <div class="badge" id="version">正在加载</div>
+  </header>
+  <div class="layout">
+    <aside class="controls" aria-label="讨论场景控制">
+      <h2>讨论场景</h2>
+      <label for="flow">示例任务</label>
+      <select id="flow"><option value="consumer">C 端 · 预约体验</option><option value="business">B 端 · 批量任务</option></select>
+      <label for="variant">对比方案</label>
+      <select id="variant"><option value="modal">方案 A · 弹窗确认</option><option value="inline">方案 B · 同页确认</option></select>
+      <label for="scenario">起始状态</label>
+      <select id="scenario">
+        <option value="entry">正常入口</option><option value="empty">暂无可用内容</option>
+        <option value="permission">无操作权限</option><option value="failed">已明确失败</option>
+        <option value="unknown">提交结果未知</option><option value="success">已成功</option>
+      </select>
+      <label for="outcome">提交后的模拟结果</label>
+      <select id="outcome"><option value="success">成功</option><option value="failed">明确失败</option><option value="unknown">结果未知</option></select>
+      <label for="width">预览宽度</label>
+      <select id="width"><option value="full">自适应</option><option value="narrow">390 px</option></select>
+      <button type="button" id="reset" class="secondary">重置当前任务</button>
+      <p class="muted">场景与方案会写入地址。输入、选择和反馈只保留在本页，刷新后需重新设置；需要重现具体数据时将其写入项目场景。生产状态由真实行为触发。</p>
+      <div class="note"><strong>本轮讨论问题</strong><p id="question"></p><p id="source" class="muted"></p></div>
+    </aside>
+    <main id="workspace" tabindex="-1">
+      <div class="workspace-heading"><h2 id="task-title">可操作原型</h2><span id="state-label" class="tag"></span></div>
+      <p class="simulation" id="simulation"></p>
+      <section class="preview" id="preview" aria-label="原型预览">
+        <div id="content"></div>
+      </section>
+      <details class="coverage"><summary>本轮验收目标与讨论说明</summary><ul id="acceptance"></ul><p>两个任务都是脚手架示例。实际项目需要替换数据、页面与规则；选中的界面方案尚未确认。</p></details>
+    </main>
+    <aside class="discussion" aria-label="讨论记录">
+      <h2>记录反馈</h2>
+      <p class="muted">自动关联原型版本、任务、方案和状态。刷新会清空本页记录，请先导出。</p>
+      <form id="feedback-form">
+        <label for="observation">观察或建议</label>
+        <textarea id="observation" rows="4" required placeholder="例如：确认后看不到下一步入口"></textarea>
+        <label for="evidence-kind">记录方式</label>
+        <select id="evidence-kind"><option value="团队讨论">团队讨论</option><option value="代理走查">代理走查</option><option value="真实用户观察">真实用户观察（实际发生时）</option></select>
+        <button type="submit">保存到本页</button>
+      </form>
+      <ol id="feedback-list" class="feedback-list"></ol>
+      <button type="button" id="export" class="secondary" disabled>导出反馈 JSON</button>
+      <div id="export-panel" hidden>
+        <label for="feedback-json">反馈 JSON（可复制保存）</label>
+        <textarea id="feedback-json" rows="8" readonly></textarea>
+        <a id="download-feedback">下载 JSON 文件</a>
+      </div>
+      <p id="feedback-status" role="status" class="muted"></p>
+    </aside>
+  </div>
+  <dialog id="confirmation" aria-labelledby="confirmation-title"><div id="confirmation-content"></div></dialog>
+  <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+</body>
+</html>

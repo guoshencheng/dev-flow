@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-07",
+  "product_version": "0.3",
+  "skill_structure": "quick_validate 通过",
+  "global_links": "两个 Skills 和一个职责配置检查通过",
+  "model_policy": "原生职责没有固定模型或推理强度",
+  "javascript": "node --check 通过",
+  "python_tests": "3 个检查通过，覆盖创建边界和发布范围",
+  "browser": "CUA 实际操作；结果见 report.md",
+  "snapshot": "验证副本与源码 HTML/JS/CSS 一致",
+  "feedback": "可见 JSON 已解析并保存；未确认原生 Blob 下载",
+  "source_sha256": {
+    "skills/dev-product/SKILL.md": "23d1ada53d3cbb3653bd31cb801da8b86cc93dd7cf2bfd50f97b5883937c58b9",
+    "skills/dev-product/references/consumer-and-business-design.md": "752bf01107971f976f1b9b2c79961475dff9776108ca0a256aed8d7d839991a9",
+    "skills/dev-product/references/rules-and-acceptance.md": "f5b9364e70ed6eb8671561c77b230fb95d0cb9aa58684ce839912c93fe24cc7b",
+    "skills/dev-product/references/project-assets.md": "8b3d30c99faaa490254756cf268701ec1060904196c170851b88f763b5770c3b",
+    "skills/dev-product/references/flows-and-interactions.md": "58d7b8b586f2e1a5979cde49a5d7460c682d53e9275f645f93d74d9c1f4a8351",
+    "skills/dev-product/references/validation-and-handoff.md": "7e5beba9d6d824d62991068a4b56b53749f9becd15e147f88e700110e73f6f80",
+    "skills/dev-product/references/html-prototyping.md": "781f50eeac2b922d0379b7f24474f8542f8cff730f17ff00420043ed8af4300f",
+    "skills/dev-product/references/reference-research-and-ideation.md": "1289871d62f4f781dd50402d4e7d021b557f72867d8a5fcbe618a5feba5fe00d",
+    "skills/dev-product/agents/openai.yaml": "618e3126a1831f854f6ea7739d5e73c13d67b6242a51a204965d1e2747206465",
+    "skills/dev-product/scripts/prototype.py": "513af2f03638f88b06682d06508bebc265c46484d05718fbcfd35b984b1970aa",
+    "skills/dev-product/assets/prototype/review.md": "b8ff27a72f111d6f4def70919335c45454463c809139bb54aec3ba85eae13ac6",
+    "skills/dev-product/assets/prototype/public/index.html": "d46e1787d8454700f742c432357a173ad83deb2a64ee934841cb440a823ce5f8",
+    "skills/dev-product/assets/prototype/public/styles.css": "6127543e243e86a3289dd8b2312b998f3354dfc41dea7b3cf08a89590caf4523",
+    "skills/dev-product/assets/prototype/public/prototype.json": "5f5de4a495aea1b40ddb6bb3bf136b74e8a36c83322ee48e6daa055a14ecc3a0",
+    "skills/dev-product/assets/prototype/public/app.js": "308a9cdcf8d56b8eaf8fa9c2f5e52fff669751ffa2b400fb3ee6b2521d1cf0f5"
+  }
+}
