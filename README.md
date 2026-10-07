@@ -8,7 +8,7 @@
 - [总纲](skills/dev-flow/references/constitution.md)：共同协作、交付与项目沉淀协议。
 - [流程 Skill](skills/dev-flow/SKILL.md)：调用入口和按需阅读规则。
 - [产品与交互 Agent](docs/product-agent.md)：职责边界、首版能力与验证状态；[专业 Skill](skills/dev-product/SKILL.md)和[案例证据](evals/dev-product/README.md)。
-- [HTML 原型指南](skills/dev-product/references/html-prototyping.md)：脚手架启动、方案讨论与反馈；[参考研究](skills/dev-product/references/reference-research-and-ideation.md)和[C/B 设计指导](skills/dev-product/references/consumer-and-business-design.md)。
+- [HTML 原型与设计稿指南](skills/dev-product/references/html-prototyping.md)：AI 按任务构建页面、选择现成开发服务、启动预览与持续讨论；随包示例可选。[参考研究](skills/dev-product/references/reference-research-and-ideation.md)和[C/B 设计指导](skills/dev-product/references/consumer-and-business-design.md)。
 - [能力与项目沉淀](skills/dev-flow/references/2026-10-07-role-capabilities-and-project-assets.md)：六职责四十八项能力。
 - [Codex 配置](skills/dev-flow/references/codex-agent-setup.md)：原生职责 Agent 的建设方式。
 - [完整建设方案](skills/dev-flow/references/2026-10-07-development-harness-plan.md)：后续试点、运行内核与分发路线。
@@ -36,7 +36,7 @@ python3 scripts/install_global.py --check
 
 ## 下一项建设
 
-产品 v0.3 已有原型启动工具、参考研究、C/B 设计与资产复用指导；脚手架已在浏览器实际操作，证据见[原型验证](evals/dev-product/runs/2026-10-07/prototyping/report.md)。先在可用的 Codex 宿主核验 `dev_product` 原生派发，并在真实项目验证设计方法与用户观察；随后按总纲建设视觉职责。两者保持专业边界，小任务允许同一执行者兼任，交互和渲染分别提供依据。其他职责顺序以总纲为准。
+产品 v0.4 明确由 AI 按任务构建原型或设计稿，并选择现成服务启动预览；已有参考研究、C/B 设计与资产复用指导。v0.3 的可选示例已在浏览器实际操作，证据见[原型验证](evals/dev-product/runs/2026-10-07/prototyping/report.md)；v0.4 为指导调整。先在可用的 Codex 宿主核验 `dev_product` 原生派发，并在真实项目验证设计方法与用户观察；随后按总纲建设视觉职责。两者保持专业边界，小任务允许同一执行者兼任，交互和渲染分别提供依据。其他职责顺序以总纲为准。
 
 ## 解除全局接入
 
