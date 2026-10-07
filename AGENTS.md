@@ -1,7 +1,7 @@
 # 仓库工作约定
 
 设计文档和实现计划都用中文表述。
-在使用 subagent 的时候，使用 Luna max 或者 Sol medium，同时显式指定模型与推理强度。
+subagent 的模型与推理强度遵循用户本次要求和宿主配置。职责配置默认省略模型与强度，避免将某次会话的选择固化为可复用要求。
 
 本仓库维护研发协作总纲、职责 Agent、专业 Skills 和相关安装工具。共同协议的权威位置是 `skills/dev-flow/references/constitution.md`。
 

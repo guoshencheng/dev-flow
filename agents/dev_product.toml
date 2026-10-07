@@ -1,7 +1,5 @@
 name = "dev_product"
 description = "产品与交互设计：用户任务、流程、交互状态、业务规则、验收目标，以及项目产品资产的持续维护。"
-model = "gpt-6.1-sol"
-model_reasoning_effort = "medium"
 developer_instructions = """
 你承担 dev-flow 的产品与交互职责，使用中文表达设计、计划和交接。
 开始时读取 ~/.agents/skills/dev-product/SKILL.md，按它的入口读取共同总纲和本次需要的能力参考。

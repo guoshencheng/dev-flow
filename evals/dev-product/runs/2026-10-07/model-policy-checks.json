@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-07",
+  "version": "0.2",
+  "change": "职责配置省略模型与推理强度，总纲和 Skill 将选择交给调用方与宿主",
+  "toml": "必需字段通过，无 model 或 model_reasoning_effort",
+  "skills": "两个 Skill 的 quick_validate 通过",
+  "global": "两个 Skill 与一个职责配置链接有效，读取到当前修改",
+  "native_runtime_inheritance": "未执行实际原生派发，本次检查不证明运行时继承",
+  "historical_evaluation": "两轮 v0.1 案例产物及执行事实保持原记录",
+  "source_sha256": {
+    "AGENTS.md": "88000b635e3d4b378f005b55d263b4e98c68f9bdd33a4e3ac7acbf4d90670574",
+    "README.md": "5b33605648b1af5805db9fd8bb3927c3b94de72e40fc9723d1fd3a688b231ad8",
+    "docs/product-agent.md": "5f347f7395b61178b2489132710a1c726b7904cb544adf2107ee97c35350bc58",
+    "agents/dev_product.toml": "14f764729810286e0339d6739699506865532f4b4638cc0b0f1de6b7740a8223",
+    "skills/dev-flow/SKILL.md": "91cdf5f39033b9f9ff954afce2dc10d10c6a9e814b5a494680b60660290801e6",
+    "skills/dev-flow/references/constitution.md": "d6ba6ae7215e6c74437a26d8ad3bc8920f0ad8051bb77cc2e507073e893157f8",
+    "skills/dev-flow/references/2026-10-07-role-capabilities-and-project-assets.md": "4af2d1888141076e0e13528f7d5641ebe40bb12700bc2c3aad26f2557bee6dfa",
+    "skills/dev-flow/references/2026-10-07-development-harness-plan.md": "cfa4347c45c55ad372c0f02dff1f4cd7312373f9e845c0f057f0dc94cbc85dae",
+    "skills/dev-flow/references/codex-agent-setup.md": "9fc73d0caf899ca89084758312b402e2b764448568ffff0f804b4a83533be7cc",
+    "skills/dev-product/SKILL.md": "a9a5a7866477060bd33fbc063afcdddccdb7d26899f9b280739021602913b8d6",
+    "skills/dev-product/references/rules-and-acceptance.md": "f5b9364e70ed6eb8671561c77b230fb95d0cb9aa58684ce839912c93fe24cc7b",
+    "skills/dev-product/references/project-assets.md": "6c9227bc9db55de656ed4857cef03c3ba9ff10c1363fbba025963fbe908142e2",
+    "skills/dev-product/references/flows-and-interactions.md": "58d7b8b586f2e1a5979cde49a5d7460c682d53e9275f645f93d74d9c1f4a8351",
+    "skills/dev-product/references/validation-and-handoff.md": "e6a4bf8ad364f92a8c4818f81839dcdb446d09dc6885e0d7cd93a8f6a0708554"
+  }
+}
