@@ -4,6 +4,7 @@
 
 ## 维护入口
 
+- [总纲概述](docs/overview.md)：经 Astra medium 独立审阅和修订稿复核通过的简介；[审阅记录](reviews/2026-10-07-overview-review.md)。
 - [总纲](skills/dev-flow/references/constitution.md)：共同协作、交付与项目沉淀协议。
 - [流程 Skill](skills/dev-flow/SKILL.md)：调用入口和按需阅读规则。
 - [能力与项目沉淀](skills/dev-flow/references/2026-10-07-role-capabilities-and-project-assets.md)：六职责四十八项能力。
