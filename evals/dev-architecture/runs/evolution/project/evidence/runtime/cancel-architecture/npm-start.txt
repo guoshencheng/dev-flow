@@ -1,0 +1,5 @@
+
+> start
+> node src/main.mjs
+
+{"reservation":{"id":"r-1","ownerId":"u-1","status":"cancelled","price":120,"startAt":360000000,"refundAmount":120},"refunds":[{"reservationId":"r-1","amount":120}]}

@@ -1,0 +1,104 @@
+{
+  "skill_version": "0.1",
+  "constitution": "0.7",
+  "execution_contract": "0.2",
+  "repo_base": "f69fe6b5224933c2c362bdd65473c89cf16701e2",
+  "evaluation": "通用子 Agent 读取专业 Skill；非原生角色派发",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning_effort": "medium",
+  "case_one": {
+    "source_commit": "734473c138fe669e33d627bfac6472dda6d81e59",
+    "source_fingerprints_match": true,
+    "src_test_package_unchanged": true,
+    "parent_replay": {
+      "checks": 7,
+      "passed": 5,
+      "failed": 2
+    },
+    "parent_runtime_checks": [
+      {
+        "command": "npm test",
+        "exit_code": 0
+      },
+      {
+        "command": "npm start",
+        "exit_code": 0
+      }
+    ]
+  },
+  "static": {
+    "skill_frontmatter": 4,
+    "toml_configs": 3,
+    "model_overrides": false,
+    "install": {
+      "skills": 4,
+      "native_configs": 3,
+      "temp_install_check": "全局链接和流程指引检查通过；Skill 4 个，原生职责 3 个",
+      "idempotent": true,
+      "original_preserved_and_backed_up": true,
+      "conflict_preflight_no_mutation": true
+    },
+    "git_diff_check": true,
+    "references": {
+      "scope": "README、docs、dev-flow、dev-architecture 与本次 evals 的 Markdown 文件存在性；不含远程链接/锚点验证",
+      "checked": 224,
+      "broken": []
+    }
+  },
+  "limitations": [
+    "非 dev_architecture 原生派发",
+    "尚未验证真实项目",
+    "续轮同一评估者，非新上下文"
+  ],
+  "skill_fingerprints": {
+    "skills/dev-architecture/SKILL.md": "722339e80b5473aece3b1d69fd704703f99162712185c53fb0569ad4bc298838",
+    "skills/dev-architecture/agents/openai.yaml": "8a8d83289eda076611080e25441f098db60c7d0546d50fb2d7cefc9c5bf29d14",
+    "skills/dev-architecture/assets/templates/architecture-design.md": "328651b3b3fd7e8bcae5b0bca13f97ccb53aca35c69fb685cd2dd5a85390e9d8",
+    "skills/dev-architecture/assets/templates/architecture-review.md": "01df145432e4fd2ea4f7cd0bc6f5d29accf13e52d5ba083d72533c07b6935c55",
+    "skills/dev-architecture/assets/templates/current-architecture.md": "a991d9fa8b0c81773a2f7c879e189d7082e764d5e6c565f65fab3180ad884d12",
+    "skills/dev-architecture/references/clean-architecture.md": "518b632d75a1ad06aa333fad3080a5ee74190c8d866369945bf7438913235785",
+    "skills/dev-architecture/references/design-and-contracts.md": "3358c5b22b22bc83b84ce58a3736eb3dc718a4461d94074b6f006750ac262c2b",
+    "skills/dev-architecture/references/project-assets.md": "e8eb103abfd931585c2bd4e8608d5f7a2198e0f8c8608a3a86b5c1d9355dfca6",
+    "skills/dev-architecture/references/retrospective-and-evolution.md": "e9de28905a93931b5931a7969041ec85a2042415cd01fd3402226b3b56aa3aac",
+    "skills/dev-architecture/references/system-and-module-map.md": "4b6c474178d7c92ffcac3b72de5c29a9bac353f5eda4f55a781efcaa0b8a178c"
+  },
+  "agent_fingerprint": "4752f43abc37537d58be915a0e1dc555b7dd20bdb5c13d1a396820586c7fe524",
+  "case_two": {
+    "source_commit": "992d110be38c5c8e2ae834bc9561b23111682927",
+    "previous_source_commit": "734473c138fe669e33d627bfac6472dda6d81e59",
+    "source_fingerprints_match": true,
+    "prior_reports_logs_preserved": true,
+    "source_unchanged_by_evaluator": true,
+    "same_evaluator": true,
+    "parent_replay": [
+      {
+        "command": "node evidence/runtime/export-architecture/check.mjs",
+        "exit_code": 0,
+        "summary": {
+          "checks": 5,
+          "passed": 5,
+          "failed": 0
+        }
+      },
+      {
+        "command": "node evidence/runtime/cancel-architecture/check.mjs",
+        "exit_code": 1,
+        "summary": {
+          "checks": 7,
+          "passed": 5,
+          "failed": 2
+        }
+      },
+      {
+        "command": "npm test",
+        "exit_code": 0,
+        "summary": null
+      },
+      {
+        "command": "npm start",
+        "exit_code": 0,
+        "summary": null
+      }
+    ]
+  }
+}

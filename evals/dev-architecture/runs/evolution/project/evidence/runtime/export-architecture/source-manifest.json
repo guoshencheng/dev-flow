@@ -1,0 +1,80 @@
+{
+  "checked_at": "2026-10-08T09:56:23.348772+00:00",
+  "commit": "992d110be38c5c8e2ae834bc9561b23111682927",
+  "execution": "同一通用子 Agent 持续复用 Skill 和资产；非新上下文或原生角色",
+  "node": "v26.4.0",
+  "source_status": "",
+  "sha256": {
+    "package.json": "47842b4e4370ed35d7704635fa987885b809e09729b3290503cc1db7480c164c",
+    "docs/product.md": "a1e3b56c702683f66781da02296f2cee4049a998c7b26c8960341a15e14ed9ff",
+    "docs/export.md": "7269ae13fd35516da4d6e33555e19a37dbf9a0897682869be58d61951bf9f769",
+    "docs/dev-flow/architecture/changes/cancel/design.md": "cdc2c45d82ef4a39a911cc0c5e44f7a926d54e1394c009456aa1a6277ca8ba72",
+    "src/main.mjs": "a8ab8e062b588612bcc13575c3dd3384381413bc67fdddf93808ddbbb18ebbff",
+    "src/modules/billing/application/refund.mjs": "61aec9110448e82a9964799eb55261f5649867bd7a024c7242607afd54a5c93d",
+    "src/modules/billing/infrastructure/store.mjs": "320c506b3552c97056414aa3e86819a37a8d41e5d4433c6f211b67ea9bb55da1",
+    "src/modules/reporting/application/export.mjs": "cc1fe191acec98e700c11bc52af124fa46eb63b4f2835bf389750673b9ff440c",
+    "src/modules/reservations/application/cancel.mjs": "6b58cf1b3fe80c329f195184baf820c9dab06990b20007b3267b1eb6e545a3c2",
+    "src/modules/reservations/application/query.mjs": "1c05695ed9e19b6772c2963d7221c89c2bb8c20d839f367f3b0c42e132ad13a8",
+    "src/modules/reservations/domain.mjs": "30772df0c7d0f13917c5a910db89eed17da5ea23b5c765c4875f23167f002a45",
+    "src/modules/reservations/infrastructure/store.mjs": "51f0e664d2c5009ba392df395d6bc9cdb1991ce7d6c120c9e02b1ff2e5c5a8d2",
+    "src/modules/reservations/public.mjs": "7ce9243b00ab96f194c210fdbbc6ca65559a2fa2f6cf752a6e2ee4aa464f7a2f",
+    "test/cancel.test.mjs": "47226becb4d4fd226cd835f3edef57c4fcb08f70cebf3986009dec08a0f97cd4"
+  },
+  "previous_evidence_commit": "734473c138fe669e33d627bfac6472dda6d81e59",
+  "unchanged_from_previous": [
+    "package.json",
+    "docs/product.md",
+    "docs/dev-flow/architecture/changes/cancel/design.md",
+    "src/modules/billing/application/refund.mjs",
+    "src/modules/billing/infrastructure/store.mjs",
+    "src/modules/reservations/application/cancel.mjs",
+    "src/modules/reservations/domain.mjs",
+    "src/modules/reservations/infrastructure/store.mjs",
+    "test/cancel.test.mjs"
+  ],
+  "changed_from_previous": [
+    "src/main.mjs"
+  ],
+  "new_files": [
+    "docs/export.md",
+    "src/modules/reporting/application/export.mjs",
+    "src/modules/reservations/application/query.mjs",
+    "src/modules/reservations/public.mjs"
+  ],
+  "read_this_round": [
+    "docs/export.md",
+    "src/main.mjs",
+    "src/modules/reservations/public.mjs",
+    "src/modules/reservations/application/query.mjs",
+    "src/modules/reporting/application/export.mjs",
+    "package.json",
+    "docs/product.md",
+    "docs/dev-flow/architecture/changes/cancel/design.md",
+    "既有 index/modules/debt/cancel 复盘及来源清单"
+  ],
+  "commands": [
+    {
+      "command": "node .dev-flow/evidence/export-architecture/check.mjs",
+      "exit_code": 0,
+      "checks": 5,
+      "passed": 5
+    },
+    {
+      "command": "npm test",
+      "exit_code": 0,
+      "tests": 2,
+      "passed": 2
+    },
+    {
+      "command": "npm start",
+      "exit_code": 0
+    },
+    {
+      "command": "node .dev-flow/evidence/cancel-architecture/check.mjs",
+      "exit_code": 1,
+      "checks": 7,
+      "passed": 5,
+      "failed": 2
+    }
+  ]
+}

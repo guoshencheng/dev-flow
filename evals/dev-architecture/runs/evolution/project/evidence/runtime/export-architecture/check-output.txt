@@ -1,0 +1,6 @@
+PASS 公开摘要查询仅输出id/status/price且不修改注入对象
+PASS 不存在预约返回null
+PASS 报表消费者注入查询契约并跳过null保留顺序
+PASS 空id列表导出空摘要且不访问查询
+PASS 取消之后真实内存适配导出可序列化摘要且预约/退款不变
+{"checks":5,"passed":5,"failed":0}

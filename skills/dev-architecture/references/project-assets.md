@@ -1,0 +1,29 @@
+# 项目架构资产、目录与复用
+
+先读取项目规范与现有权威源，只更新本次相关内容。默认目录供无现行规范的项目按需采用，不一次生成所有文件。产品/视觉沿用其[共同文档协议](../../dev-flow/references/design-document-contract.md)，架构引用有效 RULE/AC 与代码入口；工程 schema/API 和测试等权威源保留原位置。
+
+| 资产 | 默认位置与用途 |
+| --- | --- |
+| 当前入口 | `docs/dev-flow/architecture/index.md`：系统、模块、契约、决策、最新复盘与债务的有效入口，版本/覆盖及待核验项 |
+| 当前实现 | `architecture/system.md`：实际系统/运行组成、关键链路与数据/信任边界；小工程可合并在 index |
+| 模块地图 | `architecture/modules.md`：目录 ↔ 模块 ↔ 业务域/层次、职责、数据、公开入口、依赖与验证；沿用稳定 ID |
+| 域详细契约 | `architecture/domains/<域ID>.md`：确有独立规则和跨模块细节时拆出；链接权威定义 |
+| 变化设计 | `architecture/changes/<任务ID>/design.md`：目标、约束、取舍、迁移和确认基线；未实现部分保持目标标记 |
+| 重要决策 | `architecture/decisions/<决策ID>.md`：背景、决定/状态、权衡、来源与替代关系，避免抄写每项内部实现 |
+| 代码复盘 | `architecture/reviews/<YYYY-MM-DD>/<任务ID>.md`：当前候选检查、代码业务发现、建议与实际证据 |
+| 改进与偏差 | `architecture/debt.md`：链接项目实际任务/缺陷，优先级、责任、范围、依赖、收益/代价、验证和状态 |
+| 完整替换方案 | `architecture/archive/<YYYY-MM-DD>/<资产ID>/`：必要旧方案及替代关系；日常修订用 Git 历史 |
+
+表中短路径均相对于 `docs/dev-flow/`。检查证据优先沿用项目位置，无规范时在 `docs/dev-flow/evidence/<任务ID>/architecture/`；证据文件不混入目标设计冒充已验收。实际工具运行记录放 `.dev-flow/`，不能成为新上下文唯一事实来源。
+
+模板按任务裁剪：[当前架构与模块](../assets/templates/current-architecture.md)、[变化设计](../assets/templates/architecture-design.md)、[代码复盘](../assets/templates/architecture-review.md)。小项目可在同一文档分开现状、目标和发现；模块足够复杂时再拆域文件。新职责与项目共用现有 Git 管理和[Vite 文档预览](../../dev-flow/references/document-preview.md)，无需独立文档服务。
+
+## 有效性与归档
+
+架构资产至少记录资产 ID、状态（current/candidate/superseded）、适用范围、维护职责、更新日期、源提交、相关脏文件的内容指纹、证据与未覆盖区域。已确认设计额外保存实际确认来源和对应版本。事实的可信度与设计状态分别表达，日期新或用户查看不代表实际检查/确认。
+
+任务开始对照上次源版本与当前相关变化；新增/移除模块、公开 API、业务规则、数据读写、依赖方向、启动/运行变化使相应资产需要重核。发现陈旧内容标记并更新实际事实，保留旧证据所属版本；未受影响的有效决定直接复用。没有全仓检查时在索引维护分模块覆盖与待核验列表。
+
+任务结束记录复用、更新、替代、尚未验证的目标与改进状态，新上下文从 index 和来源恢复。同一接口或模块地图只有一个写入者；工程与测试提供证据，架构整合到现行地图。
+
+普通修订由 Git 可追溯，完整替换的设计按表中 archive 保留来源/替代原因。当前入口只链接有效现状、有效决定和明确待办，历史方案有状态与跳转；未实施的建议不能覆写现状，债务不因重命名或文档更新而关闭。

@@ -1,0 +1,23 @@
+FAIL RULE-03 重复取消仅一笔退款 Expected values to be strictly equal:
+
+2 !== 1
+
+PASS RULE-02 恰好24小时全额退款
+PASS RULE-02 不足24小时取消不退款
+PASS RULE-01 非本人拒绝且预约退款均不变
+PASS 不存在预约被拒绝且数据不变
+FAIL ARC-01 领域计算不写存储 Expected values to be strictly deep-equal:
++ actual - expected
+
+  {
+    id: 'r-1',
+    ownerId: 'u-1',
+    price: 120,
++   refundAmount: 120,
+    startAt: 360000000,
++   status: 'cancelled'
+-   status: 'active'
+  }
+
+PASS ARC-02 已有结算公开用例自身去重
+{"checks":7,"passed":5,"failed":2}

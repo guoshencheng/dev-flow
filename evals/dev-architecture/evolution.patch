@@ -1,0 +1,49 @@
+diff --git a/docs/export.md b/docs/export.md
+new file mode 100644
+index 0000000..3cf9287
+--- /dev/null
++++ b/docs/export.md
+@@ -0,0 +1,3 @@
++# 预约摘要导出
++
++新增源码演示能力：装配入口在取消演示之后，以只读查询导出预约摘要 JSON。仅输出 id/status/price，跳过不存在的预约；不更改预约和结算数据。保持单进程、内存存储和原有 npm start，不接网络和持久化。
+diff --git a/src/main.mjs b/src/main.mjs
+index 5c32a00..44103c4 100644
+--- a/src/main.mjs
++++ b/src/main.mjs
+@@ -2 +2 @@ import { cancel } from './modules/reservations/application/cancel.mjs';
+-import { resetReservations } from './modules/reservations/infrastructure/store.mjs';
++import { resetReservations, getReservation } from './modules/reservations/infrastructure/store.mjs';
+@@ -8,0 +9,5 @@ console.log(JSON.stringify({ reservation: cancel({ reservationId: 'r-1', actorId
++
++const { reservationSummary } = await import('./modules/reservations/public.mjs');
++const { exportSummaries } = await import('./modules/reporting/application/export.mjs');
++console.log(JSON.stringify({ summaries: exportSummaries(['r-1', 'missing'],
++  id => reservationSummary(id, getReservation)) }));
+diff --git a/src/modules/reporting/application/export.mjs b/src/modules/reporting/application/export.mjs
+new file mode 100644
+index 0000000..c23b8c1
+--- /dev/null
++++ b/src/modules/reporting/application/export.mjs
+@@ -0,0 +1,3 @@
++export function exportSummaries(ids, readSummary) {
++  return ids.map(id => readSummary(id)).filter(value => value !== null);
++}
+diff --git a/src/modules/reservations/application/query.mjs b/src/modules/reservations/application/query.mjs
+new file mode 100644
+index 0000000..1ebbad5
+--- /dev/null
++++ b/src/modules/reservations/application/query.mjs
+@@ -0,0 +1,5 @@
++export function reservationSummary(id, readReservation) {
++  const value = readReservation(id);
++  if (!value) return null;
++  return { id: value.id, status: value.status, price: value.price };
++}
+diff --git a/src/modules/reservations/public.mjs b/src/modules/reservations/public.mjs
+new file mode 100644
+index 0000000..3733472
+--- /dev/null
++++ b/src/modules/reservations/public.mjs
+@@ -0,0 +1 @@
++export { reservationSummary } from './application/query.mjs';

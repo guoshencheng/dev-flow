@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-10-08T09:49:18.881947+00:00",
+  "commit": "734473c138fe669e33d627bfac6472dda6d81e59",
+  "execution": "通用子 Agent 读取 dev-architecture Skill 承担架构职责；非原生 dev_architecture 角色",
+  "node": "v26.4.0",
+  "source_status": "",
+  "sha256": {
+    "package.json": "47842b4e4370ed35d7704635fa987885b809e09729b3290503cc1db7480c164c",
+    "docs/product.md": "a1e3b56c702683f66781da02296f2cee4049a998c7b26c8960341a15e14ed9ff",
+    "docs/dev-flow/architecture/changes/cancel/design.md": "cdc2c45d82ef4a39a911cc0c5e44f7a926d54e1394c009456aa1a6277ca8ba72",
+    "src/main.mjs": "9bda6b4e85086ca93fe0ecdcb96a514cafd3069f745cbf6b9bb7be7a8f658526",
+    "src/modules/billing/application/refund.mjs": "61aec9110448e82a9964799eb55261f5649867bd7a024c7242607afd54a5c93d",
+    "src/modules/billing/infrastructure/store.mjs": "320c506b3552c97056414aa3e86819a37a8d41e5d4433c6f211b67ea9bb55da1",
+    "src/modules/reservations/application/cancel.mjs": "6b58cf1b3fe80c329f195184baf820c9dab06990b20007b3267b1eb6e545a3c2",
+    "src/modules/reservations/domain.mjs": "30772df0c7d0f13917c5a910db89eed17da5ea23b5c765c4875f23167f002a45",
+    "src/modules/reservations/infrastructure/store.mjs": "51f0e664d2c5009ba392df395d6bc9cdb1991ce7d6c120c9e02b1ff2e5c5a8d2",
+    "test/cancel.test.mjs": "47226becb4d4fd226cd835f3edef57c4fcb08f70cebf3986009dec08a0f97cd4"
+  }
+}

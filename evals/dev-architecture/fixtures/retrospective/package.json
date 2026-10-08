@@ -1,0 +1,6 @@
+{
+  "name": "reservation-retrospective-fixture",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test", "start": "node src/main.mjs" }
+}

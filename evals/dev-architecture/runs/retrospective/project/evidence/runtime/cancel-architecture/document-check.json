@@ -1,0 +1,11 @@
+{
+  "architecture_links_missing": [],
+  "source_fingerprints_changed": [],
+  "documents": [
+    "docs/dev-flow/architecture/modules.md",
+    "docs/dev-flow/architecture/debt.md",
+    "docs/dev-flow/architecture/index.md",
+    "docs/dev-flow/architecture/changes/cancel/design.md",
+    "docs/dev-flow/architecture/reviews/2026-10-08/cancel.md"
+  ]
+}

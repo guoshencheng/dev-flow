@@ -1,0 +1,3 @@
+interface:
+  display_name: "架构设计与演进"
+  short_description: "整洁架构、业务域与模块拆分、代码业务复核及研发复盘和架构资产维护"
