@@ -2,6 +2,8 @@
 
 本指南让 AI 根据本次产品、交互或 UI 设计问题构建页面，新建工程默认使用 Vite + React + TypeScript，启动预览后与用户持续讨论和修改。技术与设计按共同[UI 约定](../../dev-flow/references/ui-stack-and-components.md)执行：B 端使用 Ant Design 规范和 antd；C 端 Web 优先 shadcn/ui；其他 C 端实施前先开展网上参考研究。页面内容、业务流程和视觉表现由本次任务决定，随包示例可选。
 
+产品规格关联原型 ID、源码与版本、规则/验收、模拟范围和场景入口；目录和归档遵守[共同文档协议](../../dev-flow/references/design-document-contract.md)。Markdown/MDX 规则、HTML 原型和相关设计资产可用[统一 Vite 文档入口](../../dev-flow/references/document-preview.md)预览并按文件生成当前 URL；已有独立 React 原型继续复用其实际服务，通过产品索引关联。
+
 先明确本轮需要回答的问题和成果类型。静态设计稿用于讨论信息层级、布局、文案、组件呈现和响应尺寸，需要实际渲染；可操作原型用于讨论操作顺序、状态反馈、异常恢复或方案取舍，还需实现相关操作。产品职责负责交互语义，视觉职责负责呈现，小任务可由同一执行者承担。局部且已清楚的变更可以复用现有页面，不为所有任务另建原型工程。
 
 代码原型适合检查接近真实界面的交互，但其结果仍有模拟范围；原型代码进入生产前核验真实契约、工程质量与场景，决定复用或改造后再验收。[GOV.UK 原型指导](https://www.gov.uk/service-manual/design/making-prototypes)

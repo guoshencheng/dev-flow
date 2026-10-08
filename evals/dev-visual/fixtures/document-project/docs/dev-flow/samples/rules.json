@@ -1,0 +1,8 @@
+{
+  "feature": "batch-publish",
+  "limit": 3,
+  "visibility": {
+    "editor": "visible",
+    "viewer": "hidden"
+  }
+}

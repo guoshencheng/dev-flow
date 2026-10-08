@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-08",
+  "baseCommit": "bda13bba07bdccbb783cb5b1fd8cf8cda3dc60d0",
+  "candidateWorkingTree": true,
+  "execution": {
+    "kind": "primary-agent-and-tools",
+    "independentAgentBehavior": false,
+    "nativeRoleDispatch": false,
+    "realUserObservation": false
+  },
+  "checks": {
+    "skillValidation": {
+      "dev-flow": "pass",
+      "dev-product": "pass",
+      "dev-visual": "pass"
+    },
+    "toml": [
+      "dev_product",
+      "dev_visual"
+    ],
+    "roleModelOverrides": false,
+    "globalSkillCount": 3,
+    "globalRoleCount": 2,
+    "temporaryInstallRepeatConflictPreserve": "pass",
+    "realGlobalInstallCheck": "pass",
+    "typecheck": "pass",
+    "build": "pass-with-large-chunk-warning",
+    "buildIncludesSampleMdx": "pass",
+    "coreTests": {
+      "passed": 3,
+      "failed": 0
+    },
+    "standaloneSourceCopyInstallTypecheckServe": "pass",
+    "serviceRestartNewOrigin": "pass",
+    "gracefulExitCleanupAndStaleRuntimeReject": "pass",
+    "sourceCopyConflictPreflight": "pass",
+    "modifiedMarkdownLinks": {
+      "checked": 160,
+      "missing": 0
+    }
+  },
+  "browser": {
+    "engine": "Codex In-app Browser",
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "verifiedFormats": [
+      "markdown",
+      "mdx",
+      "mermaid",
+      "html",
+      "pdf",
+      "svg",
+      "docx",
+      "xlsx",
+      "csv",
+      "json",
+      "yaml",
+      "typescript",
+      "unknown-format-fallback"
+    ],
+    "prototypeAcceptance": [
+      "AC-batch-001",
+      "AC-batch-002",
+      "AC-batch-003",
+      "AC-batch-004"
+    ],
+    "checks": [
+      "relative-links",
+      "archive-to-current-link",
+      "chinese-space-hash-path-refresh",
+      "html-relative-script-and-query",
+      "source-live-reload-and-restore",
+      "mobile-drawer-and-no-page-overflow",
+      "official-contract-to-template"
+    ],
+    "freshHandbookWarnErrorLogs": 0,
+    "historicalTabContainsFixedErrors": true,
+    "audioVideoPlaybackVerified": false
+  },
+  "scopeLimits": {
+    "textMiB": 2,
+    "fileMiB": 50,
+    "catalogFiles": 2500,
+    "tableDataRows": 300,
+    "tableColumns": 30,
+    "docxPixelFidelity": false,
+    "spreadsheetFormulaRecalculation": false,
+    "staticExportFileService": false,
+    "officeSidecarMetadataRead": false
+  },
+  "candidateHashes": {
+    "AGENTS.md": "174772b743fd555639282643a02085e0a01c4e319a55eef16e8b7f71c4b25cda",
+    "README.md": "5a98332e38b46be1f0caafb673c33582a46626133f49efcfad22877a951a31d2",
+    "agents/dev_product.toml": "8923e67fc1b7880e44cfdc5a1e9c6d1ae0495e728d9d82f896d65d8b70dc7c41",
+    "agents/dev_visual.toml": "c475b5905e84ea63bdc0e9fef3698803d30e99d1c8e59baafc4e8d95b78505fc",
+    "docs/overview.md": "ef7b62959849a3bf5dc59ecccab8a76e3d0c7b6ab8480e7eaa4d7dbfeef0105a",
+    "docs/plans/2026-10-08-visual-and-document-preview.md": "d15705253657b4a7cdfca6cb036c5ba2e5920de182907bef24122c74414dbde9",
+    "docs/product-agent.md": "ef8bc2b35683d7f67fdafcfbd881481f6fa9a87f3481fad9163cbe36efcfa028",
+    "docs/visual-agent.md": "60ea0c4e3fd3e364d5a438226832cf10243ecb543e1a100a3d9e3a79d82f8ad4",
+    "evals/dev-visual/README.md": "16057fbd5e9c55ca165da614f33547a0319cf8c3740efbc6e58fa4217352d685",
+    "evals/dev-visual/fixtures/document-project/design/prototypes/batch-publish/demo.mdx": "cb5cddcd0d7ad9d6f0bc26c344c6eae8bbc65961e04060821e07bc034de60885",
+    "evals/dev-visual/fixtures/document-project/design/prototypes/formats/app.js": "40488e25a1fcaef5b37ff1e32340274c64eab86f46ee8341ec214a7316000082",
+    "evals/dev-visual/fixtures/document-project/design/prototypes/formats/index.html": "b6eb39039dec56206eb631642b634d8b288cfd0f38e337178bdee12bb9661e84",
+    "evals/dev-visual/fixtures/document-project/design/prototypes/formats/style.css": "948f2d85839558da5349377fe63e322a80c797331fa45f4019734d2e52cc0b47",
+    "evals/dev-visual/fixtures/document-project/docs/dev-flow/index.md": "e550b3f489db6515cf25629594b0bda9a495e74d51a145ebab8b59e87a2f4153",
+    "evals/dev-visual/fixtures/document-project/docs/dev-flow/product/archive/2026-10-08/PRODUCT-batch-publish/spec.md": "4a91ab99ea038d65a0cd9d0467971840cabea884226913dbee78117fa42bc447",
+    "evals/dev-visual/fixtures/document-project/docs/dev-flow/product/features/batch-publish/spec.md": "d76f32e10f641072858d0398ce9488e95bee95a12d0da3ac42696ed99a2bfd10",
+    "evals/dev-visual/fixtures/document-project/docs/dev-flow/samples/index.md": "9df6e2bdc3eb5e2044dae1e0696f70e78fca582c0d8e3312bf07c0d16d1936e9",
+    "evals/dev-visual/fixtures/document-project/docs/dev-flow/samples/layout.svg": "d0568a3cf0564365bc041820aecafe2c9f34ef5aeb2bae4ec369c3d32b295ac1",
+    "evals/dev-visual/fixtures/document-project/docs/dev-flow/samples/logic.ts": "2b758fa50a1a0f895691c8ddcbb09497f68131f3b9c463d331ca968131e0199b",
+    "evals/dev-visual/fixtures/document-project/docs/dev-flow/samples/rules.csv": "c733f6a9e1bc6969af3eb814d4f7a121af2cb7f1f318e6e9485d7d36f2f3c30d",
+    "evals/dev-visual/fixtures/document-project/docs/dev-flow/samples/rules.docx": "302d513bb4bf83a00c07662af19a7706e46a531f2cf84e734a6dfafba1b9feb8",
+    "evals/dev-visual/fixtures/document-project/docs/dev-flow/samples/rules.json": "c20adb2338dc3ad33eadcbc52919c23e0f3c9766ee8672539019a6f2b40aa31d",
+    "evals/dev-visual/fixtures/document-project/docs/dev-flow/samples/rules.pdf": "8003f6c67e44368a14ceab2f885a550889f049590fc9b95a55f8d626ad6a20b1",
+    "evals/dev-visual/fixtures/document-project/docs/dev-flow/samples/rules.xlsx": "d9edad34c5e0c9f15e3b3a93341774259112d2798921fe2debf13bc2d329826e",
+    "evals/dev-visual/fixtures/document-project/docs/dev-flow/samples/rules.yaml": "0bd40b3c9690f7d9be929707911cf5405f088888bef08c8eea204dc684adb237",
+    "evals/dev-visual/fixtures/document-project/docs/dev-flow/samples/source.custom": "d3adbc035d60f4653d8599b6ae698446dd9d5bc7cf902a0e384b0f08ff051fd0",
+    "evals/dev-visual/fixtures/document-project/docs/dev-flow/samples/states.mmd": "1656f5e7705d1487ad36ef9983bff011a295f4910386a90441ff373fa8060f2a",
+    "evals/dev-visual/fixtures/document-project/docs/dev-flow/visual/features/batch-publish/design.md": "2aac29b4c7e6094fc1868d6c83294e65d6a9e4cb32a528fd54662c2cb52910de",
+    "evals/dev-visual/runs/2026-10-08/visual-and-documents/archived.png": "f64aa4c7b0eafef302091e417e2eb8e996d0014a597e85f0dae5fc6b665e45ae",
+    "evals/dev-visual/runs/2026-10-08/visual-and-documents/document-contract.png": "155dfbaad7447947aad654f9b7003124c0f69c3d93f199763e618edc03d45206",
+    "evals/dev-visual/runs/2026-10-08/visual-and-documents/pdf-page1.png": "1a0b54f52700f5d54005da86f8a0ad8b3e48c63c719a0abbfab03d63f4ec05c7",
+    "evals/dev-visual/runs/2026-10-08/visual-and-documents/pdf-page2.png": "68340734881dd1ace3de2d6fc1d60da5205096fea7fb26d5d7377044556bd8a3",
+    "evals/dev-visual/runs/2026-10-08/visual-and-documents/product-desktop.png": "e2152b93c174b02ec1ee0cad83c2ee5516a68d6ccd7f5d2baeb76a6528fc2d90",
+    "evals/dev-visual/runs/2026-10-08/visual-and-documents/product-mobile.png": "9f910f4e6f901c7b7ea7c68b6a1f225f3494bb3c5cc6c806f4ce85d6d4b5a94a",
+    "evals/dev-visual/runs/2026-10-08/visual-and-documents/prototype-mobile-limit.png": "bc1dc634a857d954a04ee9989cea40c5995499351e1c509ddf3493f1cd665176",
+    "evals/dev-visual/runs/2026-10-08/visual-and-documents/prototype-success.png": "2682867165fdf5940122a8455504e428f284a9352bd56e7451962b54d714c5b0",
+    "evals/dev-visual/runs/2026-10-08/visual-and-documents/spreadsheet.png": "090aa284bec021b57a6d8397c83dfc30871dd57ea6c72386277a624b2c3b5437",
+    "skills/dev-flow/SKILL.md": "feb3e27e5bcb11d7b9e7d0ad96cee44daff75df63d3cc76bc456f073ceaf670a",
+    "skills/dev-flow/assets/document-workspace/.gitignore": "61022f949eb49fe0ee5b774835be844845b3d71d9001f676d9ac82bd433e49a7",
+    "skills/dev-flow/assets/document-workspace/README.md": "36b62dae997f7fc27c57fd484bfbf0223cd85290a3928fb4f5273675f506c48e",
+    "skills/dev-flow/assets/document-workspace/index.html": "8b6fb16304a16a0d503c6e9d3ab0967c1523549838fa35505db5c6eca89ff4ab",
+    "skills/dev-flow/assets/document-workspace/package-lock.json": "0f5b4ed37217003c7b065e2a1a1e7580c4f236a104706f672af0b4a51276c7da",
+    "skills/dev-flow/assets/document-workspace/package.json": "aa9c7a44f604c69b469a6febfdadf53686fd16c4b8e18540f9bb2a72cd83b76b",
+    "skills/dev-flow/assets/document-workspace/scripts/core.mjs": "94bfc440b5d74fafdc8c8bae4a5fa1063127e0c39d10aa3672fdaab357ea8967",
+    "skills/dev-flow/assets/document-workspace/scripts/core.test.mjs": "f75c4e4d548f66310e5d05cd4ff9e6eb85a4ff6a71869c83fd334f8faaad5b89",
+    "skills/dev-flow/assets/document-workspace/scripts/doc-server.mjs": "3d70fdc17ec3e93e623e71d8b000eebdb246cda4e716090cab3c003674b6f1e9",
+    "skills/dev-flow/assets/document-workspace/scripts/preview.mjs": "3727b0ea759d493d060d9aef814ccb27a2d39831e039ef881f703ad377c21bf6",
+    "skills/dev-flow/assets/document-workspace/src/env.d.ts": "5967b748e021105e6d9ecfbac98b35b05dd123d57a446755595ea805cf2fcb28",
+    "skills/dev-flow/assets/document-workspace/src/main.tsx": "d7ae06a50373682a9c8be0536d2a151f4c19cf9de32aa7c3d52ccb3ef0d403a4",
+    "skills/dev-flow/assets/document-workspace/src/renderers.tsx": "9b12aa571d02e91bbde61bb5f9cfb11d783d1ff1565a4c56475668477edc4c14",
+    "skills/dev-flow/assets/document-workspace/src/styles.css": "19216f41f961b8eff37272454c1aa99309662a835ffa21807e489744d0bab073",
+    "skills/dev-flow/assets/document-workspace/tsconfig.json": "088c5db2978f2a78a61431da0f851dd2819cc5e64c0ee51c3921cbb19c9674f2",
+    "skills/dev-flow/assets/document-workspace/vite.config.mjs": "f61cb7a5e57fd225cfa8b482ccc66bbb3af96518594538c2c33700fa9faa400d",
+    "skills/dev-flow/references/codex-agent-setup.md": "231947b8609029f5de299f17527bcc33c0616d2a11a7b838eb136373f5ce858f",
+    "skills/dev-flow/references/constitution.md": "4d2a4a32390d907253fccd157b635c0c3b44ec7826fd1398601177f31c2268dc",
+    "skills/dev-flow/references/design-document-contract.md": "89ea4ac8bcadf5eeb0d81ef2476a7d23da3e73cfb9017aa027c76a4cb5aa26e7",
+    "skills/dev-flow/references/document-preview.md": "8cc4289b073dadc1731ceaf8f600783b7404145e1be9ec1d2f2c61647a4aa288",
+    "skills/dev-product/SKILL.md": "11167daa62cc0aa82c6f5b79c801ddad0ebd5bb1fcfc4cfb44e06a92e4379185",
+    "skills/dev-product/assets/templates/feature-spec.md": "2ed169e2e7275a1bf31a1c5423a3755f26155941504527a31d9e7aa17ef38c20",
+    "skills/dev-product/references/html-prototyping.md": "974bbe3ebca6a414a79d66be468639df3522aa7eb78dfa6d0dd5e2933204ffd9",
+    "skills/dev-product/references/project-assets.md": "a4645f5bac1b86268c597a672e36effd1b9be63f14434d4a8c637ecc50946c5b",
+    "skills/dev-visual/SKILL.md": "6fdb7cb0504bcdfee21c5f9813443b1f1a5957778418d3705400ee687ed8d346",
+    "skills/dev-visual/agents/openai.yaml": "5cfd6179ee3772b89e98fb33bd59b7b145c9416276e6de2a3d7ecb83c8407160",
+    "skills/dev-visual/assets/templates/design-spec.md": "c601c5fce2ebf2cdeaf9a8d30c9e03fbc049766faaa1829308691190314d0ec4",
+    "skills/dev-visual/references/project-assets.md": "48ab2246efd04d702ab91e01058b8d202c2bc1e67878c447c2e32b8ea00dd678",
+    "skills/dev-visual/references/reference-and-direction.md": "8f8d1d613df8c1ffc665fe3575839974ecd8dab7fa2605701a2640f205e10e5d",
+    "skills/dev-visual/references/rendered-review.md": "4f31eecf1db42e9bef66ff23ea11feb6d0273b9912f1e868ec045dc7f8e61726",
+    "skills/dev-visual/references/system-and-pages.md": "82c204917136de494bfb53d5235ea5cdf33a067a38e6a67cc233d425c1cd74ff",
+    ".gitattributes": "5bc011f74167e44128cf603d0e471a51f7d7d854d6a56ecf20ff8f036d5fa47a"
+  }
+}

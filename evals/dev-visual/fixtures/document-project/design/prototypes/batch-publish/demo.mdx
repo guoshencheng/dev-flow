@@ -1,0 +1,39 @@
+---
+id: PT-batch-publish
+title: 批量发布 React 原型
+status: candidate
+version: 1
+---
+
+import {useState} from 'react'
+import {Alert, Button, InputNumber, Select, Space} from 'antd'
+
+# 批量发布 React 原型
+
+当前页、编辑者与单次最多 3 项是产品示例规则；以下操作只使用本地模拟。
+
+export function Prototype() {
+  const [role, setRole] = useState('editor')
+  const [quota, setQuota] = useState('available')
+  const [count, setCount] = useState(0)
+  const [busy, setBusy] = useState(false)
+  const [result, setResult] = useState('')
+  const reason = count > 3 ? '单次最多发布 3 项' : quota === 'exhausted' ? '本周期额度已耗尽' : role === 'viewer' ? '查看者不能发布' : ''
+  return <div>
+    <Space wrap>
+      <label>角色 <Select aria-label="原型角色" value={role} onChange={setRole} options={[{value:'editor', label:'编辑者'}, {value:'viewer', label:'查看者'}]} /></label>
+      <label>配额 <Select aria-label="原型配额" value={quota} onChange={setQuota} options={[{value:'available', label:'可用'}, {value:'exhausted', label:'已耗尽'}]} /></label>
+      <label>选择数量 <InputNumber aria-label="选择数量" min={0} max={5} value={count} onChange={value=>{setCount(value||0);setResult('')}} disabled={busy} /></label>
+    </Space>
+    <p>当前页已选择 {count} 项</p>
+    {reason && <Alert type="warning" title={reason} />}
+    {role === 'editor' && <Button type="primary" loading={busy} disabled={busy || count === 0 || !!reason} onClick={()=>{
+      const submitted = count
+      setBusy(true)
+      setTimeout(()=>{setResult(`已模拟发布 ${submitted} 项`);setCount(0);setBusy(false)}, 800)
+    }}>发布所选项</Button>}
+    {result && <Alert type="success" title={result} />}
+  </div>
+}
+
+<Prototype />
