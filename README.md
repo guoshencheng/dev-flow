@@ -1,12 +1,13 @@
 # dev-flow
 
-以 Codex 为主的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付。当前已有总纲 v0.5、产品与视觉职责配置/Skills、共享 React 组件和 Vite 文档预览工程。职责配置采用宿主模型策略。工具、专业行为、原生角色派发与真实项目成熟度分别登记；后续逐个建设职责，再验证完整交付并按实际需要形成 Plugin。
+以 Codex 为主的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付。当前已有总纲 v0.6、产品与视觉职责配置/Skills、共享 React 组件和 Vite 文档预览工程。职责配置采用宿主模型策略。工具、专业行为、原生角色派发与真实项目成熟度分别登记；后续逐个建设职责，再验证完整交付并按实际需要形成 Plugin。
 
 ## 维护入口
 
-- [总纲概述](docs/overview.md)：经 Astra medium 独立审阅和修订稿复核通过的简介；[审阅记录](reviews/2026-10-07-overview-review.md)。
+- [总纲概述](docs/overview.md)：当前简介；v0.1 经 Astra medium 独立审阅和修订稿复核，后续修改分别记录；[历史审阅记录](reviews/2026-10-07-overview-review.md)。
 - [总纲](skills/dev-flow/references/constitution.md)：共同协作、交付与项目沉淀协议。
 - [流程 Skill](skills/dev-flow/SKILL.md)：调用入口和按需阅读规则。
+- [设计确认与自主实施](skills/dev-flow/references/execution-contract.md)：用户确认体验、架构与测试预期，AI 复核实现计划后自主实现，以端到端及架构约束检查交付。
 - [产品与交互 Agent](docs/product-agent.md)：职责边界、首版能力与验证状态；[专业 Skill](skills/dev-product/SKILL.md)和[案例证据](evals/dev-product/README.md)。
 - [视觉与界面 Agent](docs/visual-agent.md)：专业方法、共同基础复用、视觉资产与实际检查；[专业 Skill](skills/dev-visual/SKILL.md)。
 - [产品/视觉文档与归档](skills/dev-flow/references/design-document-contract.md)：当前权威规格、原型、详细规则、归档与来源；[统一 Vite 文档预览](skills/dev-flow/references/document-preview.md)可根据运行信息生成实际文件地址。
@@ -41,7 +42,7 @@ python3 scripts/install_global.py --check
 
 ## 下一项建设
 
-产品 v0.8 和视觉 v0.1 已定义专业方法、文档/原型与归档，复用共享 UI 基础和实际文档预览。历史原型/组件证据保持原版本，本轮范围见[视觉与文档验证](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)。在可用宿主核验两个职责的原生派发和实际模型设置，用真实项目验证持续交接与资产复用；下一职责为测试验收。其他职责顺序以总纲为准。
+产品 v0.8 和视觉 v0.1 已定义专业方法、文档/原型与归档，复用共享 UI 基础和实际文档预览。历史原型/组件证据保持原版本，范围见[视觉与文档验证](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)。总纲 v0.6 补充确认与自主实施规则，检查范围见[本次协议记录](reviews/2026-10-08-execution-contract-check.md)。下一职责为架构，再建设测试验收、研发和运维交付；真实执行依用户确认的基线推进。在可用宿主核验原生派发和实际模型设置，用真实项目验证完整循环及资产复用。
 
 ## 解除全局接入
 
