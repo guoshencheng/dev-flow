@@ -1,6 +1,6 @@
 # dev-flow
 
-以 Codex 为主的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付。当前已有总纲 v0.8、产品/视觉/架构职责配置与 Skills、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。职责配置采用宿主模型策略。工具、专业行为、原生角色派发与真实项目成熟度分别登记；后续逐个建设职责，再验证完整交付并按实际需要形成 Plugin。
+以 Codex 为主的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付。当前已有总纲 v0.9、产品/视觉/架构/测试验收职责配置与 Skills、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。职责配置采用宿主模型策略。工具、专业行为、原生角色派发与真实项目成熟度分别登记；后续逐个建设职责，再验证完整交付并按实际需要形成 Plugin。
 
 ## 维护入口
 
@@ -11,6 +11,7 @@
 - [产品与交互 Agent](docs/product-agent.md)：职责边界、首版能力与验证状态；[专业 Skill](skills/dev-product/SKILL.md)和[案例证据](evals/dev-product/README.md)。
 - [视觉与界面 Agent](docs/visual-agent.md)：专业方法、共同基础复用、视觉资产与实际检查；[专业 Skill](skills/dev-visual/SKILL.md)。
 - [架构设计与演进 Agent](docs/architecture-agent.md)：整洁架构、项目技术基线、业务域与模块分工、设计契约、代码业务 Review 与研发复盘；[专业 Skill](skills/dev-architecture/SKILL.md)。
+- [测试验收 Agent](docs/acceptance-agent.md)：用例与策略、前端界面、真实接口/数据、前后端 E2E、交付验证与持续反馈复验；[专业 Skill](skills/dev-acceptance/SKILL.md)及[验证状态](evals/dev-acceptance/report.md)。
 - [技术栈约定](skills/dev-architecture/references/technology-stack.md)：Web React、全栈 Next.js、纯静态 Astro；[历史项目调查](docs/project-tech-stacks/2026-10-08-survey.md)仅保存当时事实与建议，其他类型暂不进入通用技术 Guide。
 - [代码规范 Guide](skills/dev-architecture/references/code-standards.md)：EditorConfig/Prettier、ESLint、TypeScript 与实际依赖规则；随包提供可复制格式配置，项目维护自己的规范和检查入口。
 - [项目文档目录与归档](skills/dev-flow/references/design-document-contract.md)：明确当前业务项目的产品、交互原型、设计/UI、技术及相关验收/交付资料；[索引模板](skills/dev-flow/assets/templates/project-document-index.md)映射现行权威位置；[项目 Vite 预览](skills/dev-flow/references/document-preview.md)生成对应项目成果的实际地址，Skill 维护默认使用源文件链接。
@@ -31,13 +32,15 @@ python3 scripts/install_global.py
 python3 scripts/install_global.py --check
 ```
 
-安装脚本将本仓库的 `dev-flow`、`dev-product`、`dev-visual`、`dev-architecture` Skills 逐个链接到 `~/.agents/skills/`，将三个 `agents/dev_*.toml` 职责配置链接到 `~/.codex/agents/`，并在 `~/.codex/AGENTS.md` 中维护一个简短的流程指引区块。更改既有指引前备份到 `~/.codex/backups/dev-flow/`，其他原文保留。链接冲突时停止，不覆盖其他来源。
+安装脚本将本仓库的 `dev-flow`、`dev-product`、`dev-visual`、`dev-architecture`、`dev-acceptance` Skills 逐个链接到 `~/.agents/skills/`，将四个 `agents/dev_*.toml` 职责配置链接到 `~/.codex/agents/`，并在 `~/.codex/AGENTS.md` 中维护一个简短的流程指引区块。更改既有指引前备份到 `~/.codex/backups/dev-flow/`，其他原文保留。链接冲突时停止，不覆盖其他来源。
 
 在 Codex 中使用 `$dev-flow` 指定本流程。全局指引在新会话加载；若 Skill 列表没有刷新，重新启动 Codex。Codex 官方支持用户级 Skill 目录和符号链接扫描。[官方 Skills 说明](https://learn.chatgpt.com/docs/build-skills)
 
 产品或交互任务可使用 `$dev-product` 读取专业指导。原生职责文件省略 `model` 与 `model_reasoning_effort`，采用本次显式派发、宿主默认或父会话设置；具体任务遵循用户最新要求。只有宿主实际发现并派发 `dev_product` 后，才能记录原生角色执行。当前会话也可以由主 Agent 或获准的子 Agent 读取专业 Skill 承担工作，并如实记录调用方式。
 
 架构设计、代码架构评审或研发复盘可使用 `$dev-architecture`。源码与当前架构地图一并核验，研发结束后同步受影响模块的实际职责/域/层次和有证据的改进建议；配置不固定模型。
+
+测试策略/用例、接口与界面验证、前后端 E2E 或交付验收可使用 `$dev-acceptance`。从项目有效产品/UI/ARC 与测试资产选择方案，实际执行并持续反馈研发，修复后复验原问题及回归；Mock/替身、真实依赖与部署结果分别登记。原生职责 `dev_acceptance` 是否实际可派发在当前宿主核验。
 
 源码更新通过链接反映到全局文件，不需要重新复制。新增 Skill 或原生职责配置后再运行安装脚本；`agents/dev_*.toml` 逐个链接到 `~/.codex/agents/`，保留其他角色文件。原生角色的发现、模型设置和专业行为需要独立验证。
 
@@ -47,8 +50,8 @@ python3 scripts/install_global.py --check
 
 ## 下一项建设
 
-产品 v0.8、视觉 v0.1 和架构 v0.3 已定义专业方法与资产维护，复用共享 UI 基础和文档预览。架构 v0.3 将技术 Guide 收敛为 React/Next.js/Astro，增加代码规范与开工基线；本轮检查见[记录](reviews/2026-10-08-architecture-code-standards-check.md)。历史原型/组件证据保持原版本，范围见[视觉与文档验证](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)。总纲 v0.8 明确业务项目文档的分类与预览对象，[范围修订记录](reviews/2026-10-08-project-document-scope-check.md)区分规则检查与真实项目验证；v0.7 架构复盘和 v0.6 确认/自主实施协议继续有效。下一职责为测试验收，然后研发和运维交付；真实执行依用户确认的基线推进。在可用宿主核验原生派发和实际模型设置，用真实项目验证完整循环及资产复用。
+产品 v0.8、视觉 v0.1、架构 v0.3 和测试验收 v0.1 已定义专业方法与资产维护，复用共享 UI 基础和项目文档预览。测试首版细化界面/API/前后端 E2E 与交付方案，实际范围见[首版验证](evals/dev-acceptance/report.md)；架构代码规范检查见[记录](reviews/2026-10-08-architecture-code-standards-check.md)。历史原型/组件证据保持原版本，范围见[视觉与文档验证](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)。总纲 v0.9 接入测试验收方法，v0.8 的业务项目文档入口、v0.7 架构复盘和 v0.6 确认/自主实施协议继续有效。下一职责为研发，再建设运维交付；真实执行依用户确认的基线推进。在可用宿主核验原生派发和实际模型设置，用真实项目验证完整循环及资产复用。
 
 ## 解除全局接入
 
-删除由本仓库管理的四个 Skill 链接，并从全局 `AGENTS.md` 删除 `<!-- dev-flow:begin -->` 与 `<!-- dev-flow:end -->` 之间的完整区块。职责配置只删除实际指向本仓库的链接。保留原有全局规则与项目资产。
+删除由本仓库管理的五个 Skill 链接，并从全局 `AGENTS.md` 删除 `<!-- dev-flow:begin -->` 与 `<!-- dev-flow:end -->` 之间的完整区块。职责配置只删除实际指向本仓库的链接。保留原有全局规则与项目资产。

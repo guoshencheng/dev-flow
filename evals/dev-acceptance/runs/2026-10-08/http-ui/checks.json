@@ -1,0 +1,96 @@
+{
+  "executed_at": "2026-10-08T13:39:10.292666+00:00",
+  "operator": "主 Agent / 固定工具案例",
+  "scope": "本地真实 HTTP + JSON 文件 + Chromium；UI 故障一例为明确 route mock",
+  "run": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/acceptance-eval-e7f67be3",
+  "setup": [],
+  "node": "v26.4.0",
+  "playwright": "Version 1.62.1",
+  "browser_version": "153.0.8010.12",
+  "browser_executable": "/Users/guoshencheng/Library/Caches/ms-playwright/chromium-1243/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+  "fixture_sha256": {
+    "evals/dev-acceptance/fixtures/http-ui/docs/product.md": "1b889d7b44076aa177a43ad017814eb04cd73e4f70a7cffd5f2465b52f0e618c",
+    "evals/dev-acceptance/fixtures/http-ui/package-lock.json": "27feb03b32b39b853f4b719fb18bb29e211a18c93b4acff633b3d232f08fcd21",
+    "evals/dev-acceptance/fixtures/http-ui/package.json": "8125e246676cf5468d2240e2177eca20325ae7a5dad8e8f624e1b1aeaf0b4412",
+    "evals/dev-acceptance/fixtures/http-ui/playwright.config.ts": "dcb161b21d8d8a26ad4a75cf205ff74bbe267cedebc30401ff14aa49c9adf0b2",
+    "evals/dev-acceptance/fixtures/http-ui/server.mjs": "c50999e6a15cf9d8d15dbf8515859194ba0b5a5ebfd376ee9f6bafad3ff7421b",
+    "evals/dev-acceptance/fixtures/http-ui/tests/acceptance.spec.ts": "ee8888f2874664513dc93c0519c197ce2458556e9bdcc2d376e48902a9f06a8d"
+  },
+  "phases": [
+    {
+      "variant": "broken",
+      "port": 59465,
+      "cases": {
+        "TC-API-01": "failed",
+        "TC-API-02": "failed",
+        "TC-API-03": "passed",
+        "TC-E2E-01": "failed",
+        "TC-UI-01": "failed",
+        "TC-UI-02": "passed"
+      },
+      "expected_cases": {
+        "TC-API-01": "failed",
+        "TC-API-02": "failed",
+        "TC-API-03": "passed",
+        "TC-E2E-01": "failed",
+        "TC-UI-01": "failed",
+        "TC-UI-02": "passed"
+      },
+      "oracle_matched": true,
+      "process_port_closed": true,
+      "command": {
+        "argv": [
+          "npm",
+          "run",
+          "test",
+          "--",
+          "--output",
+          "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/acceptance-eval-e7f67be3/broken/artifacts"
+        ],
+        "exit_code": 1,
+        "stdout": "\n> test\n> playwright test --output /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/acceptance-eval-e7f67be3/broken/artifacts\n\n\n\nRunning 6 tests using 1 worker\n\n\n\n[1/6] tests/acceptance.spec.ts:14:1 › TC-API-01 编辑者保存后可通过真实接口读回\n  1) tests/acceptance.spec.ts:14:1 › TC-API-01 编辑者保存后可通过真实接口读回 ─────────────────────────────────────\n\n    Error: expect(received).toContainEqual(expected) // deep equality\n\n    Expected value: {\"id\": \"3d313a44-8889-4177-a9a9-007c8ae7ab84\", \"title\": \"TC-API-01-6c9387a5-9e7c-4765-b9dc-393e868d290e\"}\n    Received array: []\n\n      19 |   const saved = await response.json();\n      20 |   expect(saved).toEqual({ id: expect.any(String), title });\n    > 21 |   expect(await items(request)).toContainEqual(saved);\n         |                                ^\n      22 | });\n      23 |\n      24 | test('TC-API-02 查看者直接请求拒绝且无写入', async ({ request }) => {\n        at /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/acceptance-eval-e7f67be3/project/tests/acceptance.spec.ts:21:32\n\n    Error Context: ../broken/artifacts/acceptance-TC-API-01-编辑者保存后可通过真实接口读回/error-context.md\n\n    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────\n    ../broken/artifacts/acceptance-TC-API-01-编辑者保存后可通过真实接口读回/trace.zip\n    Usage:\n\n        npx playwright show-trace ../broken/artifacts/acceptance-TC-API-01-编辑者保存后可通过真实接口读回/trace.zip\n\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n\n\n\n[2/6] tests/acceptance.spec.ts:24:1 › TC-API-02 查看者直接请求拒绝且无写入\n  2) tests/acceptance.spec.ts:24:1 › TC-API-02 查看者直接请求拒绝且无写入 ───────────────────────────────────────\n\n    Error: expect(received).toBe(expected) // Object.is equality\n\n    Expected: 403\n    Received: 201\n\n      28 |   const response = await request.post('/api/items', { data: { title } });\n      29 |   // soft 保留状态与副作用两项失败，便于原问题反馈。\n    > 30 |   expect.soft(response.status()).toBe(403);\n         |                                  ^\n      31 |   expect.soft(await items(request)).toEqual(before);\n      32 | });\n      33 |\n        at /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/acceptance-eval-e7f67be3/project/tests/acceptance.spec.ts:30:34\n\n    Error: expect(received).toEqual(expected) // deep equality\n\n    - Expected  - 1\n    + Received  + 6\n\n    - Array []\n    + Array [\n    +   Object {\n    +     \"id\": \"7a3d9dba-0de6-47ae-a6ce-3745c91b3a45\",\n    +     \"title\": \"TC-API-02-1607b700-082e-4b71-a1eb-5855cfd2e278\",\n    +   },\n    + ]\n\n      29 |   // soft 保留状态与副作用两项失败，便于原问题反馈。\n      30 |   expect.soft(response.status()).toBe(403);\n    > 31 |   expect.soft(await items(request)).toEqual(before);\n         |                                     ^\n      32 | });\n      33 |\n      34 | test('TC-API-03 无效输入拒绝且没有业务副作用', async ({ request }) => {\n        at /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/acceptance-eval-e7f67be3/project/tests/acceptance.spec.ts:31:37\n\n    Error Context: ../broken/artifacts/acceptance-TC-API-02-查看者直接请求拒绝且无写入/error-context.md\n\n    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────\n    ../broken/artifacts/acceptance-TC-API-02-查看者直接请求拒绝且无写入/trace.zip\n    Usage:\n\n        npx playwright show-trace ../broken/artifacts/acceptance-TC-API-02-查看者直接请求拒绝且无写入/trace.zip\n\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n\n\n\n[3/6] tests/acceptance.spec.ts:34:1 › TC-API-03 无效输入拒绝且没有业务副作用\n[4/6] tests/acceptance.spec.ts:43:1 › TC-E2E-01 界面保存、请求与读回、刷新仍可见\n  3) tests/acceptance.spec.ts:43:1 › TC-E2E-01 界面保存、请求与读回、刷新仍可见 ────────────────────────────────────\n\n    Error: expect(received).toContainEqual(expected) // deep equality\n\n    Expected value: {\"id\": \"37a70be2-06ea-4dcc-874a-d0d86aa8184d\", \"title\": \"TC-E2E-01-4358211f-8c0b-4812-ab31-98f686acb756\"}\n    Received array: [{\"id\": \"7a3d9dba-0de6-47ae-a6ce-3745c91b3a45\", \"title\": \"TC-API-02-1607b700-082e-4b71-a1eb-5855cfd2e278\"}]\n\n      57 |   await expect(page.getByRole('status')).toHaveText('保存成功');\n      58 |   await expect(page.getByRole('listitem').filter({ hasText: title })).toHaveText(title);\n    > 59 |   expect.soft(await items(page.request)).toContainEqual(saved);\n         |                                          ^\n      60 |   await page.reload();\n      61 |   await expect(page.getByRole('listitem').filter({ hasText: title })).toHaveText(title);\n      62 | });\n        at /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/acceptance-eval-e7f67be3/project/tests/acceptance.spec.ts:59:42\n\n    Error: expect(locator).toHaveText(expected) failed\n\n    Locator: getByRole('listitem').filter({ hasText: 'TC-E2E-01-4358211f-8c0b-4812-ab31-98f686acb756' })\n    Expected: \"TC-E2E-01-4358211f-8c0b-4812-ab31-98f686acb756\"\n    Timeout: 4000ms\n    Error: element(s) not found\n\n    Call log:\n      - Expect \"toHaveText\" with timeout 4000ms\n      - waiting for getByRole('listitem').filter({ hasText: 'TC-E2E-01-4358211f-8c0b-4812-ab31-98f686acb756' })\n\n\n      59 |   expect.soft(await items(page.request)).toContainEqual(saved);\n      60 |   await page.reload();\n    > 61 |   await expect(page.getByRole('listitem').filter({ hasText: title })).toHaveText(title);\n         |                                                                       ^\n      62 | });\n      63 |\n      64 | test('TC-UI-01 ui-isolated 服务失败保留输入且恢复后能重试', async ({ page }) => {\n        at /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/acceptance-eval-e7f67be3/project/tests/acceptance.spec.ts:61:71\n\n    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────\n    ../broken/artifacts/acceptance-TC-E2E-01-界面保存、请求与读回、刷新仍可见/test-failed-1.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    Error Context: ../broken/artifacts/acceptance-TC-E2E-01-界面保存、请求与读回、刷新仍可见/error-context.md\n\n    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────\n    ../broken/artifacts/acceptance-TC-E2E-01-界面保存、请求与读回、刷新仍可见/trace.zip\n    Usage:\n\n        npx playwright show-trace ../broken/artifacts/acceptance-TC-E2E-01-界面保存、请求与读回、刷新仍可见/trace.zip\n\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n\n\n\n[5/6] tests/acceptance.spec.ts:64:1 › TC-UI-01 ui-isolated 服务失败保留输入且恢复后能重试\n  4) tests/acceptance.spec.ts:64:1 › TC-UI-01 ui-isolated 服务失败保留输入且恢复后能重试 ──────────────────────────\n\n    Error: expect(locator).toHaveValue(expected) failed\n\n    Locator:  getByLabel('标题')\n    Expected: \"TC-UI-01-b93704bb-44de-415e-9fcf-0bdec0e0c6ed\"\n    Received: \"\"\n    Timeout:  4000ms\n\n    Call log:\n      - Expect \"toHaveValue\" with timeout 4000ms\n      - waiting for getByLabel('标题')\n        12 × locator resolved to <input id=\"title\" name=\"title\"/>\n           - unexpected value \"\"\n\n\n      75 |   await page.getByRole('button', { name: '保存', exact: true }).click();\n      76 |   await expect(page.getByRole('status')).toHaveText('保存失败，请重试');\n    > 77 |   await expect(page.getByLabel('标题')).toHaveValue(title);\n         |                                       ^\n      78 |   await expect(page.getByRole('button', { name: '保存', exact: true })).toBeEnabled();\n      79 |   await page.unroute('**/api/items', failSave);\n      80 |   await page.getByRole('button', { name: '保存', exact: true }).click();\n        at /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/acceptance-eval-e7f67be3/project/tests/acceptance.spec.ts:77:39\n\n    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────\n    ../broken/artifacts/acceptance-TC-UI-01-ui-isolated-服务失败保留输入且恢复后能重试/test-failed-1.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    Error Context: ../broken/artifacts/acceptance-TC-UI-01-ui-isolated-服务失败保留输入且恢复后能重试/error-context.md\n\n    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────\n    ../broken/artifacts/acceptance-TC-UI-01-ui-isolated-服务失败保留输入且恢复后能重试/trace.zip\n    Usage:\n\n        npx playwright show-trace ../broken/artifacts/acceptance-TC-UI-01-ui-isolated-服务失败保留输入且恢复后能重试/trace.zip\n\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n\n\n\n[6/6] tests/acceptance.spec.ts:85:1 › TC-UI-02 查看者界面透出禁用状态\n  4 failed\n    tests/acceptance.spec.ts:14:1 › TC-API-01 编辑者保存后可通过真实接口读回 ──────────────────────────────────────\n    tests/acceptance.spec.ts:24:1 › TC-API-02 查看者直接请求拒绝且无写入 ────────────────────────────────────────\n    tests/acceptance.spec.ts:43:1 › TC-E2E-01 界面保存、请求与读回、刷新仍可见 ─────────────────────────────────────\n    tests/acceptance.spec.ts:64:1 › TC-UI-01 ui-isolated 服务失败保留输入且恢复后能重试 ───────────────────────────\n  2 passed (11.9s)\n",
+        "stderr": "[WebServer] (node:49225) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)\n(node:49226) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:49228) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:49230) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:49260) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:49282) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+      },
+      "report": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/acceptance-eval-e7f67be3/broken/playwright-report.json",
+      "data_file": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/acceptance-eval-e7f67be3/broken/items.json"
+    },
+    {
+      "variant": "fixed",
+      "port": 59548,
+      "cases": {
+        "TC-API-01": "passed",
+        "TC-API-02": "passed",
+        "TC-API-03": "passed",
+        "TC-E2E-01": "passed",
+        "TC-UI-01": "passed",
+        "TC-UI-02": "passed"
+      },
+      "expected_cases": {
+        "TC-API-01": "passed",
+        "TC-API-02": "passed",
+        "TC-API-03": "passed",
+        "TC-E2E-01": "passed",
+        "TC-UI-01": "passed",
+        "TC-UI-02": "passed"
+      },
+      "oracle_matched": true,
+      "process_port_closed": true,
+      "command": {
+        "argv": [
+          "npm",
+          "run",
+          "test",
+          "--",
+          "--output",
+          "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/acceptance-eval-e7f67be3/fixed/artifacts"
+        ],
+        "exit_code": 0,
+        "stdout": "\n> test\n> playwright test --output /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/acceptance-eval-e7f67be3/fixed/artifacts\n\n\n\nRunning 6 tests using 1 worker\n\n\n\n[1/6] tests/acceptance.spec.ts:14:1 › TC-API-01 编辑者保存后可通过真实接口读回\n[2/6] tests/acceptance.spec.ts:24:1 › TC-API-02 查看者直接请求拒绝且无写入\n[3/6] tests/acceptance.spec.ts:34:1 › TC-API-03 无效输入拒绝且没有业务副作用\n[4/6] tests/acceptance.spec.ts:43:1 › TC-E2E-01 界面保存、请求与读回、刷新仍可见\n[5/6] tests/acceptance.spec.ts:64:1 › TC-UI-01 ui-isolated 服务失败保留输入且恢复后能重试\n[6/6] tests/acceptance.spec.ts:85:1 › TC-UI-02 查看者界面透出禁用状态\n  6 passed (1.4s)\n",
+        "stderr": "[WebServer] (node:49313) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)\n(node:49314) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+      },
+      "report": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/acceptance-eval-e7f67be3/fixed/playwright-report.json",
+      "data_file": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/acceptance-eval-e7f67be3/fixed/items.json"
+    }
+  ],
+  "all_oracles_matched": true
+}

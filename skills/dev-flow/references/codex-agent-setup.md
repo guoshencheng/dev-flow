@@ -1,6 +1,6 @@
 # Codex 职责 Agent 的配置与建设方式
 
-更新日期：2026-10-08。当前阶段：总纲、产品/视觉/架构职责、共同文档与原型预览。产品专业 Skill 的历史隔离行为和连续资产复用已验证；三个职责原生配置逐个链接，实际发现和派发分别验收。
+更新日期：2026-10-08。当前阶段：总纲、产品/视觉/架构/测试验收职责、共同文档与原型预览。产品专业 Skill 的历史隔离行为和连续资产复用已验证；四个职责源配置逐个维护，实际全局链接、发现和派发分别验收。
 
 本文件说明如何把[总纲](constitution.md)逐步落实为 Codex 原生职责 Agent。每次建设一个职责，并配套专业方法、项目资产协议和实际验证。
 
@@ -15,10 +15,10 @@ Codex 支持个人和项目范围的自定义 Agent。个人配置放在 `~/.cod
 ## 本机已核对的情况
 
 - CLI 为 `codex-cli 0.156.1`。
-- 个人 Agent 目录接入 `dev_product.toml`、`dev_visual.toml`、`dev_architecture.toml`，符号链接指向本仓库源文件；其他职责尚未建设。
+- 个人 Agent 目录逐个接入 `dev_product.toml`、`dev_visual.toml`、`dev_architecture.toml`、`dev_acceptance.toml`，符号链接指向本仓库源文件；实际接入结果见安装检查，其他职责尚未建设。
 - 个人默认模型与强度继续由用户现有全局配置维护，本仓库不另设固定值。
 - 现有全局配置通过 CLI 的严格配置检查；这不证明新角色已被发现或角色行为已经合格。
-- `dev-flow`、`dev-product`、`dev-visual`、`dev-architecture` Skills 逐个链接，当前结果见安装验证；2026-10-07 的 CLI 新上下文预览已发现前两个 Skills 并加载全局流程指引。链接和专业指导评测不证明新增角色的原生发现与派发。
+- `dev-flow`、`dev-product`、`dev-visual`、`dev-architecture`、`dev-acceptance` Skills 逐个链接，当前结果见安装验证；2026-10-07 的 CLI 新上下文预览已发现前两个 Skills 并加载全局流程指引。链接和专业指导评测不证明新增角色的原生发现与派发。
 - v0.1 原生派发试跑在父任务调用 `gpt-6.1-sol` 时被 CLI 账号通道拒绝，未发生子角色派发。当时的 Sol medium 子 Agent 执行了同一专业 Skill；这仅证明专业指导在该执行方式下的行为。
 
 当前职责配置省略 `model` 与 `model_reasoning_effort`。Codex 依次从本次显式派发、全局 `[agents]` 默认和父会话取得这些设置；派发或全局默认只选择模型而没有强度时，采用该模型默认强度。职责文件若设置这些字段，会覆盖之前解析出的选择，因此本仓库默认由调用方与宿主配置管理模型。具体任务遵循用户最新要求，实际执行设置进入验证记录。[官方配置优先级说明](https://learn.chatgpt.com/docs/agent-configuration/subagents)
@@ -52,6 +52,10 @@ Skill 中的 `agents/openai.yaml` 用于该 Skill 的界面元信息与调用策
 
 [dev_architecture.toml](../../../agents/dev_architecture.toml) 与 [dev-architecture Skill](../../dev-architecture/SKILL.md)细化整洁架构、技术与代码规范基线、业务域/模块责任、接口/数据契约、实际代码复核与研发后的架构复盘。当前技术 Guide 只定义 React Web、Next.js 全栈与 Astro 纯静态；以当前源码维护系统和目录模块地图、合理性判断与改进建议，复用共同确认协议、文档预览和 Git 资产，配置无固定模型。专业产物和验证范围见[架构职责说明](../../../docs/architecture-agent.md)、[v0.1 行为验证](../../../evals/dev-architecture/report.md)、[v0.2 历史选型检查](../../../reviews/2026-10-08-architecture-stack-check.md)与[v0.3 规范检查](../../../reviews/2026-10-08-architecture-code-standards-check.md)。
 
+## 测试验收职责
+
+[dev_acceptance.toml](../../../agents/dev_acceptance.toml) 与 [dev-acceptance Skill](../../dev-acceptance/SKILL.md)定义可确认的用例与策略，分别指导前端交互、真实接口/数据、前后端 E2E、交付与回归。依据有效 RULE/AC/ARC 执行，持续反馈研发、复验原问题和相关回归，保留 Mock 边界、失败/跳过/不稳定与当前版本证据；项目维护策略/用例/报告和回归资产。配置不固定模型，工具与行为、原生派发与真实项目证据见[职责说明](../../../docs/acceptance-agent.md)和[首版验证](../../../evals/dev-acceptance/report.md)。
+
 ## 逐个建设的交付和验收
 
 每个职责交付四部分：原生配置、关键能力参考、项目资产读写规则、代表案例与验证记录。六个候选角色名是 `dev_product`、`dev_visual`、`dev_acceptance`、`dev_engineering`、`dev_operations` 和 `dev_architecture`。使用独立名称，保留宿主已有内置角色。
@@ -65,4 +69,4 @@ Skill 中的 `agents/openai.yaml` 用于该 Skill 的界面元信息与调用策
 
 若当前版本没有发现角色或派发工具不能选择它，保留专业成果，由主 Agent 明确接管，并记录宿主适配缺口。以实际发现和派发结果决定下一步配置修正，不把一次普通配置检查当成启用成功。
 
-建设顺序和每个职责的首次验证重点以[总纲中的建设顺序](constitution.md#当前建设顺序)为准。产品的 P03、P04、P05 已有隔离案例证据，P06 的实际应用和用户验证仍需真实项目；视觉与架构首版已建设，证据分别登记。下一职责为测试验收，然后研发和运维交付。各职责接入[确认与自主实施协议](execution-contract.md)，用户确认设计与验收预期，实现计划由 AI 复核，相关职责相互反馈并分别维护专业资产。
+建设顺序和每个职责的首次验证重点以[总纲中的建设顺序](constitution.md#当前建设顺序)为准。产品的 P03、P04、P05 已有隔离案例证据，P06 的实际应用和用户验证仍需真实项目；视觉、架构与测试验收首版已建设，证据分别登记。下一职责为研发，然后运维交付。各职责接入[确认与自主实施协议](execution-contract.md)，用户确认设计与验收预期，实现计划由 AI 复核，相关职责相互反馈并分别维护专业资产。

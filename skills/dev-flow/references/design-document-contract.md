@@ -12,12 +12,14 @@
 | 交互原型 | 产品组织行为与场景，视觉完善呈现；注明源码、方案、模拟范围、启动方式 | `design/prototypes/`，由产品索引关联具体入口 |
 | 设计/UI 文档 | 视觉维护设计系统、页面规格、Tokens、组件来源、响应与状态呈现、实际检查 | `docs/dev-flow/visual/index.md` |
 | 技术文档 | 架构维护系统/模块/契约及技术决定，研发维护工程规范与实现计划；链接实际代码/配置 | `docs/dev-flow/architecture/index.md`，关联 `docs/dev-flow/engineering/` |
-| 测试验收文档 | 验收主责维护可读用例、覆盖、问题与真实结果；自动化保留实际工程位置 | `docs/dev-flow/acceptance/`，索引链接实际用例 |
+| 测试验收文档 | 验收主责维护策略、可读用例、覆盖、问题与真实结果；自动化保留实际工程位置 | `docs/dev-flow/acceptance/index.md`，索引链接实际策略/用例/报告 |
 | 交付运行文档 | 运维/交付主责维护启动、环境、产物/部署、运行及恢复方式 | 优先关联已有 README/runbook；无规范时按需使用 `docs/dev-flow/operations/` |
 
 索引记录项目名称/根路径识别方式、文档类别、实际源路径、维护职责、状态/版本、当前权威入口及预览方式。根路径使用项目可识别信息，具体机器上的绝对路径留在运行记录；长期索引保存项目相对路径和启动方法。可裁剪[索引模板](../assets/templates/project-document-index.md)。缺少的类别记录尚未建立、待核验或不适用；默认路径不证明文件存在，用户查看预览不自动表示已确认。
 
 项目已有 `docs/product/`、`docs/design/`、`docs/architecture/` 或外部权威资料时映射原位置，避免迁移或复制出第二套内容。技术资料的具体拆分及归档遵守[架构资产协议](../../dev-architecture/references/project-assets.md)。需要与用户讨论/确认设计时，按[预览指南](document-preview.md)提供当前项目索引及本次相关成果的实际地址。
+
+测试资料的方案/用例、运行报告、缺陷和回归关系按[测试资产协议](../../dev-acceptance/references/project-assets.md)维护，关联同项目的 RULE/AC/ARC、确认与候选。讨论/确认测试预期时预览该项目的可读用例，执行时使用实际功能/交付入口。
 
 ## 默认目录和主责
 
