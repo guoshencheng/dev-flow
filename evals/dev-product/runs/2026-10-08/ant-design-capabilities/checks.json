@@ -1,0 +1,148 @@
+{
+  "date": "2026-10-08",
+  "executor": "主 Agent",
+  "scope": "临时项目工具接入核验；未执行 Agent 行为评测",
+  "baseCommit": "4d3f4dc447f6575f95ecdba47f23d15374da3af1",
+  "officialSource": "https://github.com/ant-design/ant-design-cli",
+  "fixture": "/var/folders/48/cj4jq0s54xdd9c314rgcsv180000gn/T/dev-flow-antd-tools-weuovds8/project",
+  "cli": {
+    "name": "@ant-design/cli",
+    "version": "6.6.5",
+    "engines": {
+      "node": ">=20.0.0"
+    },
+    "license": "MIT",
+    "resolved": "https://registry.npmjs.org/@ant-design/cli/-/cli-6.6.5.tgz",
+    "integrity": "sha512-s4VJ4co/vMwe+vRwSYWiwrhT8roiUtLTlaetQDRT+p89LLGYsY3STe3o9A+fy+NB3z6X6WQprJempBjU8IjOfQ=="
+  },
+  "skill": {
+    "file": "skills/antd/SKILL.md",
+    "sha256": "5df4da1f4cf44425dfa12daa486fb39bf56475e2ad545ccd8044b0c708e7e183",
+    "installationScope": "隔离临时项目"
+  },
+  "queries": {
+    "targetAntdVersion": "6.6.5",
+    "tableName": "Table",
+    "tablePropsCount": 33,
+    "tableResultSha256": "6f7ebde36fc78068adc3190fb5111ef656c429dd70bd52f4cf9cf13d2a595362",
+    "designResultSha256": "8467486737e8ad076f43deea0f7ffeb1634197ada1ae0f991d66a1e32e7f3991",
+    "designResultChars": 21453
+  },
+  "setup": {
+    "checks": [
+      {
+        "case": "setup-install",
+        "exitCode": 0,
+        "result": {
+          "client": "codex",
+          "mode": "skill",
+          "file": "/var/folders/48/cj4jq0s54xdd9c314rgcsv180000gn/T/dev-flow-antd-tools-weuovds8/project/AGENTS.md",
+          "changed": false,
+          "dryRun": false,
+          "config": {},
+          "skillDir": "/var/folders/48/cj4jq0s54xdd9c314rgcsv180000gn/T/dev-flow-antd-tools-weuovds8/project/.agents/skills/antd",
+          "skillChanged": true,
+          "instructionsFile": "/var/folders/48/cj4jq0s54xdd9c314rgcsv180000gn/T/dev-flow-antd-tools-weuovds8/project/AGENTS.md",
+          "instructionsChanged": true
+        }
+      },
+      {
+        "case": "setup-check",
+        "exitCode": 0,
+        "result": {
+          "client": "codex",
+          "mode": "skill",
+          "file": "/var/folders/48/cj4jq0s54xdd9c314rgcsv180000gn/T/dev-flow-antd-tools-weuovds8/project/AGENTS.md",
+          "targets": [
+            "/var/folders/48/cj4jq0s54xdd9c314rgcsv180000gn/T/dev-flow-antd-tools-weuovds8/project/.agents/skills/antd",
+            "/var/folders/48/cj4jq0s54xdd9c314rgcsv180000gn/T/dev-flow-antd-tools-weuovds8/project/AGENTS.md"
+          ],
+          "configured": true,
+          "problems": [],
+          "expected": {}
+        }
+      },
+      {
+        "case": "setup-repeat",
+        "exitCode": 0,
+        "result": {
+          "client": "codex",
+          "mode": "skill",
+          "file": "/var/folders/48/cj4jq0s54xdd9c314rgcsv180000gn/T/dev-flow-antd-tools-weuovds8/project/AGENTS.md",
+          "changed": false,
+          "dryRun": false,
+          "config": {},
+          "skillDir": "/var/folders/48/cj4jq0s54xdd9c314rgcsv180000gn/T/dev-flow-antd-tools-weuovds8/project/.agents/skills/antd",
+          "skillChanged": false,
+          "instructionsFile": "/var/folders/48/cj4jq0s54xdd9c314rgcsv180000gn/T/dev-flow-antd-tools-weuovds8/project/AGENTS.md",
+          "instructionsChanged": false
+        }
+      }
+    ],
+    "existingInstructionsPreserved": true,
+    "existingSkillPreserved": true,
+    "skillMatchesPackage": true,
+    "repeatNoChange": true
+  },
+  "mcp": {
+    "serverInfo": {
+      "name": "antd",
+      "version": "6.6.5"
+    },
+    "protocolVersion": "2024-11-05",
+    "toolNames": [
+      "antd_list",
+      "antd_info",
+      "antd_doc",
+      "antd_demo",
+      "antd_token",
+      "antd_design_md",
+      "antd_semantic",
+      "antd_changelog"
+    ],
+    "promptNames": [
+      "antd-expert",
+      "antd-page-generator"
+    ],
+    "serverTargetAntdVersion": "6.6.5",
+    "infoArguments": {
+      "component": "Table"
+    },
+    "infoInputSchema": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "type": "string",
+          "description": "Component name (e.g. Button, Table)"
+        },
+        "detail": {
+          "type": "boolean",
+          "description": "Include full detail (whenToUse, faq)"
+        }
+      },
+      "required": [
+        "component"
+      ]
+    },
+    "queryName": "Table",
+    "propsCount": 33,
+    "perCallVersionSupported": false,
+    "hostIntegration": "未执行 Codex 宿主注册或调用"
+  },
+  "limitations": [
+    "未在 Codex 宿主注册或调用 MCP",
+    "未核验新会话发现官方 Skill",
+    "未安装第三方全局 Skill 或修改全局 MCP 配置",
+    "未增加真实项目采用或用户观察证据",
+    "未重跑组件类型、构建或 UI 检查，本轮只修改指导与记录"
+  ],
+  "installationNotes": [
+    "默认 npm cache 中存在权限冲突，查询工具改用本次临时 cache；未修改既有 cache 权限",
+    "官方 raw.githubusercontent.com 请求失败，转用官方 GitHub 页面与实际 npm 包核验"
+  ],
+  "guidanceChecks": {
+    "devFlowSkillFormat": "通过",
+    "devProductSkillFormat": "通过",
+    "globalLinks": "通过，2 Skills/1 原生职责"
+  }
+}

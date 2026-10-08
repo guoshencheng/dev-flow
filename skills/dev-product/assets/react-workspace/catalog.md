@@ -2,6 +2,8 @@
 
 源码与此清单一起由 Git 管理，默认复制或参考到项目、本地维护。当前组件为隔离示例起点，尚无真实项目采用记录。
 
+B 端先参考 Ant Design 官方组件、示例和项目已有实现，现成控件直接导入 antd；本清单补充组合与参考源码。SelectionSummary、ActionCard 是本仓库的组合，Button/Card 来自官方 shadcn/ui 源码。按需联用方式见[Ant Design 能力指南](../../../dev-flow/references/ant-design-capabilities.md)。
+
 | 组件 | 契约与适用条件 | 来源与示例 |
 | --- | --- | --- |
 | `ui-antd/SelectionSummary` | `selectedCount` 与 `scopeLabel` 展示选择数量及范围；`onClear`、`onConfirm` 由调用方实现；数量为零或 `busy` 时不允许动作。数量须为非负整数，选择一致性由项目维护。适合所选项操作，不负责跨页选择策略、提交确认或异步结果恢复 | 直接组合 antd Flex、Typography、Button；`apps/antd-lab` 展示当前页选择、清空与模拟确认 |

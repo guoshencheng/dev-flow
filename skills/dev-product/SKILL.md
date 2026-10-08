@@ -19,6 +19,8 @@ description: 产品与交互设计：确定用户流程、页面语义、交互�
 
 涉及 UI 工程时读取共同[技术与共享组件约定](../dev-flow/references/ui-stack-and-components.md)：新建 Web 原型默认 Vite + React，B 端按 Ant Design 规范优先使用 antd，C 端 Web 优先 shadcn/ui；其他 C 端应用先浏览参考再设计和研发。组件复用与建设读取随包[React 工作区](assets/react-workspace/README.md)和组件清单；需要直观选择或快速接入时读取[组件预览与复用指南](references/component-preview-and-reuse.md)，启动目录或按组件 ID 查询真实示例。共享组件默认复制或参考源码进入项目，由项目直接迭代；通用源码与来源在 Git 中维护，记录来源哈希、项目差异与验证，通用改进按需回收。
 
+B 端先核验项目已有实现，再参考 Ant Design 官方完整组件体系；现成能力满足时直接使用，共享目录提供补充组合。需要组件选型、API 或主题支持时，按[Ant Design 能力联用](../dev-flow/references/ant-design-capabilities.md)联合官方 `antd` Skill、CLI 或已连接 MCP，按当前任务需要自主接入；具体缺口成立后再自建。
+
 ## 按需要形成交互契约
 
 1. 明确目标用户的具体任务、入口和成功结果，界定本次范围及相关约束；根据当前工程选择必要页面与导航变化。

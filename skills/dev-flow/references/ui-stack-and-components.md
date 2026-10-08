@@ -1,6 +1,6 @@
 # UI 技术栈与共享组件约定
 
-版本：0.3。更新日期：2026-10-08。来源：用户明确指定的技术、设计和源码复用方向。此约定供产品、视觉、研发和测试共同使用；模型与推理强度仍由任务调用方和宿主选择。
+版本：0.4。更新日期：2026-10-08。来源：用户明确指定的技术、设计和源码复用方向。本次明确官方组件优先与 Ant Design 专业能力联用。此约定供产品、视觉、研发和测试共同使用；模型与推理强度仍由任务调用方和宿主选择。
 
 ## 技术与设计基准
 
@@ -15,6 +15,10 @@
 
 B 端从 antd 的 Form、Table、Modal、Drawer、Select、Button、反馈和布局组件中选择合适模式。优先直接导入，不为改名字而包装全部基础控件。扩展用于补充有复用价值的组合、状态或领域展示；先用 ConfigProvider、主题 Token、公开插槽和属性，避免依赖内部 DOM 或覆盖全局样式。[Ant Design 与 Vite](https://ant.design/docs/react/use-with-vite/)、[主题定制](https://ant.design/docs/react/customize-theme/)
 
+先核验项目已有有效组件、主题和实际 antd 版本，再参考 Ant Design 官方组件、设计模式和示例；现成组件能满足时直接使用。需要组合时评估项目已有实现和本仓库共享源码，只有仍有具体缺口才自建，并说明缺口。随包目录是共享组合与参考源码的补充，选型范围包含官方完整组件体系。
+
+B 端组件选型、API、主题或实现需要专业支持时，读取[Ant Design 能力联用](ant-design-capabilities.md)：按需联合官方 `antd` Skill、CLI 或已连接 MCP，缺失时在当前任务授权范围内自主接入；官方文档可作为直接核验入口。产品、视觉、研发和测试共享该能力，分别承担交互、呈现、实现与验收。
+
 C 端 Web 的 shadcn/ui 组件源码属于项目可维护资产：记录原始来源、采用版本、修改原因与实际依赖，调整时保留键盘、焦点、禁用与可访问名称等行为。组件基底、布局、主题与业务规则分别管理。[shadcn/ui 的 Vite 接入](https://ui.shadcn.com/docs/installation/vite)、[Monorepo 方式](https://ui.shadcn.com/docs/monorepo)
 
 其他 C 端应用的研究遵循[参考研究协议](../../dev-product/references/reference-research-and-ideation.md)。外部参考与当前项目有关：写明任务、平台、入口/操作/反馈、可借鉴机制和不适用条件。已有项目参考可以复用，但核验其来源与当前有效性；无法浏览时如实提交研究缺口，不能将未经研究的候选标为参考已完成。
@@ -22,6 +26,8 @@ C 端 Web 的 shadcn/ui 组件源码属于项目可维护资产：记录原始�
 ## React 组件如何持续沉淀
 
 共享源码与 Skill 一起维护在本 Git 仓库的[React 工作区](../../dev-product/assets/react-workspace/README.md)，分别保存 B 端 antd 组合与 C 端 Web shadcn/ui 源码。两套应用示例分别运行，保持设计体系和样式边界；内部工作区名称只用于仓库组织和预览。
+
+共享目录分别标注自有组合、上游源码和直接使用的第三方依赖。当前 SelectionSummary 是 antd 组件组合，ActionCard 是 shadcn/ui 组件组合，Button/Card 来自官方 shadcn/ui 源码并保留许可。antd 基础控件继续通过公开依赖直接使用；“复制源码”指自有组合或许可允许的参考源码，不要求把 antd 基础库复制到项目。
 
 直接使用基础库 → 在项目中形成必要组合 → 核验适用条件、代表场景与边界 → 提取共享组件 → 在下一项目核验复用。项目特有接口、权限、业务文案和流程政策由调用方注入，不进入通用组件的隐式行为。
 

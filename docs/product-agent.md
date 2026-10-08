@@ -1,4 +1,4 @@
-# 产品与交互 Agent v0.6
+# 产品与交互 Agent v0.7
 
 更新日期：2026-10-08。原生名称：`dev_product`。专业 Skill：`dev-product`。模型与推理强度采用用户本次指定、宿主派发默认或父会话设置，职责文件省略固定值。
 
@@ -27,6 +27,8 @@
 
 [React 工作区](../skills/dev-product/assets/react-workspace/README.md)随专业 Skill 维护，提供 B/C 源码、独立示例与可选择目录。v0.6 按用户要求采用源码复制或参考实现，项目直接维护和快速迭代；目录展示本地导入的使用示例与完整源码文件集，按组件 ID 可查询、复制并记录来源哈希。项目已有基底优先复用，保留项目定制，通用改进验证后回收。当前仓库无远程地址，跨机器 Git 获取尚未执行。
 
+v0.7 明确 B 端先参考 Ant Design 官方完整组件与示例，现成组件直接使用 antd，共享目录补充组合。SelectionSummary/ActionCard 是自有组合，Button/Card 是保留许可的官方 shadcn/ui 源码。按[Ant Design 能力联用](../skills/dev-flow/references/ant-design-capabilities.md)联合官方 `antd` Skill、CLI 或已连接 MCP，缺失且当前任务需要时自主采用项目级或临时接入；按项目实际版本核验组件，不固定 Agent 模型。
+
 v0.3 提供的[示例工具](../skills/dev-product/scripts/prototype.py)保留为可选起点。内置 C 端预约与 B 端批量任务，支持确认方案对比、状态切换、模拟提交、异常恢复与反馈 JSON；所有示例均为候选和模拟。项目页面按本次目标生成，不要求沿用示例业务、布局、讨论面板或反馈导出功能。
 
 [参考研究与方案创造](../skills/dev-product/references/reference-research-and-ideation.md)提供按问题搜索、实际任务拆解、机制比较和候选验证的方法。[C/B 端设计指导](../skills/dev-product/references/consumer-and-business-design.md)从任务、频率、熟练度、数据、权限与错误成本选择模式。[项目资产协议](../skills/dev-product/references/project-assets.md)补齐参考、原型、反馈、决定、模式和验收的关联、失效与跨任务复用。
@@ -43,7 +45,7 @@ v0.3 提供的[示例工具](../skills/dev-product/scripts/prototype.py)保留�
 
 | 项目 | 截至 2026-10-08 的状态 |
 | --- | --- |
-| 配置与指导 | v0.2 删除模型与强度覆盖；v0.3 提供旧版示例；v0.4 明确按任务构建页面；v0.5 新建默认 Vite + React，按 Ant Design/shadcn 分工，建立组件工作区；v0.6 提供选择目录、完整源码复制与项目本地迭代流程。历史执行与工具证据保持对应原版本 |
+| 配置与指导 | v0.2 删除模型与强度覆盖；v0.3 提供旧版示例；v0.4 明确按任务构建页面；v0.5 新建默认 Vite + React，按 Ant Design/shadcn 分工，建立组件工作区；v0.6 提供选择目录、完整源码复制与项目本地迭代流程；v0.7 明确官方组件优先与 Ant Design 专业能力联用。历史执行与工具证据保持对应原版本 |
 | 全局接入 | `dev-product` Skill 与 `dev_product.toml` 已链接，安装检查通过；CLI 新上下文预览发现专业 Skill |
 | 初次设计 | Sol medium 读取专业 Skill，完成模拟 CSV 导入流程、状态、17 个验收场景与项目入口；独立复核通过 |
 | 新上下文复用 | 第二个 Sol medium 仅从项目文件恢复规格，将上限从 1000 调整为 200；保留编号及其他规则，更新失效证据；独立复核通过 |
@@ -51,6 +53,7 @@ v0.3 提供的[示例工具](../skills/dev-product/scripts/prototype.py)保留�
 | P06 可操作原型 | v0.3 初始化并实际启动示例，在 Codex 内置浏览器检查确认、输入保留、批量范围、失败/未知恢复、焦点与反馈 JSON；窄屏和桌面检查通过 |
 | P06 实际应用与用户验证 | 真实生产应用与用户观察未执行；原型行为为模拟，原型操作由 Agent 完成 |
 | React 共享组件 | v0.5 保留历史包接入证据；v0.6 工作区检查、目录浏览器操作与独立源码副本类型/构建通过，验证保留项目修改和副本迭代；实际项目采用仍未执行 |
+| Ant Design 专业能力 | v0.7 核验官方来源，在临时项目验证 CLI 查询与项目 Skill 安装；详细结果见[本轮记录](../evals/dev-product/runs/2026-10-08/ant-design-capabilities/report.md)。第三方长期全局安装与 Codex MCP 宿主接入未执行 |
 
 证据和复现方式见[案例记录](../evals/dev-product/README.md)。P03、P04、P05 有隔离案例证据；P06 当前证明验证方式选择与如实报告，P07、P08 保留基础方法。以上不能登记为真实项目成熟度提升。
 

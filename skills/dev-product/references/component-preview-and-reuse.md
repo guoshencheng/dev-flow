@@ -6,6 +6,8 @@
 
 随包 [React 工作区](../assets/react-workspace/README.md)提供预览、源码文件集和使用示例。`catalog.json` 记录用途、边界、必要文件和基础依赖；完整契约见源码与说明。B 端基础控件直接使用 antd，C 端 Web 优先使用项目已有 shadcn/ui 基底。
 
+B 端先参考官方完整组件与示例，按需联合[官方 Skill、CLI 或 MCP](../../dev-flow/references/ant-design-capabilities.md)。现成组件可满足时直接使用；本目录提供额外组合，组件选择不限于随包四类。当前 SelectionSummary/ActionCard 为自有组合，Button/Card 为保留许可的官方 shadcn/ui 源码。
+
 ```sh
 cd "$HOME/.agents/skills/dev-product/assets/react-workspace"
 npm ci
