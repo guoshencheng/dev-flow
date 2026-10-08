@@ -1,6 +1,6 @@
 # 项目文档、原型与归档协议
 
-版本：0.3。日期：2026-10-08。供产品、视觉、架构、研发、验收与交付共同使用。文档属于当前业务项目，通用 Skill 提供方法与模板。项目已有有效目录时继续维护，通过索引映射；下面是没有现行规范时的默认布局，只创建当前任务需要的文件。
+版本：0.4。日期：2026-10-08。供产品、视觉、架构、研发、验收与交付共同使用。文档属于当前业务项目，通用 Skill 提供方法与模板。项目已有有效目录时继续维护，通过索引映射；下面是没有现行规范时的默认布局，只创建当前任务需要的文件。
 
 ## 明确当前项目的文档入口
 
@@ -19,9 +19,9 @@
 
 项目已有 `docs/product/`、`docs/design/`、`docs/architecture/` 或外部权威资料时映射原位置，避免迁移或复制出第二套内容。技术资料的具体拆分及归档遵守[架构资产协议](../../dev-architecture/references/project-assets.md)。需要与用户讨论/确认设计时，按[预览指南](document-preview.md)提供当前项目索引及本次相关成果的实际地址。
 
-工程资料按[工程资产协议](../../dev-engineering/references/project-assets-and-delivery.md)维护计划/复核、功能与源码映射、诊断和可启动交接，关联有效产品/UI/架构/测试与真实运行资料；已有 README、PR 或任务记录继续作权威位置，不复制出第二套。
+工程资料按[工程资产协议](../../dev-engineering/references/project-assets-and-delivery.md)维护架构后的技术实现方案/OUT/页面功能链路、产品符合性及相关 UI/架构 Review、实施计划/复核、功能与源码映射、诊断和可启动交接，关联有效产品/UI/架构/测试与真实运行资料。没有现行方案位置时采用 `docs/dev-flow/engineering/changes/<任务ID>/technical-solution.md`，项目技术索引关联其当前版本、Review 和用例；已有 README、PR 或任务记录继续作权威位置，不复制出第二套。
 
-测试资料的方案/用例、运行报告、缺陷和回归关系按[测试资产协议](../../dev-acceptance/references/project-assets.md)维护，关联同项目的 RULE/AC/ARC、确认与候选。讨论/确认测试预期时预览该项目的可读用例，执行时使用实际功能/交付入口。
+测试资料的策略/用例、实际 AI Review、人工确认、运行报告、缺陷和回归关系按[测试资产协议](../../dev-acceptance/references/project-assets.md)维护，关联同项目的 RULE/AC/UI/ARC、技术方案/OUT/链路与候选版本。讨论/确认测试预期时预览该项目的可读用例，并关联拟交付页面/功能和技术方案，执行时使用实际功能/交付入口。
 
 交付运行资料按[运行资产协议](../../dev-operations/references/project-assets-and-evolution.md)关联现有 README/runbook、环境与配置来源、源码/产物/目标版本、交付记录、观测及故障恢复入口。无规范时采用 `docs/dev-flow/operations/index.md` 及按需记录，不复制工程脚本或真实密钥；当前状态带实际核验时间，历史发布/事故按事件关联保留。
 

@@ -1,3 +1,3 @@
 interface:
-  display_name: "研发实现与修复"
-  short_description: "实现计划与 AI 复核、按架构实施可运行切片、持续诊断修复，以及集成交付和项目工程资产维护"
+  display_name: "研发方案与实现"
+  short_description: "端到端技术方案与符合性复核、计划 AI 复核、切片实现修复及工程交付沉淀"

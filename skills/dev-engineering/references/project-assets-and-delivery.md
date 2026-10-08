@@ -5,6 +5,7 @@
 | 资产 | 默认权威位置与维护内容 |
 | --- | --- |
 | 工程索引 | `docs/dev-flow/engineering/index.md`：真实安装单元/命令、代码功能映射、规范/计划/测试/运行入口、当前版本 |
+| 技术实现方案与符合性 Review | `engineering/changes/<任务ID>/technical-solution.md`：页面/入口/功能/OUT/完整链路与产品/UI/ARC 覆盖、实际方案 Review、交测试版本 |
 | 实现计划与 AI 复核 | `engineering/plans/<任务ID>.md`：输入/确认范围、切片与依赖、检查和交付、实际复核与重要调整 |
 | 工程规范 | 复用现有规范或 `engineering/code-standards.md`；实际配置/入口仍在源码中，按[规范 Guide](../../dev-architecture/references/code-standards.md)维护 |
 | 诊断与回归 | 既有缺陷/测试记录优先；复杂共用经验可放 `engineering/diagnostics/<问题ID>.md`，关联版本、原因、证据和有效范围 |
@@ -12,7 +13,7 @@
 | 自动化与可复用实现 | 保存在实际测试/源码/脚本目录；文档链接权威实现与采用来源，不维护脱离源码的副本 |
 | 运行与交付 | 复用项目运行 README 或 `docs/dev-flow/operations/`：前置条件、环境样例、准备/启动/停止、产物和版本、目标环境 |
 
-随包提供[工程索引](../assets/templates/engineering-index.md)、[计划](../assets/templates/implementation-plan.md)和[交接](../assets/templates/engineering-handoff.md)模板。项目主索引登记工程/运行权威入口，普通历史由 Git 保存，完整替代方案按共同规则归档；不要每次复制全部产品、架构、用例或生成空目录。
+随包提供[工程索引](../assets/templates/engineering-index.md)、[技术方案](../assets/templates/technical-delivery-design.md)、[计划](../assets/templates/implementation-plan.md)和[交接](../assets/templates/engineering-handoff.md)模板。项目主索引登记工程/技术方案/用例/运行权威入口，普通历史由 Git 保存，完整替代方案按共同规则归档；不要每次复制全部产品、架构、用例或生成空目录。
 
 ## 可启动与实际产物
 
@@ -28,6 +29,6 @@
 
 ## 持续沉淀
 
-每轮更新发生变化的代码映射、规范/工具入口、计划与复核、有效诊断/回归和启动知识；报告复用/更新与未核验内容。当前事实带来源版本，候选或旧报告不自动成为当前通过。下一任务从索引恢复，再核对源码/契约/环境和证据失效范围。
+每轮更新发生变化的技术方案/OUT/符合性 Review、代码映射、规范/工具入口、计划与复核、有效诊断/回归和启动知识；报告复用/更新与未核验内容。方案与 TC/确认/证据关联，需求或接口变化时标明受影响版本与待复核范围。当前事实带来源版本，候选或旧报告不自动成为当前通过。下一任务从索引恢复，再核对源码/契约/环境和证据失效范围。
 
 项目文档预览仅面向该业务项目的成果；维护 Skill 使用源文件。通用代码/脚本候选需有适用边界、Git 来源和行为验证后再进入共享库或 Skill，项目采用默认复制/参考源码，本地迭代，不要求内部包发布。

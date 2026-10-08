@@ -12,8 +12,10 @@ owner: engineering
 
 ## 有效依据
 
-| 输入 | 权威位置/版本 | 相关 RULE/AC/UI/ARC/TC | 确认来源与范围/待决项 |
+| 输入 | 权威位置/版本 | 相关 RULE/AC/UI/ARC/OUT/TC | Review/确认来源与范围/待决项 |
 | --- | --- | --- | --- |
+
+经符合性 Review 的技术方案/OUT、经 AI Review 与人工确认的用例及其关联版本：
 
 ## 可运行切片
 

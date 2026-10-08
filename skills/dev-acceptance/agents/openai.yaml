@@ -1,3 +1,3 @@
 interface:
   display_name: "测试与验收"
-  short_description: "用例设计、可运行实现的接口与界面验收、端到端验证、缺陷复验及项目测试资产维护"
+  short_description: "综合产品与技术方案设计用例、AI 复核后交人工确认，执行端到端验收与缺陷复验"

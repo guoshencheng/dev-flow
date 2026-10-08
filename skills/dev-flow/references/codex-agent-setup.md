@@ -54,11 +54,11 @@ Skill 中的 `agents/openai.yaml` 用于该 Skill 的界面元信息与调用策
 
 ## 测试验收职责
 
-[dev_acceptance.toml](../../../agents/dev_acceptance.toml) 与 [dev-acceptance Skill](../../dev-acceptance/SKILL.md)定义可确认的用例与策略，分别指导前端交互、真实接口/数据、前后端 E2E、交付与回归。依据有效 RULE/AC/ARC 执行，持续反馈研发、复验原问题和相关回归，保留 Mock 边界、失败/跳过/不稳定与当前版本证据；项目维护策略/用例/报告和回归资产。配置不固定模型，工具与行为、原生派发与真实项目证据见[职责说明](../../../docs/acceptance-agent.md)和[首版验证](../../../evals/dev-acceptance/report.md)。
+[dev_acceptance.toml](../../../agents/dev_acceptance.toml) 与 [dev-acceptance Skill](../../dev-acceptance/SKILL.md)定义综合原产品与经 Review 技术方案的用例/策略，实际 AI Review 后交人工确认，分别指导前端交互、真实接口/数据、前后端 E2E、交付与回归。依据有效 RULE/AC/ARC 执行，持续反馈研发、复验原问题和相关回归，保留 Mock 边界、失败/跳过/不稳定与当前版本证据；项目维护策略/用例/报告和回归资产。配置不固定模型，工具与行为、原生派发与真实项目证据见[职责说明](../../../docs/acceptance-agent.md)和[首版验证](../../../evals/dev-acceptance/report.md)。
 
 ## 研发职责
 
-[dev_engineering.toml](../../../agents/dev_engineering.toml) 与 [dev-engineering Skill](../../dev-engineering/SKILL.md)细化工程基线与代码映射、实现计划和 AI 复核、整洁架构下的可运行切片、前后端实现、证据诊断与测试复验、兼容重构/升级/迁移、集成和可启动交接。项目持续维护工程/运行资产，已确认基线不由实现反推，内部步骤自主调整；配置无固定模型，当前行为和接入边界见[职责说明](../../../docs/engineering-agent.md)与[首版验证](../../../evals/dev-engineering/report.md)。
+[dev_engineering.toml](../../../agents/dev_engineering.toml) 与 [dev-engineering Skill](../../dev-engineering/SKILL.md)细化架构后页面/功能/OUT/链路的技术实现方案与符合性 Review、工程基线/代码映射、用例 Review/人工确认后的实施计划和 AI 复核、整洁架构下的可运行切片、前后端实现、证据诊断与测试复验、兼容重构/升级/迁移、集成和可启动交接。项目持续维护工程/运行资产，已确认基线不由实现反推，内部步骤自主调整；配置无固定模型，当前行为和接入边界见[职责说明](../../../docs/engineering-agent.md)与[首版验证](../../../evals/dev-engineering/report.md)。
 
 ## 运维与交付职责
 

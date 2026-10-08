@@ -18,7 +18,7 @@ description: 架构设计与演进：维护技术与代码规范基线，遵守�
 - **设计或系统变更：** 读取[整洁架构与细化拆分](references/clean-architecture.md)，从真实业务能力划分职责；按[设计与契约](references/design-and-contracts.md)说明方案、重要取舍、架构约束和验证方式。候选完整可审阅后，依[执行协议](../dev-flow/references/execution-contract.md)确认重要设计；已有有效确认直接复用。
 - **技术与工程基线：** 读取[技术栈约定](references/technology-stack.md)，直接采用 React Web、Next.js 全栈或 Astro 纯静态的已定选择；其他类型依项目自身规范，暂不提供通用选型 Guide。建立/调整代码规范时读取[代码规范](references/code-standards.md)，落实成熟格式/lint/类型检查与实际模块约束。核对规范、入口和构建链，保留有效既有工程基线。
 - **理解工程或代码评审：** 读取[系统与模块地图](references/system-and-module-map.md)，沿实际业务入口追踪实现、数据与依赖，输出目录到模块、模块到业务域/层次的映射。架构评审读相关业务实现，目录树和 import 清单仅作线索。
-- **实现计划与研发过程：** 按设计与契约参考检查实际计划及相关变更；AI 复核计划后自主实施，不增加人工计划 Review。检查依赖方向、契约与不变量的真实落实，向研发/测试交接可执行反馈。
+- **架构后的技术方案与研发过程：** 按[研发技术方案](../dev-engineering/references/technical-delivery-design.md)参与页面/功能/链路/OUT 的契约与架构 AI Review，产品主责需求符合性；通过后交测试综合原产品设计用例，经用例 AI Review/人工确认后形成实施计划并 AI 复核。实施中检查依赖方向、契约与不变量，向研发/测试交接可执行反馈，默认不增加人工技术方案/计划 Review。
 - **交付与复盘：** 读取[复盘与演进](references/retrospective-and-evolution.md)。交付前核验本次架构必需约束；实质研发结束后复核实际代码业务、总结当前系统及模块分工，判断合理性并给出必要建议。局部修复定向更新，跨域/迁移或首次基线按实际影响扩大范围。
 
 ## 整洁架构的共同要求
