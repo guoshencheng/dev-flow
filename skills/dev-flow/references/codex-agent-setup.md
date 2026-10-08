@@ -10,15 +10,15 @@ Codex 支持个人和项目范围的自定义 Agent。个人配置放在 `~/.cod
 
 这些文件用于派生 Agent 会话的配置。定义角色后仍需由主 Agent 按任务派发；角色定义本身不会建立长期自主运行的服务。桌面应用与 CLI、IDE 使用共同的 Codex 配置体系，具体发现和派发行为在目标宿主中实测。[官方开发者设置说明](https://learn.chatgpt.com/docs/developer-settings)
 
-源文件在独立 `dev-flow` 仓库维护。流程与专业 Skills 通过 `~/.agents/skills/` 的逐个链接使用，全局 `AGENTS.md` 维护简短入口。原生配置通过个人 `~/.codex/agents/` 的逐个文件链接接入；隔离行为、宿主实际派发及真实项目验证分别登记。只有原生发现和执行经过验证，才登记为已启用的职责。Plugin 是否能直接分发原生 Agent 配置，需要在打包阶段核验。
+源文件在独立 `dev-flow` 仓库维护。当前推荐[Plugin 模式](../../../docs/plugin.md)：插件加载八个 Skills，初始化脚本把六职责适配到当前插件路径，副本保存在 `~/.codex/dev-flow/plugin/agents/`，个人 `~/.codex/agents/` 逐个链接；全局 AGENTS.md 维护简短入口。源码链接模式作为可选回退，与 Plugin 模式择一。Plugin 安装和原生角色初始化是不同步骤，不依赖未经证明的自动 TOML 注册。隔离行为、实际发现/派发及真实项目分别登记，只有执行经过验证才登记角色已经执行。
 
 ## 本机已核对的情况
 
 - CLI 为 `codex-cli 0.156.1`。
-- 个人 Agent 目录逐个接入 `dev_product.toml`、`dev_visual.toml`、`dev_architecture.toml`、`dev_acceptance.toml`、`dev_engineering.toml`、`dev_operations.toml`，符号链接指向本仓库源文件；实际接入结果见安装检查，不据此声称原生发现与派发通过。
+- 个人 Agent 目录逐个接入 `dev_product.toml`、`dev_visual.toml`、`dev_architecture.toml`、`dev_acceptance.toml`、`dev_engineering.toml`、`dev_operations.toml`；Plugin 模式链接指向适配副本，源码模式指向本仓库源文件。实际结果见[插件检查](../../../reviews/2026-10-09-plugin-installation.md)，不据此声称原生派发通过。
 - 个人默认模型与强度继续由用户现有全局配置维护，本仓库不另设固定值。
 - 现有全局配置通过 CLI 的严格配置检查；这不证明新角色已被发现或角色行为已经合格。
-- `dev-flow`、`dev-product`、`dev-visual`、`dev-architecture`、`dev-acceptance`、`dev-engineering`、`dev-operations` Skills 逐个链接，当前结果见安装验证；2026-10-07 的 CLI 新上下文预览已发现前两个 Skills 并加载全局流程指引。链接和专业指导评测不证明新增角色的原生发现与派发。
+- 流程、六专业职责及初始化 Skills 共八个，当前 Plugin 安装与发现见本次检查；2026-10-07 的旧源码模式新上下文预览已发现前两个 Skills 并加载全局流程指引。链接、发现和专业指导评测不证明原生角色实际派发。
 - v0.1 原生派发试跑在父任务调用 `gpt-6.1-sol` 时被 CLI 账号通道拒绝，未发生子角色派发。当时的 Sol medium 子 Agent 执行了同一专业 Skill；这仅证明专业指导在该执行方式下的行为。
 
 当前职责配置省略 `model` 与 `model_reasoning_effort`。Codex 依次从本次显式派发、全局 `[agents]` 默认和父会话取得这些设置；派发或全局默认只选择模型而没有强度时，采用该模型默认强度。职责文件若设置这些字段，会覆盖之前解析出的选择，因此本仓库默认由调用方与宿主配置管理模型。具体任务遵循用户最新要求，实际执行设置进入验证记录。[官方配置优先级说明](https://learn.chatgpt.com/docs/agent-configuration/subagents)
@@ -38,7 +38,7 @@ Skill 中的 `agents/openai.yaml` 用于该 Skill 的界面元信息与调用策
 
 ## 首个职责：产品与交互
 
-实际源文件是[dev_product.toml](../../../agents/dev_product.toml)，角色名为 `dev_product`，没有固定模型或推理强度。配置要求开始时读取全局 `dev-product` Skill，再按需读取共同协议、专业方法和项目入口。
+实际源文件是[dev_product.toml](../../../agents/dev_product.toml)，角色名为 `dev_product`，没有固定模型或推理强度。源码模式读取全局 dev-product Skill；Plugin 初始化时适配为实际插件路径，再按需读取共同协议、专业方法和项目入口。
 
 配套[专业 Skill](../../dev-product/SKILL.md)细化流程与状态、规则与验收、验证与交接、项目资产持续维护四类方法。设计与能力状态见[职责说明](../../../docs/product-agent.md)，实际案例与调用方式见[验证记录](../../../evals/dev-product/README.md)。
 

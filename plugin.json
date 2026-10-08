@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dev-flow",
+  "version": "0.1.0",
+  "description": "多角色研发协作：产品与交互、视觉、架构、研发、测试验收、运维交付，以及项目资产持续维护。",
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/dev-flow-setup/SKILL.md",
+      "interface": {
+        "displayName": "Dev Flow",
+        "shortDescription": "从产品设计到端到端验收和可运行交付",
+        "longDescription": "以 Codex 为主的六职责研发流程，提供专业方法、写作模板、React 原型与组件源码，以及项目文档和运行资产维护。模型由宿主与调用方选择。",
+        "category": "Developer Tools",
+        "capabilities": ["Read", "Write", "Interactive"],
+        "defaultPrompt": ["使用 Dev Flow 推进当前项目的研发任务。", "初始化 Dev Flow 插件的六个职责 Agent。"]
+      }
+    }
+  }
+}

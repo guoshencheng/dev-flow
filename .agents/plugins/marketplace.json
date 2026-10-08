@@ -1,0 +1,10 @@
+{
+  "name": "dev-flow-local",
+  "interface": {"displayName": "Dev Flow 本地研发流程"},
+  "plugins": [{
+    "name": "dev-flow",
+    "source": {"source": "local", "path": "./"},
+    "policy": {"installation": "AVAILABLE", "authentication": "ON_USE"},
+    "category": "Developer Tools"
+  }]
+}

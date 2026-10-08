@@ -23,6 +23,8 @@ def main():
     repo = Path(__file__).resolve().parent.parent
     codex_dir = args.codex_dir.expanduser().resolve()
     skills_dir = args.skills_dir.expanduser().resolve()
+    if (codex_dir / "dev-flow/plugin/state.json").exists():
+        raise ValueError("当前使用 Plugin 模式，请用 scripts/manage_plugin.py check/install；切换源码链接模式前先解除插件接入")
     links = [(p.parent.resolve(), skills_dir / p.parent.name)
              for p in sorted((repo / "skills").glob("*/SKILL.md"))]
     links += [(p.resolve(), codex_dir / "agents" / p.name)

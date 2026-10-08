@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dev Flow 安装初始化"
+  short_description: "安装、更新和检查插件的六个职责配置，迁移旧入口并保护其他全局设置"
+  default_prompt: "使用 $dev-flow-setup 初始化并检查当前 Dev Flow 插件。"

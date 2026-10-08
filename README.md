@@ -1,6 +1,6 @@
 # dev-flow
 
-以 Codex 为主的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付。当前已有总纲 v0.13、六职责配置与专业 Skills、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。职责配置采用宿主模型策略。工具、专业行为、原生角色派发与真实项目成熟度分别登记；下一步用真实任务验证完整交付，再按实际需要建设运行内核和 Plugin。
+以 Codex 为主的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付。当前已有总纲 v0.13、六职责配置与专业 Skills、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。职责配置采用宿主模型策略；本地 Plugin 0.1.0 包装和接入方式见[安装指南](docs/plugin.md)及[验证记录](reviews/2026-10-09-plugin-installation.md)。工具、专业行为、原生角色派发与真实项目成熟度分别登记；完整真实任务和运行内核继续按实测需要建设。
 
 ## 维护入口
 
@@ -27,14 +27,23 @@
 
 ## 全局安装与使用
 
-在仓库根目录执行：
+当前推荐 Plugin 模式，在仓库根目录执行：
+
+```sh
+python3 scripts/manage_plugin.py install
+python3 scripts/manage_plugin.py check
+```
+
+共八个 Skills（流程、六专业职责、安装初始化）和六个职责配置。install 同时用于更新，先构建 Git 管理文件的干净包，再通过 Codex 安装缓存和初始化适配；自动迁移指向本仓库的旧链接，其他来源冲突时保留并报告。详情见[插件指南](docs/plugin.md)。
+
+源码链接模式作为可选回退；与 Plugin 模式择一。解除插件接入后在仓库根目录执行：
 
 ```sh
 python3 scripts/install_global.py
 python3 scripts/install_global.py --check
 ```
 
-安装脚本将本仓库的 `dev-flow`、`dev-product`、`dev-visual`、`dev-architecture`、`dev-acceptance`、`dev-engineering`、`dev-operations` 七个 Skills 逐个链接到 `~/.agents/skills/`，将六个 `agents/dev_*.toml` 职责配置链接到 `~/.codex/agents/`，并在 `~/.codex/AGENTS.md` 中维护一个简短的流程指引区块。更改既有指引前备份到 `~/.codex/backups/dev-flow/`，其他原文保留。链接冲突时停止，不覆盖其他来源。
+源码链接脚本将本仓库八个 Skills 逐个链接到 `~/.agents/skills/`，将六个 `agents/dev_*.toml` 职责配置链接到 `~/.codex/agents/`，并在 `~/.codex/AGENTS.md` 中维护一个简短的流程指引区块。更改既有指引前备份到 `~/.codex/backups/dev-flow/`，其他原文保留。链接冲突时停止，不覆盖其他来源。
 
 在 Codex 中使用 `$dev-flow` 指定本流程。全局指引在新会话加载；若 Skill 列表没有刷新，重新启动 Codex。Codex 官方支持用户级 Skill 目录和符号链接扫描。[官方 Skills 说明](https://learn.chatgpt.com/docs/build-skills)
 
@@ -48,7 +57,7 @@ python3 scripts/install_global.py --check
 
 启动交付、产物/部署核验、运行诊断/恢复或环境维护可使用 `$dev-operations`。恢复真实环境/版本与授权范围，操作当前候选与核心任务，维护项目 runbook、交付和故障/恢复记录；部署未知先查询，应用回退与数据恢复分别取证。
 
-源码更新通过链接反映到全局文件，不需要重新复制。新增 Skill 或原生职责配置后再运行安装脚本；`agents/dev_*.toml` 逐个链接到 `~/.codex/agents/`，保留其他角色文件。原生角色的发现、模型设置和专业行为需要独立验证。
+以下说明适用于源码链接回退模式：源码更新通过链接反映到全局文件，不需要重新复制。新增 Skill 或原生职责配置后再运行安装脚本；`agents/dev_*.toml` 逐个链接到 `~/.codex/agents/`，保留其他角色文件。原生角色的发现、模型设置和专业行为需要独立验证。
 
 2026-10-07 已验证：Skill 结构、全局链接、既有指引保留与备份、重复安装和冲突保护；CLI 新上下文预览已加载全局流程指引，先后发现 `dev-flow`、`dev-product` Skills。当时链接两个 Skills、一个原生职责配置。产品专业指导由两次独立的 Sol medium 执行验证，覆盖首次设计和新上下文变更复用；CLI 在原生派发尝试前拒绝了所选模型，原生发现、派发及实际模型设置仍未验收，详见[验证记录](evals/dev-product/README.md)。视觉阶段增加第三个 Skill，见[视觉与工具记录](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)；架构阶段增加第四个 Skill 和第三个职责设置，见[架构验证](evals/dev-architecture/report.md)。
 
@@ -56,8 +65,8 @@ python3 scripts/install_global.py --check
 
 ## 下一项建设
 
-产品 v0.8、视觉 v0.1、架构 v0.3、测试验收 v0.3、研发 v0.2 与运维交付 v0.1 已定义专业方法与项目资产维护。运维的源码包启动、运行故障与恢复工具案例见[首版验证](evals/dev-operations/report.md)，研发隔离修复案例见[记录](evals/dev-engineering/report.md)，测试执行范围见[记录](evals/dev-acceptance/report.md)，架构规范检查见[记录](reviews/2026-10-08-architecture-code-standards-check.md)。历史原型/组件证据保持原版本，见[视觉与文档验证](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)。总纲 v0.13 增加架构后端到端技术方案、符合性及用例 AI Review/人工确认，见[调整记录](reviews/2026-10-08-technical-delivery-stage.md)；保留运行/交付资产和 v0.11 的[设计与实现路由边界](reviews/2026-10-08-prototype-review-routing.md)及确认/自主实施规则。下一步选择真实任务检验完整循环和下一任务资产复用；原生派发/实际模型设置与真实项目分别实测，运行内核与 Plugin 尚待建设。
+产品 v0.8、视觉 v0.1、架构 v0.3、测试验收 v0.3、研发 v0.2 与运维交付 v0.1 已定义专业方法与项目资产维护。运维的源码包启动、运行故障与恢复工具案例见[首版验证](evals/dev-operations/report.md)，研发隔离修复案例见[记录](evals/dev-engineering/report.md)，测试执行范围见[记录](evals/dev-acceptance/report.md)，架构规范检查见[记录](reviews/2026-10-08-architecture-code-standards-check.md)。历史原型/组件证据保持原版本，见[视觉与文档验证](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)。总纲 v0.13 增加架构后端到端技术方案、符合性及用例 AI Review/人工确认，见[调整记录](reviews/2026-10-08-technical-delivery-stage.md)；保留运行/交付资产和 v0.11 的[设计与实现路由边界](reviews/2026-10-08-prototype-review-routing.md)及确认/自主实施规则。下一步选择真实任务检验完整循环和下一任务资产复用；原生派发/实际模型设置与真实项目分别实测，本地 Plugin 已接入，见[安装验证](reviews/2026-10-09-plugin-installation.md)；运行内核继续按真实任务需要建设。
 
 ## 解除全局接入
 
-删除由本仓库管理的七个 Skill 链接，并从全局 `AGENTS.md` 删除 `<!-- dev-flow:begin -->` 与 `<!-- dev-flow:end -->` 之间的完整区块。职责配置只删除实际指向本仓库的链接。保留原有全局规则与项目资产。
+Plugin 模式使用 `python3 scripts/manage_plugin.py remove`。源码链接模式删除由本仓库管理的八个 Skill 链接，并从全局 `AGENTS.md` 删除 `<!-- dev-flow:begin -->` 与 `<!-- dev-flow:end -->` 之间的完整区块。职责配置只删除实际指向本仓库的链接。保留原有全局规则与项目资产。
