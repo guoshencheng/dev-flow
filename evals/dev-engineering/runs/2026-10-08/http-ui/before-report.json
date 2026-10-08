@@ -1,0 +1,462 @@
+{
+  "config": {
+    "argv": [
+      "/usr/local/bin/node",
+      "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/node_modules/.bin/playwright",
+      "test",
+      "--output",
+      "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/before/artifacts"
+    ],
+    "configFile": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/playwright.config.ts",
+    "rootDir": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/before/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 15000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/before/playwright-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": {
+      "command": "node server.mjs",
+      "url": "http://127.0.0.1:53331/health",
+      "reuseExistingServer": false,
+      "gracefulShutdown": {
+        "signal": "SIGTERM",
+        "timeout": 2000
+      },
+      "timeout": 10000
+    }
+  },
+  "suites": [
+    {
+      "title": "acceptance.spec.ts",
+      "file": "acceptance.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "TC-API-01 编辑者保存后可通过真实接口读回",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 28,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContainEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected value: \u001b[32m{\"id\": \"c464adde-0d0c-47e2-81a4-d83ef7d63fda\", \"title\": \"TC-API-01-c7711321-0c04-49f2-b1cb-7f8cbdecf5ee\"}\u001b[39m\nReceived array: \u001b[31m[]\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContainEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected value: \u001b[32m{\"id\": \"c464adde-0d0c-47e2-81a4-d83ef7d63fda\", \"title\": \"TC-API-01-c7711321-0c04-49f2-b1cb-7f8cbdecf5ee\"}\u001b[39m\nReceived array: \u001b[31m[]\u001b[39m\n    at /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts:21:32",
+                    "location": {
+                      "file": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts",
+                      "column": 32,
+                      "line": 21
+                    },
+                    "snippet": "  19 |   const saved = await response.json();\n  20 |   expect(saved).toEqual({ id: expect.any(String), title });\n> 21 |   expect(await items(request)).toContainEqual(saved);\n     |                                ^\n  22 | });\n  23 |\n  24 | test('TC-API-02 查看者直接请求拒绝且无写入', async ({ request }) => {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts",
+                        "column": 32,
+                        "line": 21
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContainEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected value: \u001b[32m{\"id\": \"c464adde-0d0c-47e2-81a4-d83ef7d63fda\", \"title\": \"TC-API-01-c7711321-0c04-49f2-b1cb-7f8cbdecf5ee\"}\u001b[39m\nReceived array: \u001b[31m[]\u001b[39m\n\n  19 |   const saved = await response.json();\n  20 |   expect(saved).toEqual({ id: expect.any(String), title });\n> 21 |   expect(await items(request)).toContainEqual(saved);\n     |                                ^\n  22 | });\n  23 |\n  24 | test('TC-API-02 查看者直接请求拒绝且无写入', async ({ request }) => {\n    at /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts:21:32"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T14:20:27.811Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/before/artifacts/acceptance-TC-API-01-编辑者保存后可通过真实接口读回/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/before/artifacts/acceptance-TC-API-01-编辑者保存后可通过真实接口读回/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts",
+                    "column": 32,
+                    "line": 21
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6bf654160f377cf56a60-74296e507e782cbdc21b",
+          "file": "acceptance.spec.ts",
+          "line": 14,
+          "column": 1
+        },
+        {
+          "title": "TC-API-02 查看者直接请求拒绝且无写入",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 28,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m403\u001b[39m\nReceived: \u001b[31m201\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m403\u001b[39m\nReceived: \u001b[31m201\u001b[39m\n    at /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts:30:34",
+                    "location": {
+                      "file": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts",
+                      "column": 34,
+                      "line": 30
+                    },
+                    "snippet": "  28 |   const response = await request.post('/api/items', { data: { title } });\n  29 |   // soft 保留状态与副作用两项失败，便于原问题反馈。\n> 30 |   expect.soft(response.status()).toBe(403);\n     |                                  ^\n  31 |   expect.soft(await items(request)).toEqual(before);\n  32 | });\n  33 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts",
+                        "column": 34,
+                        "line": 30
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m403\u001b[39m\nReceived: \u001b[31m201\u001b[39m\n\n  28 |   const response = await request.post('/api/items', { data: { title } });\n  29 |   // soft 保留状态与副作用两项失败，便于原问题反馈。\n> 30 |   expect.soft(response.status()).toBe(403);\n     |                                  ^\n  31 |   expect.soft(await items(request)).toEqual(before);\n  32 | });\n  33 |\n    at /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts:30:34"
+                    },
+                    {
+                      "location": {
+                        "file": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts",
+                        "column": 37,
+                        "line": 31
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 6\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"id\": \"c8519a2f-c9b1-4eaf-ac98-fdb85d89c3ae\",\u001b[39m\n\u001b[31m+     \"title\": \"TC-API-02-83e4f163-ca8a-48ef-82ff-28a85c3e9e23\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  29 |   // soft 保留状态与副作用两项失败，便于原问题反馈。\n  30 |   expect.soft(response.status()).toBe(403);\n> 31 |   expect.soft(await items(request)).toEqual(before);\n     |                                     ^\n  32 | });\n  33 |\n  34 | test('TC-API-03 无效输入拒绝且没有业务副作用', async ({ request }) => {\n    at /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts:31:37"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T14:20:27.997Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/before/artifacts/acceptance-TC-API-02-查看者直接请求拒绝且无写入/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/before/artifacts/acceptance-TC-API-02-查看者直接请求拒绝且无写入/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts",
+                    "column": 34,
+                    "line": 30
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6bf654160f377cf56a60-f84ef6abba38d2eee897",
+          "file": "acceptance.spec.ts",
+          "line": 24,
+          "column": 1
+        },
+        {
+          "title": "TC-API-03 无效输入拒绝且没有业务副作用",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 23,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T14:20:28.177Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6bf654160f377cf56a60-59ec77c1d24015824783",
+          "file": "acceptance.spec.ts",
+          "line": 34,
+          "column": 1
+        },
+        {
+          "title": "TC-E2E-01 界面保存、请求与读回、刷新仍可见",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 4508,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContainEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected value: \u001b[32m{\"id\": \"1646fe42-0231-49ca-9864-e50fc5fbffb3\", \"title\": \"TC-E2E-01-22ff368a-a482-4cd1-b8f6-b36df5c58c70\"}\u001b[39m\nReceived array: \u001b[31m[{\"id\": \"c8519a2f-c9b1-4eaf-ac98-fdb85d89c3ae\", \"title\": \"TC-API-02-83e4f163-ca8a-48ef-82ff-28a85c3e9e23\"}]\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContainEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected value: \u001b[32m{\"id\": \"1646fe42-0231-49ca-9864-e50fc5fbffb3\", \"title\": \"TC-E2E-01-22ff368a-a482-4cd1-b8f6-b36df5c58c70\"}\u001b[39m\nReceived array: \u001b[31m[{\"id\": \"c8519a2f-c9b1-4eaf-ac98-fdb85d89c3ae\", \"title\": \"TC-API-02-83e4f163-ca8a-48ef-82ff-28a85c3e9e23\"}]\u001b[39m\n    at /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts:59:42",
+                    "location": {
+                      "file": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts",
+                      "column": 42,
+                      "line": 59
+                    },
+                    "snippet": "  57 |   await expect(page.getByRole('status')).toHaveText('保存成功');\n  58 |   await expect(page.getByRole('listitem').filter({ hasText: title })).toHaveText(title);\n> 59 |   expect.soft(await items(page.request)).toContainEqual(saved);\n     |                                          ^\n  60 |   await page.reload();\n  61 |   await expect(page.getByRole('listitem').filter({ hasText: title })).toHaveText(title);\n  62 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts",
+                        "column": 42,
+                        "line": 59
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContainEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected value: \u001b[32m{\"id\": \"1646fe42-0231-49ca-9864-e50fc5fbffb3\", \"title\": \"TC-E2E-01-22ff368a-a482-4cd1-b8f6-b36df5c58c70\"}\u001b[39m\nReceived array: \u001b[31m[{\"id\": \"c8519a2f-c9b1-4eaf-ac98-fdb85d89c3ae\", \"title\": \"TC-API-02-83e4f163-ca8a-48ef-82ff-28a85c3e9e23\"}]\u001b[39m\n\n  57 |   await expect(page.getByRole('status')).toHaveText('保存成功');\n  58 |   await expect(page.getByRole('listitem').filter({ hasText: title })).toHaveText(title);\n> 59 |   expect.soft(await items(page.request)).toContainEqual(saved);\n     |                                          ^\n  60 |   await page.reload();\n  61 |   await expect(page.getByRole('listitem').filter({ hasText: title })).toHaveText(title);\n  62 | });\n    at /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts:59:42"
+                    },
+                    {
+                      "location": {
+                        "file": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts",
+                        "column": 71,
+                        "line": 61
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('listitem').filter({ hasText: 'TC-E2E-01-22ff368a-a482-4cd1-b8f6-b36df5c58c70' })\nExpected: \u001b[32m\"TC-E2E-01-22ff368a-a482-4cd1-b8f6-b36df5c58c70\"\u001b[39m\nTimeout: 4000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 4000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('listitem').filter({ hasText: 'TC-E2E-01-22ff368a-a482-4cd1-b8f6-b36df5c58c70' })\u001b[22m\n\n\n  59 |   expect.soft(await items(page.request)).toContainEqual(saved);\n  60 |   await page.reload();\n> 61 |   await expect(page.getByRole('listitem').filter({ hasText: title })).toHaveText(title);\n     |                                                                       ^\n  62 | });\n  63 |\n  64 | test('TC-UI-01 ui-isolated 服务失败保留输入且恢复后能重试', async ({ page }) => {\n    at /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts:61:71"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T14:20:28.210Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/before/artifacts/acceptance-TC-E2E-01-界面保存、请求与读回、刷新仍可见/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/before/artifacts/acceptance-TC-E2E-01-界面保存、请求与读回、刷新仍可见/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/before/artifacts/acceptance-TC-E2E-01-界面保存、请求与读回、刷新仍可见/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts",
+                    "column": 42,
+                    "line": 59
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6bf654160f377cf56a60-15d6779bf85a857720e6",
+          "file": "acceptance.spec.ts",
+          "line": 43,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-01 ui-isolated 服务失败保留输入且恢复后能重试",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 4285,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('标题')\nExpected: \u001b[32m\"TC-UI-01-b02ddb06-72ec-45c8-ab74-6516b686c8a3\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  4000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" with timeout 4000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('标题')\u001b[22m\n\u001b[2m    12 × locator resolved to <input id=\"title\" name=\"title\"/>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('标题')\nExpected: \u001b[32m\"TC-UI-01-b02ddb06-72ec-45c8-ab74-6516b686c8a3\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  4000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" with timeout 4000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('标题')\u001b[22m\n\u001b[2m    12 × locator resolved to <input id=\"title\" name=\"title\"/>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n    at /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts:77:39",
+                    "location": {
+                      "file": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts",
+                      "column": 39,
+                      "line": 77
+                    },
+                    "snippet": "  75 |   await page.getByRole('button', { name: '保存', exact: true }).click();\n  76 |   await expect(page.getByRole('status')).toHaveText('保存失败，请重试');\n> 77 |   await expect(page.getByLabel('标题')).toHaveValue(title);\n     |                                       ^\n  78 |   await expect(page.getByRole('button', { name: '保存', exact: true })).toBeEnabled();\n  79 |   await page.unroute('**/api/items', failSave);\n  80 |   await page.getByRole('button', { name: '保存', exact: true }).click();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts",
+                        "column": 39,
+                        "line": 77
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByLabel('标题')\nExpected: \u001b[32m\"TC-UI-01-b02ddb06-72ec-45c8-ab74-6516b686c8a3\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  4000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" with timeout 4000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('标题')\u001b[22m\n\u001b[2m    12 × locator resolved to <input id=\"title\" name=\"title\"/>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n  75 |   await page.getByRole('button', { name: '保存', exact: true }).click();\n  76 |   await expect(page.getByRole('status')).toHaveText('保存失败，请重试');\n> 77 |   await expect(page.getByLabel('标题')).toHaveValue(title);\n     |                                       ^\n  78 |   await expect(page.getByRole('button', { name: '保存', exact: true })).toBeEnabled();\n  79 |   await page.unroute('**/api/items', failSave);\n  80 |   await page.getByRole('button', { name: '保存', exact: true }).click();\n    at /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts:77:39"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T14:20:33.383Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/before/artifacts/acceptance-TC-UI-01-ui-isolated-服务失败保留输入且恢复后能重试/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/before/artifacts/acceptance-TC-UI-01-ui-isolated-服务失败保留输入且恢复后能重试/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/before/artifacts/acceptance-TC-UI-01-ui-isolated-服务失败保留输入且恢复后能重试/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/engineering-eval-t3cz93ht/project/tests/acceptance.spec.ts",
+                    "column": 39,
+                    "line": 77
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6bf654160f377cf56a60-61d19dcb17421326dfe5",
+          "file": "acceptance.spec.ts",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "TC-UI-02 查看者界面透出禁用状态",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 233,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-08T14:20:38.008Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6bf654160f377cf56a60-c00ecd66c4d677388da2",
+          "file": "acceptance.spec.ts",
+          "line": 85,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-08T14:20:27.540Z",
+    "duration": 10905.378999999999,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

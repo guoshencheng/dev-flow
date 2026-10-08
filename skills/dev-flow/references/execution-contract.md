@@ -2,7 +2,7 @@
 id: FLOW-execution-contract
 title: 设计确认、计划复核与自主实现
 status: current
-version: 0.2
+version: 0.3
 owner: flow
 ---
 
@@ -93,3 +93,5 @@ Agent 可以自主调整内部实现、任务切分、诊断与修复方法，�
 索引关联有效版本、确认来源、计划/复核、自动化入口、候选版本、缺陷和证据。新上下文先恢复这些事实，再继续执行；不因实现更新就把过期证据改写为当前通过。普通历史由 Git 保存，已替换完整方案按项目约定归档。
 
 测试验收的具体方案与执行使用[专业 Skill](../../dev-acceptance/SKILL.md)，项目策略/用例、逐轮报告和缺陷按[测试资产协议](../../dev-acceptance/references/project-assets.md)维护。真实接口/数据、界面交互、前后端 E2E 与交付分别取证，Mock 覆盖、跳过和不稳定项不自动升级为当前候选的完整通过。
+
+研发的基线恢复、切片/实现、证据诊断与待验交接按[专业 Skill](../../dev-engineering/SKILL.md)执行，实现计划与实际 AI 复核、工程/代码映射及可启动支持按[工程资产协议](../../dev-engineering/references/project-assets-and-delivery.md)维护。研发自测与测试验收分别取证，不新增人工实现计划审批。

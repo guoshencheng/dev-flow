@@ -1,0 +1,3 @@
+interface:
+  display_name: "研发实现与修复"
+  short_description: "实现计划与 AI 复核、按架构实施可运行切片、持续诊断修复，以及集成交付和项目工程资产维护"

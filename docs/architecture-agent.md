@@ -69,4 +69,4 @@ v0.2 技术选型新增指导基于只读项目调查与官方平台资料，结
 
 v0.3 技术约定、代码规范与格式配置的检查见[本轮记录](../reviews/2026-10-08-architecture-code-standards-check.md)。格式工具的实际案例与其他静态/行为/真实项目检查分别登记，不将格式通过延伸为端到端验收。
 
-已建设[测试验收职责](acceptance-agent.md)，与架构使用同一 ARC/RULE/AC 和版本化证据推进完整交付。下一职责为研发，再建设运维交付。
+已建设[测试验收职责](acceptance-agent.md)，与架构使用同一 ARC/RULE/AC 和版本化证据推进完整交付。已建设[研发职责](engineering-agent.md)，下一职责为运维交付。
