@@ -1,0 +1,22 @@
+# 生成目录、依赖与临时运行记录；按项目真实路径补充
+**/node_modules/**
+**/.next/**
+**/.astro/**
+/dist/**
+/build/**
+/out/**
+/coverage/**
+.dev-flow/**
+docs/dev-flow/evidence/**
+
+# 锁文件和工具生成文件保留工具原始输出
+**/package-lock.json
+**/npm-shrinkwrap.json
+**/pnpm-lock.yaml
+**/yarn.lock
+**/bun.lock
+**/next-env.d.ts
+**/*.tsbuildinfo
+
+# 本地环境文件不参与格式化
+**/.env*

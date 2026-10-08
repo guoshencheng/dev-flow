@@ -11,7 +11,7 @@
 ## 本轮成果
 
 - [技术栈选型](../skills/dev-architecture/references/technology-stack.md)：执行形态与用户任务、现状与决定、候选默认、包管理/CI 依据、基线更新及重要选择的确认边界。
-- [各平台约束](../skills/dev-architecture/references/stack-profiles.md)：按当前类型细化业务/技术职责、运行边界、验收与可用交付。
+- [各平台约束（历史归档）](../docs/project-tech-stacks/archive/2026-10-08-stack-profiles-v0.1.md)：检查时位于 `skills/dev-architecture/references/stack-profiles.md`，后续按用户要求移出 Skill；本记录保留当时检查范围。
 - [项目技术基线模板](../skills/dev-architecture/assets/templates/technology-baseline.md)：工具链/锁、入口、有效决定、模块与数据关系、交付/证据与演进。
 - 架构 Skill、职责 TOML、设计/资产协议和说明接入上述参考；A05 细化技术与质量取舍，保持六类四十八项主能力。共同确认与 AI 计划复核协议未改变；职责配置省略模型与强度。
 

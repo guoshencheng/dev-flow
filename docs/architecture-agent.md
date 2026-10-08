@@ -2,11 +2,11 @@
 id: ROLE-dev-architecture
 title: 架构设计与演进 Agent
 status: current
-version: 0.2
+version: 0.3
 owner: architecture
 ---
 
-# 架构设计与演进 Agent v0.2
+# 架构设计与演进 Agent v0.3
 
 更新日期：2026-10-08。原生职责 `dev_architecture`；[专业 Skill](../skills/dev-architecture/SKILL.md)；[职责配置](../agents/dev_architecture.toml)。配置省略模型与推理强度，由本次用户和宿主设置选择。
 
@@ -16,22 +16,24 @@ owner: architecture
 
 架构同时参与设计、实现计划 AI 复核、相关实施变化、交付符合性核验和研发结束后的代码业务复盘。用户确认重要架构选择及测试预期，实现计划由 AI 复核后自主实施，继续遵守[执行协议](../skills/dev-flow/references/execution-contract.md)。
 
-v0.2 增加按项目类型选择和维护技术基线的指导。依据本机项目的实际规范、入口与构建配置，区分 Web、服务/Worker、原生、扩展、3D/游戏、媒体/设备等形态，再结合 B/C 用户任务落实 UI 约定；保留有效项目选择，候选默认不自动覆盖现有栈。调查及建议见[项目技术栈清单](project-tech-stacks/2026-10-08-survey.md)。
+v0.3 按用户要求收敛技术 Guide：Web 使用 React（新建 Vite + React + TS），全栈使用 Next.js，纯静态使用 Astro；其他类型暂不建设通用技术 Guide，历史调查保留为资料。已定选择直接沿用，并新增 EditorConfig/Prettier、ESLint、类型与依赖规则的[代码规范](../skills/dev-architecture/references/code-standards.md)及可复制格式配置。
+
+研发前按[架构基线表](../skills/dev-architecture/references/design-and-contracts.md#研发前应明确的架构基线)确定本次模块/依赖、接口/数据、权限/失败恢复、质量、运行交付和维护事项。已有有效决定直接复用，具体规范由工具执行，不增加人工计划审批。
 
 ## 具体能力与产物
 
 | 能力 | 当前指导与项目产物 |
 | --- | --- |
 | A01 系统理解 | 从真实入口追踪业务、数据与运行组成，输出有源码依据和覆盖边界的系统地图 |
-| A02 模块划分 | 细化业务域/层次、目录映射、分工与不负责事项、允许依赖、数据所有权及公开契约 |
+| A02 模块划分 | 细化业务域/层次、目录映射、分工与不负责事项、允许依赖、数据所有权及公开契约；结合代码规范检查真实边界 |
 | A03 接口契约 | 用例/API/事件、错误、兼容与必要幂等语义，关联权威接口定义和消费方 |
 | A04 数据与不变量 | 数据语义、状态/规则、读写责任、事务/并发与适用迁移，关联真实验证 |
-| A05 技术与质量取舍 | 按执行形态/用户任务选择技术，核对规范、入口、工具链与交付并维护基线；根据实际目标确定性能/可靠性/容量/成本假设和测量证据 |
+| A05 技术与质量取舍 | 复用已定技术约定，核对规范、入口、代码工具链与交付并维护基线；根据实际目标确定性能/可靠性/容量/成本假设和测量证据 |
 | A06 信任与权限 | 身份/租户、数据访问、可信执行边界和对应正向/拒绝检查 |
 | A07 演进与恢复 | 分阶段变化、兼容期、数据检查、切换/恢复条件，避免将代码回滚当成数据恢复 |
 | A08 复盘与维护 | 研发后的实际代码业务 Review、架构合理性评价、现状/模块地图更新与有证据的改动建议 |
 
-首版重点 A01/A02/A03/A08，涉及数据时同时落实 A04；v0.2 细化 A05 的技术选型与持续基线，其余按实际任务风险使用。指导覆盖与实际验证分开，配置存在不表示全部能力已经成熟。
+首版重点 A01/A02/A03/A08，涉及数据时同时落实 A04；当前 A05 保留三类技术约定和持续基线，代码规范支撑 A02/A05。指导覆盖与实际验证分开，配置存在不表示全部能力已经成熟。
 
 ## 专业内容如何拆分
 
@@ -40,7 +42,8 @@ v0.2 增加按项目类型选择和维护技术基线的指导。依据本机项
 - [设计与契约](../skills/dev-architecture/references/design-and-contracts.md)：重要选择、可执行 ARC 约束、接口/数据/权限/运行，以及 AI 计划复核和研发测试对焦。
 - [复盘与演进](../skills/dev-architecture/references/retrospective-and-evolution.md)：参与时机、代码业务 Review、优先级、具体建议与改进关闭。
 - [项目资产](../skills/dev-architecture/references/project-assets.md)：现状、目标、决策、复盘、债务的目录和归档、版本核验及下一任务复用。
-- [技术栈选型](../skills/dev-architecture/references/technology-stack.md)与[平台约束](../skills/dev-architecture/references/stack-profiles.md)：新项目候选默认、既有约束、不同平台的职责/运行和交付检查；实施时按命中的类型读取。
+- [技术栈约定](../skills/dev-architecture/references/technology-stack.md)：React Web、Next.js 全栈、Astro 纯静态的已定选择及项目有效基线。
+- [代码规范](../skills/dev-architecture/references/code-standards.md)：成熟格式/lint/类型方案、命名与依赖、配置源码复用、研发/CI 检查和项目规范维护。
 
 ## 研发结束后如何参与
 
@@ -52,7 +55,7 @@ v0.2 增加按项目类型选择和维护技术基线的指导。依据本机项
 
 ## 项目文档与共享
 
-优先沿用项目权威目录，无规范时使用 `docs/dev-flow/architecture/`：index/system/modules 保存当前事实，stack 保存技术/工具链和交付基线，changes 保存目标设计和确认，decisions 保存重要取舍，reviews 保存实际代码复盘，debt 关联改进。小工程允许合并，复杂业务域按需拆分。普通历史由 Git 保存，完整替换方案按协议归档。
+优先沿用项目权威目录，无规范时使用 `docs/dev-flow/architecture/`：index/system/modules 保存当前事实，stack 保存技术/工具链和交付基线，changes 保存目标设计和确认，decisions 保存重要取舍，reviews 保存实际代码复盘，debt 关联改进。代码规范使用 `docs/dev-flow/engineering/code-standards.md` 并链接实际配置与命令。小工程允许合并，复杂业务域按需拆分。普通历史由 Git 保存，完整替换方案按协议归档。
 
 随包提供[当前地图](../skills/dev-architecture/assets/templates/current-architecture.md)、[技术基线](../skills/dev-architecture/assets/templates/technology-baseline.md)、[变化设计](../skills/dev-architecture/assets/templates/architecture-design.md)、[代码复盘](../skills/dev-architecture/assets/templates/architecture-review.md)四个模板，复用共享 Vite 文档预览。项目事实留在项目，经过验证的通用方法再沉淀到本 Skill。
 
@@ -63,5 +66,7 @@ v0.2 增加按项目类型选择和维护技术基线的指导。依据本机项
 v0.1 的四个 Skill、三个 TOML 与全局链接检查通过。Sol medium 通用子 Agent 在隔离案例实际完成代码业务复盘和模块变化后的资产复用，主 Agent 核验源码/证据并复跑一致。已证明该案例中的现状恢复、域/模块地图、业务/架构偏差识别和持续更新；尚未验证 `dev_architecture` 原生派发、全新上下文与真实项目，也未将全部能力登记为成熟。
 
 v0.2 技术选型新增指导基于只读项目调查与官方平台资料，结构、引用、职责配置和全局链接的实际检查见[本轮记录](../reviews/2026-10-08-architecture-stack-check.md)。现有隔离案例不证明新增选型能力；尚未实际运行样本项目或验证新项目采用和端到端交付。
+
+v0.3 技术约定、代码规范与格式配置的检查见[本轮记录](../reviews/2026-10-08-architecture-code-standards-check.md)。格式工具的实际案例与其他静态/行为/真实项目检查分别登记，不将格式通过延伸为端到端验收。
 
 下一职责为测试验收，然后研发和运维交付；与架构使用同一 ARC/RULE/AC 和版本化证据推进完整交付。

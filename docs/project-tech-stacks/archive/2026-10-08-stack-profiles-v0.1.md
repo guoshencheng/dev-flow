@@ -1,6 +1,14 @@
-# 各类工程的架构与交付约束
+---
+id: ARC-stack-profiles-v01
+title: 多平台选型历史草案
+status: superseded
+version: 0.1
+owner: architecture
+---
 
-与[技术栈选型](technology-stack.md)配合，只读取当前工程对应小节。下面细化首版候选的职责分离与验证；不把某一项目的 SDK、平台和指标要求套用到其他项目。
+# 各类工程的架构与交付约束（历史草案）
+
+2026-10-08 用户要求将通用技术 Guide 收敛为 React Web、Next.js 全栈与 Astro 纯静态；其他类型暂不建设。本文件移出 Skill，仅保存 v0.2 职责建设时的历史草案，不作为现行选型指令。当前约定见[技术栈](../../../skills/dev-architecture/references/technology-stack.md)。
 
 ## React Web 与全栈 Web
 

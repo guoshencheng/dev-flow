@@ -1,6 +1,6 @@
 # 项目文档预览工程
 
-Vite + React 阅读器，供产品、视觉与研发共用。按项目源路径预览 Markdown、MDX、Mermaid、HTML、PDF、图片、DOCX、XLSX/CSV 和常见文本；完整格式边界、目录及地址协议读取全局 `dev-flow` Skill 的 `references/document-preview.md`，复制到项目后本工程继续独立运行。
+Vite + React 阅读器，供产品、视觉、架构与研发共用，读取本次业务项目的产品、交互原型、设计/UI、技术及相关验收/交付资料。先从项目文档索引确定实际目录，显式用 `--project` 指向该业务项目、`--roots` 指向其文档目录；阅读器所在的工具/Skill 仓库不自动成为文档项目。按项目源路径预览 Markdown、MDX、Mermaid、HTML、PDF、图片、DOCX、XLSX/CSV 和常见文本；完整格式边界、目录及地址协议读取全局 `dev-flow` Skill 的 `references/document-preview.md`，复制到项目后本工程继续独立运行。
 
 ```sh
 npm ci

@@ -1,0 +1,268 @@
+{
+  "date": "2026-10-08",
+  "scope": "Isolated formatter configuration and script validation; no framework lint/typecheck/build or product E2E",
+  "node": "v26.4.0",
+  "npm": "11.17.0",
+  "tool_versions": {
+    "prettier": "3.9.9",
+    "prettier-plugin-astro": "1.1.0"
+  },
+  "assets": {
+    "skills/dev-architecture/assets/code-standards/astro/prettierrc.json": "2ddf0887b076246d2f10f05bb43d375c165404a0d2567e7a04c80a56226191f7",
+    "skills/dev-architecture/assets/code-standards/base/editorconfig.txt": "6d6796f174b736bcd7a68999e30d2f19a3719ad92355dcc0cfdfce8a66864553",
+    "skills/dev-architecture/assets/code-standards/base/prettierignore.txt": "f2f82da7a2d20c559ec470111c0398f7655e068a1331cc65962b7f518bc8fb93",
+    "skills/dev-architecture/assets/code-standards/base/prettierrc.json": "28c5121d64e5462f916a12600d033d3ac830b732a8534b41122cf1d8022784c4",
+    "skills/dev-architecture/assets/code-standards/package-scripts.json": "f2cc1a7a7ce412968ee8086742abd589ce7c85d3d002b1aef6428302bcaf579d"
+  },
+  "profiles": [
+    {
+      "name": "react",
+      "source_before": {
+        "src/Feature.tsx": "import {useState} from \"react\"\nexport function Feature(){const [count,setCount]=useState(0);return <button onClick={()=>setCount(count+1)}>{count}</button>}\n",
+        "src/Other.tsx": "export function Other(){return <p>other</p>}\n"
+      },
+      "source_after": {
+        "src/Feature.tsx": "import { useState } from 'react';\nexport function Feature() {\n  const [count, setCount] = useState(0);\n  return <button onClick={() => setCount(count + 1)}>{count}</button>;\n}\n",
+        "src/Other.tsx": "export function Other() {\n  return <p>other</p>;\n}\n"
+      },
+      "scoped_format_target": "src/Feature.tsx",
+      "other_source_unchanged_by_scoped_format": true,
+      "idempotent": true,
+      "ignored_files_unchanged": true,
+      "commands": [
+        {
+          "command": [
+            "npm",
+            "run",
+            "format:check"
+          ],
+          "exit_code": 1,
+          "stdout": "\n> format:check\n> prettier . --check\n\nChecking formatting...\n",
+          "stderr": "[warn] src/Feature.tsx\n[warn] src/Other.tsx\n[warn] Code style issues found in 2 files. Run Prettier with --write to fix.\n"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format",
+            "--",
+            "src/Feature.tsx"
+          ],
+          "exit_code": 0,
+          "stdout": "\n> format\n> prettier --write src/Feature.tsx\n\nsrc/Feature.tsx 13ms\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format:check"
+          ],
+          "exit_code": 1,
+          "stdout": "\n> format:check\n> prettier . --check\n\nChecking formatting...\n",
+          "stderr": "[warn] src/Other.tsx\n[warn] Code style issues found in the above file. Run Prettier with --write to fix.\n"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format",
+            "--",
+            "."
+          ],
+          "exit_code": 0,
+          "stdout": "\n> format\n> prettier --write .\n\n.prettierrc.json 6ms (unchanged)\npackage.json 0ms (unchanged)\nsrc/Feature.tsx 11ms (unchanged)\nsrc/Other.tsx 1ms\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format:check"
+          ],
+          "exit_code": 0,
+          "stdout": "\n> format:check\n> prettier . --check\n\nChecking formatting...\nAll matched files use Prettier code style!\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format",
+            "--",
+            "."
+          ],
+          "exit_code": 0,
+          "stdout": "\n> format\n> prettier --write .\n\n.prettierrc.json 6ms (unchanged)\npackage.json 0ms (unchanged)\nsrc/Feature.tsx 10ms (unchanged)\nsrc/Other.tsx 1ms (unchanged)\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "next",
+      "source_before": {
+        "app/page.tsx": "export default function Page(){return <main>Hello</main>}\n",
+        "app/api/example/route.ts": "export function GET(){return Response.json({ok:true})}\n"
+      },
+      "source_after": {
+        "app/page.tsx": "export default function Page() {\n  return <main>Hello</main>;\n}\n",
+        "app/api/example/route.ts": "export function GET() {\n  return Response.json({ ok: true });\n}\n"
+      },
+      "scoped_format_target": "app/page.tsx",
+      "other_source_unchanged_by_scoped_format": true,
+      "idempotent": true,
+      "ignored_files_unchanged": true,
+      "commands": [
+        {
+          "command": [
+            "npm",
+            "run",
+            "format:check"
+          ],
+          "exit_code": 1,
+          "stdout": "\n> format:check\n> prettier . --check\n\nChecking formatting...\n",
+          "stderr": "[warn] app/api/example/route.ts\n[warn] app/page.tsx\n[warn] Code style issues found in 2 files. Run Prettier with --write to fix.\n"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format",
+            "--",
+            "app/page.tsx"
+          ],
+          "exit_code": 0,
+          "stdout": "\n> format\n> prettier --write app/page.tsx\n\napp/page.tsx 11ms\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format:check"
+          ],
+          "exit_code": 1,
+          "stdout": "\n> format:check\n> prettier . --check\n\nChecking formatting...\n",
+          "stderr": "[warn] app/api/example/route.ts\n[warn] Code style issues found in the above file. Run Prettier with --write to fix.\n"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format",
+            "--",
+            "."
+          ],
+          "exit_code": 0,
+          "stdout": "\n> format\n> prettier --write .\n\n.prettierrc.json 6ms (unchanged)\napp/api/example/route.ts 9ms\napp/page.tsx 1ms (unchanged)\npackage.json 0ms (unchanged)\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format:check"
+          ],
+          "exit_code": 0,
+          "stdout": "\n> format:check\n> prettier . --check\n\nChecking formatting...\nAll matched files use Prettier code style!\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format",
+            "--",
+            "."
+          ],
+          "exit_code": 0,
+          "stdout": "\n> format\n> prettier --write .\n\n.prettierrc.json 6ms (unchanged)\napp/api/example/route.ts 9ms (unchanged)\napp/page.tsx 1ms (unchanged)\npackage.json 0ms (unchanged)\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "astro",
+      "source_before": {
+        "src/pages/index.astro": "---\nconst title : string = \"Hello\";\n---\n<html lang=\"en\"><head><title>{title}</title></head><body><h1>{title}</h1></body></html>\n",
+        "src/utils/title.ts": "export const title : string = \"Hello\"\n"
+      },
+      "source_after": {
+        "src/pages/index.astro": "---\nconst title: string = 'Hello';\n---\n\n<html lang=\"en\">\n  <head>\n    <title>{title}</title>\n  </head>\n  <body>\n    <h1>{title}</h1>\n  </body>\n</html>\n",
+        "src/utils/title.ts": "export const title: string = 'Hello';\n"
+      },
+      "scoped_format_target": "src/pages/index.astro",
+      "other_source_unchanged_by_scoped_format": true,
+      "idempotent": true,
+      "ignored_files_unchanged": true,
+      "commands": [
+        {
+          "command": [
+            "npm",
+            "run",
+            "format:check"
+          ],
+          "exit_code": 1,
+          "stdout": "\n> format:check\n> prettier . --check\n\nChecking formatting...\n",
+          "stderr": "[warn] src/pages/index.astro\n[warn] src/utils/title.ts\n[warn] Code style issues found in 2 files. Run Prettier with --write to fix.\n"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format",
+            "--",
+            "src/pages/index.astro"
+          ],
+          "exit_code": 0,
+          "stdout": "\n> format\n> prettier --write src/pages/index.astro\n\nsrc/pages/index.astro 8ms\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format:check"
+          ],
+          "exit_code": 1,
+          "stdout": "\n> format:check\n> prettier . --check\n\nChecking formatting...\n",
+          "stderr": "[warn] src/utils/title.ts\n[warn] Code style issues found in the above file. Run Prettier with --write to fix.\n"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format",
+            "--",
+            "."
+          ],
+          "exit_code": 0,
+          "stdout": "\n> format\n> prettier --write .\n\n.prettierrc.json 6ms (unchanged)\npackage.json 0ms (unchanged)\nsrc/pages/index.astro 4ms (unchanged)\nsrc/utils/title.ts 7ms\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format:check"
+          ],
+          "exit_code": 0,
+          "stdout": "\n> format:check\n> prettier . --check\n\nChecking formatting...\nAll matched files use Prettier code style!\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format",
+            "--",
+            "."
+          ],
+          "exit_code": 0,
+          "stdout": "\n> format\n> prettier --write .\n\n.prettierrc.json 6ms (unchanged)\npackage.json 0ms (unchanged)\nsrc/pages/index.astro 4ms (unchanged)\nsrc/utils/title.ts 7ms (unchanged)\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ]
+}

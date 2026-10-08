@@ -1,6 +1,6 @@
 # 视觉资产复用与持续维护
 
-按共同[文档与归档协议](../../dev-flow/references/design-document-contract.md)定位项目当前视觉资产，已有权威目录优先。没有规范时使用 `docs/dev-flow/visual/`，通过产品功能 ID、RULE/AC、原型 PT 和证据关联；项目源码留在项目中。
+按共同[文档与归档协议](../../dev-flow/references/design-document-contract.md)定位本次业务项目的设计/UI 资产，在项目主索引登记视觉入口，并关联产品与技术资料；已有权威目录优先。没有规范时使用 `docs/dev-flow/visual/`，通过产品功能 ID、RULE/AC、原型 PT 和证据关联；项目源码留在项目中。讨论/确认提供该项目设计资料与实际页面的预览，不以通用 Skill 说明替代。
 
 ## 权威资产与关联
 

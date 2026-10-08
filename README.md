@@ -1,6 +1,6 @@
 # dev-flow
 
-以 Codex 为主的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付。当前已有总纲 v0.7、产品/视觉/架构职责配置与 Skills、共享 React 组件和 Vite 文档预览工程。职责配置采用宿主模型策略。工具、专业行为、原生角色派发与真实项目成熟度分别登记；后续逐个建设职责，再验证完整交付并按实际需要形成 Plugin。
+以 Codex 为主的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付。当前已有总纲 v0.8、产品/视觉/架构职责配置与 Skills、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。职责配置采用宿主模型策略。工具、专业行为、原生角色派发与真实项目成熟度分别登记；后续逐个建设职责，再验证完整交付并按实际需要形成 Plugin。
 
 ## 维护入口
 
@@ -11,8 +11,9 @@
 - [产品与交互 Agent](docs/product-agent.md)：职责边界、首版能力与验证状态；[专业 Skill](skills/dev-product/SKILL.md)和[案例证据](evals/dev-product/README.md)。
 - [视觉与界面 Agent](docs/visual-agent.md)：专业方法、共同基础复用、视觉资产与实际检查；[专业 Skill](skills/dev-visual/SKILL.md)。
 - [架构设计与演进 Agent](docs/architecture-agent.md)：整洁架构、项目技术基线、业务域与模块分工、设计契约、代码业务 Review 与研发复盘；[专业 Skill](skills/dev-architecture/SKILL.md)。
-- [项目技术栈调查](docs/project-tech-stacks/2026-10-08-survey.md)：本机现有项目的在用/原型/退役路径与选型依据；[选型指导](skills/dev-architecture/references/technology-stack.md)和[平台约束](skills/dev-architecture/references/stack-profiles.md)按工程形态读取，项目维护自己的技术基线。
-- [产品/视觉文档与归档](skills/dev-flow/references/design-document-contract.md)：当前权威规格、原型、详细规则、归档与来源；[统一 Vite 文档预览](skills/dev-flow/references/document-preview.md)可根据运行信息生成实际文件地址。
+- [技术栈约定](skills/dev-architecture/references/technology-stack.md)：Web React、全栈 Next.js、纯静态 Astro；[历史项目调查](docs/project-tech-stacks/2026-10-08-survey.md)仅保存当时事实与建议，其他类型暂不进入通用技术 Guide。
+- [代码规范 Guide](skills/dev-architecture/references/code-standards.md)：EditorConfig/Prettier、ESLint、TypeScript 与实际依赖规则；随包提供可复制格式配置，项目维护自己的规范和检查入口。
+- [项目文档目录与归档](skills/dev-flow/references/design-document-contract.md)：明确当前业务项目的产品、交互原型、设计/UI、技术及相关验收/交付资料；[索引模板](skills/dev-flow/assets/templates/project-document-index.md)映射现行权威位置；[项目 Vite 预览](skills/dev-flow/references/document-preview.md)生成对应项目成果的实际地址，Skill 维护默认使用源文件链接。
 - [原型与设计稿指南](skills/dev-product/references/html-prototyping.md)：AI 按任务构建页面、新建默认 Vite + React、启动预览与持续讨论；随包示例可选。[参考研究](skills/dev-product/references/reference-research-and-ideation.md)和[C/B 设计指导](skills/dev-product/references/consumer-and-business-design.md)。
 - [UI 技术与共享组件约定](skills/dev-flow/references/ui-stack-and-components.md)：B 端 Ant Design/antd、C 端 Web shadcn/ui、其他 C 端先研究参考；[React 工作区](skills/dev-product/assets/react-workspace/README.md)及[组件清单](skills/dev-product/assets/react-workspace/catalog.md)由本 Git 仓库维护。
 - [组件预览与源码复用](skills/dev-product/references/component-preview-and-reuse.md)：可操作组件目录、完整源码文件集、快速复制到项目和定制后的差异合并；[当前验证记录](evals/dev-product/runs/2026-10-08/component-gallery/report.md)。
@@ -46,7 +47,7 @@ python3 scripts/install_global.py --check
 
 ## 下一项建设
 
-产品 v0.8、视觉 v0.1 和架构 v0.2 已定义专业方法与资产维护，复用共享 UI 基础和文档预览。架构 v0.2 增加按项目形态的技术选型与持续基线；本轮只读调查和检查见[记录](reviews/2026-10-08-architecture-stack-check.md)。历史原型/组件证据保持原版本，范围见[视觉与文档验证](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)。总纲 v0.7 接入架构复盘，v0.6 的确认与自主实施检查保留在[历史协议记录](reviews/2026-10-08-execution-contract-check.md)。下一职责为测试验收，然后研发和运维交付；真实执行依用户确认的基线推进。在可用宿主核验原生派发和实际模型设置，用真实项目验证完整循环及资产复用。
+产品 v0.8、视觉 v0.1 和架构 v0.3 已定义专业方法与资产维护，复用共享 UI 基础和文档预览。架构 v0.3 将技术 Guide 收敛为 React/Next.js/Astro，增加代码规范与开工基线；本轮检查见[记录](reviews/2026-10-08-architecture-code-standards-check.md)。历史原型/组件证据保持原版本，范围见[视觉与文档验证](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)。总纲 v0.8 明确业务项目文档的分类与预览对象，[范围修订记录](reviews/2026-10-08-project-document-scope-check.md)区分规则检查与真实项目验证；v0.7 架构复盘和 v0.6 确认/自主实施协议继续有效。下一职责为测试验收，然后研发和运维交付；真实执行依用户确认的基线推进。在可用宿主核验原生派发和实际模型设置，用真实项目验证完整循环及资产复用。
 
 ## 解除全局接入
 
