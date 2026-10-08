@@ -4,6 +4,8 @@
 
 ## 局部行为与真实浏览器
 
+本方法默认用于可运行实现的界面验证。产品/视觉负责设计文档与原型的方案走查，包括实际操作和恢复状态；测试可读取这些资料设计用例，用户明确指定测试检查原型时按指定范围执行。浏览器/Playwright 是可复用工具，不改变检查的阶段、主责与证据性质。
+
 React 局部规则/组件可用 Vitest + Testing Library，沿用兼容版本与既有配置。优先按角色、可访问名称和标签选择控件，用真实用户事件方式断言结果。DOM 模拟适合多数局部行为，布局、浏览器原生行为和设备交互在真实浏览器核验；需真实组件浏览器能力时采用当前 Vitest Browser Mode 或项目既有方案。[Testing Library 查询](https://testing-library.com/docs/queries/about/)、[Vitest 组件测试](https://vitest.dev/guide/browser/component-testing)
 
 页面测试默认 Playwright，按可见角色/名称/标签定位，列表/弹层有歧义时用实际容器限定。确无语义定位时使用稳定 test ID，避免生成类名、坐标或脆弱 nth 路径。使用可重试的可见性/文本/状态断言等待真实反馈，不用固定 sleep 或扩大超时掩盖失败。[Playwright 方法](https://playwright.dev/docs/best-practices)、[断言](https://playwright.dev/docs/test-assertions)

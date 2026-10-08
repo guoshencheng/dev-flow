@@ -2,11 +2,11 @@
 id: ROLE-dev-acceptance
 title: 测试与验收 Agent
 status: current
-version: 0.1
+version: 0.2
 owner: acceptance
 ---
 
-# 测试与验收 Agent v0.1
+# 测试与验收 Agent v0.2
 
 更新日期：2026-10-08。原生职责 `dev_acceptance`，配置见[dev_acceptance.toml](../agents/dev_acceptance.toml)，专业入口为[dev-acceptance](../skills/dev-acceptance/SKILL.md)。配置不固定模型/强度，实际执行方式与成熟度分别登记。
 
@@ -17,6 +17,8 @@ owner: acceptance
 测试主责用例、测试策略与自动化、执行/证据、缺陷复验和验收结论。研发主责生产修复；产品/视觉/架构分别维护语义、呈现和契约；运维维护启动与实际环境。测试脚本可以维护，重要验收含义变更仅确认受影响部分，不增加人工计划审批。
 
 ## 不同测试验收方案
+
+v0.2 明确阶段与对象：设计文档/原型的流程、规则、交互及恢复走查由产品主责，呈现由视觉主责；测试可读取设计，早期检查用例/覆盖/可测性，实际验收默认面向可运行实现与交付候选。原型可点或使用 Mock/浏览器工具不改变路由。用户明确指定测试检查原型时限定范围、单列证据，不登记实现验收。修订依据与范围见[边界回溯](../reviews/2026-10-08-prototype-review-routing.md)。
 
 | 方案 | 首版要求 |
 | --- | --- |
