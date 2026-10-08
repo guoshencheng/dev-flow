@@ -11,13 +11,14 @@
     "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
+    "dev:gallery": "npm run dev --workspace @dev-flow/component-gallery",
+    "catalog": "node scripts/catalog.mjs",
     "dev:antd": "npm run dev --workspace @dev-flow/antd-lab",
     "dev:web": "npm run dev --workspace @dev-flow/web-lab",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
-    "pack:antd": "npm pack --workspace @dev-flow/ui-antd",
-    "pack:web": "npm pack --workspace @dev-flow/ui-web",
-    "check:packages": "node scripts/check-packages.mjs"
+    "copy:component": "node scripts/copy-component.mjs",
+    "check:source": "node scripts/check-source-copy.mjs"
   },
   "devDependencies": {
     "@tailwindcss/vite": "4.3.3",

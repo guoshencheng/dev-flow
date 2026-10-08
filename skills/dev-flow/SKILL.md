@@ -25,7 +25,7 @@ description: 组织研发、产品交互、视觉、测试验收与交付任务�
 
 已有授权范围内持续推进；需要用户决定的关键问题具体提出，同时完成其他独立工作。新增职责或通用工具的长期建设遵守本次范围。
 
-涉及 UI 工程或组件复用时读取[技术与共享组件约定](references/ui-stack-and-components.md)：新建 Web 原型默认 Vite + React，B 端采用 Ant Design 规范和 antd，C 端 Web 优先 shadcn/ui；其他 C 端先做网上参考研究。按需复用同包 React 组件，记录版本与验证。
+涉及 UI 工程或组件复用时读取[技术与共享组件约定](references/ui-stack-and-components.md)：新建 Web 原型默认 Vite + React，B 端采用 Ant Design 规范和 antd，C 端 Web 优先 shadcn/ui；其他 C 端先做网上参考研究。按需复制或参考同包 React 组件源码，在项目直接维护，记录来源哈希、差异与验证。
 
 ## 项目知识与交接
 

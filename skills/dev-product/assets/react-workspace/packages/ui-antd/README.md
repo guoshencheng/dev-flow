@@ -1,11 +1,11 @@
-# @dev-flow/ui-antd
+# B 端组合源码
 
-B 端 React 组合组件，沿用 Ant Design 规范。基础控件直接从 `antd` 导入，此包只补充有明确用途的组合。版本 0.1.0，尚未发布到包仓库。
+基于 Ant Design 的 React 组合，基础控件直接使用 antd。`@dev-flow/ui-antd` 是内部预览工作区名称；项目复制或参考源码，从本地文件导入并直接维护。
 
-`SelectionSummary` 展示调用方提供的选择数量和范围；数量为零或忙碌时禁用动作。`selectedCount` 是非负整数，`scopeLabel` 必须与实际选择范围一致，跨页选择策略由项目维护。`onClear`、`onConfirm` 接收用户动作；本组件不执行 API、不确认提交结果，也不代替必要的二次确认。
+`SelectionSummary` 展示调用方提供的选择数量与范围。数量为零或 busy 时禁用动作；数量须为非负整数，选择范围保持一致。`onClear`、`onConfirm` 由项目实现，跨页选择、权限、提交确认和异步结果恢复由项目定义。
 
 ```tsx
-import { SelectionSummary } from '@dev-flow/ui-antd'
+import { SelectionSummary } from './components/dev-flow/business/selection-summary'
 
 <SelectionSummary
   selectedCount={selectedKeys.length}
@@ -17,4 +17,4 @@ import { SelectionSummary } from '@dev-flow/ui-antd'
 />
 ```
 
-React、ReactDOM 与 antd 由调用方按 peerDependencies 提供，主题沿用调用方的 ConfigProvider；包构建将它们排除在产物外。当前组件由本仓库组合 antd Flex、Typography 与 Button，没有复制其内部实现。验证与项目采用记录保存在同仓库 React 工作区清单，采用时登记包版本和源码提交。
+在 React 工作区使用 `copy:component -- antd-selection-summary --to /项目/src/components/dev-flow` 复制源码；沿用项目 React、antd 与 ConfigProvider，核验版本与行为。源码直接组合 antd Flex、Typography、Button，采用来源、文件哈希、项目差异和验证记录由项目维护。

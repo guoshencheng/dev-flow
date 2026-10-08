@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {
+      "@dev-flow/ui-antd": ["../../packages/ui-antd/src/index.ts"],
+      "@dev-flow/ui-web": ["../../packages/ui-web/src/index.ts"]
+    },
+    "resolveJsonModule": true
+  },
+  "include": ["src", "vite.config.ts"]
+}

@@ -1,0 +1,187 @@
+[
+  {
+    "schemaVersion": 1,
+    "componentId": "antd-selection-summary",
+    "adoptionMode": "copy-source",
+    "sourceRepository": "dev-flow",
+    "sourceCommit": null,
+    "sourceBaseCommit": "e4e2c4b82f3d2791811747e5de0a7dc4e683ca39",
+    "sourceWorkingTreeModified": true,
+    "copiedAt": "2026-10-08T06:25:48.391Z",
+    "files": [
+      {
+        "source": "packages/ui-antd/src/selection-summary.tsx",
+        "target": "business/selection-summary.tsx",
+        "sourceSha256": "af3bd8a8e88665b4a313ac0b4fc6540bf2f8dacc02f8289955fe168eb2c150a6"
+      }
+    ],
+    "verifiedDependencies": {
+      "react": "19.3.0",
+      "antd": "6.6.5"
+    },
+    "styleDependencies": {},
+    "setup": "沿用项目 React、antd 与 ConfigProvider；复制组合源码后在项目中维护。"
+  },
+  {
+    "schemaVersion": 1,
+    "componentId": "web-action-card",
+    "adoptionMode": "copy-source",
+    "sourceRepository": "dev-flow",
+    "sourceCommit": null,
+    "sourceBaseCommit": "e4e2c4b82f3d2791811747e5de0a7dc4e683ca39",
+    "sourceWorkingTreeModified": true,
+    "copiedAt": "2026-10-08T06:25:48.564Z",
+    "files": [
+      {
+        "source": "packages/ui-web/src/action-card.tsx",
+        "target": "web/action-card.tsx",
+        "sourceSha256": "26e5c78ed48ff3bb60a91760ca2700e18c03e10e8b1fd099007ef37cabc0413f"
+      },
+      {
+        "source": "packages/ui-web/src/components/ui/button.tsx",
+        "target": "web/components/ui/button.tsx",
+        "sourceSha256": "2225154bfac1c4523cac2085ab60ea0959ef6421a671d96a5bbf06ca309443db"
+      },
+      {
+        "source": "packages/ui-web/src/components/ui/card.tsx",
+        "target": "web/components/ui/card.tsx",
+        "sourceSha256": "f6f275e64d5ee78693dcd073c4d4707cd894138ae81d013ac7e7e47cf62a46d2"
+      },
+      {
+        "source": "packages/ui-web/src/lib/utils.ts",
+        "target": "web/lib/utils.ts",
+        "sourceSha256": "e46429536f43f5910f5b2b0c50bb2769b510a4558bb4b5d20a3b0a9091dbf7c3"
+      },
+      {
+        "source": "packages/ui-web/src/styles.css",
+        "target": "web/styles.css",
+        "sourceSha256": "19b3ddd34ecb7e05f1d5f6d626500802cbed2b7146c5b9364d2568c59bad9033"
+      },
+      {
+        "source": "packages/ui-web/LICENSE.shadcn",
+        "target": "web/LICENSE.shadcn",
+        "sourceSha256": "1564074e13439397221ffd522e2e504d56561994a23d371aa5e3ad43e4f5423f"
+      },
+      {
+        "source": "packages/ui-web/THIRD_PARTY_NOTICES.md",
+        "target": "web/THIRD_PARTY_NOTICES.md",
+        "sourceSha256": "06bc2e58e331628bb0cab57497c60c23a0b68ad8c1716adc06989ca230928bee"
+      }
+    ],
+    "verifiedDependencies": {
+      "react": "19.3.0",
+      "class-variance-authority": "0.7.1",
+      "clsx": "2.1.1",
+      "radix-ui": "1.7.0",
+      "tailwind-merge": "3.7.0"
+    },
+    "styleDependencies": {
+      "tailwindcss": "4.3.3",
+      "@tailwindcss/vite": "4.3.3"
+    },
+    "setup": "沿用项目 shadcn/ui 和主题；没有现行 Tailwind 配置时使用 Tailwind v4 的 Vite 插件，将 web/styles.css 作为主题起点。已有主题时合并需要的 Token 与源码扫描，保留项目主题。"
+  },
+  {
+    "schemaVersion": 1,
+    "componentId": "web-button",
+    "adoptionMode": "copy-source",
+    "sourceRepository": "dev-flow",
+    "sourceCommit": null,
+    "sourceBaseCommit": "e4e2c4b82f3d2791811747e5de0a7dc4e683ca39",
+    "sourceWorkingTreeModified": true,
+    "copiedAt": "2026-10-08T06:25:48.482Z",
+    "files": [
+      {
+        "source": "packages/ui-web/src/components/ui/button.tsx",
+        "target": "web/components/ui/button.tsx",
+        "sourceSha256": "2225154bfac1c4523cac2085ab60ea0959ef6421a671d96a5bbf06ca309443db"
+      },
+      {
+        "source": "packages/ui-web/src/lib/utils.ts",
+        "target": "web/lib/utils.ts",
+        "sourceSha256": "e46429536f43f5910f5b2b0c50bb2769b510a4558bb4b5d20a3b0a9091dbf7c3"
+      },
+      {
+        "source": "packages/ui-web/src/styles.css",
+        "target": "web/styles.css",
+        "sourceSha256": "19b3ddd34ecb7e05f1d5f6d626500802cbed2b7146c5b9364d2568c59bad9033"
+      },
+      {
+        "source": "packages/ui-web/LICENSE.shadcn",
+        "target": "web/LICENSE.shadcn",
+        "sourceSha256": "1564074e13439397221ffd522e2e504d56561994a23d371aa5e3ad43e4f5423f"
+      },
+      {
+        "source": "packages/ui-web/THIRD_PARTY_NOTICES.md",
+        "target": "web/THIRD_PARTY_NOTICES.md",
+        "sourceSha256": "06bc2e58e331628bb0cab57497c60c23a0b68ad8c1716adc06989ca230928bee"
+      }
+    ],
+    "verifiedDependencies": {
+      "react": "19.3.0",
+      "class-variance-authority": "0.7.1",
+      "clsx": "2.1.1",
+      "radix-ui": "1.7.0",
+      "tailwind-merge": "3.7.0"
+    },
+    "styleDependencies": {
+      "tailwindcss": "4.3.3",
+      "@tailwindcss/vite": "4.3.3"
+    },
+    "setup": "沿用项目 shadcn/ui 和主题；没有现行 Tailwind 配置时使用 Tailwind v4 的 Vite 插件，将 web/styles.css 作为主题起点。已有主题时合并需要的 Token 与源码扫描，保留项目主题。"
+  },
+  {
+    "schemaVersion": 1,
+    "componentId": "web-card",
+    "adoptionMode": "copy-source",
+    "sourceRepository": "dev-flow",
+    "sourceCommit": null,
+    "sourceBaseCommit": "e4e2c4b82f3d2791811747e5de0a7dc4e683ca39",
+    "sourceWorkingTreeModified": true,
+    "copiedAt": "2026-10-08T06:25:48.523Z",
+    "files": [
+      {
+        "source": "packages/ui-web/src/components/ui/button.tsx",
+        "target": "web/components/ui/button.tsx",
+        "sourceSha256": "2225154bfac1c4523cac2085ab60ea0959ef6421a671d96a5bbf06ca309443db"
+      },
+      {
+        "source": "packages/ui-web/src/components/ui/card.tsx",
+        "target": "web/components/ui/card.tsx",
+        "sourceSha256": "f6f275e64d5ee78693dcd073c4d4707cd894138ae81d013ac7e7e47cf62a46d2"
+      },
+      {
+        "source": "packages/ui-web/src/lib/utils.ts",
+        "target": "web/lib/utils.ts",
+        "sourceSha256": "e46429536f43f5910f5b2b0c50bb2769b510a4558bb4b5d20a3b0a9091dbf7c3"
+      },
+      {
+        "source": "packages/ui-web/src/styles.css",
+        "target": "web/styles.css",
+        "sourceSha256": "19b3ddd34ecb7e05f1d5f6d626500802cbed2b7146c5b9364d2568c59bad9033"
+      },
+      {
+        "source": "packages/ui-web/LICENSE.shadcn",
+        "target": "web/LICENSE.shadcn",
+        "sourceSha256": "1564074e13439397221ffd522e2e504d56561994a23d371aa5e3ad43e4f5423f"
+      },
+      {
+        "source": "packages/ui-web/THIRD_PARTY_NOTICES.md",
+        "target": "web/THIRD_PARTY_NOTICES.md",
+        "sourceSha256": "06bc2e58e331628bb0cab57497c60c23a0b68ad8c1716adc06989ca230928bee"
+      }
+    ],
+    "verifiedDependencies": {
+      "react": "19.3.0",
+      "class-variance-authority": "0.7.1",
+      "clsx": "2.1.1",
+      "radix-ui": "1.7.0",
+      "tailwind-merge": "3.7.0"
+    },
+    "styleDependencies": {
+      "tailwindcss": "4.3.3",
+      "@tailwindcss/vite": "4.3.3"
+    },
+    "setup": "沿用项目 shadcn/ui 和主题；没有现行 Tailwind 配置时使用 Tailwind v4 的 Vite 插件，将 web/styles.css 作为主题起点。已有主题时合并需要的 Token 与源码扫描，保留项目主题。"
+  }
+]

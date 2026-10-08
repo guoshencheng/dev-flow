@@ -1,0 +1,8 @@
+{
+  "name": "@dev-flow/component-gallery",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": { "@dev-flow/ui-antd": "0.1.0", "@dev-flow/ui-web": "0.1.0", "antd": "6.6.5", "react": "19.3.0", "react-dom": "19.3.0" },
+  "scripts": { "dev": "vite --host 127.0.0.1", "typecheck": "tsc --noEmit", "build": "vite build", "preview": "vite preview --host 127.0.0.1" }
+}

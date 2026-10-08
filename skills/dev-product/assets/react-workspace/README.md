@@ -1,73 +1,72 @@
-# React 原型与共享组件工作区
+# React 原型与共享源码工作区
 
-版本 0.1.0。此目录与 `dev-product` Skill 一起在 Git 中维护，可经全局 Skill 链接发现。Vite + React + TypeScript 提供开发与构建；两个示例用于核验组件行为，任务原型仍按实际需求生成。
+此目录与 `dev-product` Skill 在同一 Git 仓库维护。Vite + React + TypeScript 提供预览与检查；共享组件按源码复制或参考实现进入项目，由项目直接迭代。
 
 ## 目录与边界
 
 | 目录 | 用途 |
 | --- | --- |
-| `packages/ui-antd` | B 端基于 antd 的组合与扩展；基础控件仍直接使用 antd |
-| `packages/ui-web` | C 端 Web 的 shadcn/ui 源码组件、主题与组合 |
-| `apps/antd-lab` | Table 与 SelectionSummary 的选择范围、清空和确认示例 |
-| `apps/web-lab` | ActionCard 的行动、处理中、完成与重置示例 |
+| `packages/ui-antd/src` | B 端基于 antd 的组合源码；基础控件直接使用 antd |
+| `packages/ui-web/src` | C 端 Web 的 shadcn/ui 源码、主题起点与组合 |
+| `apps/antd-lab`、`apps/web-lab` | 两套设计体系的独立行为示例 |
+| `apps/component-gallery` | B/C 独立预览入口，搜索、状态、使用示例、源码文件集和候选记录 |
+| `catalog.json`、`scripts/catalog.mjs` | 源码索引、依赖文件闭包、用途与查询 |
+| `scripts/copy-component.mjs` | 将源码、所需工具文件、样式与许可复制到指定项目，登记来源哈希 |
 
-项目特有业务留在项目中，组件不内置 API、权限或部署环境。两套样式分别使用，`ui-web` 的 Tailwind 基础样式应在对应 C 端 Web 应用中加载，避免全局进入 antd 应用。完整契约和验证状态见[组件清单](catalog.md)。
+`packages/` 和内部工作区名称用于本仓库组织与预览热更新；目标项目导入自己的本地源码。项目业务、权限、接口和文案由项目定义。两套设计体系分别运行，C 端样式按项目现有主题接入。契约与验证见[组件清单](catalog.md)。
 
-## 开发与检查
+## 预览与查询
 
-使用满足 `package.json` engines 的 Node.js。首次在本目录执行 `npm ci`，复现采用锁文件中的依赖。经全局入口可执行：
+使用满足 package.json engines 的 Node.js：
 
 ```sh
 cd "$HOME/.agents/skills/dev-product/assets/react-workspace"
 npm ci
-npm run dev:antd
+npm run dev:gallery
 ```
 
-需要明确指定端口时直接调用工作区：
+打开实际输出地址：`/index.html` 是 B 端，`/web.html` 是 C 端 Web；可分享带组件 ID 和状态的实际 URL。可以查看使用示例或源码文件，复制当前代码或完整源码文件集 JSON，加入候选并复制、下载选择记录。候选在当前浏览器会话中跨入口保留。
 
 ```sh
-npm run dev --workspace @dev-flow/antd-lab -- --port 5173
-npm run dev --workspace @dev-flow/web-lab -- --port 5174
+npm run dev --workspace @dev-flow/component-gallery -- --port 5177
+npm run --silent catalog
+npm run --silent catalog -- antd-selection-summary
 ```
 
-两条开发命令分别保持运行，打开实际输出地址；修改源码热更新，Ctrl+C 停止。可以用 `npm run dev:antd` 或 `npm run dev:web` 使用默认端口，端口占用时以 Vite 实际输出为准。
+按 ID 查询返回用途、依赖清单、源码内容、使用示例、来源提交与各文件 SHA-256。使用示例已经改为本地相对导入，基准位置为 `src/Example.tsx` 和 `src/components/dev-flow/`，其他目录调整相对路径。源码有未提交修改时记录基准提交、修改状态与实际文件哈希，允许立即采用当前源码。
+
+## 复制到项目并直接迭代
+
+先读取目标项目现有组件、依赖和主题。按需直接复制，或参考源码在项目现有组件中实现。快速复制命令：
+
+```sh
+npm run --silent copy:component -- antd-selection-summary --to /目标项目/src/components/dev-flow
+npm run --silent copy:component -- web-action-card --to /目标项目/src/components/dev-flow
+```
+
+工具复制必要组件与支持文件，保留目录内相对导入；生成 `.component-sources/<ID>.json`，包含来源、文件哈希与验证过的基础依赖。相同内容可重复使用；发现不同内容的目标文件时先停止，保留项目修改，由 Agent 比较后合并。工具不修改项目 package.json、入口或主题，输出的依赖版本是已验证组合，接入时核对项目现有版本、只补缺失依赖。
+
+```tsx
+// B 端：基础组件继续使用 antd，组合从本项目导入。
+import { Table } from 'antd'
+import { SelectionSummary } from './components/dev-flow/business/selection-summary'
+
+// C 端 Web：组件从本项目导入，接入本项目的 shadcn/Tailwind 主题。
+import { ActionCard } from './components/dev-flow/web/action-card'
+```
+
+C 端 Web 已有 Button、Card、cn 或主题时优先复用现有实现，按需要复制组合并调整导入；完整复制适用于独立起点。随包 styles.css 是 Tailwind v4 源码主题示例，需使用对应 Vite 插件编译；已有主题时合并所需 Tokens 和类扫描，保留项目主题。许可与来源文件一并留存。
+
+复制后在项目直接修改、构建和交付。共享仓库后续改动由 Agent 比较来源与项目差异，按任务需要合并；项目验证过的通用改进可以回收到共享源码。具体流程见[组件预览与复用指南](../../references/component-preview-and-reuse.md)。
+
+## 检查与持续维护
 
 ```sh
 npm run typecheck
 npm run build
-npm run check:packages
+npm run check:source
 ```
 
-构建同时生成组件包与两个示例的静态产物。`vite preview` 用于本机检查构建产物，不代表已上线。源码示例使用工作区别名实现热更新；对外安装使用 `dist` 和声明文件，需分别核验。
+类型与构建检查覆盖本工作区。`check:source` 在系统临时目录创建独立 React/Vite 工程，复制四类源码，直接导入本地文件并检查严格类型与 B/C 构建；同时验证重复复制、冲突前核验、保留项目修改，以及项目副本迭代不改变来源。临时工程只安装公开基础依赖，运行不依赖 Skill 工作区或自有组件包；安装检查需要访问依赖源。浏览器验证仍需检查实际入口和操作。
 
-`check:packages` 重建并打包两个组件包，在系统临时目录生成独立 React/Vite 工程，分别接入 B/C 两个入口，安装真实包后执行调用方的严格类型检查与构建，并用错误类型用例核验公开声明没有退化为 any。与 Vite 模板一致使用 `skipLibCheck`，不将依赖声明的内部一致性列为通过项。检查需要访问依赖源，失败时保留实际错误，成功时输出临时目录；测试入口仅核验分发，不是任务原型。浏览器操作仍在各示例或实际项目中检查。
-
-## 在其他项目中共享
-
-先在本目录运行构建，再打包：
-
-```sh
-npm run build
-npm run pack:antd
-npm run pack:web
-```
-
-命令输出两个 `.tgz` 的实际路径。在目标 React 项目中用其包管理器安装需要的文件。B 端安装匹配 peerDependencies 的 antd；C 端 Web 导入 `@dev-flow/ui-web/styles.css`。仅 C 端包使用 CSS 基础样式；已有主题时检查与项目全局样式的影响。React/ReactDOM 为 peerDependencies，沿用调用方版本。
-
-```tsx
-// B 端：基础控件继续从 antd 导入。
-import { Table } from 'antd'
-import { SelectionSummary } from '@dev-flow/ui-antd'
-
-// C 端 Web：在对应应用入口加载组件样式。
-import '@dev-flow/ui-web/styles.css'
-import { ActionCard, Button } from '@dev-flow/ui-web'
-```
-
-组件包尚未发布到 npm，不能把包名当成已有公共包直接安装。项目记录包版本、源码 Git 提交、接入方式和已验证场景；锁定依赖，后续升级定向复验。源码复制适用于需要项目独立维护的 shadcn 组件，保留来源、许可与修改记录。仓库目前为本地 Git；设置远程后团队可按同一提交获取、构建与打包。
-
-## 继续建设
-
-按[共同组件约定](../../../dev-flow/references/ui-stack-and-components.md)维护组件契约、来源、例外、采用项目与验证。变更公共 Props 或状态含义时更新版本、清单和迁移说明，再检查受影响示例和采用项目。新增项目优先读取清单，按任务需要采用；不一次生成完整组件体系。
-
-shadcn 底层组件来源及许可见 `packages/ui-web/THIRD_PARTY_NOTICES.md`。当前配置与依赖在锁文件固定；升级时读取当前官方文档并核验行为，不把本次测试版本固化为所有未来项目的要求。
+内部构建目录只用于本仓库检查；`vite preview` 是本机产物检查。项目采用登记来源文件、提交或哈希、用途、差异与实际证据；当前没有真实项目采用或远程 Git 同步证据。通用组件变更更新契约、索引、可运行示例及受影响检查，按需要回收真实项目经验。

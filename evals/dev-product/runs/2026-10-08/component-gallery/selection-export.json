@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 2,
+  "status": "candidate",
+  "sourceRepository": "dev-flow",
+  "sourceCommit": null,
+  "components": [
+    {
+      "id": "web-action-card",
+      "name": "ActionCard",
+      "platform": "consumer-web",
+      "adoptionMode": "copy-source",
+      "library": "shadcn/ui",
+      "files": [
+        {
+          "source": "packages/ui-web/src/action-card.tsx",
+          "target": "web/action-card.tsx"
+        },
+        {
+          "source": "packages/ui-web/src/components/ui/button.tsx",
+          "target": "web/components/ui/button.tsx"
+        },
+        {
+          "source": "packages/ui-web/src/components/ui/card.tsx",
+          "target": "web/components/ui/card.tsx"
+        },
+        {
+          "source": "packages/ui-web/src/lib/utils.ts",
+          "target": "web/lib/utils.ts"
+        },
+        {
+          "source": "packages/ui-web/src/styles.css",
+          "target": "web/styles.css"
+        },
+        {
+          "source": "packages/ui-web/LICENSE.shadcn",
+          "target": "web/LICENSE.shadcn"
+        },
+        {
+          "source": "packages/ui-web/THIRD_PARTY_NOTICES.md",
+          "target": "web/THIRD_PARTY_NOTICES.md"
+        }
+      ],
+      "source": "packages/ui-web/src/action-card.tsx",
+      "example": "apps/component-gallery/src/examples/action-card.tsx",
+      "previewScenario": "idle"
+    }
+  ]
+}

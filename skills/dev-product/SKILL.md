@@ -17,7 +17,7 @@ description: 产品与交互设计：确定用户流程、页面语义、交互�
 
 需要分析用户类型与工作方式时，读取[C/B 端设计指导](references/consumer-and-business-design.md)，按任务、频率、熟练度、数据与权限选择模式。寻找参考或探索重要取舍时，读取[参考研究与方案创造](references/reference-research-and-ideation.md)，建立有来源与适用边界的候选，不把截图推断当成实际行为。
 
-涉及 UI 工程时读取共同[技术与共享组件约定](../dev-flow/references/ui-stack-and-components.md)：新建 Web 原型默认 Vite + React，B 端按 Ant Design 规范优先使用 antd，C 端 Web 优先 shadcn/ui；其他 C 端应用先浏览参考再设计和研发。组件复用与建设读取随包[React 工作区](assets/react-workspace/README.md)和组件清单，通用源码与来源在 Git 中维护，项目保留采用版本。
+涉及 UI 工程时读取共同[技术与共享组件约定](../dev-flow/references/ui-stack-and-components.md)：新建 Web 原型默认 Vite + React，B 端按 Ant Design 规范优先使用 antd，C 端 Web 优先 shadcn/ui；其他 C 端应用先浏览参考再设计和研发。组件复用与建设读取随包[React 工作区](assets/react-workspace/README.md)和组件清单；需要直观选择或快速接入时读取[组件预览与复用指南](references/component-preview-and-reuse.md)，启动目录或按组件 ID 查询真实示例。共享组件默认复制或参考源码进入项目，由项目直接迭代；通用源码与来源在 Git 中维护，记录来源哈希、项目差异与验证，通用改进按需回收。
 
 ## 按需要形成交互契约
 

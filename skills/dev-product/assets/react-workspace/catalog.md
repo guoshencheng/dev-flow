@@ -1,6 +1,6 @@
 # 共享组件清单
 
-版本 0.1.0。源码与此清单一起由 Git 管理。当前组件为隔离示例起点，尚无真实项目采用记录。
+源码与此清单一起由 Git 管理，默认复制或参考到项目、本地维护。当前组件为隔离示例起点，尚无真实项目采用记录。
 
 | 组件 | 契约与适用条件 | 来源与示例 |
 | --- | --- | --- |
@@ -8,8 +8,14 @@
 | `ui-web/ActionCard` | `title`、`description`、`actionLabel`、`onAction` 形成单一行动；`pending` 或 `disabled` 阻止操作。调用方负责状态、结果与必要恢复。适合简单主行动，不负责复杂表单、支付或多个竞争行动 | 组合 shadcn/ui Card 与 Button；`apps/web-lab` 展示模拟处理、完成与重置 |
 | `ui-web/Button`、`Card` 系列 | shadcn/ui 基础源码组件与公开属性；按对应上游用途采用，业务规则由调用方维护 | 来源与采用方式见 `packages/ui-web/THIRD_PARTY_NOTICES.md` |
 
+## 预览与快速引用
+
+运行 `npm run dev:gallery` 查看 B/C 两个入口中的四类组件；支持搜索、状态预览、本地导入的使用示例、完整源码文件集与候选 JSON。机器可读索引为 [catalog.json](catalog.json)，Agent 使用 `npm run --silent catalog -- <组件 ID>` 查询源码、依赖与 Git/文件哈希来源。操作和接入规则见[指南](../../references/component-preview-and-reuse.md)。项目已有明确选择时直接接入。
+
 ## 验证与采用
 
 截至 2026-10-08 已完成：所有工作区类型检查与构建；两个示例的浏览器渲染与实际操作；打包后的组件在独立 React/Vite 工程中安装、公开类型约束与 B/C 双入口构建核验。证据、复现方式与范围见[验证记录](../../../../evals/dev-product/runs/2026-10-07/react-kit/report.md)。依赖内部声明使用 Vite 模板的 skipLibCheck 设置，不登记为全量依赖类型检查通过。
 
-实际项目采用后增加项目与版本、使用场景、差异与例外、对应证据；没有实际采用时保留“无项目验证”。版本或行为改变后，标记受影响证据待复验。
+当前目录与独立源码副本检查见[验证记录](../../../../evals/dev-product/runs/2026-10-08/component-gallery/report.md)。此前打包接入属于历史验证方式，当前采用流程以源码复制为准。
+
+实际项目采用后增加项目与来源提交或哈希、使用场景、差异与例外、对应证据；没有实际采用时保留“无项目验证”。版本或行为改变后，标记受影响证据待复验。

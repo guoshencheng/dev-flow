@@ -1,0 +1,27 @@
+{
+  "result": "passed",
+  "directory": "/var/folders/48/cj4jq0s54xdd9c314rgcsv180000gn/T/dev-flow-source-check-7gNMyK",
+  "adoptionMode": "copy-source",
+  "copiedComponents": [
+    "antd-selection-summary",
+    "web-action-card",
+    "web-button",
+    "web-card"
+  ],
+  "checks": [
+    "独立源码导入与严格类型构建",
+    "共享依赖文件重复复制",
+    "保留项目修改",
+    "冲突前完整核验",
+    "副本迭代不改变来源"
+  ],
+  "runtimeDependencies": [
+    "react",
+    "react-dom",
+    "antd",
+    "class-variance-authority",
+    "clsx",
+    "radix-ui",
+    "tailwind-merge"
+  ]
+}

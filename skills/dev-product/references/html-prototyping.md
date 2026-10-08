@@ -18,7 +18,7 @@
 | --- | --- |
 | 已有运行中的项目 | 优先使用现有组件、Tokens、路由和开发服务；在允许范围内增加隔离的原型路由或 Storybook 场景 |
 | 新建 B 端原型 | Vite React 工程，使用 antd 的布局、表单、表格、反馈等组件，按需采用 `ui-antd` 的组合 |
-| 新建 C 端 Web 原型 | Vite React 工程，基于 shadcn/ui，按需采用 `ui-web` 源码组件或打包版本 |
+| 新建 C 端 Web 原型 | Vite React 工程，基于 shadcn/ui，按需复制或参考 `ui-web` 源码组件 |
 | 其他 C 端应用 | 先研究网上参考与目标平台规范；Web 原型可用 Vite 表达流程，实际平台行为还需在对应环境检查 |
 | 需要远程评审 | 根据已授权的目标形成预览部署，报告访问方式、版本及模拟范围；本机地址不能作为远程访问入口 |
 
@@ -35,7 +35,7 @@ npm install
 npm run dev -- --host 127.0.0.1 --port 5173
 ```
 
-AI 将默认欢迎页替换成本次实际页面。B 端安装 antd 并直接导入需要的组件；主题通过 ConfigProvider 与 Tokens 管理。C 端 Web 根据[官方 Vite 接入说明](https://ui.shadcn.com/docs/installation/vite)配置 Tailwind 与别名后执行 shadcn 初始化、添加所需组件；也可使用 shadcn CLI 的 Vite 模板。使用已有共享组件时按[工作区接入说明](../assets/react-workspace/README.md)记录来源和版本。命令依据当前[Vite 官方指南](https://vite.dev/guide/)核验；初始化使用当前工具，项目提交锁文件保持复现。
+AI 将默认欢迎页替换成本次实际页面。B 端安装 antd 并直接导入需要的组件；主题通过 ConfigProvider 与 Tokens 管理。C 端 Web 根据[官方 Vite 接入说明](https://ui.shadcn.com/docs/installation/vite)配置 Tailwind 与别名后执行 shadcn 初始化、添加所需组件；也可使用 shadcn CLI 的 Vite 模板。使用已有共享组件时按[工作区接入说明](../assets/react-workspace/README.md)复制或参考源码、记录来源哈希和项目差异。命令依据当前[Vite 官方指南](https://vite.dev/guide/)核验；初始化使用当前工具，项目提交锁文件保持复现。
 
 打开服务实际输出地址；修改源码通过 Vite 热更新，Ctrl+C 停止。端口冲突时换用空闲端口或读取 Vite 自动选择的端口，报告实际地址，保留其他任务的服务。检查构建与必要场景，不将欢迎页或组件展示页当成当前需求原型。
 

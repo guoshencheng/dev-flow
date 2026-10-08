@@ -1,0 +1,318 @@
+{
+  "schemaVersion": 2,
+  "components": [
+    {
+      "id": "antd-selection-summary",
+      "name": "SelectionSummary",
+      "title": "所选项操作栏",
+      "platform": "business",
+      "source": "packages/ui-antd/src/selection-summary.tsx",
+      "kind": "组合组件",
+      "summary": "说明所选数量与范围，并提供清空、确认动作。",
+      "useWhen": "表格或列表需要对所选项执行操作。",
+      "boundary": "项目维护选择范围、权限、二次确认、提交与结果恢复；数量须为非负整数。",
+      "keywords": [
+        "B端",
+        "antd",
+        "table",
+        "批量",
+        "选择",
+        "操作栏"
+      ],
+      "scenarios": [
+        {
+          "id": "empty",
+          "label": "未选择"
+        },
+        {
+          "id": "selected",
+          "label": "已选择两项"
+        },
+        {
+          "id": "busy",
+          "label": "处理中"
+        }
+      ],
+      "example": "apps/component-gallery/src/examples/selection-summary.tsx",
+      "evidence": "evals/dev-product/runs/2026-10-07/react-kit/report.md",
+      "maturity": "隔离示例已验证；尚无真实项目采用",
+      "adoptionMode": "copy-source",
+      "library": "Ant Design",
+      "files": [
+        {
+          "source": "packages/ui-antd/src/selection-summary.tsx",
+          "target": "business/selection-summary.tsx"
+        }
+      ],
+      "verifiedDependencies": {
+        "react": "19.3.0",
+        "antd": "6.6.5"
+      },
+      "usageReplacements": [
+        [
+          "from '@dev-flow/ui-antd'",
+          "from './components/dev-flow/business/selection-summary'"
+        ]
+      ],
+      "setup": "沿用项目 React、antd 与 ConfigProvider；复制组合源码后在项目中维护。"
+    },
+    {
+      "id": "web-action-card",
+      "name": "ActionCard",
+      "title": "单一行动卡片",
+      "platform": "consumer-web",
+      "source": "packages/ui-web/src/action-card.tsx",
+      "kind": "组合组件",
+      "summary": "围绕一个主要行动，呈现说明、等待和禁用状态。",
+      "useWhen": "用户需要理解一个选项，并执行单一主要行动。",
+      "boundary": "项目维护请求、失败恢复和业务文案；复杂表单、多步交易需要其他流程。",
+      "keywords": [
+        "C端",
+        "web",
+        "shadcn",
+        "卡片",
+        "行动",
+        "保存"
+      ],
+      "scenarios": [
+        {
+          "id": "idle",
+          "label": "可操作"
+        },
+        {
+          "id": "pending",
+          "label": "处理中"
+        },
+        {
+          "id": "complete",
+          "label": "已完成"
+        }
+      ],
+      "example": "apps/component-gallery/src/examples/action-card.tsx",
+      "evidence": "evals/dev-product/runs/2026-10-07/react-kit/report.md",
+      "maturity": "隔离预览已验证；尚无真实项目采用",
+      "adoptionMode": "copy-source",
+      "library": "shadcn/ui",
+      "files": [
+        {
+          "source": "packages/ui-web/src/action-card.tsx",
+          "target": "web/action-card.tsx"
+        },
+        {
+          "source": "packages/ui-web/src/components/ui/button.tsx",
+          "target": "web/components/ui/button.tsx"
+        },
+        {
+          "source": "packages/ui-web/src/components/ui/card.tsx",
+          "target": "web/components/ui/card.tsx"
+        },
+        {
+          "source": "packages/ui-web/src/lib/utils.ts",
+          "target": "web/lib/utils.ts"
+        },
+        {
+          "source": "packages/ui-web/src/styles.css",
+          "target": "web/styles.css"
+        },
+        {
+          "source": "packages/ui-web/LICENSE.shadcn",
+          "target": "web/LICENSE.shadcn"
+        },
+        {
+          "source": "packages/ui-web/THIRD_PARTY_NOTICES.md",
+          "target": "web/THIRD_PARTY_NOTICES.md"
+        }
+      ],
+      "verifiedDependencies": {
+        "react": "19.3.0",
+        "class-variance-authority": "0.7.1",
+        "clsx": "2.1.1",
+        "radix-ui": "1.7.0",
+        "tailwind-merge": "3.7.0"
+      },
+      "styleDependencies": {
+        "tailwindcss": "4.3.3",
+        "@tailwindcss/vite": "4.3.3"
+      },
+      "setup": "沿用项目 shadcn/ui 和主题；没有现行 Tailwind 配置时使用 Tailwind v4 的 Vite 插件，将 web/styles.css 作为主题起点。已有主题时合并需要的 Token 与源码扫描，保留项目主题。",
+      "usageReplacements": [
+        [
+          "import '@dev-flow/ui-web/styles.css'",
+          "import './components/dev-flow/web/styles.css'"
+        ],
+        [
+          "import { ActionCard, Button } from '@dev-flow/ui-web'",
+          "import { ActionCard } from './components/dev-flow/web/action-card'\nimport { Button } from './components/dev-flow/web/components/ui/button'"
+        ]
+      ]
+    },
+    {
+      "id": "web-button",
+      "name": "Button",
+      "title": "行动按钮",
+      "platform": "consumer-web",
+      "source": "packages/ui-web/src/components/ui/button.tsx",
+      "kind": "shadcn/ui 基础组件",
+      "summary": "使用现有按钮样式、尺寸和原生交互属性。",
+      "useWhen": "C 端 Web 的主要、次要或轻量行动。",
+      "boundary": "采用已有 variant；项目负责动作和状态。B 端直接使用 antd Button。",
+      "keywords": [
+        "C端",
+        "web",
+        "shadcn",
+        "按钮",
+        "基础",
+        "禁用"
+      ],
+      "scenarios": [
+        {
+          "id": "default",
+          "label": "主要行动"
+        },
+        {
+          "id": "outline",
+          "label": "描边"
+        },
+        {
+          "id": "secondary",
+          "label": "次要行动"
+        },
+        {
+          "id": "disabled",
+          "label": "禁用"
+        }
+      ],
+      "example": "apps/component-gallery/src/examples/button.tsx",
+      "evidence": "evals/dev-product/runs/2026-10-07/react-kit/report.md",
+      "maturity": "隔离预览已验证；尚无真实项目采用",
+      "adoptionMode": "copy-source",
+      "library": "shadcn/ui",
+      "files": [
+        {
+          "source": "packages/ui-web/src/components/ui/button.tsx",
+          "target": "web/components/ui/button.tsx"
+        },
+        {
+          "source": "packages/ui-web/src/lib/utils.ts",
+          "target": "web/lib/utils.ts"
+        },
+        {
+          "source": "packages/ui-web/src/styles.css",
+          "target": "web/styles.css"
+        },
+        {
+          "source": "packages/ui-web/LICENSE.shadcn",
+          "target": "web/LICENSE.shadcn"
+        },
+        {
+          "source": "packages/ui-web/THIRD_PARTY_NOTICES.md",
+          "target": "web/THIRD_PARTY_NOTICES.md"
+        }
+      ],
+      "verifiedDependencies": {
+        "react": "19.3.0",
+        "class-variance-authority": "0.7.1",
+        "clsx": "2.1.1",
+        "radix-ui": "1.7.0",
+        "tailwind-merge": "3.7.0"
+      },
+      "styleDependencies": {
+        "tailwindcss": "4.3.3",
+        "@tailwindcss/vite": "4.3.3"
+      },
+      "setup": "沿用项目 shadcn/ui 和主题；没有现行 Tailwind 配置时使用 Tailwind v4 的 Vite 插件，将 web/styles.css 作为主题起点。已有主题时合并需要的 Token 与源码扫描，保留项目主题。",
+      "usageReplacements": [
+        [
+          "import '@dev-flow/ui-web/styles.css'",
+          "import './components/dev-flow/web/styles.css'"
+        ],
+        [
+          "import { Button } from '@dev-flow/ui-web'",
+          "import { Button } from './components/dev-flow/web/components/ui/button'"
+        ]
+      ]
+    },
+    {
+      "id": "web-card",
+      "name": "Card",
+      "title": "信息卡片",
+      "platform": "consumer-web",
+      "source": "packages/ui-web/src/components/ui/card.tsx",
+      "kind": "shadcn/ui 基础组件",
+      "summary": "通过 Header、Content、Footer 等公开组件组合信息。",
+      "useWhen": "同一主题的信息需要聚合展示。",
+      "boundary": "卡片容器不自动可点击；需要操作时提供有名称的按钮或链接。B 端直接使用 antd Card。",
+      "keywords": [
+        "C端",
+        "web",
+        "shadcn",
+        "卡片",
+        "内容",
+        "基础"
+      ],
+      "scenarios": [
+        {
+          "id": "simple",
+          "label": "信息展示"
+        },
+        {
+          "id": "with-action",
+          "label": "附带操作"
+        }
+      ],
+      "example": "apps/component-gallery/src/examples/card.tsx",
+      "evidence": "evals/dev-product/runs/2026-10-07/react-kit/report.md",
+      "maturity": "隔离预览已验证；尚无真实项目采用",
+      "adoptionMode": "copy-source",
+      "library": "shadcn/ui",
+      "files": [
+        {
+          "source": "packages/ui-web/src/components/ui/button.tsx",
+          "target": "web/components/ui/button.tsx"
+        },
+        {
+          "source": "packages/ui-web/src/components/ui/card.tsx",
+          "target": "web/components/ui/card.tsx"
+        },
+        {
+          "source": "packages/ui-web/src/lib/utils.ts",
+          "target": "web/lib/utils.ts"
+        },
+        {
+          "source": "packages/ui-web/src/styles.css",
+          "target": "web/styles.css"
+        },
+        {
+          "source": "packages/ui-web/LICENSE.shadcn",
+          "target": "web/LICENSE.shadcn"
+        },
+        {
+          "source": "packages/ui-web/THIRD_PARTY_NOTICES.md",
+          "target": "web/THIRD_PARTY_NOTICES.md"
+        }
+      ],
+      "verifiedDependencies": {
+        "react": "19.3.0",
+        "class-variance-authority": "0.7.1",
+        "clsx": "2.1.1",
+        "radix-ui": "1.7.0",
+        "tailwind-merge": "3.7.0"
+      },
+      "styleDependencies": {
+        "tailwindcss": "4.3.3",
+        "@tailwindcss/vite": "4.3.3"
+      },
+      "setup": "沿用项目 shadcn/ui 和主题；没有现行 Tailwind 配置时使用 Tailwind v4 的 Vite 插件，将 web/styles.css 作为主题起点。已有主题时合并需要的 Token 与源码扫描，保留项目主题。",
+      "usageReplacements": [
+        [
+          "import '@dev-flow/ui-web/styles.css'",
+          "import './components/dev-flow/web/styles.css'"
+        ],
+        [
+          "import { Button, Card, CardContent, CardFooter, CardHeader, CardTitle } from '@dev-flow/ui-web'",
+          "import { Button } from './components/dev-flow/web/components/ui/button'\nimport { Card, CardContent, CardFooter, CardHeader, CardTitle } from './components/dev-flow/web/components/ui/card'"
+        ]
+      ]
+    }
+  ]
+}
