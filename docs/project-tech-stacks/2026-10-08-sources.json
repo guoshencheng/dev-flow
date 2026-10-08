@@ -1,0 +1,550 @@
+{
+  "survey_date": "2026-10-08",
+  "project_root": "/Users/guoshencheng/Documents/work",
+  "mode": "read-only metadata and targeted source review; no build, test, install or deployment",
+  "top_level_directories_scanned": 31,
+  "projects": [
+    {
+      "project": "CenturyGuo",
+      "git_head": "056d7033b998d4d1fc239146a9eb17414abc3ec9"
+    },
+    {
+      "project": "ai-translate-plugin",
+      "git_head": "d17fa47ca9741a3b96c24e48e5f8421e0c76bea8"
+    },
+    {
+      "project": "busy-fish",
+      "git_head": "3d43810bd583c0991b954634b064e66ab9364beb"
+    },
+    {
+      "project": "darlulu",
+      "git_head": "c8139599dbec0714901bd4a90c89d950bf68a4cb"
+    },
+    {
+      "project": "flower-only",
+      "git_head": "74284bbc5e8e3f966db0a9feda8cc845dc4afc81"
+    },
+    {
+      "project": "gjgjgj-home",
+      "git_head": null
+    },
+    {
+      "project": "lora-gateway-setup",
+      "git_head": null
+    },
+    {
+      "project": "metrix-content",
+      "git_head": "c0e444ee5db7c93be5fd9b94f5d940f4a6a936de"
+    },
+    {
+      "project": "miniapps",
+      "git_head": null
+    },
+    {
+      "project": "nigeria-cacao-map",
+      "git_head": "93e82bcd3dc570a5c57d2c1305f7708f6b1856ea"
+    },
+    {
+      "project": "nigeria-cocoa-preview",
+      "git_head": null
+    },
+    {
+      "project": "pyedsdk",
+      "git_head": "e31a002a8ae4bc19694a3d172e29d03f3facd862"
+    },
+    {
+      "project": "red-book-app",
+      "git_head": "e02c6a0b9edcb34564b23fb41fc173837a677354"
+    },
+    {
+      "project": "rem",
+      "git_head": "5d70b819fe70c88e3ae80326968c18a9ef23855d"
+    },
+    {
+      "project": "run-dash",
+      "git_head": "af2a6eadbd823e7ebc2e0ed5bc86d8fdf13cc710"
+    },
+    {
+      "project": "shanshan-island",
+      "git_head": "2a32c6c74fda273f6a16d8ad7f89d775f02111f8"
+    },
+    {
+      "project": "sony-control",
+      "git_head": "4dc1406828750b2f9508a0e6644e84a68ef5e00a"
+    },
+    {
+      "project": "yan-emperor-cacao",
+      "git_head": "a49e6f0e0fc2501c295019e03e653ab7b3dc763b"
+    }
+  ],
+  "sources": [
+    {
+      "path": "CenturyGuo/.github/workflows/deploy.yml",
+      "sha256": "926d5d84b262783cd4fe0ffde3b67afea2eee02363ac1cca4800b15c477d7347"
+    },
+    {
+      "path": "CenturyGuo/AGENTS.md",
+      "sha256": "a685cd738e8532bdb76847e1c38b13e1d39857aafa4c49af1593346e8ba0d99d"
+    },
+    {
+      "path": "CenturyGuo/package-lock.json",
+      "sha256": "caa84bf503355f452342dbaef809eab4a46d359d4b41164624c16cc879602767"
+    },
+    {
+      "path": "CenturyGuo/package.json",
+      "sha256": "886d0f5df5f078cb7a3de9f64ed614e5086f534c2bb1eaa5e1b84d5f4f15a48c"
+    },
+    {
+      "path": "ai-translate-plugin/entrypoints/background.ts",
+      "sha256": "43552fc7e9d3dc8529dfc662467e596cb57cb83047e29920be01173b2f13d4af"
+    },
+    {
+      "path": "ai-translate-plugin/entrypoints/content.ts",
+      "sha256": "b3b993d27b42a603451e2c034fdeeb7190fba83269d796f7cbd28968d8698421"
+    },
+    {
+      "path": "ai-translate-plugin/package.json",
+      "sha256": "822c136696ccb4f49bb2d10742e27003c845fd05111b64d180a4e5464cdd6acd"
+    },
+    {
+      "path": "ai-translate-plugin/pnpm-workspace.yaml",
+      "sha256": "77078c565cea10e9cbc88d25ca74fe30a994ea7f1528a0a8e219072a645b5bfe"
+    },
+    {
+      "path": "ai-translate-plugin/wxt.config.ts",
+      "sha256": "d77103fba236d666f8dade61fc0c732ce7b06c29970861242882bde67a0dc74b"
+    },
+    {
+      "path": "busy-fish/AGENTS.md",
+      "sha256": "1858095bd118897318eca05124bec23bc6e3a04a603148e0d3f8583693054a76"
+    },
+    {
+      "path": "busy-fish/package-lock.json",
+      "sha256": "55c7c3e2fa736d8f5154752e21751ef5ca75969895b2842b8e30bfdc19ffe1d0"
+    },
+    {
+      "path": "busy-fish/package.json",
+      "sha256": "53878058e81fc870d21f144cc60f60fe8d78583cdfb533ae3e220501c0b7e2b0"
+    },
+    {
+      "path": "busy-fish/pnpm-lock.yaml",
+      "sha256": "4f239a94c3b17d4b19c97ed1214ba31dbeca68f7ea55f4c8363f918f471eda82"
+    },
+    {
+      "path": "busy-fish/pnpm-workspace.yaml",
+      "sha256": "96ef814833b33caf6d28d8940f9e67c0f2ddf3656ebc2465aa8d00e6be3193b2"
+    },
+    {
+      "path": "busy-fish/scripts/desktop-smoke/cua/package.json",
+      "sha256": "299e982d2d461ac63b3eae80d40e2634f2ce4e24f7b7e0d47a3b3cf5b2a6559b"
+    },
+    {
+      "path": "darlulu/.github/workflows/ci.yml",
+      "sha256": "4d04cfcb28ccbdee1d3922f14068a95226c54c566cfb2059bd9cd5908505bb39"
+    },
+    {
+      "path": "darlulu/package.json",
+      "sha256": "5110134c768618c528438970ec3d5887e774e3161f83fd20b729c05ee1d70434"
+    },
+    {
+      "path": "darlulu/packages/cabinet-domain/package.json",
+      "sha256": "b886a9d13c64a7b515e7f4acb9db787f98bc627ed7f558a813415ac4df15e90b"
+    },
+    {
+      "path": "darlulu/packages/core/package.json",
+      "sha256": "82069519c065a8c2f8ff30efc7e963c4abfdda7700f17ec621052ed4d736603e"
+    },
+    {
+      "path": "darlulu/packages/hardware-cli/package.json",
+      "sha256": "d6e544cd54558d8a0d3ed21af2c02408f0bec0f7f9885c6689322874bd65adf4"
+    },
+    {
+      "path": "darlulu/packages/hardware-runtime/package.json",
+      "sha256": "78acbb811b557cdbb1b642cbdf6dd37f3b189916ad5154012a64f2a278e3c883"
+    },
+    {
+      "path": "darlulu/packages/http-server/package.json",
+      "sha256": "770b67a33c21219f38322e2e23a73a3bf1c4357a78262f41563fb733ddcd6ceb"
+    },
+    {
+      "path": "darlulu/packages/mcp-server/package.json",
+      "sha256": "de8cdb45141a22a9368a1bf0c0f1b142e52e524beec1296c783feb8f13faf0f7"
+    },
+    {
+      "path": "darlulu/packages/persistence/package.json",
+      "sha256": "1919f3d0a8de430d5de88528ab3719f1b336f5b1989215e54ba4e8e287239905"
+    },
+    {
+      "path": "darlulu/packages/template-application/package.json",
+      "sha256": "3f74ae2c707948f7a1ed8c853735222727f50ebf8813d8088c683d16a3d6ea3d"
+    },
+    {
+      "path": "darlulu/packages/template-cli/package.json",
+      "sha256": "6f8a8b44044ef562803cbaf0b0d620cc45774a25e20551e0899c42e9082f1453"
+    },
+    {
+      "path": "darlulu/packages/template-runtime/package.json",
+      "sha256": "21a9c6e6f4c923413e11418469144df3f8b97fc4478c77d0daf82b7f778ce5d0"
+    },
+    {
+      "path": "darlulu/packages/template-sdk/package.json",
+      "sha256": "2cdbb5f8ed9c0b887c39d4ce9e68bd9d7e2ef9b3fb160bd727a16cc79c4fd169"
+    },
+    {
+      "path": "darlulu/pnpm-lock.yaml",
+      "sha256": "88a3c9653dcd6b28ab11141d5eb5d9a052d8ddd736505928a19da6211e850e2c"
+    },
+    {
+      "path": "darlulu/pnpm-workspace.yaml",
+      "sha256": "727bacac354ead41bed3159f55a4eb930b4b154cabf9532c6fcc5eb981838d28"
+    },
+    {
+      "path": "darlulu/src/main.tsx",
+      "sha256": "6a787c020851c86308f22a5d25973beb4ac5f9e88f13be23bd46cfa682bc1b2f"
+    },
+    {
+      "path": "darlulu/template-packages/drawer/package.json",
+      "sha256": "6ba969b5709bace17890edba8ac0d476397c028ea6aa256717333e9d72d6d8d2"
+    },
+    {
+      "path": "darlulu/website/package.json",
+      "sha256": "412bff8b097ec50f0fa2e4a9a4cc080a5801909de6db261415cc780a02841f48"
+    },
+    {
+      "path": "flower-only/AGENTS.md",
+      "sha256": "05fdbe56a8b62d34fd8821e24fb6c258b332deac2571e1f4a4654a763d0dd6be"
+    },
+    {
+      "path": "flower-only/ios/App/App/WorldARViewController.swift",
+      "sha256": "50de27b66295f870fb0f54a1262f2c31ed7546d136cd3aa4f03044c08501d572"
+    },
+    {
+      "path": "flower-only/ios/App/project.yml",
+      "sha256": "f34b7e03489a118d8b6b85e2e91e16b6a179c8b46ea3025d58b3af8481a42e27"
+    },
+    {
+      "path": "flower-only/package-lock.json",
+      "sha256": "f1f587f34f4ab90f84937d3613bb3f4091c1eb1fc1d65adcb38403a842ff7f5c"
+    },
+    {
+      "path": "flower-only/package.json",
+      "sha256": "328c9580d6b3d107483471b375a136cfa2bcd01d1b25729babf66c8ad8040f0f"
+    },
+    {
+      "path": "flower-only/pnpm-lock.yaml",
+      "sha256": "d3f64f5606117b43b6203833af0170fead7835d3419ef9dc663ddb7f3e3f818a"
+    },
+    {
+      "path": "flower-only/pnpm-workspace.yaml",
+      "sha256": "14e57e4847fc7d684defc73312497c4165741efd4535de790a1b23a994a3978b"
+    },
+    {
+      "path": "gjgjgj-home/web/package.json",
+      "sha256": "fef3ea1eeebde30e579a5879c45ab9ce463e66f2f0c5dfdd6e7daa3be53a5947"
+    },
+    {
+      "path": "gjgjgj-home/web/pnpm-workspace.yaml",
+      "sha256": "ac02d96368617c760f093cfe61fdec64b6244007ab3553e0d6621f706f54a353"
+    },
+    {
+      "path": "lora-gateway-setup/chirpstack-docker/docker-compose.yml",
+      "sha256": "2d04f8a1e3e950ecc96926da62d7dc8066698b5d3566ef3bc79393b793ff7899"
+    },
+    {
+      "path": "metrix-content/.github/workflows/news-internal-image.yml",
+      "sha256": "d1ceb48dd5e13bda2d04fc2cc89d924f8242b944f563d9376681b2a0821daac4"
+    },
+    {
+      "path": "metrix-content/.github/workflows/news-pm2-118.yml",
+      "sha256": "68c8a21ff8a341274de532c5d05e8c21e7fbb4b8de5a3209fe19c601bcc7aeb0"
+    },
+    {
+      "path": "metrix-content/AGENTS.md",
+      "sha256": "fed3bbdbdba6341eb6a3750071418456f379c8c18c8f5c34585a9e500602e37c"
+    },
+    {
+      "path": "metrix-content/auto-insight-media/news-intelligence/AGENTS.md",
+      "sha256": "63f2c50380ed6303237cce215ce27af1d620d094c215e28d1b1538a3c070e3bb"
+    },
+    {
+      "path": "metrix-content/auto-insight-media/news-intelligence/package.json",
+      "sha256": "bd18f464ea4b2b75a1f582a3da933c42dbe1eb811efcc520f1b22f16cffb3026"
+    },
+    {
+      "path": "metrix-content/auto-insight-media/package.json",
+      "sha256": "9a5f807b9a9df09e0f1f0d6ba0993bfa079d57f3fa1ee236f5a801d0c4e1fe2a"
+    },
+    {
+      "path": "metrix-content/auto-insight-media/pnpm-workspace.yaml",
+      "sha256": "d6d0c24446d91ef762d37c6ba801bb516e65d7055aa9f8027fcd457409a97ce1"
+    },
+    {
+      "path": "metrix-content/auto-insight-media/skills/insight-media/scripts/media/render_video.py",
+      "sha256": "a14652be47c08e02eab2c0ae6be76094d90df0b3219248dc76a11e2fd09a9e0e"
+    },
+    {
+      "path": "metrix-content/auto-insight-media/studio/package.json",
+      "sha256": "3e53bbbe9c01fe9ae2d274e14278dc7e11dce8b8e2caa14052c52c8b5e3a5629"
+    },
+    {
+      "path": "metrix-content/news/AGENTS.md",
+      "sha256": "d4667fd6fa48cf5a3f2a810e0b85e73b411bd06b220620362fc4896881c171f1"
+    },
+    {
+      "path": "metrix-content/news/apps/admin/package.json",
+      "sha256": "49671ee3141745cea5bd7dcc714faf4ee6908238f73ad89a31f84926f6d2156a"
+    },
+    {
+      "path": "metrix-content/news/apps/public/package.json",
+      "sha256": "9883255d65251af3ce094e28d5e8ee944682386b70bad1c0c8944c3653698adb"
+    },
+    {
+      "path": "metrix-content/news/apps/sync/package.json",
+      "sha256": "37f778e3709c80a29583fbe9e176b684373bdf2ebd54140496c7fa0bf3eaef70"
+    },
+    {
+      "path": "metrix-content/news/apps/worker/package.json",
+      "sha256": "220dce21fac34151d8233e285111b1fd677615d783978903a02d5eb8cbcd92f4"
+    },
+    {
+      "path": "metrix-content/news/package-lock.json",
+      "sha256": "316413b8bdda3e98963aca83e4eff8430965f91739c752f93accd03e47d4f2a2"
+    },
+    {
+      "path": "metrix-content/news/package.json",
+      "sha256": "362e88d86085e89ac9974cef17b7fac7632f19a5449f818c41d7dff33bb9e40f"
+    },
+    {
+      "path": "metrix-content/news/packages/contracts/package.json",
+      "sha256": "2ee2764115f78c91e7c9f3fc817e789d51ddbcbce9e52cd105e81ce47ed1c7ee"
+    },
+    {
+      "path": "metrix-content/news/packages/core/package.json",
+      "sha256": "95fc16a3912616d197986474946fbc71760a8ea220c52e4ecf338ac7cfb52b00"
+    },
+    {
+      "path": "metrix-content/news/packages/internal-db/package.json",
+      "sha256": "22764c2542d4123469508c10be750ccc03310ad5db0eccf138547c497c98f080"
+    },
+    {
+      "path": "metrix-content/news/packages/internal-db/prisma/schema.prisma",
+      "sha256": "7af6f2c27bad58a9e0101ad405ab4b780409973f48db76c091a9e4d84016ff4d"
+    },
+    {
+      "path": "metrix-content/news/packages/public-db/package.json",
+      "sha256": "04a02f377c91177cdc25cf581ab70bea34f080124f52651312d11467bafcfcba"
+    },
+    {
+      "path": "metrix-content/news/packages/public-db/prisma/schema.prisma",
+      "sha256": "00d5b8ae9adb4ad7a5dd535901e2559096b96920f9e890f4ddb0b7b921a3869f"
+    },
+    {
+      "path": "metrix-content/news/pnpm-lock.yaml",
+      "sha256": "cd6efe5e3647fb91a8739af23f79db7549fc0da8d15555f97660103849e2ac43"
+    },
+    {
+      "path": "metrix-content/news/pnpm-workspace.yaml",
+      "sha256": "4f62052de2cc6150d13d5eeabf60fd5da953e05ed430cd9daad0bfa41d7ff704"
+    },
+    {
+      "path": "miniapps/money-bird/docs/superpowers/plans/2026-09-17-travel-journal-miniapp-implementation.md",
+      "sha256": "ad534157e9afb4d27fa62e38873c406d0d9bd4eb3fb0f96ca2bad22a9c35147d"
+    },
+    {
+      "path": "miniapps/money-bird/package.json",
+      "sha256": "8872bad550fdebc2930dbc68fe345a25b45e660627d42e377c070589447c2761"
+    },
+    {
+      "path": "nigeria-cacao-map/cocoa-planning/package.json",
+      "sha256": "40287cd86c27112c0833ba159bd356bc32606e0e5529a368c8ced2a2315052fa"
+    },
+    {
+      "path": "nigeria-cacao-map/cocoa-planning/pnpm-workspace.yaml",
+      "sha256": "d6d0c24446d91ef762d37c6ba801bb516e65d7055aa9f8027fcd457409a97ce1"
+    },
+    {
+      "path": "nigeria-cocoa-preview/package.json",
+      "sha256": "4639aa306f5cf70f0b65250e4ee6580c0b29f81e562e4efafafde6590f0a7303"
+    },
+    {
+      "path": "pyedsdk/setup.py",
+      "sha256": "3898f8f7e38e6c41f2131f6e62ce245fb5393d9e87fe624cb8fccb2bc8b0984f"
+    },
+    {
+      "path": "red-book-app/README.md",
+      "sha256": "99cb5cc682294dd98f67a962ea4a6d41f6138eef5d5274cb07f97b638297ac5d"
+    },
+    {
+      "path": "red-book-app/package.json",
+      "sha256": "4e54f525cadc797e7e811ae13e0614073a52cd1da46cbd12b3264d15c3f5329e"
+    },
+    {
+      "path": "rem/AGENTS.md",
+      "sha256": "92f613394dc67748ddbc6204361868ec8879d4695c0869820eff09eea1daa01c"
+    },
+    {
+      "path": "rem/package.json",
+      "sha256": "2a40f8de6f5f774df478c49b659b1bd6e05adb98cbb650b39504224fd24d6324"
+    },
+    {
+      "path": "rem/packages/browser-runtime/package.json",
+      "sha256": "d41e55e48d29ba0ae20a6a7e8edb297258cd041d6904ee293ba735a13b780b46"
+    },
+    {
+      "path": "rem/packages/client/package.json",
+      "sha256": "7ad36c3cffe26f9745e64bc2cab0d0a1990a6f130246343a3dd1e917395b9c10"
+    },
+    {
+      "path": "rem/packages/core/package.json",
+      "sha256": "5cf8e21c43ac4400cf49b2707182b22aa804b538e77fc20d1ddaa1b376a24b18"
+    },
+    {
+      "path": "rem/packages/local-demo/package.json",
+      "sha256": "fad638f9bee2dbddd3a9dcd1bc0b951d4615181599bd8b994b81f8329c3a2766"
+    },
+    {
+      "path": "rem/packages/service/package.json",
+      "sha256": "9338602c343c96341b0019b8fcdafa1eee75ca51d5b89ec511460118e5f312bc"
+    },
+    {
+      "path": "rem/packages/web/package.json",
+      "sha256": "1e4e3f44df4bbbb9bc914ea736a818acb00bd6fe76890f15fbf6d9a092bb757a"
+    },
+    {
+      "path": "rem/packages/web/src/server/index.ts",
+      "sha256": "d279db87cd959aebf0440040579f84a55582a1fe7c972740d7f7c2efc086d4ea"
+    },
+    {
+      "path": "rem/packages/workstation/package.json",
+      "sha256": "5247145c4f7c9385366307d2bd3d74b2dfbc1ed8bbff2c2f9ae83f6071b5852e"
+    },
+    {
+      "path": "rem/pnpm-lock.yaml",
+      "sha256": "8886d43e41b025730c845e20521bf8c936b0acb5ce22925c5c56d3e06b3afaaa"
+    },
+    {
+      "path": "rem/pnpm-workspace.yaml",
+      "sha256": "34344a82a85e3ff5ea927e2a65db718e98a1316ca0b06b26508e03e1c616a2ec"
+    },
+    {
+      "path": "run-dash/AGENTS.md",
+      "sha256": "4cd2f848feb14fc75479273eb1a9259aa5dab588d635b9bc0f0f0f5783e34a0e"
+    },
+    {
+      "path": "run-dash/docs/ui-prototypes/dashdash-editor-workbench/package.json",
+      "sha256": "ccac071355fe143cb945c5847c05fe3f15bbc6050449b097c7339dce214a6f26"
+    },
+    {
+      "path": "run-dash/docs/ui-prototypes/dashdash-editor-workbench/pnpm-workspace.yaml",
+      "sha256": "fc2b73b185e247862a1be713ca0d92e3b8a212e1247e8cc2409a0046907b8690"
+    },
+    {
+      "path": "run-dash/native_app/CMakeLists.txt",
+      "sha256": "c0621f5553a83e801ad42e119e9bb370d3ffcf9c0bf940b719f8dd34e749b311"
+    },
+    {
+      "path": "run-dash/native_app/Core/CMakeLists.txt",
+      "sha256": "f5ef8f4a41d402c8d0e06e9e5067027966c42a636f931474c108f272546773b2"
+    },
+    {
+      "path": "run-dash/native_app/pubspec.yaml",
+      "sha256": "f621f80d812da327dbbc10adf11f10e9d02fa79726a3c10b4e66141c3f18a713"
+    },
+    {
+      "path": "run-dash/native_app/windows/CMakeLists.txt",
+      "sha256": "6701b8b5cdb3c46944fdc48973b0aa7d3a6be736b6994f29991969145940ea03"
+    },
+    {
+      "path": "run-dash/native_app/windows/flutter/CMakeLists.txt",
+      "sha256": "1fe418971b6f41bb35ceb3d64113a835f3f6f171ecaa707bf232492b57a588d6"
+    },
+    {
+      "path": "run-dash/native_app/windows/runner/CMakeLists.txt",
+      "sha256": "7ef09c595db213f439ef6e42d5de43c952a40e6e39bb5f27218c2d03b803e2ce"
+    },
+    {
+      "path": "run-dash/website/package.json",
+      "sha256": "705f7381434113b15e15f11b261ab584479afe539c4b33bfb654029925e52961"
+    },
+    {
+      "path": "shanshan-island/AGENTS.md",
+      "sha256": "08cf73ca142a9ff649d6f72c5340f0ad20e94c25a8244a4d14fcb841c55689ac"
+    },
+    {
+      "path": "shanshan-island/package.json",
+      "sha256": "a171a784ed82e02ddef36ec7b0fdfae2514c0ef7c6c5cf2bb43a58f1134bee0f"
+    },
+    {
+      "path": "shanshan-island/packages/contracts/package.json",
+      "sha256": "d6b2aa4ca833eceb22954e9c60b5ffe9c999e6f9371c07f07921a0a8aeccb388"
+    },
+    {
+      "path": "shanshan-island/packages/godot-player/project.godot",
+      "sha256": "71735146dd06618243e45f0ad9ba180a286b6f4f6feff40ad7708e03161057d6"
+    },
+    {
+      "path": "shanshan-island/packages/life-core/package.json",
+      "sha256": "5fa9a4dfb0fd79865f84c9e2030f5273e9fef39e9718b4b24000fbbdc86fcefb"
+    },
+    {
+      "path": "shanshan-island/packages/map-core/package.json",
+      "sha256": "31461c2f89f9b4984991cbd326abffc432901e81655211b4a9894e14ae31fee2"
+    },
+    {
+      "path": "shanshan-island/packages/pve-core/package.json",
+      "sha256": "0be14a34c0ecd0ecc0eb3627ce3f45b87eeb9318079df388211fd541a5d29641"
+    },
+    {
+      "path": "shanshan-island/packages/replay-runtime/package.json",
+      "sha256": "c97e1028fe980b14b8bb9b49cd6f8b3a93e851d961f2f7652dcd42c0fd9125e7"
+    },
+    {
+      "path": "shanshan-island/packages/script-runtime/package.json",
+      "sha256": "64a1e2dd135ec63ee376ffd9c5f06a583a26e24723d5de75009b2ff32e155c99"
+    },
+    {
+      "path": "shanshan-island/packages/sim-core/package.json",
+      "sha256": "5ad9be61b8782ae4e59e2596311511a3bc17ab448e28c1539a6983da8fe00f9e"
+    },
+    {
+      "path": "shanshan-island/packages/strategy-core/package.json",
+      "sha256": "34e5a82833998ef40ceed3ff7a942566087ec6df5dadf3880f047bc8972e783a"
+    },
+    {
+      "path": "shanshan-island/packages/tournament-core/package.json",
+      "sha256": "75a438fb3ab038314d50ed9316508327c7c4ea799af38a4e02472b80fc345c19"
+    },
+    {
+      "path": "shanshan-island/packages/web-lab/package.json",
+      "sha256": "318b93f251e55b8c2367a048cbd59934a0da2817a09a8ace9683eb42beb03b26"
+    },
+    {
+      "path": "shanshan-island/pnpm-workspace.yaml",
+      "sha256": "316f2a0038d464f103abd64d7338dacefc35d0d09e57c8296defa0d5ddb898fe"
+    },
+    {
+      "path": "sony-control/native/CMakeLists.txt",
+      "sha256": "106f757b266dde47e99ff5c146e5ce82b56882f59a5b98ddac10ce02d8137d08"
+    },
+    {
+      "path": "sony-control/package.json",
+      "sha256": "4a0352ab865cfbe66b305a548f5120ee57ea2977a5258320c1dfe57636098d5b"
+    },
+    {
+      "path": "sony-control/src/main/index.ts",
+      "sha256": "b37c275119c0604cbe728ea6a99d2c4461e03326981e76b572a6c9aa6f00636b"
+    },
+    {
+      "path": "sony-control/src/preload/index.ts",
+      "sha256": "47b2467997b120d1db27e7a6feb9699c5d696f761d0d404f26f964f913a1faf2"
+    },
+    {
+      "path": "sony-control/src/renderer/main.tsx",
+      "sha256": "1a5135bef39ebf5fbc64da4c715f701f13ed475f0227f1f63dd47113516ad83f"
+    },
+    {
+      "path": "yan-emperor-cacao/product-prototype/package.json",
+      "sha256": "3488c0d489917d5fffc17777d18a64f12a7f368cabdf25cf325cdf2d0f9323a6"
+    }
+  ]
+}

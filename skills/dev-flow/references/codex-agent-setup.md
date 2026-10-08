@@ -50,7 +50,7 @@ Skill 中的 `agents/openai.yaml` 用于该 Skill 的界面元信息与调用策
 
 ## 架构职责
 
-[dev_architecture.toml](../../../agents/dev_architecture.toml) 与 [dev-architecture Skill](../../dev-architecture/SKILL.md)细化整洁架构、业务域/模块责任、接口/数据契约、实际代码复核与研发后的架构复盘。以当前源码维护系统和目录模块地图、合理性判断与改进建议；复用共同确认协议、文档预览和 Git 资产，配置无固定模型。专业产物和验证范围见[架构职责说明](../../../docs/architecture-agent.md)与[验证记录](../../../evals/dev-architecture/report.md)。
+[dev_architecture.toml](../../../agents/dev_architecture.toml) 与 [dev-architecture Skill](../../dev-architecture/SKILL.md)细化整洁架构、项目技术基线、业务域/模块责任、接口/数据契约、实际代码复核与研发后的架构复盘。以当前源码维护系统和目录模块地图、合理性判断与改进建议；复用共同确认协议、文档预览和 Git 资产，配置无固定模型。专业产物和验证范围见[架构职责说明](../../../docs/architecture-agent.md)、[v0.1 行为验证](../../../evals/dev-architecture/report.md)与[v0.2 选型检查](../../../reviews/2026-10-08-architecture-stack-check.md)。
 
 ## 逐个建设的交付和验收
 

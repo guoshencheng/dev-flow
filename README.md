@@ -10,7 +10,8 @@
 - [设计确认与自主实施](skills/dev-flow/references/execution-contract.md)：用户确认体验、架构与测试预期，AI 复核实现计划后自主实现，以端到端及架构约束检查交付。
 - [产品与交互 Agent](docs/product-agent.md)：职责边界、首版能力与验证状态；[专业 Skill](skills/dev-product/SKILL.md)和[案例证据](evals/dev-product/README.md)。
 - [视觉与界面 Agent](docs/visual-agent.md)：专业方法、共同基础复用、视觉资产与实际检查；[专业 Skill](skills/dev-visual/SKILL.md)。
-- [架构设计与演进 Agent](docs/architecture-agent.md)：整洁架构、业务域与模块分工、设计契约、代码业务 Review 与研发复盘；[专业 Skill](skills/dev-architecture/SKILL.md)。
+- [架构设计与演进 Agent](docs/architecture-agent.md)：整洁架构、项目技术基线、业务域与模块分工、设计契约、代码业务 Review 与研发复盘；[专业 Skill](skills/dev-architecture/SKILL.md)。
+- [项目技术栈调查](docs/project-tech-stacks/2026-10-08-survey.md)：本机现有项目的在用/原型/退役路径与选型依据；[选型指导](skills/dev-architecture/references/technology-stack.md)和[平台约束](skills/dev-architecture/references/stack-profiles.md)按工程形态读取，项目维护自己的技术基线。
 - [产品/视觉文档与归档](skills/dev-flow/references/design-document-contract.md)：当前权威规格、原型、详细规则、归档与来源；[统一 Vite 文档预览](skills/dev-flow/references/document-preview.md)可根据运行信息生成实际文件地址。
 - [原型与设计稿指南](skills/dev-product/references/html-prototyping.md)：AI 按任务构建页面、新建默认 Vite + React、启动预览与持续讨论；随包示例可选。[参考研究](skills/dev-product/references/reference-research-and-ideation.md)和[C/B 设计指导](skills/dev-product/references/consumer-and-business-design.md)。
 - [UI 技术与共享组件约定](skills/dev-flow/references/ui-stack-and-components.md)：B 端 Ant Design/antd、C 端 Web shadcn/ui、其他 C 端先研究参考；[React 工作区](skills/dev-product/assets/react-workspace/README.md)及[组件清单](skills/dev-product/assets/react-workspace/catalog.md)由本 Git 仓库维护。
@@ -45,7 +46,7 @@ python3 scripts/install_global.py --check
 
 ## 下一项建设
 
-产品 v0.8、视觉 v0.1 和架构 v0.1 已定义专业方法与资产维护，复用共享 UI 基础和文档预览。历史原型/组件证据保持原版本，范围见[视觉与文档验证](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)。总纲 v0.7 接入架构复盘，v0.6 的确认与自主实施检查保留在[历史协议记录](reviews/2026-10-08-execution-contract-check.md)。下一职责为测试验收，然后研发和运维交付；真实执行依用户确认的基线推进。在可用宿主核验原生派发和实际模型设置，用真实项目验证完整循环及资产复用。
+产品 v0.8、视觉 v0.1 和架构 v0.2 已定义专业方法与资产维护，复用共享 UI 基础和文档预览。架构 v0.2 增加按项目形态的技术选型与持续基线；本轮只读调查和检查见[记录](reviews/2026-10-08-architecture-stack-check.md)。历史原型/组件证据保持原版本，范围见[视觉与文档验证](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)。总纲 v0.7 接入架构复盘，v0.6 的确认与自主实施检查保留在[历史协议记录](reviews/2026-10-08-execution-contract-check.md)。下一职责为测试验收，然后研发和运维交付；真实执行依用户确认的基线推进。在可用宿主核验原生派发和实际模型设置，用真实项目验证完整循环及资产复用。
 
 ## 解除全局接入
 
