@@ -1,0 +1,940 @@
+{
+  "executor": "主 Agent 按 Skill 自执行；工具案例，未委派",
+  "workspace": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg",
+  "inputs": {
+    "evals/dev-engineering/fixtures/http-ui/server.before.mjs": "f8f3f1972cfb90b2793277088026252d3263606537e1823b6fea4d66e464d83f",
+    "evals/dev-engineering/fixtures/http-ui/repair.patch": "ba429a28f4ed8a868457abd258f164ad2f86e3c221d97416d0fa6d6f3acb6a6a",
+    "evals/dev-operations/run.py": "7b3d31e62539f3414ead8e57df65304ae9916506f6e2245f2f5ce83950be1c23"
+  },
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "--version"
+      ],
+      "cwd": "/Users/guoshencheng/Documents/work/dev-flow",
+      "exit_code": 0,
+      "stdout": "v26.4.0\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "apply",
+        "/Users/guoshencheng/Documents/work/dev-flow/evals/dev-engineering/fixtures/http-ui/repair.patch"
+      ],
+      "cwd": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/candidate",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "server.mjs"
+      ],
+      "cwd": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/unpacked-good",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "file:///Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/unpacked-good/server.mjs:10\n  throw new Error('需要 EVAL_PORT 与独立 EVAL_DATA_FILE');\n        ^\n\nError: 需要 EVAL_PORT 与独立 EVAL_DATA_FILE\n    at file:///Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/unpacked-good/server.mjs:10:9\n\nNode.js v26.4.0\n"
+    }
+  ],
+  "artifacts": {
+    "good": {
+      "release_id": "ops-good-1",
+      "source_sha256": "cbad3c4abdd4f95a5096840e8296a5b443144f8af5708147847d4186820c8227",
+      "sha256": "37de9d5d4d043057853ab0bc6743f2e9bdec43892b1248a383efc2d06f395d64",
+      "path": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/good.tar.gz",
+      "unpacked": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/unpacked-good",
+      "files": {
+        "server.mjs": "cbad3c4abdd4f95a5096840e8296a5b443144f8af5708147847d4186820c8227",
+        "version.json": "3a0e49684e04cb61f19bc609d64571faef1a6ed0c21b7c279e8abbae53328b49",
+        "README.md": "96966583905e825441002e78c2509f35168cad02130c16966ca9508e126d3c64"
+      }
+    },
+    "bad": {
+      "release_id": "ops-bad-1",
+      "source_sha256": "7bb463b1966ec984a87158635b99c0e547aae25c119ed43e45b401e0ad121088",
+      "sha256": "deeffd172b1bb768fd77321c43cb175a358e924478a1b485389a4bf906176397",
+      "path": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/bad.tar.gz",
+      "unpacked": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/unpacked-bad",
+      "files": {
+        "server.mjs": "7bb463b1966ec984a87158635b99c0e547aae25c119ed43e45b401e0ad121088",
+        "version.json": "c37cebad9bb6ed0c319e1c0b4e7d43184a9cf01a770b182bbce28f28b667e234",
+        "README.md": "96966583905e825441002e78c2509f35168cad02130c16966ca9508e126d3c64"
+      }
+    }
+  },
+  "processes": [
+    {
+      "pid": 68898,
+      "port": 57989,
+      "cwd": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/unpacked-good",
+      "argv": [
+        "node",
+        "server.mjs"
+      ],
+      "env": {
+        "EVAL_PORT": "57989",
+        "EVAL_DATA_FILE": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/data/items.json"
+      },
+      "stop": "SIGTERM 自管 PID 后 wait，核对端口关闭",
+      "exit_code": 0,
+      "port_closed": true
+    },
+    {
+      "pid": 68899,
+      "port": 58002,
+      "cwd": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/unpacked-good",
+      "argv": [
+        "node",
+        "server.mjs"
+      ],
+      "env": {
+        "EVAL_PORT": "58002",
+        "EVAL_DATA_FILE": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/data/items.json"
+      },
+      "stop": "SIGTERM 自管 PID 后 wait，核对端口关闭",
+      "exit_code": 0,
+      "port_closed": true
+    },
+    {
+      "pid": 68901,
+      "port": 58008,
+      "cwd": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/unpacked-bad",
+      "argv": [
+        "node",
+        "server.mjs"
+      ],
+      "env": {
+        "EVAL_PORT": "58008",
+        "EVAL_DATA_FILE": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/data/items.json"
+      },
+      "stop": "SIGTERM 自管 PID 后 wait，核对端口关闭",
+      "exit_code": 0,
+      "port_closed": true
+    },
+    {
+      "pid": 68902,
+      "port": 58016,
+      "cwd": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/unpacked-good",
+      "argv": [
+        "node",
+        "server.mjs"
+      ],
+      "env": {
+        "EVAL_PORT": "58016",
+        "EVAL_DATA_FILE": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/data/items.json"
+      },
+      "stop": "SIGTERM 自管 PID 后 wait，核对端口关闭",
+      "exit_code": 0,
+      "port_closed": true
+    },
+    {
+      "pid": 68903,
+      "port": 58026,
+      "cwd": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/unpacked-good",
+      "argv": [
+        "node",
+        "server.mjs"
+      ],
+      "env": {
+        "EVAL_PORT": "58026",
+        "EVAL_DATA_FILE": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/data/items.json"
+      },
+      "stop": "SIGTERM 自管 PID 后 wait，核对端口关闭",
+      "exit_code": 0,
+      "port_closed": true
+    },
+    {
+      "pid": 68904,
+      "port": 58032,
+      "cwd": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/unpacked-good",
+      "argv": [
+        "node",
+        "server.mjs"
+      ],
+      "env": {
+        "EVAL_PORT": "58032",
+        "EVAL_DATA_FILE": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/restored/items.json"
+      },
+      "stop": "SIGTERM 自管 PID 后 wait，核对端口关闭",
+      "exit_code": 0,
+      "port_closed": true
+    }
+  ],
+  "requests": [
+    {
+      "port": 57989,
+      "route": "/health",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "kind": "operations-fixture",
+        "release_id": "ops-good-1",
+        "source_sha256": "cbad3c4abdd4f95a5096840e8296a5b443144f8af5708147847d4186820c8227"
+      }
+    },
+    {
+      "port": 57989,
+      "route": "/test/login",
+      "method": "POST",
+      "payload": {
+        "role": "editor"
+      },
+      "status": 200,
+      "response": {
+        "role": "editor"
+      }
+    },
+    {
+      "port": 57989,
+      "route": "/api/items",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "items": []
+      }
+    },
+    {
+      "port": 57989,
+      "route": "/api/items",
+      "method": "POST",
+      "payload": {
+        "title": "回退前保留条目"
+      },
+      "status": 201,
+      "response": {
+        "id": "a045b3bb-c95b-41db-a1fe-c5cb4d31c17a",
+        "title": "回退前保留条目"
+      }
+    },
+    {
+      "port": 57989,
+      "route": "/api/items",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "items": [
+          {
+            "id": "a045b3bb-c95b-41db-a1fe-c5cb4d31c17a",
+            "title": "回退前保留条目"
+          }
+        ]
+      }
+    },
+    {
+      "port": 57989,
+      "route": "/test/login",
+      "method": "POST",
+      "payload": {
+        "role": "viewer"
+      },
+      "status": 200,
+      "response": {
+        "role": "viewer"
+      }
+    },
+    {
+      "port": 57989,
+      "route": "/api/items",
+      "method": "POST",
+      "payload": {
+        "title": "越权"
+      },
+      "status": 403,
+      "response": {
+        "error": "FORBIDDEN"
+      }
+    },
+    {
+      "port": 57989,
+      "route": "/api/items",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "items": [
+          {
+            "id": "a045b3bb-c95b-41db-a1fe-c5cb4d31c17a",
+            "title": "回退前保留条目"
+          }
+        ]
+      }
+    },
+    {
+      "port": 57989,
+      "route": "/api/items",
+      "method": "POST",
+      "payload": {
+        "title": "  "
+      },
+      "status": 422,
+      "response": {
+        "error": "INVALID_TITLE"
+      }
+    },
+    {
+      "port": 57989,
+      "route": "/api/items",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "items": [
+          {
+            "id": "a045b3bb-c95b-41db-a1fe-c5cb4d31c17a",
+            "title": "回退前保留条目"
+          }
+        ]
+      }
+    },
+    {
+      "port": 58002,
+      "route": "/health",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "kind": "operations-fixture",
+        "release_id": "ops-good-1",
+        "source_sha256": "cbad3c4abdd4f95a5096840e8296a5b443144f8af5708147847d4186820c8227"
+      }
+    },
+    {
+      "port": 58002,
+      "route": "/test/login",
+      "method": "POST",
+      "payload": {
+        "role": "editor"
+      },
+      "status": 200,
+      "response": {
+        "role": "editor"
+      }
+    },
+    {
+      "port": 58002,
+      "route": "/api/items",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "items": [
+          {
+            "id": "a045b3bb-c95b-41db-a1fe-c5cb4d31c17a",
+            "title": "回退前保留条目"
+          }
+        ]
+      }
+    },
+    {
+      "port": 58008,
+      "route": "/health",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "kind": "operations-fixture",
+        "release_id": "ops-bad-1",
+        "source_sha256": "7bb463b1966ec984a87158635b99c0e547aae25c119ed43e45b401e0ad121088"
+      }
+    },
+    {
+      "port": 58008,
+      "route": "/test/login",
+      "method": "POST",
+      "payload": {
+        "role": "editor"
+      },
+      "status": 200,
+      "response": {
+        "role": "editor"
+      }
+    },
+    {
+      "port": 58008,
+      "route": "/api/items",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "items": [
+          {
+            "id": "a045b3bb-c95b-41db-a1fe-c5cb4d31c17a",
+            "title": "回退前保留条目"
+          }
+        ]
+      }
+    },
+    {
+      "port": 58008,
+      "route": "/api/items",
+      "method": "POST",
+      "payload": {
+        "title": "响应成功但缺失条目"
+      },
+      "status": 201,
+      "response": {
+        "id": "ef5dd10c-4557-41be-b0a8-3a796d1a4c5b",
+        "title": "响应成功但缺失条目"
+      }
+    },
+    {
+      "port": 58008,
+      "route": "/api/items",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "items": [
+          {
+            "id": "a045b3bb-c95b-41db-a1fe-c5cb4d31c17a",
+            "title": "回退前保留条目"
+          }
+        ]
+      }
+    },
+    {
+      "port": 58016,
+      "route": "/health",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "kind": "operations-fixture",
+        "release_id": "ops-good-1",
+        "source_sha256": "cbad3c4abdd4f95a5096840e8296a5b443144f8af5708147847d4186820c8227"
+      }
+    },
+    {
+      "port": 58016,
+      "route": "/test/login",
+      "method": "POST",
+      "payload": {
+        "role": "editor"
+      },
+      "status": 200,
+      "response": {
+        "role": "editor"
+      }
+    },
+    {
+      "port": 58016,
+      "route": "/api/items",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "items": [
+          {
+            "id": "a045b3bb-c95b-41db-a1fe-c5cb4d31c17a",
+            "title": "回退前保留条目"
+          }
+        ]
+      }
+    },
+    {
+      "port": 58016,
+      "route": "/test/login",
+      "method": "POST",
+      "payload": {
+        "role": "editor"
+      },
+      "status": 200,
+      "response": {
+        "role": "editor"
+      }
+    },
+    {
+      "port": 58016,
+      "route": "/api/items",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "items": [
+          {
+            "id": "a045b3bb-c95b-41db-a1fe-c5cb4d31c17a",
+            "title": "回退前保留条目"
+          }
+        ]
+      }
+    },
+    {
+      "port": 58016,
+      "route": "/api/items",
+      "method": "POST",
+      "payload": {
+        "title": "回退后写入恢复"
+      },
+      "status": 201,
+      "response": {
+        "id": "5f10fcab-365d-4bc1-b713-f63db3f36d40",
+        "title": "回退后写入恢复"
+      }
+    },
+    {
+      "port": 58016,
+      "route": "/api/items",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "items": [
+          {
+            "id": "a045b3bb-c95b-41db-a1fe-c5cb4d31c17a",
+            "title": "回退前保留条目"
+          },
+          {
+            "id": "5f10fcab-365d-4bc1-b713-f63db3f36d40",
+            "title": "回退后写入恢复"
+          }
+        ]
+      }
+    },
+    {
+      "port": 58026,
+      "route": "/health",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "kind": "operations-fixture",
+        "release_id": "ops-good-1",
+        "source_sha256": "cbad3c4abdd4f95a5096840e8296a5b443144f8af5708147847d4186820c8227"
+      }
+    },
+    {
+      "port": 58026,
+      "route": "/test/login",
+      "method": "POST",
+      "payload": {
+        "role": "editor"
+      },
+      "status": 200,
+      "response": {
+        "role": "editor"
+      }
+    },
+    {
+      "port": 58026,
+      "route": "/api/items",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "items": []
+      }
+    },
+    {
+      "port": 58032,
+      "route": "/health",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "kind": "operations-fixture",
+        "release_id": "ops-good-1",
+        "source_sha256": "cbad3c4abdd4f95a5096840e8296a5b443144f8af5708147847d4186820c8227"
+      }
+    },
+    {
+      "port": 58032,
+      "route": "/test/login",
+      "method": "POST",
+      "payload": {
+        "role": "editor"
+      },
+      "status": 200,
+      "response": {
+        "role": "editor"
+      }
+    },
+    {
+      "port": 58032,
+      "route": "/api/items",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "items": [
+          {
+            "id": "a045b3bb-c95b-41db-a1fe-c5cb4d31c17a",
+            "title": "回退前保留条目"
+          },
+          {
+            "id": "5f10fcab-365d-4bc1-b713-f63db3f36d40",
+            "title": "回退后写入恢复"
+          }
+        ]
+      }
+    },
+    {
+      "port": 58032,
+      "route": "/test/login",
+      "method": "POST",
+      "payload": {
+        "role": "editor"
+      },
+      "status": 200,
+      "response": {
+        "role": "editor"
+      }
+    },
+    {
+      "port": 58032,
+      "route": "/api/items",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "items": [
+          {
+            "id": "a045b3bb-c95b-41db-a1fe-c5cb4d31c17a",
+            "title": "回退前保留条目"
+          },
+          {
+            "id": "5f10fcab-365d-4bc1-b713-f63db3f36d40",
+            "title": "回退后写入恢复"
+          }
+        ]
+      }
+    },
+    {
+      "port": 58032,
+      "route": "/api/items",
+      "method": "POST",
+      "payload": {
+        "title": "恢复后可继续使用"
+      },
+      "status": 201,
+      "response": {
+        "id": "8552834d-0877-4a1f-97e2-0285e90a2951",
+        "title": "恢复后可继续使用"
+      }
+    },
+    {
+      "port": 58032,
+      "route": "/api/items",
+      "method": "GET",
+      "payload": null,
+      "status": 200,
+      "response": {
+        "items": [
+          {
+            "id": "a045b3bb-c95b-41db-a1fe-c5cb4d31c17a",
+            "title": "回退前保留条目"
+          },
+          {
+            "id": "5f10fcab-365d-4bc1-b713-f63db3f36d40",
+            "title": "回退后写入恢复"
+          },
+          {
+            "id": "8552834d-0877-4a1f-97e2-0285e90a2951",
+            "title": "恢复后可继续使用"
+          }
+        ]
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "Node 可用",
+      "passed": true
+    },
+    {
+      "name": "既有修复补丁重建",
+      "passed": true
+    },
+    {
+      "name": "健康身份修改位置唯一",
+      "passed": true
+    },
+    {
+      "name": "受控故障修改位置唯一",
+      "passed": true
+    },
+    {
+      "name": "包文件范围 good",
+      "passed": true
+    },
+    {
+      "name": "实际解包内容 good",
+      "passed": true
+    },
+    {
+      "name": "包文件范围 bad",
+      "passed": true
+    },
+    {
+      "name": "实际解包内容 bad",
+      "passed": true
+    },
+    {
+      "name": "缺少配置可定位启动失败",
+      "passed": true
+    },
+    {
+      "name": "启动身份 ops-good-1",
+      "passed": true
+    },
+    {
+      "name": "运行源码指纹 ops-good-1",
+      "passed": true
+    },
+    {
+      "name": "实际登录 editor",
+      "passed": true
+    },
+    {
+      "name": "真实读回",
+      "passed": true
+    },
+    {
+      "name": "保存响应",
+      "passed": true
+    },
+    {
+      "name": "真实读回",
+      "passed": true
+    },
+    {
+      "name": "保存与服务端读回 回退前保留条目",
+      "passed": true
+    },
+    {
+      "name": "实际登录 viewer",
+      "passed": true
+    },
+    {
+      "name": "真实读回",
+      "passed": true
+    },
+    {
+      "name": "拒绝越权且无副作用",
+      "passed": true
+    },
+    {
+      "name": "真实读回",
+      "passed": true
+    },
+    {
+      "name": "拒绝空标题且无副作用",
+      "passed": true
+    },
+    {
+      "name": "停止后入口关闭 PID 68898",
+      "passed": true
+    },
+    {
+      "name": "启动身份 ops-good-1",
+      "passed": true
+    },
+    {
+      "name": "运行源码指纹 ops-good-1",
+      "passed": true
+    },
+    {
+      "name": "实际登录 editor",
+      "passed": true
+    },
+    {
+      "name": "真实读回",
+      "passed": true
+    },
+    {
+      "name": "跨进程数据保留",
+      "passed": true
+    },
+    {
+      "name": "停止后入口关闭 PID 68899",
+      "passed": true
+    },
+    {
+      "name": "启动身份 ops-bad-1",
+      "passed": true
+    },
+    {
+      "name": "运行源码指纹 ops-bad-1",
+      "passed": true
+    },
+    {
+      "name": "实际登录 editor",
+      "passed": true
+    },
+    {
+      "name": "真实读回",
+      "passed": true
+    },
+    {
+      "name": "保存响应",
+      "passed": true
+    },
+    {
+      "name": "真实读回",
+      "passed": true
+    },
+    {
+      "name": "保存与服务端读回 响应成功但缺失条目",
+      "passed": true
+    },
+    {
+      "name": "健康正常但业务失败可识别",
+      "passed": true
+    },
+    {
+      "name": "停止后入口关闭 PID 68901",
+      "passed": true
+    },
+    {
+      "name": "启动身份 ops-good-1",
+      "passed": true
+    },
+    {
+      "name": "运行源码指纹 ops-good-1",
+      "passed": true
+    },
+    {
+      "name": "实际登录 editor",
+      "passed": true
+    },
+    {
+      "name": "真实读回",
+      "passed": true
+    },
+    {
+      "name": "应用回退保留原数据",
+      "passed": true
+    },
+    {
+      "name": "实际登录 editor",
+      "passed": true
+    },
+    {
+      "name": "真实读回",
+      "passed": true
+    },
+    {
+      "name": "保存响应",
+      "passed": true
+    },
+    {
+      "name": "真实读回",
+      "passed": true
+    },
+    {
+      "name": "保存与服务端读回 回退后写入恢复",
+      "passed": true
+    },
+    {
+      "name": "停止后入口关闭 PID 68902",
+      "passed": true
+    },
+    {
+      "name": "启动身份 ops-good-1",
+      "passed": true
+    },
+    {
+      "name": "运行源码指纹 ops-good-1",
+      "passed": true
+    },
+    {
+      "name": "实际登录 editor",
+      "passed": true
+    },
+    {
+      "name": "真实读回",
+      "passed": true
+    },
+    {
+      "name": "隔离数据丢失可观察",
+      "passed": true
+    },
+    {
+      "name": "停止后入口关闭 PID 68903",
+      "passed": true
+    },
+    {
+      "name": "启动身份 ops-good-1",
+      "passed": true
+    },
+    {
+      "name": "运行源码指纹 ops-good-1",
+      "passed": true
+    },
+    {
+      "name": "实际登录 editor",
+      "passed": true
+    },
+    {
+      "name": "真实读回",
+      "passed": true
+    },
+    {
+      "name": "实际恢复完整快照",
+      "passed": true
+    },
+    {
+      "name": "实际登录 editor",
+      "passed": true
+    },
+    {
+      "name": "真实读回",
+      "passed": true
+    },
+    {
+      "name": "保存响应",
+      "passed": true
+    },
+    {
+      "name": "真实读回",
+      "passed": true
+    },
+    {
+      "name": "保存与服务端读回 恢复后可继续使用",
+      "passed": true
+    },
+    {
+      "name": "停止后入口关闭 PID 68904",
+      "passed": true
+    }
+  ],
+  "backup": {
+    "path": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/backup/items.json",
+    "sha256": "9909ab7a48cefc78a29ecfcd837a3f4bda5bab5e12821515e489992fa0249bdc",
+    "consistent": "已停止全部样本写入进程后复制",
+    "items": [
+      {
+        "id": "a045b3bb-c95b-41db-a1fe-c5cb4d31c17a",
+        "title": "回退前保留条目"
+      },
+      {
+        "id": "5f10fcab-365d-4bc1-b713-f63db3f36d40",
+        "title": "回退后写入恢复"
+      }
+    ]
+  },
+  "restored": {
+    "path": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/operations-eval-zpxp0fvg/restored/items.json",
+    "items": [
+      {
+        "id": "a045b3bb-c95b-41db-a1fe-c5cb4d31c17a",
+        "title": "回退前保留条目"
+      },
+      {
+        "id": "5f10fcab-365d-4bc1-b713-f63db3f36d40",
+        "title": "回退后写入恢复"
+      },
+      {
+        "id": "8552834d-0877-4a1f-97e2-0285e90a2951",
+        "title": "恢复后可继续使用"
+      }
+    ],
+    "data_loss_boundary": "恢复停止写入备份点全部条目；没有覆盖后续写入/数据库/生产环境"
+  },
+  "outcome": "passed"
+}

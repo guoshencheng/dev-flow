@@ -1,0 +1,3 @@
+interface:
+  display_name: "运维与交付"
+  short_description: "环境与快速启动、产物发布、运行核验、故障恢复及项目运行资产维护"

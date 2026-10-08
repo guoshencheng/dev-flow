@@ -45,4 +45,4 @@ owner: visual
 
 没有把主 Agent 实施与工具检查登记为 `dev_visual` 原生派发或独立专业行为评测。原生发现/派发、不同模型下的专业行为、新上下文视觉资产复用与真实用户/生产项目仍需实测；产品已有的历史隔离证据保持对应原版本。
 
-后续先在真实 UI 任务按[确认与自主实施协议](../skills/dev-flow/references/execution-contract.md)使用同一规格/原型完成持续交接；[架构首版](architecture-agent.md)已建立，下一项职责为测试验收，然后研发和运维交付。用户确认体验、重要架构取舍与验收预期，AI 复核实现计划并持续修正实现。
+后续先在真实 UI 任务按[确认与自主实施协议](../skills/dev-flow/references/execution-contract.md)使用同一规格/原型完成持续交接；[架构首版](architecture-agent.md)已建立，测试验收、研发与[运维交付](operations-agent.md)首版均已建设，下一步真实任务检验全流程。用户确认体验、重要架构取舍与验收预期，AI 复核实现计划并持续修正实现。
