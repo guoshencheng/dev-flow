@@ -2,6 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "dev-flow",
   "version": "0.1.0",
+  "repository": "https://github.com/guoshencheng/dev-flow",
   "description": "多角色研发协作：产品与交互、视觉、架构、研发、测试验收、运维交付，以及项目资产持续维护。",
   "extensions": {
     "com.openai": {

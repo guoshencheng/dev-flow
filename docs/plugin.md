@@ -15,7 +15,7 @@ python3 scripts/manage_plugin.py check
 
 `install` 同时用于更新：构建 `.dev-flow/plugin-source/` 的干净包，注册本地 `dev-flow-local` marketplace，经 Codex CLI 安装 `dev-flow@dev-flow-local`，核验安装缓存指纹，再初始化角色并迁移旧入口。`check` 只读检查实际启用、源码与缓存一致、六角色与指引和重复 Skill 入口。插件加载安装缓存，修改源码后应重新运行 install，当前会话的能力列表不一定热更新；新会话核验发现，桌面尚未刷新时重启应用。
 
-源码仓库已有根 `plugin.json` 和兼容 `.codex-plugin/plugin.json`。根清单是便携入口，兼容清单保持身份一致。源码 repo marketplace 指向 `./`；本机采用干净包目录作为注册来源，避免把已有依赖缓存复制进插件。远程 Git 分发尚未配置，不提供虚构仓库地址；以后发布干净 Git 仓库后，按实际 URL 注册 marketplace。
+源码仓库已有根 `plugin.json` 和兼容 `.codex-plugin/plugin.json`。根清单是便携入口，兼容清单保持身份一致。源码 repo marketplace 指向 `./`；本机采用干净包目录作为注册来源，避免把已有依赖缓存复制进插件。源码远程为 [guoshencheng/dev-flow](https://github.com/guoshencheng/dev-flow)，发布分支 main；新环境推荐克隆后运行上述安装命令，保留统一的构建、迁移和更新行为。直接从 Git marketplace 安装时仍需执行原生 Agent 初始化，实际发现与派发独立核验。
 
 ## 原生 Agent 初始化与迁移
 

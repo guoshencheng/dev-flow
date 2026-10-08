@@ -61,7 +61,16 @@ python3 scripts/install_global.py --check
 
 2026-10-07 已验证：Skill 结构、全局链接、既有指引保留与备份、重复安装和冲突保护；CLI 新上下文预览已加载全局流程指引，先后发现 `dev-flow`、`dev-product` Skills。当时链接两个 Skills、一个原生职责配置。产品专业指导由两次独立的 Sol medium 执行验证，覆盖首次设计和新上下文变更复用；CLI 在原生派发尝试前拒绝了所选模型，原生发现、派发及实际模型设置仍未验收，详见[验证记录](evals/dev-product/README.md)。视觉阶段增加第三个 Skill，见[视觉与工具记录](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)；架构阶段增加第四个 Skill 和第三个职责设置，见[架构验证](evals/dev-architecture/report.md)。
 
-当前是本地 Git 仓库，远程发布在需要时设置。原 `business-guide/docs/development-harness` 入口链接到同一份参考文档，已有文件链接继续可用。
+源码维护在 [guoshencheng/dev-flow](https://github.com/guoshencheng/dev-flow)，发布分支为 `main`。新环境先克隆，再使用本仓库安装命令：
+
+```sh
+git clone git@github.com:guoshencheng/dev-flow.git
+cd dev-flow
+python3 scripts/manage_plugin.py install
+python3 scripts/manage_plugin.py check
+```
+
+后续用 Git 更新源码，再运行 install 刷新当前插件；配置和组件仍由同一仓库维护。原 `business-guide/docs/development-harness` 入口链接到同一份参考文档，已有文件链接继续可用。
 
 ## 下一项建设
 
