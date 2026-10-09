@@ -42,3 +42,7 @@ owner: operations
 首版定义 O01–O08，实际证据见[验证记录](../evals/dev-operations/report.md)：主 Agent 使用隔离 HTTP/文件数据样本验证源码包解包启动、版本、核心 API、跨进程数据、故障识别与应用回退/备份恢复。方法执行不代表独立角色行为、原生发现/派发、真实项目、新机器、React/Next/Astro 构建或生产发布，未执行项分别登记。
 
 六职责首版方法现已具备。接下来选择一个真实任务验证设计确认、AI 计划复核、研发测试循环、实际交付及下一任务资产复用；运行内核、平台适配和 Plugin 打包依据实测需要建设。
+
+## Kimi 宿主接入（2026-10-09）
+
+本职责已提供独立 Kimi Markdown Agent 入口，与 Codex 角色参考从共用 Skill 元信息生成；专业方法仍只在 Skill/参考维护。Kimi 2.1.1 已通过原生发现、派发、包内文件读取和交接的模型替身冒烟；真实模型的专业行为及项目结果尚未验证，不能将接入检查登记为专业验收。见 [适配记录](../reviews/2026-10-09-kimi-agent-adaptation.md)及 [执行说明](../skills/dev-flow/references/kimi-agent-configuration.md)。

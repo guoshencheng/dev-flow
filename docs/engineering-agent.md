@@ -52,3 +52,7 @@ owner: engineering
 v0.2 增加架构后技术方案和产品符合性 Review、给测试的 OUT/链路映射；本次内容/协议检查与主 Agent 推演见[调整记录](../reviews/2026-10-08-technical-delivery-stage.md)。历史修复案例不证明新增阶段已在真实项目执行。
 
 已建设[运维与交付职责](operations-agent.md)，研发移交实际工程候选、配置/产物与诊断入口，运维维护目标环境和运行证据。下一步用真实任务验证完整协作，再按重复操作与实际失败建设运行内核和 Plugin。
+
+## Kimi 宿主接入（2026-10-09）
+
+本职责已提供独立 Kimi Markdown Agent 入口，与 Codex 角色参考从共用 Skill 元信息生成；专业方法仍只在 Skill/参考维护。Kimi 2.1.1 已通过原生发现、派发、包内文件读取和交接的模型替身冒烟；真实模型的专业行为及项目结果尚未验证，不能将接入检查登记为专业验收。见 [适配记录](../reviews/2026-10-09-kimi-agent-adaptation.md)及 [执行说明](../skills/dev-flow/references/kimi-agent-configuration.md)。

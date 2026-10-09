@@ -1,0 +1,66 @@
+{
+  "mock_model": true,
+  "real_business_validation": false,
+  "roles": {
+    "product": {
+      "base_prompt_expanded": true,
+      "agent_tool_absent": true,
+      "reads": [
+        "skills/dev-product/SKILL.md",
+        "skills/dev-flow/references/constitution.md"
+      ],
+      "handoff": true
+    },
+    "visual": {
+      "base_prompt_expanded": true,
+      "agent_tool_absent": true,
+      "reads": [
+        "skills/dev-visual/SKILL.md",
+        "skills/dev-flow/references/constitution.md"
+      ],
+      "handoff": true
+    },
+    "architecture": {
+      "base_prompt_expanded": true,
+      "agent_tool_absent": true,
+      "reads": [
+        "skills/dev-architecture/SKILL.md",
+        "skills/dev-flow/references/constitution.md"
+      ],
+      "handoff": true
+    },
+    "engineering": {
+      "base_prompt_expanded": true,
+      "agent_tool_absent": true,
+      "reads": [
+        "skills/dev-engineering/SKILL.md",
+        "skills/dev-flow/references/constitution.md"
+      ],
+      "handoff": true
+    },
+    "acceptance": {
+      "base_prompt_expanded": true,
+      "agent_tool_absent": true,
+      "reads": [
+        "skills/dev-acceptance/SKILL.md",
+        "skills/dev-flow/references/constitution.md"
+      ],
+      "handoff": true
+    },
+    "operations": {
+      "base_prompt_expanded": true,
+      "agent_tool_absent": true,
+      "reads": [
+        "skills/dev-operations/SKILL.md",
+        "skills/dev-flow/references/constitution.md"
+      ],
+      "handoff": true
+    }
+  },
+  "kimi_version": "2.1.1",
+  "native_install": true,
+  "skills_discovered": 7,
+  "agents_discovered": 6,
+  "diagnostics": [],
+  "native_dispatch_read_handoff": true
+}
