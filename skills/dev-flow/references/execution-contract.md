@@ -2,7 +2,7 @@
 id: FLOW-execution-contract
 title: 设计确认、计划复核与自主实现
 status: current
-version: 0.7
+version: 0.8
 owner: flow
 ---
 
@@ -20,7 +20,7 @@ owner: flow
 | --- | --- | --- |
 | 产品、交互与 UI | 用户任务、业务规则、核心流程、状态和恢复、目标设备及相关视觉方向 | 产品/视觉规格、原型及有效 RULE/AC、版本和确认范围 |
 | 架构设计 | 系统与模块边界、数据与接口、权限、运行/交付方式、重要技术选择及成本/兼容约束 | 可实现的架构设计、契约与重要决定；不要求用户核对每个内部文件和代码细节 |
-| 测试用例及端到端覆盖 | 用户可以观察的正常、边界、拒绝、异常与恢复结果，拟交付页面/功能/链路和必要回归；架构约束的验证方式 | 经 AI Review 的用例及关联技术方案版本、稳定 TC/OUT ID、对应 RULE/AC/UI/ARC、前置数据、操作、预期、验证环境及实际覆盖边界 |
+| 测试用例及端到端覆盖 | 用普通语言确认可观察的正常、边界、拒绝、异常与恢复结果、拟交付功能和必要回归、覆盖边界及重要约束的影响；技术拆解由 AI Review 对齐 | 经 AI Review 的用户用例及技术拆解版本、稳定 TC/检查编号、关联技术方案与 RULE/AC/UI/ARC、操作/预期及覆盖边界；详细映射和执行方法保存在技术层 |
 
 确认可以分步进行，也可合并展示相关候选；合并时仍需完成技术方案与用例 Review，并将重要架构决定纳入明确确认，不能跳过依赖或把尚未作出的决定登记为已确认。完整候选先具备可审阅的当前项目文档、原型/示例和真实预览再请求确认，明确项目归属、对应产品/设计UI/技术/方案/用例入口、待决问题和变化影响；按[项目文档协议](design-document-contract.md)定位实际成果，通用 Skill 参考不作为项目确认基线。已有明确用户决定只记录并复用；候选、Agent 自查、用户查看页面或未答复都不能登记为已确认。
 
@@ -37,6 +37,8 @@ owner: flow
 产品依据原始规格双向核对覆盖和行为符合性，相关页面/状态由视觉核对，架构检查契约/依赖与重要约束。实际 AI Review 记录版本、执行者/方式、问题与结论；阻断项修正并定向复核通过后交测试。技术方案默认不新增人工审批，已有有效决定直接复用；改变确认基线只确认受影响部分。
 
 ## 端到端用例、AI Review 与人工确认
+
+用户用例用普通中文描述场景、前置、操作和具体可观察结果；关联技术拆解承接接口/数据/并发/自动化与证据，独立架构专项保留约束来源。两层以稳定用例编号关联，技术层引用业务预期；用户无需审阅内部执行细节。用例 AI Review 同时核对用户可读性与两层覆盖、预期、证据和环境边界的一致性，不增加人工技术审批。具体方法与模板由[测试策略](../../dev-acceptance/references/strategy-and-cases.md)维护。
 
 测试同时读取原始产品/交互/UI、架构和经 Review 的技术方案，从拟交付页面/入口/功能/链路形成可读端到端用例，并补足相关边界、拒绝、失败恢复、交付和必要架构检查。建立 `RULE/AC/UI/ARC ↔ OUT/链路 ↔ TC ↔ 自动化/实际证据`。产品要求未进入技术方案时作为遗漏反馈研发/产品，不以方案清单代替需求全集或缩减验收；测试可在设计早期提供场景/可测性意见，不因此提前定稿或接管原型走查。
 
@@ -117,7 +119,7 @@ Agent 可以自主调整内部实现、任务切分、诊断与修复方法，�
 | 当前架构入口与本次设计 | `docs/dev-flow/architecture/index.md`、`docs/dev-flow/iterations/<迭代ID>/architecture/design.md` |
 | 实际模块地图与架构复盘 | `docs/dev-flow/architecture/modules.md`、`docs/dev-flow/iterations/<迭代ID>/architecture/review.md`；详见[架构资产协议](../../dev-architecture/references/project-assets.md) |
 | 端到端技术实现方案与 AI Review | `docs/dev-flow/iterations/<迭代ID>/engineering/technical-solution.md`；页面/入口/功能/OUT/链路、产品符合性及相关 UI/架构复核 |
-| 可读用例、覆盖与 AI Review | `docs/dev-flow/iterations/<迭代ID>/acceptance/cases.md`；关联 OUT 与原规则、记录 Review/人工确认；自动化在项目实际测试目录维护 |
+| 用户用例、技术拆解与 AI Review | `docs/dev-flow/iterations/<迭代ID>/acceptance/cases.md` 保存行为与确认；`acceptance/technical-checks.md` 保存技术映射与对齐 Review；自动化在项目实际测试目录维护 |
 | 实现计划与 AI 复核 | `docs/dev-flow/iterations/<迭代ID>/engineering/implementation-plan.md`；复核记录可放同文件，重要问题按需独立保存 |
 | 确认与变更 | 记录在对应规格/设计/用例中，由项目索引关联，不依赖本机临时缓存 |
 
