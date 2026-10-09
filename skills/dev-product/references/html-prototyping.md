@@ -1,6 +1,6 @@
 # React 原型与设计稿构建、预览指南
 
-本指南让 AI 根据本次产品、交互或 UI 设计问题构建页面，新建工程默认使用 Vite + React + TypeScript，启动预览后与用户持续讨论和修改。技术与设计按共同[UI 约定](../../dev-flow/references/ui-stack-and-components.md)执行：B 端使用 Ant Design 规范和 antd；C 端 Web 优先 shadcn/ui；其他 C 端实施前先开展网上参考研究。页面内容、业务流程和视觉表现由本次任务决定，随包示例可选。
+本指南让 AI 根据本次产品、交互或 UI 设计问题构建页面，新建工程默认使用 Vite + React + TypeScript，启动预览后与用户持续讨论和修改。技术与设计按共同[UI 约定](../../dev-visual/references/ui-stack-and-components.md)执行：B 端使用 Ant Design 规范和 antd；C 端 Web 优先 shadcn/ui；其他 C 端实施前先开展网上参考研究。页面内容、业务流程和视觉表现由本次任务决定，随包示例可选。
 
 产品规格关联原型 ID、源码与版本、规则/验收、模拟范围和场景入口；目录和归档遵守[共同文档协议](../../dev-flow/references/design-document-contract.md)。Markdown/MDX 规则、HTML 原型和相关设计资产可用[统一 Vite 文档入口](../../dev-flow/references/document-preview.md)预览并按文件生成当前 URL；已有独立 React 原型继续复用其实际服务，通过产品索引关联。
 
@@ -37,7 +37,7 @@ npm install
 npm run dev -- --host 127.0.0.1 --port 5173
 ```
 
-AI 将默认欢迎页替换成本次实际页面。B 端安装 antd 并直接导入需要的组件；主题通过 ConfigProvider 与 Tokens 管理。C 端 Web 根据[官方 Vite 接入说明](https://ui.shadcn.com/docs/installation/vite)配置 Tailwind 与别名后执行 shadcn 初始化、添加所需组件；也可使用 shadcn CLI 的 Vite 模板。使用已有共享组件时按[工作区接入说明](../assets/react-workspace/README.md)复制或参考源码、记录来源哈希和项目差异。命令依据当前[Vite 官方指南](https://vite.dev/guide/)核验；初始化使用当前工具，项目提交锁文件保持复现。
+AI 将默认欢迎页替换成本次实际页面。B 端安装 antd 并直接导入需要的组件；主题通过 ConfigProvider 与 Tokens 管理。C 端 Web 根据[官方 Vite 接入说明](https://ui.shadcn.com/docs/installation/vite)配置 Tailwind 与别名后执行 shadcn 初始化、添加所需组件；也可使用 shadcn CLI 的 Vite 模板。使用已有共享组件时按[工作区接入说明](../../dev-visual/assets/react-workspace/README.md)复制或参考源码、记录来源哈希和项目差异。命令依据当前[Vite 官方指南](https://vite.dev/guide/)核验；初始化使用当前工具，项目提交锁文件保持复现。
 
 打开服务实际输出地址；修改源码通过 Vite 热更新，Ctrl+C 停止。端口冲突时换用空闲端口或读取 Vite 自动选择的端口，报告实际地址，保留其他任务的服务。检查构建与必要场景，不将欢迎页或组件展示页当成当前需求原型。
 

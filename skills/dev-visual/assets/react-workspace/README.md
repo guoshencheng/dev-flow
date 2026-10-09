@@ -1,6 +1,8 @@
 # React 原型与共享源码工作区
 
-此目录与 `dev-product` Skill 在同一 Git 仓库维护。Vite + React + TypeScript 提供预览与检查；共享组件按源码复制或参考实现进入项目，由项目直接迭代。
+本工作区由视觉主责共享组件契约、呈现与目录，研发协作源码/依赖和构建，产品使用其表达原型任务，测试核验实际行为。跨职责共享不要求在多个 Skills 保留源码副本。
+
+此目录与 `dev-visual` Skill 在同一 Git 仓库维护。Vite + React + TypeScript 提供预览与检查；共享组件按源码复制或参考实现进入项目，由项目直接迭代。
 
 ## 目录与边界
 
@@ -23,8 +25,8 @@
 
 ```sh
 # 从宿主 Skill 列表取得实际目录；将完整工作区复制到项目中的空目录
-DEV_PRODUCT_SKILL_DIR="/实际安装目录/skills/dev-product"
-cp -R "$DEV_PRODUCT_SKILL_DIR/assets/react-workspace" /项目绝对路径/tools/component-gallery
+DEV_VISUAL_SKILL_DIR="/实际安装目录/skills/dev-visual"
+cp -R "$DEV_VISUAL_SKILL_DIR/assets/react-workspace" /项目绝对路径/tools/component-gallery
 cd /项目绝对路径/tools/component-gallery
 npm ci
 npm run dev:gallery

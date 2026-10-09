@@ -2,7 +2,7 @@
 
 源码与此清单一起由 Git 管理，默认复制或参考到项目、本地维护。当前组件为隔离示例起点，尚无真实项目采用记录。
 
-B 端先参考 Ant Design 官方组件、示例和项目已有实现，现成控件直接导入 antd；本清单补充组合与参考源码。SelectionSummary、ActionCard 是本仓库的组合，Button/Card 来自官方 shadcn/ui 源码。按需联用方式见[Ant Design 能力指南](../../../dev-flow/references/ant-design-capabilities.md)。
+B 端先参考 Ant Design 官方组件、示例和项目已有实现，现成控件直接导入 antd；本清单补充组合与参考源码。SelectionSummary、ActionCard 是本仓库的组合，Button/Card 来自官方 shadcn/ui 源码。按需联用方式见[Ant Design 能力指南](../../references/ant-design-capabilities.md)。
 
 | 组件 | 契约与适用条件 | 来源与示例 |
 | --- | --- | --- |

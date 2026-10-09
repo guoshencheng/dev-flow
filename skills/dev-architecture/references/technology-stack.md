@@ -12,7 +12,7 @@
 
 这里按主要用户任务与是否有服务端业务划分：React 用于交互型 Web，Astro 用于内容型静态站；React 工程也可输出静态文件，不能只按托管方式把它改归 Astro。
 
-这些选择已经确定，Agent 直接采用，不每次列框架候选或追加选型确认。B 端 Web 采用 Ant Design 规范并优先 antd，C 端 Web 优先 shadcn/ui；自有共享组件源码复制/参考与 Git 来源管理沿用[共同 UI 约定](../../dev-flow/references/ui-stack-and-components.md)。
+这些选择已经确定，Agent 直接采用，不每次列框架候选或追加选型确认。B 端 Web 采用 Ant Design 规范并优先 antd，C 端 Web 优先 shadcn/ui；自有共享组件源码复制/参考与 Git 来源管理沿用[共同 UI 约定](../../dev-visual/references/ui-stack-and-components.md)。
 
 新工程和本次明确采用的目标遵守上表；既有工程的局部工作复用有效技术基线，需要迁移时再说明范围与兼容/交付影响。一个仓库有产品、网站、服务和原型等单元时分别登记，不能从目录名或某个依赖推断实际采用，也不把退役路径作为研发入口。
 

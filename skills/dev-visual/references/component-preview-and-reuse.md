@@ -6,14 +6,14 @@
 
 随包 [React 工作区](../assets/react-workspace/README.md)提供预览、源码文件集和使用示例。`catalog.json` 记录用途、边界、必要文件和基础依赖；完整契约见源码与说明。B 端基础控件直接使用 antd，C 端 Web 优先使用项目已有 shadcn/ui 基底。
 
-B 端先参考官方完整组件与示例，按需联合[官方 Skill、CLI 或 MCP](../../dev-flow/references/ant-design-capabilities.md)。现成组件可满足时直接使用；本目录提供额外组合，组件选择不限于随包四类。当前 SelectionSummary/ActionCard 为自有组合，Button/Card 为保留许可的官方 shadcn/ui 源码。
+B 端先参考官方完整组件与示例，按需联合[官方 Skill、CLI 或 MCP](ant-design-capabilities.md)。现成组件可满足时直接使用；本目录提供额外组合，组件选择不限于随包四类。当前 SelectionSummary/ActionCard 为自有组合，Button/Card 为保留许可的官方 shadcn/ui 源码。
 
 目标父目录先按需创建；已有副本直接复用，保留项目修改，不覆盖或嵌套复制。
 
 ```sh
 # 从宿主 Skill 列表取得实际目录；将完整工作区复制到项目中的空目录
-DEV_PRODUCT_SKILL_DIR="/实际安装目录/skills/dev-product"
-cp -R "$DEV_PRODUCT_SKILL_DIR/assets/react-workspace" /项目绝对路径/tools/component-gallery
+DEV_VISUAL_SKILL_DIR="/实际安装目录/skills/dev-visual"
+cp -R "$DEV_VISUAL_SKILL_DIR/assets/react-workspace" /项目绝对路径/tools/component-gallery
 cd /项目绝对路径/tools/component-gallery
 npm ci
 npm run dev:gallery
@@ -45,4 +45,4 @@ B 端沿用项目 React、antd、ConfigProvider。C 端采用项目 shadcn/Tailw
 
 共享源码更新后，比较原采用快照、当前参考源码和项目修改，按任务需要合并，保护项目定制；升级不是自动覆盖。项目验证过的通用改进作为候选回收到共享仓库，更新契约、必要文件集、示例与证据，再供其他项目参考。
 
-在实际任务页面运行并验证相关交互、键盘、状态、反馈、主题和尺寸。按[项目资产协议](project-assets.md)将有效决定、采用记录和证据关联；当前仅有隔离案例时保持该成熟度。新增共享组件补齐 catalog.json、源码文件映射和可编译预览，保持源码文件集完整、使用示例为本地导入。
+在实际任务页面运行并验证相关交互、键盘、状态、反馈、主题和尺寸。按[视觉资产协议](project-assets.md)保存有效决定、采用记录和证据，并关联[产品资产](../../dev-product/references/project-assets.md)中的任务与规则；当前仅有隔离案例时保持该成熟度。新增共享组件补齐 catalog.json、源码文件映射和可编译预览，保持源码文件集完整、使用示例为本地导入。

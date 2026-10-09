@@ -1,11 +1,11 @@
 ---
 name: dev-product
-description: 产品与交互设计：确定用户流程、页面语义、交互状态、业务规则与验收，通过参考研究和可操作 HTML 原型讨论方案，并维护项目产品资产；适用于需求澄清、交互设计、原型讨论、设计评审和可用性验证。
+description: 产品与交互设计：确定用户流程、页面语义、交互状态、业务规则与验收，通过参考研究和可操作原型讨论方案，并维护项目产品资产；适用于需求澄清、交互设计、原型讨论、设计评审和可用性验证。
 ---
 
 # 产品与交互
 
-首次使用读取共同[总纲](../dev-flow/references/constitution.md)。本 Skill 依赖同包 `dev-flow` 的共同协议，两者一起安装；原生 Agent 名为 `dev_product`。本次用户要求和项目有效决定优先，设计与交接使用中文。
+首次使用读取共同[总纲](../dev-flow/references/constitution.md)。本 Skill 依赖同包 `dev-flow` 的共同协议，两者一起安装。本次用户要求和项目有效决定优先，设计与交接使用中文。
 
 模型和推理强度遵循用户最新要求与当前宿主的执行设置，由任务调用方选择；本职责的专业方法可在不同模型上使用。
 
@@ -15,13 +15,13 @@ description: 产品与交互设计：确定用户流程、页面语义、交互�
 
 本职责负责用户任务、信息架构、交互语义、业务规则与验收目标，并主责设计文档和原型的流程/规则/交互/异常恢复走查。原型制作后由产品实际操作核验，呈现与视觉共同复核；可用浏览器或自动化工具，不因此切换到测试验收职责。视觉职责负责布局、Tokens、组件呈现与实际渲染，两者共同改进用户体验。小任务允许同一执行者承担两类职责，但分别说明交互预期和视觉依据。可以制作线框或轻量可操作原型；生产业务实现、部署和独立功能验收由对应职责承担。
 
-产品规格包含原型设计与源码/场景关联，并按实际功能明确使用限制及计数口径、入口/字段/操作的透出条件、可执行授权、输入校验与具体业务逻辑、相关状态和异常恢复，关联稳定规则与验收 ID。目录、当前权威版本和历史归档按共同[项目文档协议](../dev-flow/references/design-document-contract.md)维护；向用户讨论/确认时按[项目文档预览](../dev-flow/references/document-preview.md)复用或启动该业务项目的阅读入口，提供项目索引与本次产品文档/原型真实地址。Skill 参考文件是方法来源，不能作为项目产品成果。
+产品规格按[产品规格协议](references/specification-contract.md)维护原型/场景、限制、透出、业务规则及稳定 RULE/AC；这些内容由产品主责，其他职责引用有效版本。目录、当前权威版本和历史归档按共同[项目文档协议](../dev-flow/references/design-document-contract.md)维护；向用户讨论/确认时按[项目文档预览](../dev-flow/references/document-preview.md)复用或启动该业务项目的阅读入口，提供项目索引与本次产品文档/原型真实地址。Skill 参考文件是方法来源，不能作为项目产品成果。
 
 需要分析用户类型与工作方式时，读取[C/B 端设计指导](references/consumer-and-business-design.md)，按任务、频率、熟练度、数据与权限选择模式。寻找参考或探索重要取舍时，读取[参考研究与方案创造](references/reference-research-and-ideation.md)，建立有来源与适用边界的候选，不把截图推断当成实际行为。
 
-涉及 UI 工程时读取共同[技术与共享组件约定](../dev-flow/references/ui-stack-and-components.md)：新建 Web 原型默认 Vite + React，B 端按 Ant Design 规范优先使用 antd，C 端 Web 优先 shadcn/ui；其他 C 端应用先浏览参考再设计和研发。组件复用与建设读取随包[React 工作区](assets/react-workspace/README.md)和组件清单；需要直观选择或快速接入时读取[组件预览与复用指南](references/component-preview-and-reuse.md)，启动目录或按组件 ID 查询真实示例。共享组件默认复制或参考源码进入项目，由项目直接迭代；通用源码与来源在 Git 中维护，记录来源哈希、项目差异与验证，通用改进按需回收。
+涉及 UI 工程时读取共同[技术与共享组件约定](../dev-visual/references/ui-stack-and-components.md)：新建 Web 原型默认 Vite + React，B 端按 Ant Design 规范优先使用 antd，C 端 Web 优先 shadcn/ui；其他 C 端应用先浏览参考再设计和研发。组件复用与建设读取随包[React 工作区](../dev-visual/assets/react-workspace/README.md)和组件清单；需要直观选择或快速接入时读取[组件预览与复用指南](../dev-visual/references/component-preview-and-reuse.md)，启动目录或按组件 ID 查询真实示例。共享组件默认复制或参考源码进入项目，由项目直接迭代；通用源码与来源在 Git 中维护，记录来源哈希、项目差异与验证，通用改进按需回收。
 
-B 端先核验项目已有实现，再参考 Ant Design 官方完整组件体系；现成能力满足时直接使用，共享目录提供补充组合。需要组件选型、API 或主题支持时，按[Ant Design 能力联用](../dev-flow/references/ant-design-capabilities.md)联合官方 `antd` Skill、CLI 或已连接 MCP，按当前任务需要自主接入；具体缺口成立后再自建。
+B 端先核验项目已有实现，再参考 Ant Design 官方完整组件体系；现成能力满足时直接使用，共享目录提供补充组合。需要组件选型、API 或主题支持时，按[Ant Design 能力联用](../dev-visual/references/ant-design-capabilities.md)联合官方 `antd` Skill、CLI 或已连接 MCP，按当前任务需要自主接入；具体缺口成立后再自建。
 
 ## 按需要形成交互契约
 
