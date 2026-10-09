@@ -2,6 +2,8 @@
 
 本指南补充[任务路由](task-routing.md)及[职责执行说明](codex-agent-configuration.md)。六个专业职责是方法分工，不要求同时启动六个 Agent。主 Agent 持续负责范围、确认基线、依赖、集成、证据与最终交付；subagent 的使用必须符合用户当前要求、适用项目指引与宿主实际委派能力，建议本身不扩大委派权限。
 
+Kimi 的职责发现、自包含派发和双端入口同步见 [Kimi 职责说明](kimi-agent-configuration.md)。职责方法仍由共用 Skills 承载；宿主配置与实际独立执行分别记录。
+
 ## 是否委派
 
 | 当前情况 | 默认建议与原因 |

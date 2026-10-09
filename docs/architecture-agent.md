@@ -72,3 +72,7 @@ v0.2 技术选型新增指导基于只读项目调查与官方平台资料，结
 v0.3 技术约定、代码规范与格式配置的检查见[本轮记录](../reviews/2026-10-08-architecture-code-standards-check.md)。格式工具的实际案例与其他静态/行为/真实项目检查分别登记，不将格式通过延伸为端到端验收。
 
 已建设[测试验收职责](acceptance-agent.md)，与架构使用同一 ARC/RULE/AC 和版本化证据推进完整交付。已建设[研发职责](engineering-agent.md)与[运维交付职责](operations-agent.md)，以实际实现/环境同步运行边界和恢复条件；下一步用真实任务检验完整协作。
+
+## Kimi 宿主接入（2026-10-09）
+
+本职责已提供独立 Kimi Markdown Agent 入口，与 Codex 角色参考从共用 Skill 元信息生成；专业方法仍只在 Skill/参考维护。Kimi 2.1.1 已通过原生发现、派发、包内文件读取和交接的模型替身冒烟；真实模型的专业行为及项目结果尚未验证，不能将接入检查登记为专业验收。见 [适配记录](../reviews/2026-10-09-kimi-agent-adaptation.md)及 [执行说明](../skills/dev-flow/references/kimi-agent-configuration.md)。

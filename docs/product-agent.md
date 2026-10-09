@@ -71,3 +71,7 @@ v0.5 的历史组件接入证据见[React 工作区记录](../evals/dev-product/
 使用 `$dev-flow` 组织协作，产品任务读取 `$dev-product`。当前可通过专业 Skill 执行；原生 `dev_product` 需要在目标宿主完成发现、派发和实际模型设置核验。全局源文件通过链接维护，代码与具体项目知识仍保存在各项目。
 
 下一次真实项目试点应提供现有界面、工程入口和实际运行条件，按[确认与自主实施协议](../skills/dev-flow/references/execution-contract.md)检查设计是否能被架构、视觉、研发和测试持续反馈修正。[架构首版](architecture-agent.md)已建立，测试验收、研发与[运维交付](operations-agent.md)首版均已建设，验证范围各自登记；下一步真实任务检验全流程交接与下一任务复用。
+
+## Kimi 宿主接入（2026-10-09）
+
+本职责已提供独立 Kimi Markdown Agent 入口，与 Codex 角色参考从共用 Skill 元信息生成；专业方法仍只在 Skill/参考维护。Kimi 2.1.1 已通过原生发现、派发、包内文件读取和交接的模型替身冒烟；真实模型的专业行为及项目结果尚未验证，不能将接入检查登记为专业验收。见 [适配记录](../reviews/2026-10-09-kimi-agent-adaptation.md)及 [执行说明](../skills/dev-flow/references/kimi-agent-configuration.md)。

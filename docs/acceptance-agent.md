@@ -63,3 +63,7 @@ v0.2 明确阶段与对象：设计文档/原型的流程、规则、交互及�
 v0.3 增加经 Review 技术方案输入、原产品与 OUT 双向覆盖、用例 AI Review 后人工确认的要求；本次检查/推演与未验证范围见[调整记录](../reviews/2026-10-08-technical-delivery-stage.md)，历史工具案例不证明新增阶段已在真实项目执行。
 
 已建设[研发职责](engineering-agent.md)和[运维交付职责](operations-agent.md)，共同提供当前候选、真实环境与入口；测试按原用例实际验收并复验。下一步真实任务检验完整协作，现有能力按范围持续配合。
+
+## Kimi 宿主接入（2026-10-09）
+
+本职责已提供独立 Kimi Markdown Agent 入口，与 Codex 角色参考从共用 Skill 元信息生成；专业方法仍只在 Skill/参考维护。Kimi 2.1.1 已通过原生发现、派发、包内文件读取和交接的模型替身冒烟；真实模型的专业行为及项目结果尚未验证，不能将接入检查登记为专业验收。见 [适配记录](../reviews/2026-10-09-kimi-agent-adaptation.md)及 [执行说明](../skills/dev-flow/references/kimi-agent-configuration.md)。

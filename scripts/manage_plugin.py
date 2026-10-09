@@ -11,6 +11,8 @@ import subprocess
 import sys
 import tempfile
 
+from sync_host_agents import check as check_host_agents
+
 
 PLUGIN_ID = "dev-flow@dev-flow-local"
 MARKETPLACE = "dev-flow-local"
@@ -56,6 +58,7 @@ def validate_bundle(root):
         file = candidate.resolve()
         if root.resolve() not in file.parents or candidate.is_symlink() or digest(file) != expected:
             raise ValueError("安装包路径或内容不匹配：" + relative)
+    check_host_agents(root)
     skills = sorted(p.parent.name for p in (root / "skills").glob("*/SKILL.md"))
     expected = ["dev-acceptance", "dev-architecture", "dev-engineering", "dev-flow", "dev-operations", "dev-product", "dev-visual"]
     if skills != expected:
@@ -80,13 +83,14 @@ def tracked(root):
         if source.is_file():
             files.append(entry)
     for required in ("plugin.json", ".codex-plugin/plugin.json", ".agents/plugins/marketplace.json",
-                     "skills/dev-flow/SKILL.md"):
+                     "kimi.plugin.json", "scripts/sync_host_agents.py", "skills/dev-flow/SKILL.md"):
         if required not in files:
             raise ValueError("需要先将新插件文件纳入 Git：" + required)
     return files
 
 
 def build(root):
+    check_host_agents(root)
     files = tracked(root)
     build_root = root / ".dev-flow/plugin-source"
     build_root.parent.mkdir(parents=True, exist_ok=True)

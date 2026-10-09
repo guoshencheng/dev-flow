@@ -48,3 +48,7 @@ owner: visual
 没有把主 Agent 实施与工具检查登记为 `dev_visual` 原生派发或独立专业行为评测。原生发现/派发、不同模型下的专业行为、新上下文视觉资产复用与真实用户/生产项目仍需实测；产品已有的历史隔离证据保持对应原版本。
 
 后续先在真实 UI 任务按[确认与自主实施协议](../skills/dev-flow/references/execution-contract.md)使用同一规格/原型完成持续交接；[架构首版](architecture-agent.md)已建立，测试验收、研发与[运维交付](operations-agent.md)首版均已建设，下一步真实任务检验全流程。用户确认体验、重要架构取舍与验收预期，AI 复核实现计划并持续修正实现。
+
+## Kimi 宿主接入（2026-10-09）
+
+本职责已提供独立 Kimi Markdown Agent 入口，与 Codex 角色参考从共用 Skill 元信息生成；专业方法仍只在 Skill/参考维护。Kimi 2.1.1 已通过原生发现、派发、包内文件读取和交接的模型替身冒烟；真实模型的专业行为及项目结果尚未验证，不能将接入检查登记为专业验收。见 [适配记录](../reviews/2026-10-09-kimi-agent-adaptation.md)及 [执行说明](../skills/dev-flow/references/kimi-agent-configuration.md)。
