@@ -15,8 +15,10 @@
 优先复用项目已有有效文档工具。需要统一入口时可复制源码到项目；不依赖本仓库 npm 发布。以下命令中的项目绝对路径按本次实际工程替换，Node 满足工作区 engines，使用项目包管理器：
 
 ```sh
-# 全局 Skill 的脚本先将工程复制到项目，冲突时保留项目修改
-node "$HOME/.agents/skills/dev-flow/assets/document-workspace/scripts/preview.mjs" init --project /项目绝对路径
+# 从宿主 Skill 列表取得实际绝对目录，替换下面的占位路径
+DEV_FLOW_SKILL_DIR="/实际安装目录/skills/dev-flow"
+# 脚本先将工程复制到项目，冲突时保留项目修改
+node "$DEV_FLOW_SKILL_DIR/assets/document-workspace/scripts/preview.mjs" init --project /项目绝对路径
 cd /项目绝对路径/tools/design-docs
 npm ci
 npm run dev -- --project /项目绝对路径 --roots docs/dev-flow,design --port 0
@@ -28,11 +30,11 @@ npm run dev -- --project /项目绝对路径 --roots docs/dev-flow,design --port
 
 强制终止或系统退出可能留下旧记录；URL 工具会拒绝失效服务，重启覆盖本项目的旧记录。阅读器从 Markdown/MDX 元信息取得标题、版本和状态，其他格式的业务元信息由产品索引或相邻说明维护，当前没有自动读取 sidecar。任何格式进入 `archive/` 后都按历史资料显示。
 
-也可直接在全局链接的工作区 `npm ci` 后运行服务，并显式指定 `--project`；复制到项目便于后续直接迭代工具。工具的构建检查验证阅读器编译，不包含静态站点导出；当前文件接口由 Vite 开发服务提供，远程发布按本次另行指定的交付处理。
+也可在可写的源码工作区运行服务，并显式指定 `--project`。安装包作为复制来源；在项目副本安装依赖和迭代工具。工具的构建检查验证阅读器编译，不包含静态站点导出；当前文件接口由 Vite 开发服务提供，远程发布按本次另行指定的交付处理。
 
 ## Agent 如何提供当前文档地址
 
-在采用的工程内或使用全局脚本调用：
+在采用的项目工具工程内调用：
 
 ```sh
 node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/product/features/功能ID/spec.md

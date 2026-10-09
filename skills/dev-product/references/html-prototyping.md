@@ -48,8 +48,9 @@ AI 将默认欢迎页替换成本次实际页面。B 端安装 antd 并直接导
 此前的 Python + 纯 HTML 示例保留用于历史验证和交互参考；新建原型采用上面的 Vite React 默认。示例不是所有项目的必需模板。使用旧版随包工具时，在目标项目根目录执行；需要 Python 3.9 或更新版本：
 
 ```sh
-python3 "$HOME/.agents/skills/dev-product/scripts/prototype.py" init design/prototypes/booking-v1 --title "预约流程讨论"
-python3 "$HOME/.agents/skills/dev-product/scripts/prototype.py" serve design/prototypes/booking-v1 --port 8765
+DEV_PRODUCT_SKILL_DIR="/实际安装目录/skills/dev-product"
+python3 "$DEV_PRODUCT_SKILL_DIR/scripts/prototype.py" init design/prototypes/booking-v1 --title "预约流程讨论"
+python3 "$DEV_PRODUCT_SKILL_DIR/scripts/prototype.py" serve design/prototypes/booking-v1 --port 8765
 ```
 
 打开脚本实际输出的地址；默认 `http://127.0.0.1:8765/`。端口已占用时选择其他端口，`--port 0` 可自动分配。修改后刷新；Ctrl+C 停止。初始化拒绝覆盖已有目录，后续直接编辑已有原型，不重新初始化。

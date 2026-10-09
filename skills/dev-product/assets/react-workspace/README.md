@@ -19,8 +19,13 @@
 
 使用满足 package.json engines 的 Node.js：
 
+目标父目录先按需创建；已有副本直接复用，保留项目修改，不覆盖或嵌套复制。
+
 ```sh
-cd "$HOME/.agents/skills/dev-product/assets/react-workspace"
+# 从宿主 Skill 列表取得实际目录；将完整工作区复制到项目中的空目录
+DEV_PRODUCT_SKILL_DIR="/实际安装目录/skills/dev-product"
+cp -R "$DEV_PRODUCT_SKILL_DIR/assets/react-workspace" /项目绝对路径/tools/component-gallery
+cd /项目绝对路径/tools/component-gallery
 npm ci
 npm run dev:gallery
 ```

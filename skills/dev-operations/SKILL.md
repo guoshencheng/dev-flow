@@ -31,4 +31,4 @@ description: 运维与交付：维护环境、快速启动、产物与发布，�
 
 长期资产保存在当前项目，现有 README/runbook 优先；无规范时按需采用 `docs/dev-flow/operations/`。本地进程/缓存进入忽略目录，真实密钥不进入文档/日志。新任务读取并核验有效性，交付更新受影响资产并登记能力缺口；文档预览仅针对业务项目成果，Skill 方法维护使用源文件。
 
-O01–O08、边界与实际验证范围见[职责说明](../../docs/operations-agent.md)。
+需要细化职责能力时，读取[能力目录](../dev-flow/references/role-capabilities.md)中的对应职责；实际验证范围以当前候选的执行证据为准。

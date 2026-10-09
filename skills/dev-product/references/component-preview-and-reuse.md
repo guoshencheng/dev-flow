@@ -8,8 +8,13 @@
 
 B 端先参考官方完整组件与示例，按需联合[官方 Skill、CLI 或 MCP](../../dev-flow/references/ant-design-capabilities.md)。现成组件可满足时直接使用；本目录提供额外组合，组件选择不限于随包四类。当前 SelectionSummary/ActionCard 为自有组合，Button/Card 为保留许可的官方 shadcn/ui 源码。
 
+目标父目录先按需创建；已有副本直接复用，保留项目修改，不覆盖或嵌套复制。
+
 ```sh
-cd "$HOME/.agents/skills/dev-product/assets/react-workspace"
+# 从宿主 Skill 列表取得实际目录；将完整工作区复制到项目中的空目录
+DEV_PRODUCT_SKILL_DIR="/实际安装目录/skills/dev-product"
+cp -R "$DEV_PRODUCT_SKILL_DIR/assets/react-workspace" /项目绝对路径/tools/component-gallery
+cd /项目绝对路径/tools/component-gallery
 npm ci
 npm run dev:gallery
 npm run --silent catalog -- antd-selection-summary

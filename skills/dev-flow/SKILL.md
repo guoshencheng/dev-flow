@@ -51,9 +51,9 @@ description: 组织研发、产品交互、视觉、架构、测试验收与运�
 
 ## 按需深入
 
-- 细化某职责的能力或项目沉淀时，读取[能力目录](references/2026-10-07-role-capabilities-and-project-assets.md)中的对应职责。
-- 建设或调整原生职责 Agent 时，读取[Codex 配置说明](references/codex-agent-setup.md)。
+- 细化职责分工时，读取[能力目录](references/role-capabilities.md)中的对应职责。
+- 检索、更新或复用项目资产时，读取[持续沉淀指南](references/project-asset-maintenance.md)。
+- 接入或诊断原生职责时，读取[Codex 职责接入](references/codex-agent-configuration.md)。
 - 安装、更新或诊断 Plugin 接入时，读取同包[初始化 Skill](../dev-flow-setup/SKILL.md)和[安装指南](../../docs/plugin.md)。
-- 建设整个体系、运行内核或 Plugin 时，读取[完整路线](references/2026-10-07-development-harness-plan.md)中的相关部分。
 
-当前版本提供共同协议、流程入口和六职责专业指导，以及共享文档预览。工具核验、专业行为、原生派发与真实项目状态见各职责说明和[配置说明](references/codex-agent-setup.md)；随后按真实任务验证完整循环与项目资产复用。
+职责可用性与成熟度依据当前工具和真实证据判断，分别记录配置检查、专业行为、实际派发与项目复用结果。

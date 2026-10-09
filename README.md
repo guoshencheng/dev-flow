@@ -21,9 +21,12 @@
 - [UI 技术与共享组件约定](skills/dev-flow/references/ui-stack-and-components.md)：B 端 Ant Design/antd、C 端 Web shadcn/ui、其他 C 端先研究参考；[React 工作区](skills/dev-product/assets/react-workspace/README.md)及[组件清单](skills/dev-product/assets/react-workspace/catalog.md)由本 Git 仓库维护。
 - [组件预览与源码复用](skills/dev-product/references/component-preview-and-reuse.md)：可操作组件目录、完整源码文件集、快速复制到项目和定制后的差异合并；[当前验证记录](evals/dev-product/runs/2026-10-08/component-gallery/report.md)。
 - [Ant Design 能力联用](skills/dev-flow/references/ant-design-capabilities.md)：B 端优先官方现成组件，按需联合官方 Skill、CLI 或 MCP，支持任务范围内自主接入；[临时项目核验记录](evals/dev-product/runs/2026-10-08/ant-design-capabilities/report.md)。
-- [能力与项目沉淀](skills/dev-flow/references/2026-10-07-role-capabilities-and-project-assets.md)：六职责四十八项能力。
-- [Codex 配置](skills/dev-flow/references/codex-agent-setup.md)：原生职责 Agent 的建设方式。
-- [完整建设方案](skills/dev-flow/references/2026-10-07-development-harness-plan.md)：后续试点、运行内核与分发路线。
+- [职责能力目录](skills/dev-flow/references/role-capabilities.md)：六职责四十八项能力与执行契约。
+- [项目资产持续沉淀](skills/dev-flow/references/project-asset-maintenance.md)：现行资产、更新、有效性与后续复用。
+- [Codex 职责接入](skills/dev-flow/references/codex-agent-configuration.md)：实际配置、可用性和派发边界。
+- [仓库文档归类](docs/document-organization.md)：执行参考、建设计划和验证证据的边界。
+- [职责建设与验证](docs/agent-development.md)、[初期总体建设方案](docs/plans/2026-10-07-development-harness-plan.md)和[能力/资产建设原始方案](docs/plans/2026-10-07-role-capabilities-and-project-assets.md)：仓库建设资料。
+- [Codex 配置历史](docs/history/2026-10-08-codex-agent-setup.md)、[Ant Design 接入核验](docs/integrations/ant-design.md)及[共享组件验证](docs/integrations/shared-components.md)：历史事实与证据入口。
 
 ## 全局安装与使用
 
