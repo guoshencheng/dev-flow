@@ -53,6 +53,8 @@ description: 组织研发、产品交互、视觉、架构、测试验收与运�
 
 交接包含结论与完成范围、成果位置与版本、实际证据与未执行项、问题和依赖、资产变化与能力缺口。完成判断针对当前候选成果，区分实现、验收、可运行交付与部署。
 
+实施/修复按[测试保护](../dev-engineering/references/test-first-and-regression.md)和[实验诊断](../dev-engineering/references/diagnosis-and-feedback.md)取证；实际实现评审按[完整变更](../dev-architecture/references/retrospective-and-evolution.md)与[意见闭环](../dev-engineering/references/review-feedback.md)执行，复用现有缺陷/tracker，不以方案 Review 或修复说明代替当前候选的复评与复验。
+
 ## 按需深入
 
 - 细化职责分工时，读取[能力目录](references/role-capabilities.md)中的对应职责。

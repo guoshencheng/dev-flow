@@ -1,0 +1,42 @@
+{
+  "sample": "sample-2",
+  "phase": "red2",
+  "port": 19012,
+  "dataFile": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/methods-eval-20261009/D01/sample-2/data/red2.json",
+  "observations": {
+    "login": 200,
+    "post": {
+      "status": 201,
+      "body": {
+        "id": "4a2bb72b-46e0-4a7c-a2db-bb8bb73d759d",
+        "title": "浏览器条目"
+      }
+    },
+    "beforeReload": [
+      "浏览器条目"
+    ],
+    "diskAfterPost": [
+      {
+        "id": "4a2bb72b-46e0-4a7c-a2db-bb8bb73d759d",
+        "title": "浏览器条目"
+      }
+    ],
+    "readFileAfterPost": "[]\n",
+    "get": {
+      "status": 200,
+      "body": {
+        "items": []
+      }
+    },
+    "afterReload": [],
+    "viewerPost": 403,
+    "anonymousGet": 401,
+    "whitespacePost": 422,
+    "diskAfterRegressions": [
+      {
+        "id": "4a2bb72b-46e0-4a7c-a2db-bb8bb73d759d",
+        "title": "浏览器条目"
+      }
+    ]
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "passed": 5,
+  "port": 63787,
+  "cases": [
+    {
+      "case": "anonymous POST",
+      "result": {
+        "status": 401,
+        "body": {
+          "error": "UNAUTHENTICATED"
+        }
+      },
+      "unchanged": true
+    },
+    {
+      "case": "viewer POST",
+      "result": {
+        "status": 403,
+        "body": {
+          "error": "FORBIDDEN"
+        }
+      },
+      "unchanged": true
+    },
+    {
+      "case": "blank editor POST",
+      "result": {
+        "status": 422,
+        "body": {
+          "error": "INVALID_TITLE"
+        }
+      },
+      "unchanged": true
+    },
+    {
+      "case": "editor POST normalized",
+      "result": {
+        "status": 201,
+        "body": {
+          "id": "9e470956-d7ca-4774-b574-8d4042b99a34",
+          "title": "middle  space"
+        }
+      }
+    },
+    {
+      "case": "editor/viewer GET and disk",
+      "editorGet": {
+        "status": 200,
+        "body": {
+          "items": [
+            {
+              "id": "9e470956-d7ca-4774-b574-8d4042b99a34",
+              "title": "middle  space"
+            }
+          ]
+        }
+      },
+      "viewerGet": {
+        "status": 200,
+        "body": {
+          "items": [
+            {
+              "id": "9e470956-d7ca-4774-b574-8d4042b99a34",
+              "title": "middle  space"
+            }
+          ]
+        }
+      },
+      "stored": [
+        {
+          "id": "9e470956-d7ca-4774-b574-8d4042b99a34",
+          "title": "middle  space"
+        }
+      ]
+    }
+  ]
+}

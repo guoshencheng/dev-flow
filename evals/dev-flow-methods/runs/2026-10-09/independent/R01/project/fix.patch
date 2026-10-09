@@ -1,0 +1,17 @@
+--- a/server.mjs
++++ b/server.mjs
+@@ -62,9 +62,12 @@
+     }
+     if (request.url === '/api/items' && request.method === 'GET') return json(response, 200, { items: await readItems() });
+     if (request.url === '/api/items' && request.method === 'POST') {
++      if (role !== 'editor') return json(response, 403, { error: 'FORBIDDEN' });
+       const { title } = await body(request);
+-      if (typeof title !== 'string' || !title.trim()) return json(response, 422, { error: 'INVALID_TITLE' });
+-      const item = { id: randomUUID(), title };
++      if (typeof title !== 'string') return json(response, 422, { error: 'INVALID_TITLE' });
++      const normalizedTitle = title.trim();
++      if (!normalizedTitle) return json(response, 422, { error: 'INVALID_TITLE' });
++      const item = { id: randomUUID(), title: normalizedTitle };
+       const items = await readItems();
+       await writeItems([...items, item]);
+       return json(response, 201, item);

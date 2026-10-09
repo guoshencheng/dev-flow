@@ -1,0 +1,11 @@
+--- .dev-flow/methods-eval-20261009/D01/sample-1/server.before.mjs	2026-10-09 10:32:06
++++ .dev-flow/methods-eval-20261009/D01/sample-1/server.mjs	2026-10-09 10:33:32
+@@ -67,7 +67,7 @@
+       if (typeof title !== 'string' || !title.trim()) return json(response, 422, { error: 'INVALID_TITLE' });
+       const item = { id: randomUUID(), title: title.trim() };
+       const items = await readItems();
+-      void items;
++      await writeItems([...items, item]);
+       return json(response, 201, item);
+     }
+     return json(response, 404, { error: 'NOT_FOUND' });

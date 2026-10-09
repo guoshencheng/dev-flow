@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: RULE-01: save must persist
+
+0 !== 1
+
+    at file:///Users/guoshencheng/Documents/work/dev-flow/.dev-flow/methods-eval-20261009/D01/sample-1/test.mjs:68:10 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 0,
+  expected: 1,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.4.0

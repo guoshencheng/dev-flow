@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('ul[aria-busy="false"]') to be visible[22m
+[2m    64 × locator resolved to hidden <ul aria-busy="false" aria-label="已保存条目"></ul>[22m
+
+    at /Users/guoshencheng/Documents/work/dev-flow/.dev-flow/methods-eval-20261009/D01/sample-1/test.mjs:40:47 {
+  log: [
+    `  - waiting for locator('ul[aria-busy="false"]') to be visible`,
+    '    64 × locator resolved to hidden <ul aria-busy="false" aria-label="已保存条目"></ul>'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v26.4.0

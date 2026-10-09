@@ -1,6 +1,6 @@
 # dev-flow 总纲概述
 
-更新日期：2026-10-09。对应[总纲 v0.16](../skills/dev-flow/references/constitution.md)。
+更新日期：2026-10-09。对应[总纲 v0.17](../skills/dev-flow/references/constitution.md)。
 
 dev-flow 是以 Codex 为主的多角色研发协作体系，目标是逐步替代 superpowers，形成稳定、高效的研发 harness，交付符合用户要求的成果。协议覆盖需求、设计、实现、测试、交付、运行、维护与退役；不同研发对象和任务种类通过可扩展路径逐步支持，并分别记录已定义和实际验证的能力。
 

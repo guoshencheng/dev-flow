@@ -1,0 +1,32 @@
+{
+  "sample": "sample-1",
+  "phase": "red2",
+  "port": 19011,
+  "dataFile": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/methods-eval-20261009/D01/sample-1/data/red2.json",
+  "observations": {
+    "login": 200,
+    "post": {
+      "status": 201,
+      "body": {
+        "id": "d21e5313-6ea3-4257-956c-4b55d2af51c0",
+        "title": "浏览器条目"
+      }
+    },
+    "beforeReload": [
+      "浏览器条目"
+    ],
+    "diskAfterPost": [],
+    "readFileAfterPost": null,
+    "get": {
+      "status": 200,
+      "body": {
+        "items": []
+      }
+    },
+    "afterReload": [],
+    "viewerPost": 403,
+    "anonymousGet": 401,
+    "whitespacePost": 422,
+    "diskAfterRegressions": []
+  }
+}

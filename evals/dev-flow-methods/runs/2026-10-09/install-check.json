@@ -1,0 +1,22 @@
+[
+  {
+    "command": [
+      "python3",
+      "scripts/manage_plugin.py",
+      "install"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"plugin_id\": \"dev-flow@dev-flow-local\",\n  \"build\": {\n    \"build_root\": \"/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/plugin-source\",\n    \"files\": 579,\n    \"bytes\": 3290448,\n    \"package_hash\": \"3f09c5f5c546bc5f7f57af4b77760d6118e2b2c73e27f0c9477169cf9b40b9fb\"\n  },\n  \"skills\": 7\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python3",
+      "scripts/manage_plugin.py",
+      "check"
+    ],
+    "exit_code": 0,
+    "stdout": "{\n  \"plugin_id\": \"dev-flow@dev-flow-local\",\n  \"enabled\": true,\n  \"source_matches_cache\": true,\n  \"skills\": 7\n}\n",
+    "stderr": ""
+  }
+]

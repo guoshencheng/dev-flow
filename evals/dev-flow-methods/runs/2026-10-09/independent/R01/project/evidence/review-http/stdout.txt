@@ -1,0 +1,70 @@
+{
+  "port": 61306,
+  "dataFile": "/var/folders/48/cj4jq0s54xdd9c314rgcsv180000gn/T/dev-flow-review-r01-fcwE9L/items.json",
+  "observations": {
+    "unauthPost": {
+      "status": 401,
+      "body": {
+        "error": "UNAUTHENTICATED"
+      }
+    },
+    "afterUnauth": [],
+    "viewerPost": {
+      "status": 201,
+      "body": {
+        "id": "0c53e9d9-7760-427f-b0b6-183a50f7e5f1",
+        "title": "viewer-wrote"
+      }
+    },
+    "afterViewer": [
+      {
+        "id": "0c53e9d9-7760-427f-b0b6-183a50f7e5f1",
+        "title": "viewer-wrote"
+      }
+    ],
+    "whitespacePost": {
+      "status": 422,
+      "body": {
+        "error": "INVALID_TITLE"
+      }
+    },
+    "afterWhitespace": [
+      {
+        "id": "0c53e9d9-7760-427f-b0b6-183a50f7e5f1",
+        "title": "viewer-wrote"
+      }
+    ],
+    "editorPost": {
+      "status": 201,
+      "body": {
+        "id": "98213c91-b4ef-4117-bdb0-84318cc4c203",
+        "title": "  trimmed  "
+      }
+    },
+    "editorGet": {
+      "status": 200,
+      "body": {
+        "items": [
+          {
+            "id": "0c53e9d9-7760-427f-b0b6-183a50f7e5f1",
+            "title": "viewer-wrote"
+          },
+          {
+            "id": "98213c91-b4ef-4117-bdb0-84318cc4c203",
+            "title": "  trimmed  "
+          }
+        ]
+      }
+    },
+    "finalFile": [
+      {
+        "id": "0c53e9d9-7760-427f-b0b6-183a50f7e5f1",
+        "title": "viewer-wrote"
+      },
+      {
+        "id": "98213c91-b4ef-4117-bdb0-84318cc4c203",
+        "title": "  trimmed  "
+      }
+    ]
+  }
+}

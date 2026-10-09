@@ -4,11 +4,11 @@
 id: ROLE-dev-engineering
 title: 研发实现与修复 Agent
 status: current
-version: 0.2
+version: 0.3
 owner: engineering
 ---
 
-# 研发 Agent v0.2
+# 研发 Agent v0.3
 
 更新日期：2026-10-08。原生职责 `dev_engineering`，配置见[dev_engineering.toml](../agents/dev_engineering.toml)，专业入口为[dev-engineering](../skills/dev-engineering/SKILL.md)。不固定模型/强度，宿主不可派发时当前执行者按 Skill 承担职责并如实记录。
 
@@ -46,6 +46,10 @@ owner: engineering
 项目索引关联工程、产品/UI、架构、测试及运行；每轮更新受影响技术方案/OUT/Review、代码映射、规范、计划、诊断/回归和交付知识，新任务读取并核验有效性。讨论/确认预览业务项目成果，Skill 方法文件使用源文件。研发结束向架构交接实际模块/契约/业务变化与证据，参与现状同步和有范围的复盘。
 
 ## 验证与后续
+
+v0.3 补[测试先行与回归有效性](../skills/dev-engineering/references/test-first-and-regression.md)、假设/控制实验诊断和[实现评审意见处理](../skills/dev-engineering/references/review-feedback.md)，计划与交接关联目标行为、失败/通过证据和测试位置。研发主责必要局部测试，验收核验证据与实际复验；低影响任务按对象裁剪。
+
+2026-10-09 的[隔离行为评测](../evals/dev-flow-methods/report.md)已记录独立上下文中的先测后实现、事后补测旧红/新绿、无效测试与语法失败识别、三类保存丢失实验诊断及意见修复/反驳/澄清。主 Agent 复跑 T/D，R01 原评审者独立于研发实现作定向复评。宿主无文件级输入隔离，记录派发范围与实际读取声明；不等同强制沙箱盲测、生产能力或真实项目完整协作。
 
 首版方法、配置、全局接入和隔离诊断修复记录见[验证记录](../evals/dev-engineering/report.md)。主 Agent 自查/自执行案例不代表独立角色行为；原生发现/派发、框架工程、真实项目协作和新上下文复用需要对应实测。
 

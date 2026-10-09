@@ -4,11 +4,11 @@
 id: ROLE-dev-acceptance
 title: 测试与验收 Agent
 status: current
-version: 0.3
+version: 0.4
 owner: acceptance
 ---
 
-# 测试与验收 Agent v0.3
+# 测试与验收 Agent v0.4
 
 更新日期：2026-10-08。原生职责 `dev_acceptance`，配置见[dev_acceptance.toml](../agents/dev_acceptance.toml)，专业入口为[dev-acceptance](../skills/dev-acceptance/SKILL.md)。配置不固定模型/强度，实际执行方式与成熟度分别登记。
 
@@ -57,6 +57,10 @@ v0.2 明确阶段与对象：设计文档/原型的流程、规则、交互及�
 项目主索引关联测试与产品、UI、技术、运行入口。用户讨论/确认通过业务项目的文档服务预览该项目的用例/方案，执行时操作实际应用；Skill 文件是方法来源。每轮维护测试/数据/缺陷与证据版本，下一任务读取有效资产及待复验范围。
 
 ## 验证状态与后续
+
+v0.4 增加[回归有效性核验](../skills/dev-acceptance/references/execution-and-feedback.md)：区分目标失败、执行/环境失败与未执行，识别旧错误实现仍通过的无效保护；缺陷模板复用假设实验、评审决定及候选/复验字段。研发随实现写必要局部测试，测试主责覆盖与实际复验，沿用原 tracker。
+
+本轮[隔离评测](../evals/dev-flow-methods/report.md)已取得旧红/新绿、无写入副作用、无效测试与语法负例判读、实际浏览器保存/刷新，以及 R01 独立断言复验后关闭的证据。工具对照、研发自测、主 Agent 复跑和独立复评分别登记；读取范围未由宿主文件沙箱强制隔离，真实业务项目与生产验收仍待执行。
 
 本轮专业方法、静态配置和代表工具案例的实际记录见[首版验证](../evals/dev-acceptance/report.md)。主 Agent 执行的工具检查不登记独立角色行为；原生发现/派发、新上下文资产复用和真实项目完整协作分别需要实际验证。
 

@@ -1,0 +1,34 @@
+{
+  "started_at": "2026-10-09T02:34:48.048802+00:00",
+  "finished_at": "2026-10-09T02:34:48.167764+00:00",
+  "project": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/methods-eval-20261009/T02",
+  "command": [
+    "node",
+    "viewer.test.mjs",
+    "previous"
+  ],
+  "exit_code": 1,
+  "source_before": {
+    "always-pass.test.mjs": "48b9b11550d3d2c340e25fbaa1ec7a2cddacc9a0fe9d2747c74e9e974cab19c4",
+    "current/docs/product.md": "053a84a628b6e12640705637c2de46027fc325861c116c37c368b2efad9775b2",
+    "current/package.json": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428",
+    "current/server.mjs": "e528a9cdfe9054e7e207b1d32dfbf35f29d0de1212b2a59cb054fc36eb206fe5",
+    "previous/docs/product.md": "053a84a628b6e12640705637c2de46027fc325861c116c37c368b2efad9775b2",
+    "previous/package.json": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428",
+    "previous/server.mjs": "01c90bc01cb4c550b4b708249aea29d394df74e1b1b5d19b728c198918b0571e",
+    "report.md": "57c323793e2ca1b704d3ee04e85a8adaf4cae00016d7d1c4b2aa8fe4cb2cdf58",
+    "viewer.test.mjs": "24e9ceffe5b1be61aa35bb57a731bad606b2bda36642c1a517bf2fca6fce9257"
+  },
+  "source_after": {
+    "always-pass.test.mjs": "48b9b11550d3d2c340e25fbaa1ec7a2cddacc9a0fe9d2747c74e9e974cab19c4",
+    "current/docs/product.md": "053a84a628b6e12640705637c2de46027fc325861c116c37c368b2efad9775b2",
+    "current/package.json": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428",
+    "current/server.mjs": "e528a9cdfe9054e7e207b1d32dfbf35f29d0de1212b2a59cb054fc36eb206fe5",
+    "previous/docs/product.md": "053a84a628b6e12640705637c2de46027fc325861c116c37c368b2efad9775b2",
+    "previous/package.json": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428",
+    "previous/server.mjs": "01c90bc01cb4c550b4b708249aea29d394df74e1b1b5d19b728c198918b0571e",
+    "report.md": "57c323793e2ca1b704d3ee04e85a8adaf4cae00016d7d1c4b2aa8fe4cb2cdf58",
+    "viewer.test.mjs": "24e9ceffe5b1be61aa35bb57a731bad606b2bda36642c1a517bf2fca6fce9257"
+  },
+  "runner_sha256": "9c120223c4cba91f151a8b1f28ddb434099ebbf1799b4e0dbd06a10afdeec7d6"
+}
