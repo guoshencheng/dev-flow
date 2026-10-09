@@ -4,7 +4,7 @@
   "description": "多角色研发协作：产品与交互、视觉、架构、研发、测试验收、运维交付，以及项目资产持续维护。",
   "skills": "./skills/",
   "agents": "./adapters/kimi/agents/",
-  "skillInstructions": "在 Kimi 中需要且获准委派时，使用实际发现的 dev-product、dev-visual、dev-architecture、dev-engineering、dev-acceptance 或 dev-operations Agent。派发必须包含专业 Skill 的实际绝对路径、业务项目根路径、目标/阶段、有效输入与版本、确认/授权、可写范围和交接要求；读取 dev-flow/references/kimi-agent-configuration.md。宿主或用户不允许委派时由主 Agent 执行并记录独立性缺口。",
+  "skillInstructions": "在 Kimi 中需要且获准委派时，使用实际发现的 dev-product、dev-visual、dev-architecture、dev-engineering、dev-acceptance 或 dev-operations Agent。派发必须包含专业 Skill 的实际绝对路径、业务项目根路径、目标/阶段、有效输入与版本、确认/授权、可写范围和交接要求。宿主或用户不允许委派时由主 Agent 执行并记录独立性缺口。",
   "interface": {
     "displayName": "Dev Flow",
     "shortDescription": "六职责研发协作、持续验收与可运行交付"

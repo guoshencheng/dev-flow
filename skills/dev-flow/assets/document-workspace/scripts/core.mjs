@@ -2,7 +2,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import matter from 'gray-matter'
 
-const ignored = new Set(['node_modules', 'dist', '.git', '.dev-flow'])
+const ignored = new Set(['node_modules', 'dist', '.git', '.dev', '.dev-flow'])
 export const encodePath = (value) => value.split('/').map(encodeURIComponent).join('/')
 export const viewPath = (value) => '/view/' + encodePath(value)
 export const rawPath = (value) => '/__docs/file/' + encodePath(value)

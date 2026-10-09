@@ -6,7 +6,7 @@
 /build/**
 /out/**
 /coverage/**
-.dev-flow/**
+.dev/**
 docs/dev-flow/evidence/**
 
 # 锁文件和工具生成文件保留工具原始输出

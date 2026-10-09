@@ -10,6 +10,6 @@ npm run url -- --project /项目绝对路径 --file docs/dev-flow/product/index.
 
 复制到项目：`node scripts/preview.mjs init --project /项目绝对路径`，默认目标 `tools/design-docs`。全文件集先核验，既有不同内容保留；复制后在目标直接迭代。所需包是公开依赖，工程不发布为自有 npm 包。
 
-当前 origin、PID、根目录保存在项目 `.dev-flow/previews/documents.json`。URL 工具核验实际服务和文件；停止后链接不可用，源文档和重启命令长期保留。采用记录保存来源 Git 提交/实际文件哈希、项目差异和验证。
+当前 origin、PID、根目录保存在项目 `.dev/previews/documents.json`。URL 工具核验实际服务和文件；停止后链接不可用，源文档和重启命令长期保留。采用记录保存来源 Git 提交/实际文件哈希、项目差异和验证。
 
 `npm run typecheck`、`npm run build`、`npm run check` 分别检查公开工程类型、阅读器编译与路径/采用边界。构建不包含静态导出后的文件服务。MDX 是项目可执行源码，需采用已核验来源；其他文档转换的预览不改变权威原件。

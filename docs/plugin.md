@@ -35,7 +35,7 @@ python3 scripts/manage_plugin.py build
 /plugins reload
 ```
 
-新会话使用 `/skill:dev-flow`。专业职责按需派发，输入包含实际安装包 Skill 路径和业务项目上下文，详见 [Kimi 职责说明](../skills/dev-flow/references/kimi-agent-configuration.md)。本地插件从受管副本运行，修改源文件后重新构建并在 Kimi 重新安装；只改源码不表示缓存已更新。
+新会话使用 `/skill:dev-flow`。专业职责按需派发，输入包含实际安装包 Skill 路径和业务项目上下文，详见 [Kimi 职责说明](integrations/kimi-agent-configuration.md)。本地插件从受管副本运行，修改源文件后重新构建并在 Kimi 重新安装；只改源码不表示缓存已更新。
 
 Kimi 安装/启用/移除使用其原生 `/plugins` 入口，当前 Python install/check/remove 仍专用于 Codex。Kimi 清单不自动加载流程、不配置额外 MCP/Hooks，不写个人 AGENTS.md 或 SYSTEM.md。解除使用 `/plugins remove dev-flow`。
 

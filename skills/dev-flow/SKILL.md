@@ -1,6 +1,6 @@
 ---
 name: dev-flow
-description: 组织研发、产品交互、视觉、架构、测试验收与运维交付任务，推进可运行切片、研发测试持续对焦和项目资产复用；按用户要求裁剪范围，适用于完整功能、修复、评审、交付或运行维护工作。
+description: 组织研发、产品交互、视觉、架构、测试验收与运维交付任务，推进连续实现与集成、完整候选集中验收和项目资产复用；按用户要求裁剪范围，适用于完整功能、修复、评审、交付或运行维护工作。
 ---
 
 # 研发协作入口
@@ -11,7 +11,7 @@ description: 组织研发、产品交互、视觉、架构、测试验收与运�
 
 先按[任务路由](references/task-routing.md)区分 bugfix、正常需求、系统变更或故障；完整确认与自主实施遵守[执行协议](references/execution-contract.md)。
 
-开始写入前按[分支、worktree 与合并建议](references/git-and-worktree.md)核对基线、当前修改、目标分支和工作位置；按[subagent 使用建议](references/subagent-guidance.md)选择主 Agent 顺序执行、独立评审或可分离的并行任务，遵守当前委派权限。验证随切片、修复、集成及交付推进，合并针对实际候选。
+开始写入前按[分支、worktree 与合并建议](references/git-and-worktree.md)核对基线、当前修改、目标分支和工作位置；按[subagent 使用建议](references/subagent-guidance.md)选择主 Agent 顺序执行、独立评审或可分离的并行任务，遵守当前委派权限。研发自测随实现、修复和集成推进；正式实现 Review 与验收集中在完整候选，合并针对实际候选。
 
 从请求与项目事实确定目标、当前阶段、交付范围、对应验收条件和相关有效资产。局部修复直接采用针对性验证；完整用户行为提供必要设计、可运行切片和实际交付；接口、数据、权限、兼容与故障按相关风险补充检查。
 
@@ -35,22 +35,26 @@ description: 组织研发、产品交互、视觉、架构、测试验收与运�
 ## 三个优先成果
 
 - UI 与交互：明确用户流程、相关状态、异常恢复和视觉呈现，分别用实际操作与实际渲染验证。
-- 研发测试循环：尽早形成可运行切片，反馈带版本和复现证据，修复后复验原问题与相关回归，直到本次必需条件通过。
+- 整体实现与验收：连续实现、集成和研发自测，完整候选再集中 Review 与正式验收；问题按关联范围批量修复并定向复评、复验。
 - 实际交付：根据约定提供可启动源码、安装产物或实际部署，验证核心用户任务，报告真实入口、环境与未覆盖项。
 
-完整功能按[执行协议](references/execution-contract.md)确认产品/交互/UI 和重要架构设计，再由研发输出端到端技术方案，经产品符合性及相关 UI/架构 AI Review；测试综合原产品文档与方案设计用例，经 AI Review 后交用户确认验收预期与覆盖；研发再产出实施计划并实际 AI 复核，通过后自主编码与持续修复。技术方案/实施计划默认没有额外人工审批。已有有效确认直接复用；改变确认基线或授权时，只提出受影响部分的决定。端到端交付与架构约束都需实际证据。
+完整功能按[执行协议](references/execution-contract.md)确认产品/交互/UI 和重要架构设计，再由研发输出端到端技术方案，经产品符合性及相关 UI/架构 AI Review；测试综合原产品文档与方案设计用例，经 AI Review 后交用户确认验收预期与覆盖；研发再产出实施计划并实际 AI 复核，通过后连续实现、集成和自测，再交完整候选集中检查与修复。技术方案/实施计划默认没有额外人工审批。已有有效确认直接复用；改变确认基线或授权时，只提出受影响部分的决定。端到端交付与架构约束都需实际证据。
 
 已有授权范围内持续推进；需要用户决定的关键问题具体提出，同时完成其他独立工作。新增职责或通用工具的长期建设遵守本次范围。
 
+内部切片不是独立交付/验收门槛；完整候选条件、专项例外、最小验证记录与主会话生命周期统一按[执行协议](references/execution-contract.md#实施与正式验收的边界)。主 Agent 委派后继续执行、集成或使用实际等待工具，不因派发、阶段完成或等待超时结束会话。
+
 ## 项目知识与交接
 
-先明确本次业务项目的名称与根路径，从项目索引定位产品、交互原型、设计/UI、技术及相关验收/交付文档，登记各自实际权威位置、状态与版本；缺失或不适用明确记录。开始读取相关项目资产并核验有效性；过程中更新发生变化的权威位置；交付时报告复用、更新与能力缺口。阶段产物按 `docs/dev-flow/iterations/<迭代ID>/` 集中维护，本次迭代索引关联范围、版本、Review、确认与结果；项目入口关联迭代和跨迭代长期资产，`.dev-flow/` 仅承载本地运行状态。通用候选经过适用范围和行为验证后再进入本仓库。
+仓库保存继续维护所需的项目知识、源码/测试资产、重要决定和正式交接/阶段结果；单次运行与 Review 过程默认本机私有，写忽略目录，不因生成报告或需要追溯就提交。中断、换执行者或跨机器接手时提炼交接，不提交整套运行历史。建文档、委派写入和提交检查采用共同协议的 [Agent 文档控制](references/design-document-contract.md#agent-文档控制)。
+
+先明确本次业务项目的名称与根路径，从项目索引定位产品、交互原型、设计/UI、技术及相关验收/交付文档，登记各自实际权威位置、状态与版本；缺失或不适用明确记录。开始读取相关项目资产并核验有效性；过程中更新发生变化的权威位置；交付时报告复用、更新与能力缺口。阶段产物按 `docs/dev-flow/iterations/<迭代ID>/` 集中维护，本次迭代索引关联范围、版本、Review、确认与结果；项目入口关联迭代和跨迭代长期资产，`.dev/` 仅承载本地运行状态。通用候选经过适用范围和行为验证后再进入本仓库。
 
 项目文档与原型按共同[目录和归档协议](references/design-document-contract.md)维护分类入口，关联现行规格、规则和证据。向用户讨论、确认或交付项目设计文档时按[Vite 文档预览](references/document-preview.md)复用或启动该业务项目的阅读入口，提供项目索引与本次相关文档/原型的真实地址。Skill 提供方法与工具，维护 Skill 本身不默认进入项目文档预览流程。
 
 交接包含结论与完成范围、成果位置与版本、实际证据与未执行项、问题和依赖、资产变化与能力缺口。完成判断针对当前候选成果，区分实现、验收、可运行交付与部署。
 
-实施/修复按[测试保护](../dev-engineering/references/test-first-and-regression.md)和[实验诊断](../dev-engineering/references/diagnosis-and-feedback.md)取证；实际实现评审按[完整变更](../dev-architecture/references/retrospective-and-evolution.md)与[意见闭环](../dev-engineering/references/review-feedback.md)执行，复用现有缺陷/tracker，不以方案 Review 或修复说明代替当前候选的复评与复验。
+实施/修复按[测试保护](../dev-engineering/references/test-first-and-regression.md)和[实验诊断](../dev-engineering/references/diagnosis-and-feedback.md)验证；实际实现评审按[完整变更](../dev-architecture/references/retrospective-and-evolution.md)与[意见闭环](../dev-engineering/references/review-feedback.md)执行，复用现有缺陷/tracker，不以方案 Review 或修复说明代替当前候选的复评与复验。
 
 ## 按需深入
 
@@ -58,7 +62,6 @@ description: 组织研发、产品交互、视觉、架构、测试验收与运�
 - 检索、更新或复用项目资产时，读取[持续沉淀指南](references/project-asset-maintenance.md)。
 - 整理文档历史、总结或归档迭代时，读取[文档整理与归档](references/document-archive.md)；定时触发需用户授权建立调度。
 - 选择执行者或委派职责工作时，读取[职责执行说明](references/codex-agent-configuration.md)。
-- 在 Kimi 中选择/派发职责 Agent 时，读取[Kimi 职责说明](references/kimi-agent-configuration.md)，使用自包含输入及实际 Skill 路径；Codex 继续使用实际可用子 Agent。
 - 安装、更新或诊断 Plugin 时，读取[安装指南](../../docs/plugin.md)；不要求初始化 Agent。
 
 职责可用性与成熟度依据当前工具和真实证据判断，分别记录插件安装检查、专业行为、实际派发与项目复用结果。

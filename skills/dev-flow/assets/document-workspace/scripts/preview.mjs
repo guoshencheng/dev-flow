@@ -15,7 +15,15 @@ while (args.length) {
 }
 
 async function readRuntime(project) {
-  const runtime = JSON.parse(await fs.readFile(path.join(project, '.dev-flow/previews/documents.json'), 'utf8'))
+  let bytes
+  try {
+    bytes = await fs.readFile(path.join(project, '.dev/previews/documents.json'), 'utf8')
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error
+    // 兼容仍在运行的旧服务，避免目录切换后重复启动；新服务只写 .dev。
+    bytes = await fs.readFile(path.join(project, '.dev-flow/previews/documents.json'), 'utf8')
+  }
+  const runtime = JSON.parse(bytes)
   const response = await fetch(new URL('/__docs/health', runtime.origin), { signal: AbortSignal.timeout(2000) })
   const health = await response.json()
   if (!response.ok || health.kind !== 'dev-flow-documents' || health.project !== project || runtime.project !== project) throw new Error('文档预览进程与当前项目不匹配')
@@ -97,7 +105,7 @@ async function main() {
   if (!ctx.roots.length) throw new Error('指定文档根目录均不存在；先创建本次文档或通过 --roots 指定已有目录')
   const port = Number(options.port || 0)
   if (!Number.isInteger(port) || port < 0 || port > 65535) throw new Error('端口必须在 0—65535 之间')
-  const runtimeFile = path.join(project, '.dev-flow/previews/documents.json')
+  const runtimeFile = path.join(project, '.dev/previews/documents.json')
   const instance = randomUUID()
   const cleanup = async () => {
     try {

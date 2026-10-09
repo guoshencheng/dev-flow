@@ -8,18 +8,19 @@
 | 项目策略 | `iterations/<迭代ID>/acceptance/strategy.md`：引用项目通用策略，定义本次层级/方案、实际工具、目标环境与依赖模式、必需检查、交付与回归选择 |
 | 用户用例 | `iterations/<迭代ID>/acceptance/cases.md`：普通中文的场景、前置/操作/预期、覆盖/待决、Review 摘要与人工确认来源；稳定 TC 编号关联技术拆解 |
 | 技术拆解 | `iterations/<迭代ID>/acceptance/technical-checks.md`：TC ↔ 检查编号 ↔ OUT/链路 ↔ RULE/AC/UI/ARC、数据/断言/环境/入口/证据、独立专项及两层对齐 Review；引用用户业务预期 |
-| 运行报告 | `iterations/<迭代ID>/acceptance/runs/<runID>/report.md`：候选、环境、真实执行、各用例结果、证据、缺陷与结论 |
+| 本机运行报告 | 忽略的 `.dev/runs/<迭代ID>/acceptance/<runID>/report.md`：候选、环境、执行、重试与诊断，默认不提交 |
+| 验收结果与交接 | `iterations/<迭代ID>/acceptance/result.md` 或现有交接位置：当前候选、范围、用户用例结果、限制、阻断与接手/复跑要求；阶段/最终结果或交接时提炼，不每轮新增 |
 | 缺陷与回归 | 复用实际 tracker；无规范时 `iterations/<迭代ID>/acceptance/defects/<缺陷ID>.md`，关联原问题/修复/复验及保护用例 |
 | 自动化源码 | 项目现有 test/tests/e2e 等真实目录，按模块/层级组织；索引保存实际命令与配置路径，不复制第二套测试 |
 | 数据/环境 | 项目实际 fixture/seed/环境契约，Git 保存可重复样例与准备/清理方法；凭据/认证状态留在忽略位置 |
-| 必要原始证据 | 复用项目 evidence；无规范时 `docs/dev-flow/iterations/<迭代ID>/evidence/acceptance/<runID>/`；长期报告关联版本与可定位来源 |
+| 必要原始证据 | 默认放 `.dev/evidence/` 或对应 run；交接确需接收方检查时经约定渠道转交，文档记录取得方式、用途与版本，不自动进入 Git |
 | 历史替换 | `iterations/<迭代ID>/archive/acceptance/<资产ID>/`：必要完整旧方案/替代原因；普通修订由 Git 保存 |
 
-表中短路径相对 `docs/dev-flow/`；迭代索引集中关联本次策略、用例、报告与证据，项目测试入口维护跨迭代回归和自动化索引。临时 runner 输出、浏览器状态和本机服务记录可放 `.dev-flow/`，新上下文不能仅依赖这些缓存恢复结论。大 trace/视频按项目资产存储约定留存，报告保留必要摘要、原始位置与版本；不要提交实际 Cookie/令牌。
+表中短路径相对 `docs/dev-flow/`；迭代索引集中关联本次策略、用例、报告与证据，项目测试入口维护跨迭代回归和自动化索引。临时 runner 输出、浏览器状态和本机服务记录可放 `.dev/`，新上下文不能仅依赖这些缓存恢复结论。大 trace/视频按项目资产存储约定留存，报告保留必要摘要、原始位置与版本；不要提交实际 Cookie/令牌。
 
 按任务裁剪[策略](../assets/templates/test-strategy.md)、[用户用例](../assets/templates/acceptance-cases.md)、[技术拆解](../assets/templates/technical-checks.md)、[报告](../assets/templates/acceptance-report.md)、[缺陷](../assets/templates/defect.md)模板。用户讨论/确认的是本项目行为用例，通过共同[项目文档协议](../../dev-flow/references/design-document-contract.md)与[预览指南](../../dev-flow/references/document-preview.md)提供真实入口及技术依据链接，实际业务应用另给功能/交付入口。
 
-数据、报告与证据按[提交边界](../../dev-flow/references/versioned-evidence.md)分类：样本说明只维护来源/独立预期/准备入口，各轮结果进入运行报告；运行器写忽略目录，必要生成报告由主责选定为不可变证据快照。长期依赖的复跑脚本纳入实际测试/工具目录，不仅保留 `.tmp` 路径或哈希。
+测试报告统一记录候选版本、环境、执行结果、必要证据、未覆盖项与复跑方法，按[报告模板](../assets/templates/acceptance-report.md)维护；阶段/最终结论或交接可直接引用报告，不另建证据协议。固定样例与复用脚本保存在实际测试目录，运行生成物使用项目临时目录。
 
 任务开始核验原产品/UI/ARC 与技术方案/OUT、用例 Review/确认基线、源码/接口变化和证据版本，复用有效场景/数据，标明失效范围。方案 Review、用例 Review、人工确认及实际运行结果各有对象与版本，不能互相替代。任务结束维护场景到自动化、缺陷、证据和回归关系；下一任务从索引恢复并定向复验，不依赖聊天。架构约束或产品/UI/技术方案变化时明确影响与确认来源，不自动删除原验收编号。
 

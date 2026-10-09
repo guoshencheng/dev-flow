@@ -20,6 +20,6 @@ export default defineConfig(async () => {
       dedupe: ['react', 'react-dom'],
       alias: { react: path.join(workspace, 'node_modules/react'), 'react-dom': path.join(workspace, 'node_modules/react-dom'), antd: path.join(workspace, 'node_modules/antd') },
     },
-    server: { host: '127.0.0.1', fs: { strict: true, allow: [workspace, ...ctx.roots.map((root) => root.real)] }, watch: { ignored: ['**/node_modules/**', '**/.dev-flow/**'] } },
+    server: { host: '127.0.0.1', fs: { strict: true, allow: [workspace, ...ctx.roots.map((root) => root.real)] }, watch: { ignored: ['**/node_modules/**', '**/.dev/**'] } },
   }
 })

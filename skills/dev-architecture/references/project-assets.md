@@ -16,7 +16,7 @@
 | 改进与偏差 | `architecture/debt.md`：链接项目实际任务/缺陷，优先级、责任、范围、依赖、收益/代价、验证和状态 |
 | 完整替换方案 | 迭代候选：`iterations/<迭代ID>/archive/architecture/<资产ID>/`；长期基线：`architecture/archive/<YYYY-MM-DD>/<资产ID>/`：必要旧方案及替代关系；日常修订用 Git 历史 |
 
-表中短路径均相对于 `docs/dev-flow/`。检查证据优先沿用项目位置，无规范时在 `docs/dev-flow/iterations/<迭代ID>/evidence/architecture/<记录ID>/`；证据文件不混入目标设计冒充已验收。实际工具运行记录放 `.dev-flow/`，不能成为新上下文唯一事实来源。
+表中短路径均相对于 `docs/dev-flow/`。检查证据和实际工具运行记录统一放 `.dev/runs/<迭代ID>/architecture/<记录ID>/`，默认不提交；重要结构取舍、Review 结论和未关闭项提炼到架构文档或正式交接。证据文件不混入目标设计冒充已验收，本机记录不能成为跨机器接手的唯一事实来源。
 
 模板按任务裁剪：[当前架构与模块](../assets/templates/current-architecture.md)、[技术基线](../assets/templates/technology-baseline.md)、[变化设计](../assets/templates/architecture-design.md)、[代码复盘](../assets/templates/architecture-review.md)。小项目可在同一文档分开现状、目标和发现；模块足够复杂时再拆域文件。新职责与项目共用现有 Git 管理和[Vite 文档预览](../../dev-flow/references/document-preview.md)，无需独立文档服务。
 

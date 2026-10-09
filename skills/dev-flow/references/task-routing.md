@@ -35,7 +35,8 @@
 | 端到端技术方案 | 研发列页面/入口、功能、OUT、完整链路与技术产物 | 产品符合性及相关 UI/架构 AI Review，通过后交测试；不增加人工审批 | `engineering/technical-solution.md` |
 | 测试策略与用例 | 测试综合原产品及经 Review 方案，设计正常/边界/拒绝/异常/恢复/交付与相关架构检查 | 用例先 AI Review，再由用户确认验收预期和覆盖 | `acceptance/strategy.md`、`acceptance/cases.md` |
 | 实施计划 | 研发拆可运行切片、依赖、变更位置、验证与启动交付 | 一次实际 AI 复核；通过后自主实现，不做人工计划 Review | `engineering/implementation-plan.md` |
-| 研发测试对焦 | 研发提交可运行候选；测试验证界面/API/真实数据/E2E，反馈缺陷并复验，视觉核验相关呈现 | 内部修复自主推进；改变确认基线才确认受影响部分 | `engineering/handoff.md`、`acceptance/runs/`、`acceptance/defects/` |
+| 连续实施与集成 | 研发按内部切片实现、集成与必要自测；测试准备数据、自动化和环境 | 不逐片设正式 Review/验收门槛；改变确认基线才确认受影响部分 | `engineering/implementation-plan.md`，完整候选交接 `engineering/handoff.md` |
+| 集中 Review 与验收 | 同一完整候选检查全部实现差异与真实任务；具体问题立即反馈，研发按关联范围批量修复，定向复评/复验和相关回归 | AI 处理内部修复；技术检查支撑同一整体结论，不细分用户交付验收 | `acceptance/result.md`、`acceptance/defects/`及现有 Review/tracker；各轮过程记录默认本机忽略 |
 | 交付与复盘 | 运维核验启动/产物/部署；测试验收约定链路；架构复盘实际代码业务与约束，更新现状 | 必需条件实际通过、阻断问题关闭、约定交付成立；可选改进入待办 | `operations/delivery.md`、`architecture/review.md` |
 
 正式实现依赖有效的设计与用例确认及计划 AI 复核；等待确认时继续独立调查、候选准备和已有授权工作。原型可操作不等于实现验收，开发服务可访问不等于已部署。完整依赖、确认来源和自主调整边界以[执行协议](execution-contract.md)为准。

@@ -52,7 +52,7 @@ test('实际服务地址、MDX 编译、复用、读取范围、正常退出和�
   const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'dev-flow-doc-runtime-'))
   const project = await fs.realpath(directory)
   const cli = fileURLToPath(new URL('./preview.mjs', import.meta.url))
-  const record = path.join(project, '.dev-flow/previews/documents.json')
+  const record = path.join(project, '.dev/previews/documents.json')
   const run = (...args) => execFileSync(process.execPath, [cli, ...args, '--project', project], { stdio: 'pipe', encoding: 'utf8' })
   let child
   try {
@@ -67,6 +67,13 @@ test('实际服务地址、MDX 编译、复用、读取范围、正常退出和�
       try { runtime = JSON.parse(await fs.readFile(record, 'utf8')); break } catch { if (child.exitCode !== null) throw new Error(output); await delay(50) }
     }
     assert.ok(runtime, output)
+    // 旧服务仍存活时读取旧记录，不能因默认目录改变而重复启动服务。
+    const legacyRecord = path.join(project, '.dev-flow/previews/documents.json')
+    await fs.mkdir(path.dirname(legacyRecord), { recursive: true })
+    await fs.rename(record, legacyRecord)
+    assert.equal(JSON.parse(run('serve', '--port', '0')).reused, true)
+    assert.equal(JSON.parse(run('url', '--file', 'docs/dev-flow/中文 空格.md')).pid, runtime.pid)
+    await fs.rename(legacyRecord, record)
     const url = JSON.parse(run('url', '--file', 'docs/dev-flow/中文 空格.md'))
     assert.equal(url.viewUrl, runtime.origin + viewPath('docs/dev-flow/中文 空格.md'))
     assert.equal(JSON.parse(run('serve', '--port', '0')).reused, true)

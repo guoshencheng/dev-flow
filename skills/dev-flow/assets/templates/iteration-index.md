@@ -12,6 +12,8 @@ related: []
 
 采用到 `docs/dev-flow/iterations/<迭代ID>/index.md`。仅填写本轮实际需要的阶段与路径；本模板不是完整阶段的强制清单，采用后删除说明。
 
+维护本轮目标、有效产物、当前阶段和交接/结果；单次运行及 Review 过程写忽略的本机目录，不每次执行追加持久文件。重要 Review 结论与未关闭项合并到对应产物或已有 tracker；接手信息写 handoff/result，不用私有 runs 目录代替。
+
 ## 目标、范围与输入
 
 - 项目、迭代 ID、功能 ID 与任务类型：待填写。
@@ -41,7 +43,7 @@ related: []
 | 技术实现方案 | `engineering/technical-solution.md` | 待填写 | OUT/页面功能/链路，产品符合性及相关 UI/架构 AI Review |
 | 测试策略与用例 | `acceptance/strategy.md`、`acceptance/cases.md` | 待填写 | 产品/技术方案版本、TC 覆盖、实际 AI Review、用户确认 |
 | 实施 | `engineering/implementation-plan.md`、`engineering/handoff.md` | 待填写 | AI 复核、切片、集成版本、自测与待验交接 |
-| 验收执行 | `acceptance/runs/<runID>/report.md` | 待填写 | 当前候选、环境、执行结果、缺陷及修复复验 |
+| 验收结果/交接 | `acceptance/result.md` 或现有交接入口 | 待填写 | 当前候选、阶段结果、限制、缺陷及接手/复跑要求；各轮报告默认本机私有 |
 | 运维/交付 | `operations/delivery.md` | 待填写 | 实际启动/产物/目标环境/版本、结果和恢复 |
 | 架构复盘 | `architecture/review.md` | 待填写 | 实际代码业务、模块/域合理性、资产更新及建议 |
 
