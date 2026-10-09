@@ -1,0 +1,14 @@
+{
+  "sample": "sample-2",
+  "experiment": "restart same source and data; only process lifetime changes",
+  "disk": [
+    {
+      "id": "4a2bb72b-46e0-4a7c-a2db-bb8bb73d759d",
+      "title": "浏览器条目"
+    }
+  ],
+  "readFile": "[]\n",
+  "get": {
+    "items": []
+  }
+}

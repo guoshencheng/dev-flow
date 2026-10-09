@@ -4,11 +4,11 @@
 id: ROLE-dev-engineering
 title: 研发实现与修复 Agent
 status: current
-version: 0.2
+version: 0.3
 owner: engineering
 ---
 
-# 研发 Agent v0.2
+# 研发 Agent v0.3
 
 更新日期：2026-10-08。原生职责 `dev_engineering`，配置见[dev_engineering.toml](../agents/dev_engineering.toml)，专业入口为[dev-engineering](../skills/dev-engineering/SKILL.md)。不固定模型/强度，宿主不可派发时当前执行者按 Skill 承担职责并如实记录。
 
@@ -47,8 +47,16 @@ owner: engineering
 
 ## 验证与后续
 
+v0.3 补[测试先行与回归有效性](../skills/dev-engineering/references/test-first-and-regression.md)、假设/控制实验诊断和[实现评审意见处理](../skills/dev-engineering/references/review-feedback.md)，计划与交接关联目标行为、失败/通过证据和测试位置。研发主责必要局部测试，验收核验证据与实际复验；低影响任务按对象裁剪。
+
+2026-10-09 的[隔离行为评测](../evals/dev-flow-methods/report.md)已记录独立上下文中的先测后实现、事后补测旧红/新绿、无效测试与语法失败识别、三类保存丢失实验诊断及意见修复/反驳/澄清。主 Agent 复跑 T/D，R01 原评审者独立于研发实现作定向复评。宿主无文件级输入隔离，记录派发范围与实际读取声明；不等同强制沙箱盲测、生产能力或真实项目完整协作。
+
 首版方法、配置、全局接入和隔离诊断修复记录见[验证记录](../evals/dev-engineering/report.md)。主 Agent 自查/自执行案例不代表独立角色行为；原生发现/派发、框架工程、真实项目协作和新上下文复用需要对应实测。
 
 v0.2 增加架构后技术方案和产品符合性 Review、给测试的 OUT/链路映射；本次内容/协议检查与主 Agent 推演见[调整记录](../reviews/2026-10-08-technical-delivery-stage.md)。历史修复案例不证明新增阶段已在真实项目执行。
 
 已建设[运维与交付职责](operations-agent.md)，研发移交实际工程候选、配置/产物与诊断入口，运维维护目标环境和运行证据。下一步用真实任务验证完整协作，再按重复操作与实际失败建设运行内核和 Plugin。
+
+## Kimi 宿主接入（2026-10-09）
+
+本职责已提供独立 Kimi Markdown Agent 入口，与 Codex 角色参考从共用 Skill 元信息生成；专业方法仍只在 Skill/参考维护。Kimi 2.1.1 已通过原生发现、派发、包内文件读取和交接的模型替身冒烟；真实模型的专业行为及项目结果尚未验证，不能将接入检查登记为专业验收。见 [适配记录](../reviews/2026-10-09-kimi-agent-adaptation.md)及 [执行说明](../skills/dev-flow/references/kimi-agent-configuration.md)。

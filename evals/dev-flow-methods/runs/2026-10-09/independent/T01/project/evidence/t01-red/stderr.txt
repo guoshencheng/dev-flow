@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: RULE-02 viewer POST 应为 403，实际 201: {"id":"27e94593-0170-434e-b9ea-2c6437eb47ca","title":"越权条目"}; 存储变化=true
+
+201 !== 403
+
+    at file:///Users/guoshencheng/Documents/work/dev-flow/.dev-flow/methods-eval-20261009/T01/project/behavior.test.mjs:65:10 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 201,
+  expected: 403,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.4.0

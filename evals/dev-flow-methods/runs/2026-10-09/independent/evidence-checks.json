@@ -1,0 +1,47 @@
+{
+  "T01": {
+    "target_red": 1,
+    "green": 0,
+    "same_test": true,
+    "red_before_production_fix": true,
+    "root_retest_exit": 0
+  },
+  "T02": {
+    "old_target_red": 1,
+    "new_green": 0,
+    "same_test": true,
+    "previous_unchanged": true
+  },
+  "D01": {
+    "sample-1": {
+      "target_red": 1,
+      "green": 0,
+      "root_retest": 0,
+      "same_test": true,
+      "port_closed": true
+    },
+    "sample-2": {
+      "target_red": 1,
+      "green": 0,
+      "root_retest": 0,
+      "same_test": true,
+      "port_closed": true
+    },
+    "sample-3": {
+      "target_red": 1,
+      "green": 0,
+      "root_retest": 0,
+      "same_test": true,
+      "port_closed": true
+    }
+  },
+  "R01": {
+    "complete_commit_count": 3,
+    "auth_red": 1,
+    "title_red": 1,
+    "green": 0,
+    "same_script": "918fc1ba4db7317177e8b616960d3ab96fcaf2f99ab7e27cc16902ae59a187ad",
+    "independent_retest": 0,
+    "final_source": "8a99e24aefa109e086868240507c51425d53174212da50122de327037a15dfd3"
+  }
+}

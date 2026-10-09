@@ -1,0 +1,23 @@
+{
+  "started_at": "2026-10-09T02:50:32.962167+00:00",
+  "finished_at": "2026-10-09T02:50:33.060593+00:00",
+  "project": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/methods-eval-20261009/R01/retest-old",
+  "command": [
+    "node",
+    "evidence/handling-http.mjs"
+  ],
+  "exit_code": 1,
+  "source_before": {
+    "server.mjs": "573b7f1c48e7a9159951b5b86e00c7a08af8994e07d8a017e1b3e970dd1b587e"
+  },
+  "source_after": {
+    "server.mjs": "573b7f1c48e7a9159951b5b86e00c7a08af8994e07d8a017e1b3e970dd1b587e"
+  },
+  "command_files_before": {
+    "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/methods-eval-20261009/R01/retest-old/evidence/handling-http.mjs": "918fc1ba4db7317177e8b616960d3ab96fcaf2f99ab7e27cc16902ae59a187ad"
+  },
+  "command_files_after": {
+    "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/methods-eval-20261009/R01/retest-old/evidence/handling-http.mjs": "918fc1ba4db7317177e8b616960d3ab96fcaf2f99ab7e27cc16902ae59a187ad"
+  },
+  "runner_sha256": "bb2c25c9183875ca560c302fa799a6e8b9180970c6efedc244f277d863fd1d98"
+}

@@ -1,0 +1,11 @@
+--- committed/server.mjs
++++ original-worktree/server.mjs
+@@ -64,7 +64,7 @@
+     if (request.url === '/api/items' && request.method === 'POST') {
+       const { title } = await body(request);
+       if (typeof title !== 'string' || !title.trim()) return json(response, 422, { error: 'INVALID_TITLE' });
+-      const item = { id: randomUUID(), title: title.trim() };
++      const item = { id: randomUUID(), title };
+       const items = await readItems();
+       await writeItems([...items, item]);
+       return json(response, 201, item);

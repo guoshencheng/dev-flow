@@ -4,11 +4,11 @@
 id: ROLE-dev-architecture
 title: 架构设计与演进 Agent
 status: current
-version: 0.3
+version: 0.4
 owner: architecture
 ---
 
-# 架构设计与演进 Agent v0.3
+# 架构设计与演进 Agent v0.4
 
 更新日期：2026-10-08。原生职责 `dev_architecture`；[专业 Skill](../skills/dev-architecture/SKILL.md)；[职责配置](../agents/dev_architecture.toml)。配置省略模型与推理强度，由本次用户和宿主设置选择。
 
@@ -63,6 +63,10 @@ v0.3 按用户要求收敛技术 Guide：Web 使用 React（新建 Vite + React 
 
 ## 验证状态
 
+v0.4 扩充[完整实现评审与复盘](../skills/dev-architecture/references/retrospective-and-evolution.md)，要求开始基线至最终候选及相关未提交内容，分别给需求符合性/实现质量结论；意见核证后修复、反驳、澄清或保留待验证，定向复评及必要行为复验后关闭。
+
+本轮[行为评测](../evals/dev-flow-methods/report.md)中，独立评审者实际覆盖三提交与未提交差异，检出早期权限与未提交标题问题；研发处理后，原评审者未参与实现，定向阅读并实际断言复验，四条意见按证据关闭。模型参数为本次派发策略，不进入可复用要求；宿主共享文件系统与输入声明的证明限制单列。此证据不代表全仓审计、生产身份、并发或真实项目成熟度。
+
 源配置、专业指导、项目资产和代表案例分别登记；本次检查与限制见[验证记录](../evals/dev-architecture/report.md)。原生发现/派发、不同模型和真实项目复用需要对应实际证据，隔离评测不能代替生产验收。
 
 v0.1 的四个 Skill、三个 TOML 与全局链接检查通过。Sol medium 通用子 Agent 在隔离案例实际完成代码业务复盘和模块变化后的资产复用，主 Agent 核验源码/证据并复跑一致。已证明该案例中的现状恢复、域/模块地图、业务/架构偏差识别和持续更新；尚未验证 `dev_architecture` 原生派发、全新上下文与真实项目，也未将全部能力登记为成熟。
@@ -72,3 +76,7 @@ v0.2 技术选型新增指导基于只读项目调查与官方平台资料，结
 v0.3 技术约定、代码规范与格式配置的检查见[本轮记录](../reviews/2026-10-08-architecture-code-standards-check.md)。格式工具的实际案例与其他静态/行为/真实项目检查分别登记，不将格式通过延伸为端到端验收。
 
 已建设[测试验收职责](acceptance-agent.md)，与架构使用同一 ARC/RULE/AC 和版本化证据推进完整交付。已建设[研发职责](engineering-agent.md)与[运维交付职责](operations-agent.md)，以实际实现/环境同步运行边界和恢复条件；下一步用真实任务检验完整协作。
+
+## Kimi 宿主接入（2026-10-09）
+
+本职责已提供独立 Kimi Markdown Agent 入口，与 Codex 角色参考从共用 Skill 元信息生成；专业方法仍只在 Skill/参考维护。Kimi 2.1.1 已通过原生发现、派发、包内文件读取和交接的模型替身冒烟；真实模型的专业行为及项目结果尚未验证，不能将接入检查登记为专业验收。见 [适配记录](../reviews/2026-10-09-kimi-agent-adaptation.md)及 [执行说明](../skills/dev-flow/references/kimi-agent-configuration.md)。

@@ -1,0 +1,30 @@
+diff --git a/server.mjs b/server.mjs
+index b49b427..1d28395 100644
+--- a/server.mjs
++++ b/server.mjs
+@@ -24,7 +24,7 @@ async function body(request) {
+   return JSON.parse(Buffer.concat(chunks).toString());
+ }
+ function page(role) {
+-  return `<!doctype html><html lang="zh"><meta charset="utf-8"><title>条目保存测试</title>
++  return `<!doctype html><html lang="zh"><meta charset="utf-8"><title>条目工作台</title>
+ <h1>条目保存</h1><form><label for="title">标题</label><input id="title" name="title">
+ <button type="submit" ${role === 'editor' ? '' : 'disabled'}>保存</button></form>
+ <p role="status"></p><ul aria-label="已保存条目" aria-busy="true"></ul>
+@@ -48,7 +48,7 @@ document.querySelector('form').addEventListener('submit', async (event) => {
+ }
+ const server = http.createServer(async (request, response) => {
+   try {
+-    if (request.url === '/health') return json(response, 200, { kind: 'acceptance-fixture' });
++    if (request.url === '/health') return json(response, 200, { kind: 'method-fixture' });
+     if (request.url === '/test/login' && request.method === 'POST') {
+       const { role } = await body(request);
+       if (!['editor', 'viewer'].includes(role)) return json(response, 400, { error: 'INVALID_ROLE' });
+@@ -62,7 +62,6 @@ const server = http.createServer(async (request, response) => {
+     }
+     if (request.url === '/api/items' && request.method === 'GET') return json(response, 200, { items: await readItems() });
+     if (request.url === '/api/items' && request.method === 'POST') {
+-      if (role !== 'editor') return json(response, 403, { error: 'FORBIDDEN' });
+       const { title } = await body(request);
+       if (typeof title !== 'string' || !title.trim()) return json(response, 422, { error: 'INVALID_TITLE' });
+       const item = { id: randomUUID(), title: title.trim() };

@@ -1,0 +1,19 @@
+--- .dev-flow/methods-eval-20261009/D01/sample-3/server.before.mjs	2026-10-09 10:32:06
++++ .dev-flow/methods-eval-20261009/D01/sample-3/server.mjs	2026-10-09 10:33:33
+@@ -13,7 +13,6 @@
+ catch (error) { if (error.code !== 'EEXIST') throw error; }
+ const readItems = async () => JSON.parse(await fs.readFile(dataFile, 'utf8'));
+ const writeItems = async (items) => fs.writeFile(dataFile, JSON.stringify(items) + '\n');
+-const visibleCache = await readItems();
+ const roleOf = (request) => /(?:^|;\s*)fixture_role=(editor|viewer)(?:;|$)/.exec(request.headers.cookie || '')?.[1];
+ const json = (response, status, data, headers = {}) => {
+   response.writeHead(status, { 'content-type': 'application/json', ...headers });
+@@ -61,7 +60,7 @@
+       response.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
+       return response.end(page(role));
+     }
+-    if (request.url === '/api/items' && request.method === 'GET') return json(response, 200, { items: visibleCache });
++    if (request.url === '/api/items' && request.method === 'GET') return json(response, 200, { items: await readItems() });
+     if (request.url === '/api/items' && request.method === 'POST') {
+       if (role !== 'editor') return json(response, 403, { error: 'FORBIDDEN' });
+       const { title } = await body(request);

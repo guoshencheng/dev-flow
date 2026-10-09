@@ -1,0 +1,23 @@
+{
+  "started_at": "2026-10-09T02:36:58.296631+00:00",
+  "finished_at": "2026-10-09T02:36:58.390370+00:00",
+  "project": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/methods-eval-20261009/R01/project",
+  "command": [
+    "node",
+    "evidence/handling-http.mjs"
+  ],
+  "exit_code": 0,
+  "source_before": {
+    "docs/product.md": "053a84a628b6e12640705637c2de46027fc325861c116c37c368b2efad9775b2",
+    "package.json": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428",
+    "review-input.json": "1bc44e9bd0ab5f2e9f5f845f9c9f7deb7a93f8010451eb0eb7a3f32d9315becc",
+    "server.mjs": "8a99e24aefa109e086868240507c51425d53174212da50122de327037a15dfd3"
+  },
+  "source_after": {
+    "docs/product.md": "053a84a628b6e12640705637c2de46027fc325861c116c37c368b2efad9775b2",
+    "package.json": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428",
+    "review-input.json": "1bc44e9bd0ab5f2e9f5f845f9c9f7deb7a93f8010451eb0eb7a3f32d9315becc",
+    "server.mjs": "8a99e24aefa109e086868240507c51425d53174212da50122de327037a15dfd3"
+  },
+  "runner_sha256": "9c120223c4cba91f151a8b1f28ddb434099ebbf1799b4e0dbd06a10afdeec7d6"
+}

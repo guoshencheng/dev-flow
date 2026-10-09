@@ -1,0 +1,50 @@
+{
+  "sample": "sample-2",
+  "phase": "root-retest",
+  "port": 19012,
+  "dataFile": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/methods-eval-20261009/D01/sample-2/data/root-retest.json",
+  "observations": {
+    "login": 200,
+    "post": {
+      "status": 201,
+      "body": {
+        "id": "8cc7da9c-685e-4c8a-a1a6-45cb06ec6aeb",
+        "title": "浏览器条目"
+      }
+    },
+    "beforeReload": [
+      "浏览器条目"
+    ],
+    "diskAfterPost": [
+      {
+        "id": "8cc7da9c-685e-4c8a-a1a6-45cb06ec6aeb",
+        "title": "浏览器条目"
+      }
+    ],
+    "readFileAfterPost": null,
+    "get": {
+      "status": 200,
+      "body": {
+        "items": [
+          {
+            "id": "8cc7da9c-685e-4c8a-a1a6-45cb06ec6aeb",
+            "title": "浏览器条目"
+          }
+        ]
+      }
+    },
+    "afterReload": [
+      "浏览器条目"
+    ],
+    "viewerPost": 403,
+    "anonymousGet": 401,
+    "whitespacePost": 422,
+    "diskAfterRegressions": [
+      {
+        "id": "8cc7da9c-685e-4c8a-a1a6-45cb06ec6aeb",
+        "title": "浏览器条目"
+      }
+    ]
+  }
+}
+PASS RULE-01/02/03

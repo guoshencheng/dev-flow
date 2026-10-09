@@ -50,11 +50,14 @@ description: 组织研发、产品交互、视觉、架构、测试验收与运�
 
 交接包含结论与完成范围、成果位置与版本、实际证据与未执行项、问题和依赖、资产变化与能力缺口。完成判断针对当前候选成果，区分实现、验收、可运行交付与部署。
 
+实施/修复按[测试保护](../dev-engineering/references/test-first-and-regression.md)和[实验诊断](../dev-engineering/references/diagnosis-and-feedback.md)取证；实际实现评审按[完整变更](../dev-architecture/references/retrospective-and-evolution.md)与[意见闭环](../dev-engineering/references/review-feedback.md)执行，复用现有缺陷/tracker，不以方案 Review 或修复说明代替当前候选的复评与复验。
+
 ## 按需深入
 
 - 细化职责分工时，读取[能力目录](references/role-capabilities.md)中的对应职责。
 - 检索、更新或复用项目资产时，读取[持续沉淀指南](references/project-asset-maintenance.md)。
 - 选择执行者或委派职责工作时，读取[职责执行说明](references/codex-agent-configuration.md)。
+- 在 Kimi 中选择/派发职责 Agent 时，读取[Kimi 职责说明](references/kimi-agent-configuration.md)，使用自包含输入及实际 Skill 路径；Codex 继续使用实际可用子 Agent。
 - 安装、更新或诊断 Plugin 时，读取[安装指南](../../docs/plugin.md)；不要求初始化 Agent。
 
 职责可用性与成熟度依据当前工具和真实证据判断，分别记录插件安装检查、专业行为、实际派发与项目复用结果。

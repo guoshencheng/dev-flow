@@ -1,0 +1,70 @@
+{
+  "operator": "固定工具对照，不是模型行为",
+  "node": "v26.4.0",
+  "results": {
+    "T01/project": {
+      "viewer_status": 201,
+      "viewer_stored_count": 1,
+      "editor_status": 201,
+      "editor_title": "normalized",
+      "editor_readback": true,
+      "wrong_test_exit": 0,
+      "target_oracle_matched": true,
+      "service_stopped": true
+    },
+    "T02/current": {
+      "viewer_status": 403,
+      "viewer_stored_count": 0,
+      "editor_status": 201,
+      "editor_title": "normalized",
+      "editor_readback": true,
+      "wrong_test_exit": 0,
+      "target_oracle_matched": true,
+      "service_stopped": true
+    },
+    "T02/previous": {
+      "viewer_status": 201,
+      "viewer_stored_count": 1,
+      "editor_status": 201,
+      "editor_title": "normalized",
+      "editor_readback": true,
+      "wrong_test_exit": 0,
+      "target_oracle_matched": true,
+      "service_stopped": true
+    },
+    "R01/project": {
+      "viewer_status": 201,
+      "viewer_stored_count": 1,
+      "editor_status": 201,
+      "editor_title": " normalized ",
+      "editor_readback": true,
+      "wrong_test_exit": 0,
+      "target_oracle_matched": true,
+      "service_stopped": true
+    },
+    "D01/sample-1": {
+      "post_status": 201,
+      "stored_count": 0,
+      "get_count": 0,
+      "get_after_restart_count": 0,
+      "target_oracle_matched": true,
+      "service_stopped": true
+    },
+    "D01/sample-2": {
+      "post_status": 201,
+      "stored_count": 1,
+      "get_count": 0,
+      "get_after_restart_count": 0,
+      "target_oracle_matched": true,
+      "service_stopped": true
+    },
+    "D01/sample-3": {
+      "post_status": 201,
+      "stored_count": 1,
+      "get_count": 0,
+      "get_after_restart_count": 1,
+      "target_oracle_matched": true,
+      "service_stopped": true
+    }
+  }
+}

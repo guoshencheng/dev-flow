@@ -1,0 +1,20 @@
+--- .dev-flow/methods-eval-20261009/D01/sample-2/server.before.mjs	2026-10-09 10:32:06
++++ .dev-flow/methods-eval-20261009/D01/sample-2/server.mjs	2026-10-09 10:33:32
+@@ -12,8 +12,6 @@
+ try { await fs.writeFile(dataFile, '[]\n', { flag: 'wx' }); }
+ catch (error) { if (error.code !== 'EEXIST') throw error; }
+ const readItems = async () => JSON.parse(await fs.readFile(dataFile, 'utf8'));
+-const readVisibleItems = async () => JSON.parse(await fs.readFile(dataFile + '.read', 'utf8'));
+-try { await fs.writeFile(dataFile + '.read', '[]\n', { flag: 'wx' }); } catch (e) { if (e.code !== 'EEXIST') throw e; }
+ const writeItems = async (items) => fs.writeFile(dataFile, JSON.stringify(items) + '\n');
+ const roleOf = (request) => /(?:^|;\s*)fixture_role=(editor|viewer)(?:;|$)/.exec(request.headers.cookie || '')?.[1];
+ const json = (response, status, data, headers = {}) => {
+@@ -62,7 +60,7 @@
+       response.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
+       return response.end(page(role));
+     }
+-    if (request.url === '/api/items' && request.method === 'GET') return json(response, 200, { items: await readVisibleItems() });
++    if (request.url === '/api/items' && request.method === 'GET') return json(response, 200, { items: await readItems() });
+     if (request.url === '/api/items' && request.method === 'POST') {
+       if (role !== 'editor') return json(response, 403, { error: 'FORBIDDEN' });
+       const { title } = await body(request);

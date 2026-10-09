@@ -1,6 +1,10 @@
 # dev-flow
 
-以 Codex 为主的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付。当前已有总纲 v0.17、六职责专业 Skills、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。专业职责由主 Agent 或获准委派的可用子 Agent 承担，模型遵循本次用户要求与宿主策略；本地 Plugin 0.1.0 包装和接入方式见[安装指南](docs/plugin.md)及[验证记录](reviews/2026-10-09-setup-removal-and-task-routing.md)。工具、专业行为、实际委派与真实项目成熟度分别登记；完整真实任务和运行内核继续按实测需要建设。
+支持 Codex 与 Kimi 接入的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付。当前已有总纲 v0.18、六职责专业 Skills、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。专业职责由主 Agent 或获准委派的可用子 Agent 承担，模型遵循本次用户要求与宿主策略；本地 Plugin 0.1.0 包装和接入方式见[安装指南](docs/plugin.md)及[验证记录](reviews/2026-10-09-setup-removal-and-task-routing.md)。工具、专业行为、实际委派与真实项目成熟度分别登记；完整真实任务和运行内核继续按实测需要建设。
+
+Kimi 插件提供六份独立职责 Agent 文档，与历史 Codex 角色参考从共用 Skills 生成；专业方法只维护一份。接入、派发与同步见 [Kimi 职责说明](skills/dev-flow/references/kimi-agent-configuration.md)。
+
+验证结果见 [Kimi 适配记录](reviews/2026-10-09-kimi-agent-adaptation.md)：原生加载/派发链路已检查，真实模型专业行为另行验证。
 
 ## 维护入口
 
@@ -30,22 +34,26 @@
 - [文档与资产职责归属](docs/document-ownership.md)：七个 Skills 的权威边界、共享工具维护者与迁移说明。
 - [仓库文档归类](docs/document-organization.md)：执行参考、建设计划和验证证据的边界。
 - [职责建设与验证](docs/agent-development.md)、[初期总体建设方案](docs/plans/2026-10-07-development-harness-plan.md)和[能力/资产建设原始方案](docs/plans/2026-10-07-role-capabilities-and-project-assets.md)：仓库建设资料。
-- [测试先行、系统诊断与实现评审改造计划](docs/plans/2026-10-09-executable-engineering-methods.md)：补齐执行方法、记录字段和行为评测，沿用现有六职责；当前待实施。
+- [测试先行、系统诊断与实现评审改造计划](docs/plans/2026-10-09-executable-engineering-methods.md)：沿用六职责补齐方法与记录字段；[隔离行为评测](evals/dev-flow-methods/report.md)记录实际检出、实验、意见处理与复验边界。
 - [Codex 配置历史](docs/history/2026-10-08-codex-agent-setup.md)、[Ant Design 接入核验](docs/integrations/ant-design.md)及[共享组件验证](docs/integrations/shared-components.md)：历史事实与证据入口。
 
 ## 插件安装与使用
+
+Codex 安装：
 
 ```sh
 python3 scripts/manage_plugin.py install
 python3 scripts/manage_plugin.py check
 ```
 
-插件包含七个 Skills：流程入口及产品、视觉、架构、研发、测试验收、运维交付。没有 setup Agent 步骤，安装不注册个人角色或改写全局指引。使用 `$dev-flow` 按[任务路由](skills/dev-flow/references/task-routing.md)选择 bugfix、正常需求、系统变更或故障流程；主 Agent 或实际可用且获准委派的子 Agent 读取专业 Skill。模型由宿主与用户本次要求决定。安装详情见[指南](docs/plugin.md)。
+插件包含七个 Skills：流程入口及产品、视觉、架构、研发、测试验收、运维交付。没有 setup Agent 步骤，安装不注册个人角色或改写全局指引。使用 `$dev-flow` 按[任务路由](skills/dev-flow/references/task-routing.md)选择 bugfix、正常需求、系统变更或故障流程；主 Agent 或实际可用且获准委派的子 Agent 读取专业 Skill。模型由宿主与用户本次要求决定。Kimi 使用原生插件安装与 `/skill:dev-flow`，安装详情见[指南](docs/plugin.md)。
 
 ## 下一项建设
 
-产品 v0.8、视觉 v0.1、架构 v0.3、测试验收 v0.3、研发 v0.2 与运维交付 v0.1 已定义专业方法与项目资产维护。运维的源码包启动、运行故障与恢复工具案例见[首版验证](evals/dev-operations/report.md)，研发隔离修复案例见[记录](evals/dev-engineering/report.md)，测试执行范围见[记录](evals/dev-acceptance/report.md)，架构规范检查见[记录](reviews/2026-10-08-architecture-code-standards-check.md)。历史原型/组件证据保持原版本，见[视觉与文档验证](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)。总纲 v0.13 增加架构后端到端技术方案、符合性及用例 AI Review/人工确认，见[调整记录](reviews/2026-10-08-technical-delivery-stage.md)；保留运行/交付资产和 v0.11 的[设计与实现路由边界](reviews/2026-10-08-prototype-review-routing.md)及确认/自主实施规则。下一步选择真实任务检验完整循环和下一任务资产复用；实际委派/模型设置与真实项目分别实测，本地 Plugin 已接入，见[安装验证](reviews/2026-10-09-setup-removal-and-task-routing.md)；运行内核继续按真实任务需要建设。
+总纲 v0.18、研发 v0.3、测试验收 v0.4 与架构 v0.4 已补齐测试先行/保护有效性、系统实验诊断及完整实现评审/意见闭环，见[本轮结果](evals/dev-flow-methods/report.md)。独立上下文在隔离样本实际执行并取得定向复验；宿主没有文件级输入隔离，不升级为生产或真实项目成熟度。下一步在真实任务采用这三套方法并验证连续任务资产复用。
+
+此前产品 v0.8、视觉 v0.1、架构 v0.3、测试验收 v0.3、研发 v0.2 与运维交付 v0.1 已定义专业方法与项目资产维护。运维的源码包启动、运行故障与恢复工具案例见[首版验证](evals/dev-operations/report.md)，研发隔离修复案例见[记录](evals/dev-engineering/report.md)，测试执行范围见[记录](evals/dev-acceptance/report.md)，架构规范检查见[记录](reviews/2026-10-08-architecture-code-standards-check.md)。历史原型/组件证据保持原版本，见[视觉与文档验证](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)。总纲 v0.13 增加架构后端到端技术方案、符合性及用例 AI Review/人工确认，见[调整记录](reviews/2026-10-08-technical-delivery-stage.md)；保留运行/交付资产和 v0.11 的[设计与实现路由边界](reviews/2026-10-08-prototype-review-routing.md)及确认/自主实施规则。下一步选择真实任务检验完整循环和下一任务资产复用；实际委派/模型设置与真实项目分别实测，本地 Plugin 已接入，见[安装验证](reviews/2026-10-09-setup-removal-and-task-routing.md)；运行内核继续按真实任务需要建设。
 
 ## 解除插件
 
-运行 `python3 scripts/manage_plugin.py remove`，或使用宿主插件卸载入口。当前安装没有额外 Agent 接入需要解除，源码与业务项目资产保留。
+Codex 运行 `python3 scripts/manage_plugin.py remove`；Kimi 使用 `/plugins remove dev-flow`，或使用对应宿主插件卸载入口。当前安装没有额外 Agent 接入需要解除，源码与业务项目资产保留。

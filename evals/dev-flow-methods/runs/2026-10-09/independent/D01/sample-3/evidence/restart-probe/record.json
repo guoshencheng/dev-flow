@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-10-09T02:33:23.895543+00:00",
+  "finished_at": "2026-10-09T02:33:24.008099+00:00",
+  "project": "/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/methods-eval-20261009/D01/sample-3",
+  "command": [
+    "node",
+    "probe.mjs"
+  ],
+  "exit_code": 0,
+  "source_before": {
+    "docs/product.md": "053a84a628b6e12640705637c2de46027fc325861c116c37c368b2efad9775b2",
+    "package.json": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428",
+    "probe.mjs": "0453e6cc03cd51a92fcd8084d8c18f49707ee9a366502da2e009badfc4d4297f",
+    "server.before.mjs": "bf3f5d2abd1f9dec652c40807b4250c9ad6829f9b7ba3c38871767ed20971906",
+    "server.mjs": "bf3f5d2abd1f9dec652c40807b4250c9ad6829f9b7ba3c38871767ed20971906",
+    "test.mjs": "429a5761fb38c892b6be9c0cc62c162878aa42f179f1b8c801b385a26eb3babe"
+  },
+  "source_after": {
+    "docs/product.md": "053a84a628b6e12640705637c2de46027fc325861c116c37c368b2efad9775b2",
+    "package.json": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428",
+    "probe.mjs": "0453e6cc03cd51a92fcd8084d8c18f49707ee9a366502da2e009badfc4d4297f",
+    "server.before.mjs": "bf3f5d2abd1f9dec652c40807b4250c9ad6829f9b7ba3c38871767ed20971906",
+    "server.mjs": "bf3f5d2abd1f9dec652c40807b4250c9ad6829f9b7ba3c38871767ed20971906",
+    "test.mjs": "429a5761fb38c892b6be9c0cc62c162878aa42f179f1b8c801b385a26eb3babe"
+  },
+  "runner_sha256": "9c120223c4cba91f151a8b1f28ddb434099ebbf1799b4e0dbd06a10afdeec7d6"
+}

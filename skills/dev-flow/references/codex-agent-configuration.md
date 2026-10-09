@@ -1,6 +1,6 @@
 # 职责 Skills 与执行者
 
-本插件通过流程 Skill 和六个专业 Skills 提供能力，不要求注册原生职责 Agent，也不需要 setup。安装、更新与解除见[插件维护指南](../../../docs/plugin.md)。
+本插件通过流程 Skill 和六个专业 Skills 提供能力，Codex 不要求注册原生职责 Agent，也不需要 setup。Kimi 通过同包清单发现六个独立职责入口，派发和双端同步见 [Kimi 职责说明](kimi-agent-configuration.md)。安装、更新与解除见[插件维护指南](../../../docs/plugin.md)。
 
 主 Agent 按[任务路由](task-routing.md)选择产品、视觉、架构、研发、测试或运维方法，读取对应专业 Skill 承担工作。专业职责是分工，不自动表示存在独立执行者。
 

@@ -1,0 +1,10 @@
+--- a/server.mjs
++++ b/server.mjs
+@@ -62,6 +62,7 @@
+     }
+     if (request.url === '/api/items' && request.method === 'GET') return json(response, 200, { items: await readItems() });
+     if (request.url === '/api/items' && request.method === 'POST') {
++      if (role !== 'editor') return json(response, 403, { error: 'FORBIDDEN' });
+       const { title } = await body(request);
+       if (typeof title !== 'string' || !title.trim()) return json(response, 422, { error: 'INVALID_TITLE' });
+       const item = { id: randomUUID(), title: title.trim() };

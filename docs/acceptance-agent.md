@@ -4,11 +4,11 @@
 id: ROLE-dev-acceptance
 title: 测试与验收 Agent
 status: current
-version: 0.3
+version: 0.4
 owner: acceptance
 ---
 
-# 测试与验收 Agent v0.3
+# 测试与验收 Agent v0.4
 
 更新日期：2026-10-08。原生职责 `dev_acceptance`，配置见[dev_acceptance.toml](../agents/dev_acceptance.toml)，专业入口为[dev-acceptance](../skills/dev-acceptance/SKILL.md)。配置不固定模型/强度，实际执行方式与成熟度分别登记。
 
@@ -58,8 +58,16 @@ v0.2 明确阶段与对象：设计文档/原型的流程、规则、交互及�
 
 ## 验证状态与后续
 
+v0.4 增加[回归有效性核验](../skills/dev-acceptance/references/execution-and-feedback.md)：区分目标失败、执行/环境失败与未执行，识别旧错误实现仍通过的无效保护；缺陷模板复用假设实验、评审决定及候选/复验字段。研发随实现写必要局部测试，测试主责覆盖与实际复验，沿用原 tracker。
+
+本轮[隔离评测](../evals/dev-flow-methods/report.md)已取得旧红/新绿、无写入副作用、无效测试与语法负例判读、实际浏览器保存/刷新，以及 R01 独立断言复验后关闭的证据。工具对照、研发自测、主 Agent 复跑和独立复评分别登记；读取范围未由宿主文件沙箱强制隔离，真实业务项目与生产验收仍待执行。
+
 本轮专业方法、静态配置和代表工具案例的实际记录见[首版验证](../evals/dev-acceptance/report.md)。主 Agent 执行的工具检查不登记独立角色行为；原生发现/派发、新上下文资产复用和真实项目完整协作分别需要实际验证。
 
 v0.3 增加经 Review 技术方案输入、原产品与 OUT 双向覆盖、用例 AI Review 后人工确认的要求；本次检查/推演与未验证范围见[调整记录](../reviews/2026-10-08-technical-delivery-stage.md)，历史工具案例不证明新增阶段已在真实项目执行。
 
 已建设[研发职责](engineering-agent.md)和[运维交付职责](operations-agent.md)，共同提供当前候选、真实环境与入口；测试按原用例实际验收并复验。下一步真实任务检验完整协作，现有能力按范围持续配合。
+
+## Kimi 宿主接入（2026-10-09）
+
+本职责已提供独立 Kimi Markdown Agent 入口，与 Codex 角色参考从共用 Skill 元信息生成；专业方法仍只在 Skill/参考维护。Kimi 2.1.1 已通过原生发现、派发、包内文件读取和交接的模型替身冒烟；真实模型的专业行为及项目结果尚未验证，不能将接入检查登记为专业验收。见 [适配记录](../reviews/2026-10-09-kimi-agent-adaptation.md)及 [执行说明](../skills/dev-flow/references/kimi-agent-configuration.md)。

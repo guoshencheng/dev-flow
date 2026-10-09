@@ -1,0 +1,19 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: RULE-02: viewer POST 必须返回 403
+
+201 !== 403
+
+    at file:///Users/guoshencheng/Documents/work/dev-flow/.dev-flow/methods-eval-20261009/R01/retest-old/evidence/handling-http.mjs:44:12
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 201,
+  expected: 403,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.4.0
