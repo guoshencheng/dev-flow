@@ -3,9 +3,12 @@ id: ARC-review
 title: 代码架构复核与研发复盘
 status: current
 owner: architecture
+iteration: iteration-id
 ---
 
 # 代码架构复核与研发复盘
+
+采用时默认保存为 `docs/dev-flow/iterations/<迭代ID>/architecture/review.md`，由同一迭代索引关联输入版本、Review/确认与结果。已有权威位置通过该索引映射，按实际范围裁剪。
 
 ## 当前结论与来源
 

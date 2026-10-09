@@ -49,3 +49,5 @@ B 端先核验项目已有实现，再参考 Ant Design 官方完整组件体系
 完整功能正式实施前按共同[执行协议](../dev-flow/references/execution-contract.md)向用户提供可审阅产品/交互/UI 成果并记录确认范围、版本与来源；已有有效决定直接复用。架构后参与[研发技术方案](../dev-engineering/references/technical-delivery-design.md)的产品符合性 Review，从原规则/流程/页面状态到 OUT/功能/链路双向检查覆盖和语义，发现遗漏/偏差回研发修正。测试综合原产品与经 Review 方案设计用例，产品参与预期/覆盖复核；用例 AI Review 后获用户确认，研发计划再 AI 复核进入编码，默认不新增人工技术方案/计划审批。
 
 交接说明成果及版本、实际来源、流程与验收覆盖、已观察结果、未执行项、关键问题及下游依赖，以及项目资产复用、更新与能力缺口。后续视觉、架构或测试反馈改变行为时回到对应规则和场景定向更新。
+
+本次阶段产物统一归入 `docs/dev-flow/iterations/<迭代ID>/` 的对应职责目录，由迭代索引关联版本、Review、确认与证据。项目级职责目录用于跨迭代的现行基线和复用资产；已有权威位置通过迭代索引映射。详见[迭代目录协议](../dev-flow/references/design-document-contract.md)。

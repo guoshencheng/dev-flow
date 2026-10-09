@@ -1,15 +1,15 @@
 # 工程资产、集成交付与新上下文
 
-优先复用项目现有权威位置，[共同目录与归档](../../dev-flow/references/design-document-contract.md)关联产品/UI、技术、测试和运行。没有规范时按实际需要采用下列入口，局部任务可合并文档。
+优先复用项目现有权威位置，[共同目录与归档](../../dev-flow/references/design-document-contract.md)关联产品/UI、技术、测试和运行。没有规范时按实际需要采用下列入口，局部任务可合并文档。表中短路径相对 `docs/dev-flow/`；本次方案、计划、交接在同一迭代内，工程索引与通用规范为跨迭代资产。
 
 | 资产 | 默认权威位置与维护内容 |
 | --- | --- |
 | 工程索引 | `docs/dev-flow/engineering/index.md`：真实安装单元/命令、代码功能映射、规范/计划/测试/运行入口、当前版本 |
-| 技术实现方案与符合性 Review | `engineering/changes/<任务ID>/technical-solution.md`：页面/入口/功能/OUT/完整链路与产品/UI/ARC 覆盖、实际方案 Review、交测试版本 |
-| 实现计划与 AI 复核 | `engineering/plans/<任务ID>.md`：输入/确认范围、切片与依赖、检查和交付、实际复核与重要调整 |
+| 技术实现方案与符合性 Review | `iterations/<迭代ID>/engineering/technical-solution.md`：页面/入口/功能/OUT/完整链路与产品/UI/ARC 覆盖、实际方案 Review、交测试版本 |
+| 实现计划与 AI 复核 | `iterations/<迭代ID>/engineering/implementation-plan.md`：输入/确认范围、切片与依赖、检查和交付、实际复核与重要调整 |
 | 工程规范 | 复用现有规范或 `engineering/code-standards.md`；实际配置/入口仍在源码中，按[规范 Guide](../../dev-architecture/references/code-standards.md)维护 |
 | 诊断与回归 | 既有缺陷/测试记录优先；复杂共用经验可放 `engineering/diagnostics/<问题ID>.md`，关联版本、原因、证据和有效范围 |
-| 待验工程交接 | `engineering/changes/<任务ID>/handoff.md` 或既有 PR/任务记录：集成候选、变更、自测、待验和真实启动支持 |
+| 待验工程交接 | `iterations/<迭代ID>/engineering/handoff.md` 或既有 PR/任务记录：集成候选、变更、自测、待验和真实启动支持 |
 | 自动化与可复用实现 | 保存在实际测试/源码/脚本目录；文档链接权威实现与采用来源，不维护脱离源码的副本 |
 | 运行与交付 | 复用项目运行 README 或 `docs/dev-flow/operations/`：前置条件、环境样例、准备/启动/停止、产物和版本、目标环境 |
 

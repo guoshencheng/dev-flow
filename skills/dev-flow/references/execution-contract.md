@@ -101,16 +101,16 @@ Agent 可以自主调整内部实现、任务切分、诊断与修复方法，�
 
 ## 项目沉淀与新上下文
 
-优先使用已有权威位置；没有规范时按需采用：
+优先使用已有权威位置；本次阶段产物按同一迭代集中维护。新上下文先从 `docs/dev-flow/index.md` 找到 `iterations/<迭代ID>/index.md`，再读取相关长期基线；默认按需采用：
 
 | 资产 | 默认位置 |
 | --- | --- |
 | 产品/视觉规格、原型和检查 | [共同设计文档协议](design-document-contract.md)的目录 |
-| 当前架构入口与本次设计 | `docs/dev-flow/architecture/index.md`、`docs/dev-flow/architecture/changes/<任务ID>/design.md` |
-| 实际模块地图与架构复盘 | `docs/dev-flow/architecture/modules.md`、`docs/dev-flow/architecture/reviews/<日期>/<任务ID>.md`；详见[架构资产协议](../../dev-architecture/references/project-assets.md) |
-| 端到端技术实现方案与 AI Review | `docs/dev-flow/engineering/changes/<任务ID>/technical-solution.md`；页面/入口/功能/OUT/链路、产品符合性及相关 UI/架构复核 |
-| 可读用例、覆盖与 AI Review | `docs/dev-flow/acceptance/features/<功能ID>/cases.md`；关联 OUT 与原规则、记录 Review/人工确认；自动化在项目实际测试目录维护 |
-| 实现计划与 AI 复核 | `docs/dev-flow/engineering/plans/<任务ID>.md`；复核记录可放同文件，重要问题按需独立保存 |
+| 当前架构入口与本次设计 | `docs/dev-flow/architecture/index.md`、`docs/dev-flow/iterations/<迭代ID>/architecture/design.md` |
+| 实际模块地图与架构复盘 | `docs/dev-flow/architecture/modules.md`、`docs/dev-flow/iterations/<迭代ID>/architecture/review.md`；详见[架构资产协议](../../dev-architecture/references/project-assets.md) |
+| 端到端技术实现方案与 AI Review | `docs/dev-flow/iterations/<迭代ID>/engineering/technical-solution.md`；页面/入口/功能/OUT/链路、产品符合性及相关 UI/架构复核 |
+| 可读用例、覆盖与 AI Review | `docs/dev-flow/iterations/<迭代ID>/acceptance/cases.md`；关联 OUT 与原规则、记录 Review/人工确认；自动化在项目实际测试目录维护 |
+| 实现计划与 AI 复核 | `docs/dev-flow/iterations/<迭代ID>/engineering/implementation-plan.md`；复核记录可放同文件，重要问题按需独立保存 |
 | 确认与变更 | 记录在对应规格/设计/用例中，由项目索引关联，不依赖本机临时缓存 |
 
 索引关联有效版本、确认来源、计划/复核、自动化入口、候选版本、缺陷和证据。新上下文先恢复这些事实，再继续执行；不因实现更新就把过期证据改写为当前通过。普通历史由 Git 保存，已替换完整方案按项目约定归档。

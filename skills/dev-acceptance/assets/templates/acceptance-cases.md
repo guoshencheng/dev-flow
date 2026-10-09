@@ -3,9 +3,12 @@ id: TEST-feature
 title: 功能验收用例
 status: candidate
 owner: acceptance
+iteration: iteration-id
 ---
 
 # 功能验收用例
+
+采用时默认保存为 `docs/dev-flow/iterations/<迭代ID>/acceptance/cases.md`，由同一迭代索引关联输入版本、Review/确认与结果。已有权威位置通过该索引映射，按实际范围裁剪。
 
 保存本项目可读预期及实际来源。用户确认场景和结果，自动化实现由 AI 维护；表格可按复杂度改成逐场景描述。
 

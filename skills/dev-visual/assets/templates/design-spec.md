@@ -5,9 +5,12 @@ status: candidate
 version: 1
 owner: visual
 related: []
+iteration: iteration-id
 ---
 
 # 功能视觉规格
+
+采用时默认保存为 `docs/dev-flow/iterations/<迭代ID>/visual/design.md`，由同一迭代索引关联输入版本、Review/确认与结果。已有权威位置通过该索引映射，按实际范围裁剪。
 
 按本次范围填写、替换 ID，关联当前产品规格与版本、RULE/AC、设计系统及真实源码；无关内容省略，未知内容保留待核验。
 

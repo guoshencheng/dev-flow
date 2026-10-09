@@ -31,8 +31,8 @@
 在目标项目根目录执行；目录名按任务调整，确认 Node.js 满足采用版本要求、目标目录未被占用。已有工程不重新初始化：
 
 ```sh
-npm create vite@latest design/prototypes/checkout-v1 -- --template react-ts --no-interactive
-cd design/prototypes/checkout-v1
+npm create vite@latest docs/dev-flow/iterations/2026-10-09-checkout/product/prototypes/v1 -- --template react-ts --no-interactive
+cd docs/dev-flow/iterations/2026-10-09-checkout/product/prototypes/v1
 npm install
 npm run dev -- --host 127.0.0.1 --port 5173
 ```
@@ -49,8 +49,8 @@ AI 将默认欢迎页替换成本次实际页面。B 端安装 antd 并直接导
 
 ```sh
 DEV_PRODUCT_SKILL_DIR="/实际安装目录/skills/dev-product"
-python3 "$DEV_PRODUCT_SKILL_DIR/scripts/prototype.py" init design/prototypes/booking-v1 --title "预约流程讨论"
-python3 "$DEV_PRODUCT_SKILL_DIR/scripts/prototype.py" serve design/prototypes/booking-v1 --port 8765
+python3 "$DEV_PRODUCT_SKILL_DIR/scripts/prototype.py" init docs/dev-flow/iterations/2026-10-09-booking/product/prototypes/v1 --title "预约流程讨论"
+python3 "$DEV_PRODUCT_SKILL_DIR/scripts/prototype.py" serve docs/dev-flow/iterations/2026-10-09-booking/product/prototypes/v1 --port 8765
 ```
 
 打开脚本实际输出的地址；默认 `http://127.0.0.1:8765/`。端口已占用时选择其他端口，`--port 0` 可自动分配。修改后刷新；Ctrl+C 停止。初始化拒绝覆盖已有目录，后续直接编辑已有原型，不重新初始化。

@@ -3,9 +3,12 @@ id: DEFECT-id
 title: 缺陷与复验
 status: open
 owner: acceptance
+iteration: iteration-id
 ---
 
 # 缺陷与复验
+
+采用时默认保存为 `docs/dev-flow/iterations/<迭代ID>/acceptance/defects/<缺陷ID>.md`，由同一迭代索引关联输入版本、Review/确认与结果。已有权威位置通过该索引映射，按实际范围裁剪。
 
 优先沿用项目 tracker，本模板按需采用。发现/open、待复验/awaiting-retest、关闭/closed、重开/reopen；缺环境时保留待复验及原因。
 

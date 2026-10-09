@@ -33,7 +33,7 @@ owner: visual
 
 ## 文档、原型与预览
 
-[共同文档协议](../skills/dev-flow/references/design-document-contract.md)明确产品/视觉目录、规则、原型、证据、当前状态及历史归档。没有既有规范时，产品规格放在 `docs/dev-flow/product/features/<功能ID>/spec.md`，视觉规格在对应 `visual/features/<功能ID>/design.md`，可运行原型在 `design/prototypes/`。
+[共同文档协议](../skills/dev-flow/references/design-document-contract.md)明确产品/视觉目录、规则、原型、证据、当前状态及历史归档。没有既有规范时，本轮规格集中在 `docs/dev-flow/iterations/<迭代ID>/`，产品为 `product/spec.md`、UI 为 `visual/design.md`，原型为 `product/prototypes/<方案>/`；跨迭代设计系统保留在项目长期资产。
 
 产品文档包含原型及使用限制、功能透出、可执行授权、输入校验/计算/动作/保存/输出、异常恢复及 RULE/AC。视觉引用同一功能和规则，记录呈现与实际代码。普通修订由 Git 保存历史，完整已替换方案进入对应职责 archive，索引指向当前资产。
 

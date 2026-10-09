@@ -6,7 +6,7 @@
 
 从用户指定对象、任务关联的业务代码和项目入口确定项目名称、绝对根路径；工具仓库、全局 Skill 目录和启动命令的工作目录不能自动成为业务项目。多仓库/monorepo 任务标明文档所属项目与受影响执行单元，复用有效项目索引。
 
-在项目索引中明确产品、交互原型、设计/UI、技术文档各自的权威路径、职责、版本/状态和预览方式；验收、交付文档按范围关联。已有目录保留，通过索引映射。技术文档指该项目的架构、模块、契约、工程规范和重要决定。缺少资产标明尚未建立、待核验或不适用，不能用通用 Skill 指导代替项目成果。无现行入口时按[项目文档索引模板](../assets/templates/project-document-index.md)建立 `docs/dev-flow/index.md`，只登记实际存在的文件与已知缺口。
+先从项目索引定位本次迭代索引，在迭代索引中明确产品、交互原型、设计/UI、技术文档各自的权威路径、职责、版本/状态和预览方式；验收、交付文档按范围关联。已有目录保留，通过索引映射。技术文档指该项目的架构、模块、契约、工程规范和重要决定。缺少资产标明尚未建立、待核验或不适用，不能用通用 Skill 指导代替项目成果。无现行入口时按[项目文档索引模板](../assets/templates/project-document-index.md)建立 `docs/dev-flow/index.md`，只登记实际存在的文件与已知缺口。
 
 向用户讨论、确认或交付本次项目设计文档时，复用或启动该项目的阅读入口，提供项目名称、文档类别与名称、源路径/版本和对应预览链接；原型另给实际可操作入口和场景。一次提供本次相关成果与项目索引即可，不轮流打开所有资料。仅维护 Skill/Agent 方法时使用源文件链接和内容/引用检查；只有用户明确要求阅读 Skill 网页或验证预览工具时，才预览工具仓库资料。
 
@@ -37,10 +37,10 @@ npm run dev -- --project /项目绝对路径 --roots docs/dev-flow,design --port
 在采用的项目工具工程内调用：
 
 ```sh
-node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/product/features/功能ID/spec.md
-node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/visual/features/功能ID/design.md
-node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/architecture/changes/任务ID/design.md
-node scripts/preview.mjs url --project /项目绝对路径 --file design/prototypes/功能ID/方案/index.html
+node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/iterations/迭代ID/product/spec.md
+node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/iterations/迭代ID/visual/design.md
+node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/iterations/迭代ID/architecture/design.md
+node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/iterations/迭代ID/product/prototypes/方案/index.html
 ```
 
 命令中的文件路径替换为项目索引登记的实际路径。JSON 返回文件、格式、状态、实际 `viewUrl`/`rawUrl` 和 PID。工具核验服务身份、项目、允许目录、文件与文件清单；它不自动判断产品/UI/技术文档的业务分类与权威性，这些由 Agent 维护的项目文档索引说明。失效服务或不存在路径返回错误，Agent 先修复或实际启动再提供链接。目录与归档状态可以筛选，历史文件直接链接仍显示自身状态。

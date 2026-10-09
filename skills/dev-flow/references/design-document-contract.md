@@ -1,61 +1,72 @@
 # 项目文档、原型与归档协议
 
-版本：0.4。日期：2026-10-08。供产品、视觉、架构、研发、验收与交付共同使用。文档属于当前业务项目，通用 Skill 提供方法与模板。项目已有有效目录时继续维护，通过索引映射；下面是没有现行规范时的默认布局，只创建当前任务需要的文件。
+版本：0.5。日期：2026-10-09。供产品、视觉、架构、研发、验收与交付共同使用。文档属于当前业务项目，通用 Skill 提供方法与模板。项目已有有效目录时继续维护，通过索引映射；阶段产物按功能迭代归纳，下面是默认布局，只创建当前任务需要的文件。
 
-## 明确当前项目的文档入口
+## 先定位项目和本次迭代
 
-先定位本次任务所属的业务项目和绝对根路径，在现有入口或 `docs/dev-flow/index.md` 维护文档分类及权威位置。读取入口即可找到该项目当前的产品文档、设计/UI 文档和技术文档，相关原型、用例与运行资料也能关联；无需依赖聊天或全局 Skill 路径。
+先明确业务项目根路径、迭代 ID、功能 ID 和已授权范围。项目入口 `docs/dev-flow/index.md` 索引迭代和长期资产；本次入口为 `docs/dev-flow/iterations/<迭代ID>/index.md`，集中关联产品、交互原型、UI、架构、技术方案、用例、计划、验收与交付。新上下文先读取本次迭代索引，再读取必要的项目长期基线。
 
-| 类别 | 项目内容与主责 | 无既有规范时的入口 |
-| --- | --- | --- |
-| 产品文档 | 产品维护目标、流程、使用限制、透出/授权、具体业务规则、有效决定及 RULE/AC | `docs/dev-flow/product/index.md` |
-| 交互原型 | 产品组织行为与场景，视觉完善呈现；注明源码、方案、模拟范围、启动方式 | `design/prototypes/`，由产品索引关联具体入口 |
-| 设计/UI 文档 | 视觉维护设计系统、页面规格、Tokens、组件来源、响应与状态呈现、实际检查 | `docs/dev-flow/visual/index.md` |
-| 技术文档 | 架构维护系统/模块/契约及技术决定，研发维护工程入口/代码映射、规范、计划/AI 复核和待验交接；链接实际代码/配置 | `docs/dev-flow/architecture/index.md`，关联 `docs/dev-flow/engineering/index.md` |
-| 测试验收文档 | 验收主责维护策略、可读用例、覆盖、问题与真实结果；自动化保留实际工程位置 | `docs/dev-flow/acceptance/index.md`，索引链接实际策略/用例/报告 |
-| 交付运行文档 | 运维/交付主责维护启动、环境、产物/部署、运行及恢复方式 | 优先关联已有 README/runbook；无规范时按需使用 `docs/dev-flow/operations/` |
+一次迭代表示围绕一个可交付目标的一轮工作，可以是功能、缺陷修复、重构、迁移或运行改进，不等同于一次聊天或每个测试重试。ID 使用稳定且唯一的名称，例如 `2026-10-09-order-batch-edit`；日期用于定位，不自动表示发布。后续独立增强使用新迭代 ID，继续关联同一功能 ID；同轮修改、评审反馈和复验继续在原迭代下维护。
 
-索引记录项目名称/根路径识别方式、文档类别、实际源路径、维护职责、状态/版本、当前权威入口及预览方式。根路径使用项目可识别信息，具体机器上的绝对路径留在运行记录；长期索引保存项目相对路径和启动方法。可裁剪[索引模板](../assets/templates/project-document-index.md)。缺少的类别记录尚未建立、待核验或不适用；默认路径不证明文件存在，用户查看预览不自动表示已确认。
+默认按迭代建目录，不再把一次迭代的阶段文档散落在项目级职责目录。项目已有有效规范时，在本次迭代索引链接实际权威位置；按用户要求迁移时修正资源与反向链接，避免复制出两套现行规格。
 
-项目已有 `docs/product/`、`docs/design/`、`docs/architecture/` 或外部权威资料时映射原位置，避免迁移或复制出第二套内容。技术资料的具体拆分及归档遵守[架构资产协议](../../dev-architecture/references/project-assets.md)。需要与用户讨论/确认设计时，按[预览指南](document-preview.md)提供当前项目索引及本次相关成果的实际地址。
-
-工程资料按[工程资产协议](../../dev-engineering/references/project-assets-and-delivery.md)维护架构后的技术实现方案/OUT/页面功能链路、产品符合性及相关 UI/架构 Review、实施计划/复核、功能与源码映射、诊断和可启动交接，关联有效产品/UI/架构/测试与真实运行资料。没有现行方案位置时采用 `docs/dev-flow/engineering/changes/<任务ID>/technical-solution.md`，项目技术索引关联其当前版本、Review 和用例；已有 README、PR 或任务记录继续作权威位置，不复制出第二套。
-
-测试资料的策略/用例、实际 AI Review、人工确认、运行报告、缺陷和回归关系按[测试资产协议](../../dev-acceptance/references/project-assets.md)维护，关联同项目的 RULE/AC/UI/ARC、技术方案/OUT/链路与候选版本。讨论/确认测试预期时预览该项目的可读用例，并关联拟交付页面/功能和技术方案，执行时使用实际功能/交付入口。
-
-交付运行资料按[运行资产协议](../../dev-operations/references/project-assets-and-evolution.md)关联现有 README/runbook、环境与配置来源、源码/产物/目标版本、交付记录、观测及故障恢复入口。无规范时采用 `docs/dev-flow/operations/index.md` 及按需记录，不复制工程脚本或真实密钥；当前状态带实际核验时间，历史发布/事故按事件关联保留。
-
-## 默认目录和主责
+## 默认目录与阶段产物
 
 ```text
 项目/
 ├── docs/dev-flow/
-│   ├── index.md                           # 项目资料入口，指向当前有效资产
-│   ├── product/
-│   │   ├── index.md                       # 产品功能、规则、原型与验收索引
-│   │   ├── features/<功能ID>/spec.md       # 当前权威产品规格
-│   │   ├── references/                    # 有来源的交互参考，按需建立
-│   │   ├── decisions/                     # 重要产品决定，简单决定可写在规格中
-│   │   └── archive/<日期>/<资产ID>/        # 已替换方案或里程碑快照
-│   ├── visual/
-│   │   ├── index.md                       # 当前设计系统与页面设计索引
-│   │   ├── system.md                      # 视觉原则、Tokens、组件与代码来源
-│   │   ├── features/<功能ID>/design.md     # 对应产品规格的视觉设计与检查
-│   │   ├── references/                    # 视觉参考、借鉴规则与使用边界
-│   │   └── archive/<日期>/<资产ID>/        # 已替换视觉方案及来源
-│   ├── architecture/                     # 技术：系统/模块、契约、重要决定与复盘
-│   ├── engineering/                      # 技术：工程入口/代码映射、规范、计划/复核和待验交接
-│   ├── acceptance/                       # 测试：可读用例与验收，按需建立
-│   ├── operations/                       # 交付：启动/运行，已有 README/runbook 优先
-│   └── evidence/<日期>/<功能ID>/          # 有版本的截图、走查、反馈及复验
-├── design/prototypes/<功能ID>/<方案>/     # 可运行原型源码、场景和必要资产
-├── tools/design-docs/                     # 可选，复制到项目的 Vite 文档预览工程
-└── .dev-flow/previews/documents.json       # 本机服务信息，不提交 Git
+│   ├── index.md                         # 项目入口：迭代列表、功能现行来源、长期资产
+│   ├── iterations/
+│   │   └── <迭代ID>/
+│   │       ├── index.md                 # 本次范围、阶段产物、确认/Review、交付状态
+│   │       ├── product/
+│   │       │   ├── spec.md              # 用户任务、流程、限制、透出与业务规则
+│   │       │   ├── references/          # 本次交互参考，按需建立
+│   │       │   └── prototypes/<方案>/   # 本次可运行原型与场景源码
+│   │       ├── visual/
+│   │       │   ├── design.md            # UI、组件、状态、响应与视觉检查
+│   │       │   └── references/          # 本次视觉参考与借鉴依据
+│   │       ├── architecture/
+│   │       │   ├── design.md            # 本次域/模块/契约/迁移设计
+│   │       │   └── review.md            # 实现后的架构复盘与改进建议
+│   │       ├── engineering/
+│   │       │   ├── technical-solution.md # 页面、功能、OUT/端到端链路及符合性 Review
+│   │       │   ├── implementation-plan.md # 实施切片、依赖与 AI 复核
+│   │       │   └── handoff.md           # 实际候选、自测与启动交接
+│   │       ├── acceptance/
+│   │       │   ├── strategy.md          # 本次验证方案，引用项目通用策略
+│   │       │   ├── cases.md             # 用例、覆盖、AI Review 与人工确认
+│   │       │   ├── defects/<缺陷ID>.md  # 无已有 tracker 时记录问题和复验
+│   │       │   └── runs/<runID>/report.md # 各轮候选、执行结果与证据
+│   │       ├── operations/
+│   │       │   └── delivery.md          # 启动/产物/实际发布及恢复、交付结果
+│   │       ├── evidence/<阶段>/<记录ID>/ # 相关截图、操作、日志与必要原始证据
+│   │       └── archive/<阶段>/<资产ID>/ # 本迭代被替换的完整候选，按需建立
+│   ├── product/index.md                 # 功能/规则目录，指向现行迭代规格或已有权威源
+│   ├── visual/system.md                 # 跨迭代设计系统、Tokens/组件来源
+│   ├── architecture/                   # 当前系统/模块/技术基线与持久决策
+│   ├── engineering/                    # 当前工程/代码地图、规范与可复用诊断
+│   ├── acceptance/                     # 当前通用策略、回归/自动化索引
+│   └── operations/                     # 当前环境与 runbook，已有 README 优先
+├── tools/design-docs/                   # 可选：项目的 Vite 文档阅读器
+└── .dev-flow/                          # 忽略的本机服务信息、缓存和临时输出
 ```
+
+只创建本次需要的目录与文件。小任务可以在迭代索引内合并范围、方案和验证记录，不强制六套文档。迭代内包含多个需要独立规格的功能时，按需使用 `product/features/<功能ID>/spec.md`、`visual/features/<功能ID>/design.md` 和 `acceptance/features/<功能ID>/cases.md`；它们仍在同一个迭代根下，由迭代索引关联。
+
+复杂原型可在迭代的 `product/prototypes/` 放完整 Vite/React 工程；已有独立原型工程或设计文件继续在其真实位置维护，由迭代索引关联源码、方案、模拟范围和启动命令。业务实现、自动化测试、fixture、配置和基础设施代码留在项目实际源码位置，迭代文档引用它们。
+
+## 索引、权威来源与长期沉淀
+
+项目入口记录项目识别信息、迭代列表及状态、功能当前有效来源和长期资产入口。本次迭代索引记录目标/非目标、关联功能、前序迭代与依赖、输入基线版本、阶段文档实际路径、维护职责、设计/用例确认和 AI Review 来源、候选与交付版本、测试结果、遗留项和长期资产变更。使用[项目索引模板](../assets/templates/project-document-index.md)与[迭代索引模板](../assets/templates/iteration-index.md)裁剪；不存在的文件标为缺口，不把默认路径当作已有成果。
+
+产品维护本迭代功能规则与原型；视觉维护对应 UI；架构维护本次设计/实现复盘；研发维护技术方案、实施计划和交接；验收维护策略、用例和执行报告；运维维护本次交付。相关专业细节见[架构资产](../../dev-architecture/references/project-assets.md)、[工程资产](../../dev-engineering/references/project-assets-and-delivery.md)、[测试资产](../../dev-acceptance/references/project-assets.md)和[运行资产](../../dev-operations/references/project-assets-and-evolution.md)。Review 可写在对应文档中，复杂时在该阶段目录下拆出记录，保留对象与版本；目录调整不新增人工审批。
+
+迭代产物保存本轮范围、决定和执行结果；跨迭代资产保存当前有效事实与可复用方法。完成后定向更新现行架构/模块地图、设计系统、工程索引、回归和 runbook，并在项目入口标明功能最新有效来源。规格没有变化的部分引用已有权威源；新规格替代旧规格时明确替代范围，不以日期最新自动推断所有旧规则失效，也不把候选覆盖已确认/已交付基线。
 
 产品规格是用户任务、功能行为与规则的权威位置；视觉规格引用产品规则编号，维护呈现、Tokens 与代码映射。原型表达规格中的候选或已确认行为，原型与截图本身不自动替代规格；发现冲突时记录依据并回到相应主责更新。多人协作时同一文件明确一个写入者。
 
-主索引关联产品、视觉、技术、原型、验收、交付与证据，指向该业务项目的成果。使用稳定功能/资产 ID 和项目内相对链接；常用当前规格路径保持稳定，浏览入口通过源文件路径生成。已有模板参考 [产品规格模板](../../dev-product/assets/templates/feature-spec.md)和[视觉规格模板](../../dev-visual/assets/templates/design-spec.md)。
+迭代索引集中关联本次产品、视觉、技术、原型、验收、交付与证据；项目主索引关联迭代和现行长期资产，指向该业务项目的成果。使用稳定功能/资产 ID 和项目内相对链接；常用当前规格路径保持稳定，浏览入口通过源文件路径生成。已有模板参考 [产品规格模板](../../dev-product/assets/templates/feature-spec.md)和[视觉规格模板](../../dev-visual/assets/templates/design-spec.md)。
 
 ## 产品规格必须能说明的细节
 
@@ -82,10 +93,11 @@
 
 ## 状态、版本与归档
 
-Markdown/MDX 推荐 YAML 元信息：`id`、`title`、`status`、`version`、`owner`、`related`；被替换资产增加 `supersededBy`（现行文件的项目相对路径）。其他格式由索引中的记录或相邻说明承载同样的信息。状态采用 `candidate`、`current`、`needs-review`、`superseded`、`archived`，设计状态与实现/生产验收状态分别记录。
+Markdown/MDX 推荐 YAML 元信息：`id`、`title`、`status`、`version`、`owner`、`iteration`、`related`；被替换资产增加 `supersededBy`（现行文件的项目相对路径）。其他格式由索引中的记录或相邻说明承载同样的信息。状态采用 `candidate`、`current`、`needs-review`、`superseded`、`archived`，设计状态与实现/生产验收状态分别记录。
 
-- 日常维护当前规格与索引，Git 保存普通修订历史；不为每次改字复制整套文档。
-- 放弃的候选保留必要取舍和来源。需要保留完整方案或里程碑时进入对应职责的 `archive/<日期>/<资产ID>/`，标明原路径、版本、归档原因及替代入口。
+- 迭代进行中维护本轮有效版本，Git 保存普通修订历史，不为每次改字或复验复制整套文档。
+- 已完成或取消的迭代保持原目录，并在迭代索引记录结束状态、版本与遗留项；不将整个迭代移入 archive。后续独立工作建新迭代并引用旧来源，补充旧记录只增加更正/证据说明，不改写当时的验收结论。
+- 放弃的候选保留必要取舍和来源。需要保留完整方案或里程碑时进入本迭代的 `archive/<阶段>/<资产ID>/`（长期资产自身的完整替换快照仍可放在其 `archive/` 下），标明原路径、版本、归档原因及替代入口。
 - 被替换文件标为 `superseded`/`archived`，索引明确指向现行资产。移动文件时修正相对资源链接和受影响反向引用；历史证据绑定当时版本，不改写为本轮验证。
 - 原型普通迭代由 Git 追溯；需要并存的方案保留各自目录和 ID，索引标明当前选择。大二进制按项目实际 Git/LFS/资产存储约定维护。
 - 需求、组件或环境变化使证据失效时标记相关内容 `needs-review`；更新日期不能替代复验。归档预览仍显示其历史状态，不能因可打开就当作当前规范。

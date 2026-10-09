@@ -3,9 +3,12 @@ id: TEST-strategy
 title: 项目测试策略
 status: candidate
 owner: acceptance
+iteration: iteration-id
 ---
 
 # 项目测试策略
+
+采用时默认保存为 `docs/dev-flow/iterations/<迭代ID>/acceptance/strategy.md`，由同一迭代索引关联输入版本、Review/确认与结果。已有权威位置通过该索引映射，按实际范围裁剪。
 
 沿用项目权威位置，按当前范围裁剪。填写实际项目与版本，未执行内容保持明确状态。
 

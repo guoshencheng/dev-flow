@@ -5,9 +5,12 @@ status: candidate
 version: 1
 owner: product
 related: []
+iteration: iteration-id
 ---
 
 # 功能产品规格
+
+采用时默认保存为 `docs/dev-flow/iterations/<迭代ID>/product/spec.md`，由同一迭代索引关联输入版本、Review/确认与结果。已有权威位置通过该索引映射，按实际范围裁剪。
 
 模板按本次功能填写并替换 ID；已确认、候选、待决信息分别登记，只保留相关段落。
 

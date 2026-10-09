@@ -3,9 +3,12 @@ id: TEST-run
 title: 测试运行与验收报告
 status: candidate
 owner: acceptance
+iteration: iteration-id
 ---
 
 # 测试运行与验收报告
+
+采用时默认保存为 `docs/dev-flow/iterations/<迭代ID>/acceptance/runs/<runID>/report.md`，由同一迭代索引关联输入版本、Review/确认与结果。已有权威位置通过该索引映射，按实际范围裁剪。
 
 只填写实际执行结果，未完成项明确保留。报告绑定本轮候选和环境。
 

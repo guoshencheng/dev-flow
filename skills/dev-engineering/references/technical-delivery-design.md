@@ -35,4 +35,4 @@
 
 测试用例 AI Review 通过后人工确认场景/结果与范围，研发再按[基线与计划](baseline-and-plan.md)产出实施计划并 AI 复核，沿已审阅 OUT 与确认 TC 自主实施。技术方案和用例变化关联同一输入版本，影响业务/架构/验收基线时重新确认受影响部分；内部实现方式调整只更新方案/计划与必要复核。
 
-项目使用现行技术方案位置；无规范时采用 `docs/dev-flow/engineering/changes/<任务ID>/technical-solution.md`，用[模板](../assets/templates/technical-delivery-design.md)裁剪，项目技术与工程索引关联方案、Review、用例和后续计划。候选方案、Review 通过、人工确认、实现和实际验收分别标记。
+项目使用现行技术方案位置；无规范时采用 `docs/dev-flow/iterations/<迭代ID>/engineering/technical-solution.md`，用[模板](../assets/templates/technical-delivery-design.md)裁剪，项目技术与工程索引关联方案、Review、用例和后续计划。候选方案、Review 通过、人工确认、实现和实际验收分别标记。

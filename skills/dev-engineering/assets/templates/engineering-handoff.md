@@ -3,9 +3,12 @@ id: ENG-填写任务ID
 title: 填写本次工程交接
 status: awaiting-acceptance
 owner: engineering
+iteration: iteration-id
 ---
 
 # 工程交接
+
+采用时默认保存为 `docs/dev-flow/iterations/<迭代ID>/engineering/handoff.md`，由同一迭代索引关联输入版本、Review/确认与结果。已有权威位置通过该索引映射，按实际范围裁剪。
 
 当前结论与实际完成范围：
 项目/根路径、候选提交与相关未提交指纹：

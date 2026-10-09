@@ -32,3 +32,5 @@ description: 测试与验收：综合产品规则、经 Review 的端到端技�
 按[项目测试资产](references/project-assets.md)维护策略、用例、自动化、数据、缺陷和报告，关联项目产品/UI/技术入口。讨论/确认用例时使用该业务项目的文档预览，Skill 方法不代替项目成果。交接给出结论与范围、候选/用例版本、实际命令与证据、缺陷/依赖、复用与更新资产；生产验收、工具案例与角色行为分别登记。
 
 需要细化职责能力时，读取[能力目录](../dev-flow/references/role-capabilities.md)中的对应职责；实际验证范围以当前候选的执行证据为准。
+
+本次阶段产物统一归入 `docs/dev-flow/iterations/<迭代ID>/` 的对应职责目录，由迭代索引关联版本、Review、确认与证据。项目级职责目录用于跨迭代的现行基线和复用资产；已有权威位置通过迭代索引映射。详见[迭代目录协议](../dev-flow/references/design-document-contract.md)。

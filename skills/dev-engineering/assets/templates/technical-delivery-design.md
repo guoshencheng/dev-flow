@@ -3,9 +3,12 @@ id: SOL-填写任务ID
 title: 端到端技术实现方案
 status: candidate
 owner: engineering
+iteration: iteration-id
 ---
 
 # 端到端技术实现方案
+
+采用时默认保存为 `docs/dev-flow/iterations/<迭代ID>/engineering/technical-solution.md`，由同一迭代索引关联输入版本、Review/确认与结果。已有权威位置通过该索引映射，按实际范围裁剪。
 
 项目/任务、目标与交付模式、当前阶段、方案版本及实际执行者：
 

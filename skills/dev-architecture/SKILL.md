@@ -29,8 +29,10 @@ description: 架构设计与演进：维护技术与代码规范基线，遵守�
 
 ## 项目沉淀与交接
 
-按[项目架构资产](references/project-assets.md)复用既有权威位置，并在项目主索引登记技术文档入口；没有规范时使用 `docs/dev-flow/architecture/`。当前事实、确认目标、评审发现、历史决策分别关联，源代码变化后更新受影响地图和约束，不把未实现的目标登记成现状。讨论/确认时复用[项目文档预览](../dev-flow/references/document-preview.md)，核验该业务项目服务与实际架构/工程文档后提供地址；通用 Skill/Guide 不作为项目架构成果。
+按[项目架构资产](references/project-assets.md)复用既有权威位置，并在项目主索引登记技术文档入口；没有规范时，本次设计与复盘放在迭代的 `architecture/`，当前系统/模块/技术基线放在 `docs/dev-flow/architecture/`。当前事实、确认目标、评审发现、历史决策分别关联，源代码变化后更新受影响地图和约束，不把未实现的目标登记成现状。讨论/确认时复用[项目文档预览](../dev-flow/references/document-preview.md)，核验该业务项目服务与实际架构/工程文档后提供地址；通用 Skill/Guide 不作为项目架构成果。
 
 交接至少包含：当前结论和范围、源版本与覆盖、系统/模块/业务域及依赖变化、相关约束与实际检查、问题优先级和处理状态、建议的收益/代价与验证、资产复用和更新、未覆盖项与能力缺口。无需改动时说明成立依据；已验证有效的项目方法才进入通用能力候选。
 
 需要细化职责能力时，读取[能力目录](../dev-flow/references/role-capabilities.md)中的对应职责；实际验证范围以当前候选的执行证据为准。
+
+本次阶段产物统一归入 `docs/dev-flow/iterations/<迭代ID>/` 的对应职责目录，由迭代索引关联版本、Review、确认与证据。项目级职责目录用于跨迭代的现行基线和复用资产；已有权威位置通过迭代索引映射。详见[迭代目录协议](../dev-flow/references/design-document-contract.md)。

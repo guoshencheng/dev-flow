@@ -1,6 +1,6 @@
 # dev-flow
 
-以 Codex 为主的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付。当前已有总纲 v0.13、六职责配置与专业 Skills、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。职责配置采用宿主模型策略；本地 Plugin 0.1.0 包装和接入方式见[安装指南](docs/plugin.md)及[验证记录](reviews/2026-10-09-plugin-installation.md)。工具、专业行为、原生角色派发与真实项目成熟度分别登记；完整真实任务和运行内核继续按实测需要建设。
+以 Codex 为主的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付。当前已有总纲 v0.14、六职责配置与专业 Skills、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。职责配置采用宿主模型策略；本地 Plugin 0.1.0 包装和接入方式见[安装指南](docs/plugin.md)及[验证记录](reviews/2026-10-09-plugin-installation.md)。工具、专业行为、原生角色派发与真实项目成熟度分别登记；完整真实任务和运行内核继续按实测需要建设。
 
 ## 维护入口
 
@@ -22,6 +22,7 @@
 - [组件预览与源码复用](skills/dev-product/references/component-preview-and-reuse.md)：可操作组件目录、完整源码文件集、快速复制到项目和定制后的差异合并；[当前验证记录](evals/dev-product/runs/2026-10-08/component-gallery/report.md)。
 - [Ant Design 能力联用](skills/dev-flow/references/ant-design-capabilities.md)：B 端优先官方现成组件，按需联合官方 Skill、CLI 或 MCP，支持任务范围内自主接入；[临时项目核验记录](evals/dev-product/runs/2026-10-08/ant-design-capabilities/report.md)。
 - [职责能力目录](skills/dev-flow/references/role-capabilities.md)：六职责四十八项能力与执行契约。
+- [项目迭代目录协议](skills/dev-flow/references/design-document-contract.md)：每轮集中保存各阶段产物，项目级基线持续复用；[迭代索引模板](skills/dev-flow/assets/templates/iteration-index.md)。
 - [项目资产持续沉淀](skills/dev-flow/references/project-asset-maintenance.md)：现行资产、更新、有效性与后续复用。
 - [Codex 职责接入](skills/dev-flow/references/codex-agent-configuration.md)：实际配置、可用性和派发边界。
 - [仓库文档归类](docs/document-organization.md)：执行参考、建设计划和验证证据的边界。
