@@ -18,6 +18,8 @@
 
 按任务裁剪[策略](../assets/templates/test-strategy.md)、[用例](../assets/templates/acceptance-cases.md)、[报告](../assets/templates/acceptance-report.md)、[缺陷](../assets/templates/defect.md)模板。用户讨论/确认的是本项目可读用例，通过共同[项目文档协议](../../dev-flow/references/design-document-contract.md)与[预览指南](../../dev-flow/references/document-preview.md)提供真实入口，实际业务应用另给功能/交付入口。
 
+数据、报告与证据按[提交边界](../../dev-flow/references/versioned-evidence.md)分类：样本说明只维护来源/独立预期/准备入口，各轮结果进入运行报告；运行器写忽略目录，必要生成报告由主责选定为不可变证据快照。长期依赖的复跑脚本纳入实际测试/工具目录，不仅保留 `.tmp` 路径或哈希。
+
 任务开始核验原产品/UI/ARC 与技术方案/OUT、用例 Review/确认基线、源码/接口变化和证据版本，复用有效场景/数据，标明失效范围。方案 Review、用例 Review、人工确认及实际运行结果各有对象与版本，不能互相替代。任务结束维护场景到自动化、缺陷、证据和回归关系；下一任务从索引恢复并定向复验，不依赖聊天。架构约束或产品/UI/技术方案变化时明确影响与确认来源，不自动删除原验收编号。
 
 通用模式和脚手架先保留适用条件、真实项目问题、反例与可重复验证，经过验证后作为共享候选；项目业务接口、凭据和数据留在项目。自有源码按复制/参考与 Git 来源约定维护，不能要求先发布内部 npm 包。

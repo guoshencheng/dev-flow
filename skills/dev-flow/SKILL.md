@@ -56,6 +56,7 @@ description: 组织研发、产品交互、视觉、架构、测试验收与运�
 
 - 细化职责分工时，读取[能力目录](references/role-capabilities.md)中的对应职责。
 - 检索、更新或复用项目资产时，读取[持续沉淀指南](references/project-asset-maintenance.md)。
+- 整理文档历史、总结或归档迭代时，读取[文档整理与归档](references/document-archive.md)；定时触发需用户授权建立调度。
 - 选择执行者或委派职责工作时，读取[职责执行说明](references/codex-agent-configuration.md)。
 - 在 Kimi 中选择/派发职责 Agent 时，读取[Kimi 职责说明](references/kimi-agent-configuration.md)，使用自包含输入及实际 Skill 路径；Codex 继续使用实际可用子 Agent。
 - 安装、更新或诊断 Plugin 时，读取[安装指南](../../docs/plugin.md)；不要求初始化 Agent。
