@@ -2,7 +2,7 @@
 
 以下是本体系的设计判断指导，不是固定的行业结论。先确认用户任务、频率、熟练度、使用环境、协作关系、数据规模与错误代价；C/B 标签帮助提出问题，不自动决定平台、信息密度或视觉风格。一个项目可同时包含首次访客和高频专业用户。
 
-用户已指定[技术与设计基准](../../dev-flow/references/ui-stack-and-components.md)：新建 Web 原型默认 Vite + React；B 端统一使用 Ant Design 规范并尽可能采用 antd；C 端 Web 优先基于 shadcn/ui；其他 C 端应用先做网上参考研究再实施。下面的任务判断在这些基准内进行，不以 C/B 标签推导额外技术要求。
+用户已指定[技术与设计基准](../../dev-visual/references/ui-stack-and-components.md)：新建 Web 原型默认 Vite + React；B 端统一使用 Ant Design 规范并尽可能采用 antd；C 端 Web 优先基于 shadcn/ui；其他 C 端应用先做网上参考研究再实施。下面的任务判断在这些基准内进行，不以 C/B 标签推导额外技术要求。
 
 ## 共同起点
 

@@ -6,7 +6,7 @@
 
 新交互型 Web 使用 Vite + React + TypeScript，全栈用 Next.js，纯静态用 Astro。B 端按 Ant Design 规范优先使用 antd 的现有组件/行为，C Web 优先 shadcn/ui；其他 C 端先按共同约定完成网上参考。现成能力不足再做明确业务组合，不重新自建已有通用控件。
 
-复用项目 Tokens、组件和路由模式，落实目标密度、内容、设备与状态。自有共享库按[源码复用约定](../../dev-flow/references/ui-stack-and-components.md)复制/参考到项目，记录源路径与 Git 提交/哈希、修改和验证；不转为内部 npm 包依赖。公开第三方依赖按项目正常锁定，不能把“复制自有源码”误解为复制全部第三方库。
+复用项目 Tokens、组件和路由模式，落实目标密度、内容、设备与状态。自有共享库按[源码复用约定](../../dev-visual/references/ui-stack-and-components.md)复制/参考到项目，记录源路径与 Git 提交/哈希、修改和验证；不转为内部 npm 包依赖。公开第三方依赖按项目正常锁定，不能把“复制自有源码”误解为复制全部第三方库。
 
 ## 状态与数据
 

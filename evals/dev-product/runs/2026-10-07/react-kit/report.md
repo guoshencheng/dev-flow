@@ -4,7 +4,7 @@
 
 ## 成果与环境
 
-源码见[React 工作区](../../../../../skills/dev-product/assets/react-workspace/README.md)，共同约定见[UI 技术与组件协议](../../../../../skills/dev-flow/references/ui-stack-and-components.md)。Node.js 26.4.0，npm 11.17.0；实际依赖版本由 package-lock.json 固定，源码指纹见 checks.json。
+源码见[React 工作区](../../../../../skills/dev-visual/assets/react-workspace/README.md)，共同约定见[UI 技术与组件协议](../../../../../skills/dev-visual/references/ui-stack-and-components.md)。Node.js 26.4.0，npm 11.17.0；实际依赖版本由 package-lock.json 固定，源码指纹见 checks.json。
 
 B 端直接使用 antd 6.6.5，SelectionSummary 组合 Flex、Typography、Button。C 端采用 shadcn@4.21.4 从官方 Registry 获取 Button、Card，再形成 ActionCard；来源、修改与 MIT 许可保存到包中。Vite 8.3.3、React 19.3.0 为本次运行版本，其他版本未因此被验收。
 

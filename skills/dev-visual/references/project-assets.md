@@ -2,6 +2,8 @@
 
 按共同[文档与归档协议](../../dev-flow/references/design-document-contract.md)定位本次业务项目的设计/UI 资产，在项目主索引登记视觉入口，并关联产品与技术资料；已有权威目录优先。本次 UI 规格与参考保存在 `docs/dev-flow/iterations/<迭代ID>/visual/`；跨迭代设计系统保存在 `docs/dev-flow/visual/`，通过产品功能 ID、RULE/AC、原型 PT 和证据关联；项目源码留在项目中。讨论/确认提供该项目设计资料与实际页面的预览，不以通用 Skill 说明替代。
 
+专业内容按[视觉规格协议](specification-contract.md)维护；UI 基准、Ant Design 联用和共享组件方法由视觉主责维护，产品/研发/测试按需引用，不各自复制一份。
+
 ## 权威资产与关联
 
 - `index.md` 指向现行设计系统、相关页面规格、原型、参考和实际检查。

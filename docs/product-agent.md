@@ -1,5 +1,7 @@
 # 产品与交互 Agent v0.8
 
+2026-10-09 文档归属调整：产品维护行为/交互规格及原型方法；共享 UI 组件指南、预览工具和 React 组件工作区由视觉主责，产品跨包引用。历史验证仍保留当时归属与证据范围，见[职责归属表](document-ownership.md)。
+
 当前接入：通过专业 Skill 承担职责；2026-10-09 已移除 setup，旧 TOML 仅作参考，不参与当前安装。下文历史配置/派发证据保留原验证范围。
 
 更新日期：2026-10-08。原生名称：`dev_product`。专业 Skill：`dev-product`。模型与推理强度采用用户本次指定、宿主派发默认或父会话设置，职责文件省略固定值。
@@ -25,11 +27,11 @@
 
 ## 可操作原型、设计参考与复用
 
-按用户指定的[UI 技术与共享组件约定](../skills/dev-flow/references/ui-stack-and-components.md)建设：新建原型默认 Vite + React + TypeScript；B 端使用 Ant Design 规范、优先 antd 组件并按需扩展；C 端 Web 优先 shadcn/ui；其他 C 端应用先做网上参考研究。AI 依照[原型与设计稿指南](../skills/dev-product/references/html-prototyping.md)生成任务页面、启动并持续讨论，已有项目优先复用有效工程入口。静态设计稿检查渲染，可操作原型还需检查核心行为。
+按用户指定的[UI 技术与共享组件约定](../skills/dev-visual/references/ui-stack-and-components.md)建设：新建原型默认 Vite + React + TypeScript；B 端使用 Ant Design 规范、优先 antd 组件并按需扩展；C 端 Web 优先 shadcn/ui；其他 C 端应用先做网上参考研究。AI 依照[原型与设计稿指南](../skills/dev-product/references/html-prototyping.md)生成任务页面、启动并持续讨论，已有项目优先复用有效工程入口。静态设计稿检查渲染，可操作原型还需检查核心行为。
 
-[React 工作区](../skills/dev-product/assets/react-workspace/README.md)随专业 Skill 维护，提供 B/C 源码、独立示例与可选择目录。v0.6 按用户要求采用源码复制或参考实现，项目直接维护和快速迭代；目录展示本地导入的使用示例与完整源码文件集，按组件 ID 可查询、复制并记录来源哈希。项目已有基底优先复用，保留项目定制，通用改进验证后回收。当前仓库无远程地址，跨机器 Git 获取尚未执行。
+[React 工作区](../skills/dev-visual/assets/react-workspace/README.md)随专业 Skill 维护，提供 B/C 源码、独立示例与可选择目录。v0.6 按用户要求采用源码复制或参考实现，项目直接维护和快速迭代；目录展示本地导入的使用示例与完整源码文件集，按组件 ID 可查询、复制并记录来源哈希。项目已有基底优先复用，保留项目定制，通用改进验证后回收。当前仓库无远程地址，跨机器 Git 获取尚未执行。
 
-v0.7 明确 B 端先参考 Ant Design 官方完整组件与示例，现成组件直接使用 antd，共享目录补充组合。SelectionSummary/ActionCard 是自有组合，Button/Card 是保留许可的官方 shadcn/ui 源码。按[Ant Design 能力联用](../skills/dev-flow/references/ant-design-capabilities.md)联合官方 `antd` Skill、CLI 或已连接 MCP，缺失且当前任务需要时自主采用项目级或临时接入；按项目实际版本核验组件，不固定 Agent 模型。
+v0.7 明确 B 端先参考 Ant Design 官方完整组件与示例，现成组件直接使用 antd，共享目录补充组合。SelectionSummary/ActionCard 是自有组合，Button/Card 是保留许可的官方 shadcn/ui 源码。按[Ant Design 能力联用](../skills/dev-visual/references/ant-design-capabilities.md)联合官方 `antd` Skill、CLI 或已连接 MCP，缺失且当前任务需要时自主采用项目级或临时接入；按项目实际版本核验组件，不固定 Agent 模型。
 
 v0.8 按[共同文档协议](../skills/dev-flow/references/design-document-contract.md)维护产品功能规格与视觉关联，明确原型设计、使用限制、功能透出、可执行授权和具体业务逻辑；规则与验收有稳定编号和来源，普通历史由 Git 保存，完整已替换方案归档。采用[统一 Vite 文档预览](../skills/dev-flow/references/document-preview.md)实际启动、按源文件生成地址。视觉已有独立[配置与专业指导](visual-agent.md)，两者复用共同基础并分别维护资产。
 

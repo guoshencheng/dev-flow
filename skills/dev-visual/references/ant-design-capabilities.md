@@ -2,6 +2,8 @@
 
 核验日期：2026-10-08。适用于 B 端组件选型、原型、主题和相关实现。产品、视觉、研发和测试按职责读取；仅讨论业务流程时按需查阅。
 
+本指南由视觉主责维护组件/主题选型入口，研发协作 CLI/MCP 接入；产品/测试按需引用。2026-10-09 仅调整归属，外部工具的版本观察仍为上述核验日期，不视为重新验证。
+
 ## 官方能力与职责分工
 
 Ant Design 官方维护 [ant-design/ant-design-cli](https://github.com/ant-design/ant-design-cli)，提供 `@ant-design/cli`、[antd Skill](https://github.com/ant-design/ant-design-cli/blob/main/skills/antd/SKILL.md) 和 MCP stdio 服务。[官方接入说明](https://github.com/ant-design/ant-design-cli/blob/main/README.zh-CN.md#-agent-集成)

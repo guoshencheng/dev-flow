@@ -2,7 +2,7 @@
 id: FLOW-execution-contract
 title: 设计确认、计划复核与自主实现
 status: current
-version: 0.6
+version: 0.7
 owner: flow
 ---
 
@@ -25,6 +25,8 @@ owner: flow
 确认可以分步进行，也可合并展示相关候选；合并时仍需完成技术方案与用例 Review，并将重要架构决定纳入明确确认，不能跳过依赖或把尚未作出的决定登记为已确认。完整候选先具备可审阅的当前项目文档、原型/示例和真实预览再请求确认，明确项目归属、对应产品/设计UI/技术/方案/用例入口、待决问题和变化影响；按[项目文档协议](design-document-contract.md)定位实际成果，通用 Skill 参考不作为项目确认基线。已有明确用户决定只记录并复用；候选、Agent 自查、用户查看页面或未答复都不能登记为已确认。
 
 确认记录保存成果位置、有效版本/提交或哈希、范围、用户确认来源及尚未确定的事项。关键设计变化只重新确认受影响部分。早期架构可行性和测试可验证性检查可以反向调整设计，必要时准备小型实验；受影响的正式实现以有效确认基线为依据。
+
+专业规格的内容要求由[产品](../../dev-product/references/specification-contract.md)与[视觉](../../dev-visual/references/specification-contract.md)维护；本协议只定义确认、Review、依赖及自主实施边界。
 
 ## 架构之后：端到端技术实现方案与 Review
 
