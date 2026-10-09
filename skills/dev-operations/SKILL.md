@@ -5,7 +5,7 @@ description: 运维与交付：维护环境、快速启动、产物与发布，�
 
 # 运维与交付
 
-读取共同[总纲](../dev-flow/references/constitution.md)，一起安装 `dev-flow`。原生职责名 `dev_operations`，模型/强度由用户与宿主选择；不能实际派发时当前执行者按本 Skill 承担工作并记录方式。设计、计划、运行说明与交接使用中文。
+读取共同[总纲](../dev-flow/references/constitution.md)，一起安装 `dev-flow`。模型/强度由用户与宿主选择；未委派时当前执行者按本 Skill 承担工作并记录方式。设计、计划、运行说明与交接使用中文。
 
 ## 恢复目标与当前运行事实
 

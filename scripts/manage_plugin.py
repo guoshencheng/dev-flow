@@ -11,7 +11,6 @@ import subprocess
 import sys
 import tempfile
 
-import setup_plugin
 
 PLUGIN_ID = "dev-flow@dev-flow-local"
 MARKETPLACE = "dev-flow-local"
@@ -28,6 +27,40 @@ def run(argv, cwd):
 def cli(arguments):
     # 不在开发仓库内发现同名 repo marketplace，使用已配置的用户级来源。
     return json.loads(run(["codex"] + arguments + ["--json"], Path.home()))
+
+
+def digest(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def atomic_text(path, value):
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    handle, temporary = tempfile.mkstemp(dir=path.parent, prefix=".dev-flow-")
+    try:
+        with os.fdopen(handle, "w", encoding="utf-8") as stream:
+            stream.write(value)
+        os.replace(temporary, path)
+    finally:
+        if os.path.exists(temporary):
+            os.unlink(temporary)
+
+
+def validate_bundle(root):
+    root = Path(root)
+    inventory = json.loads((root / "package-files.json").read_text())
+    if inventory["owner"] != "dev-flow":
+        raise ValueError("安装包不属于 Dev Flow")
+    for relative, expected in inventory["files"].items():
+        candidate = root / relative
+        file = candidate.resolve()
+        if root.resolve() not in file.parents or candidate.is_symlink() or digest(file) != expected:
+            raise ValueError("安装包路径或内容不匹配：" + relative)
+    skills = sorted(p.parent.name for p in (root / "skills").glob("*/SKILL.md"))
+    expected = ["dev-acceptance", "dev-architecture", "dev-engineering", "dev-flow", "dev-operations", "dev-product", "dev-visual"]
+    if skills != expected:
+        raise ValueError("插件应包含流程及六职责 Skills")
+    return skills
 
 
 def tracked(root):
@@ -47,7 +80,7 @@ def tracked(root):
         if source.is_file():
             files.append(entry)
     for required in ("plugin.json", ".codex-plugin/plugin.json", ".agents/plugins/marketplace.json",
-                     "scripts/setup_plugin.py", "skills/dev-flow-setup/SKILL.md"):
+                     "skills/dev-flow/SKILL.md"):
         if required not in files:
             raise ValueError("需要先将新插件文件纳入 Git：" + required)
     return files
@@ -68,7 +101,7 @@ def build(root):
             target = temporary / entry
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(root / entry, target)
-            hashes[entry] = setup_plugin.digest(target)
+            hashes[entry] = digest(target)
         portable = json.loads((temporary / "plugin.json").read_text())
         compatibility = json.loads((temporary / ".codex-plugin/plugin.json").read_text())
         if any(portable[key] != compatibility[key] for key in ("name", "version", "description")):
@@ -79,8 +112,8 @@ def build(root):
         metadata = {"owner": "dev-flow", "schema": 1, "files": hashes,
                     "source_commit": run(["git", "rev-parse", "HEAD"], root).strip(),
                     "working_tree_changes": run(["git", "status", "--porcelain"], root).splitlines()}
-        setup_plugin.atomic_text(temporary / "package-files.json", json.dumps(metadata, ensure_ascii=False, indent=2) + "\n")
-        setup_plugin.inputs(temporary)
+        atomic_text(temporary / "package-files.json", json.dumps(metadata, ensure_ascii=False, indent=2) + "\n")
+        validate_bundle(temporary)
         if build_root.exists():
             shutil.rmtree(build_root)
         temporary.rename(build_root)
@@ -89,15 +122,7 @@ def build(root):
             shutil.rmtree(temporary)
     return {"build_root": str(build_root), "files": len(files),
             "bytes": sum((build_root / entry).stat().st_size for entry in files),
-            "package_hash": setup_plugin.digest(build_root / "package-files.json")}
-
-
-def setup_args(root, plugin_root=None):
-    codex_dir = Path(os.environ.get("CODEX_HOME", str(Path.home() / ".codex")))
-    state_path = codex_dir / "dev-flow/plugin/state.json"
-    state = setup_plugin.state_at(state_path)
-    return argparse.Namespace(plugin_root=Path(plugin_root or (state or {}).get("plugin_root", root)),
-                              legacy_root=root, codex_dir=codex_dir, skills_dir=Path.home() / ".agents/skills")
+            "package_hash": digest(build_root / "package-files.json")}
 
 
 def installed_entry():
@@ -105,11 +130,6 @@ def installed_entry():
 
 
 def install(root):
-    args = setup_args(root, root)
-    _, roles, _ = setup_plugin.inputs(root)
-    _, _, state_path = setup_plugin.paths(args)
-    # 冲突在 CLI 安装和全局修改之前被发现。
-    setup_plugin.preflight(args, roles, setup_plugin.state_at(state_path))
     build_root = root / ".dev-flow/plugin-source"
     existing = next((m for m in cli(["plugin", "marketplace", "list"])["marketplaces"] if m["name"] == MARKETPLACE), None)
     if existing and Path(existing["root"]).resolve() != build_root:
@@ -118,40 +138,48 @@ def install(root):
     cli(["plugin", "marketplace", "add", str(build_root)])
     result = cli(["plugin", "add", PLUGIN_ID])
     cached = Path(result["installedPath"]).resolve()
-    if setup_plugin.digest(cached / "package-files.json") != info["package_hash"]:
-        raise ValueError("安装缓存未刷新到当前源码；保留旧入口，先检查 Codex 插件刷新结果")
+    if digest(cached / "package-files.json") != info["package_hash"]:
+        raise ValueError("安装缓存未刷新到当前源码；先检查 Codex 插件刷新结果")
     entry = installed_entry()
     if not entry or not entry["enabled"]:
         raise ValueError("插件尚未实际安装并启用")
-    initialized = setup_plugin.apply(setup_args(root, cached))
-    return {"plugin_id": PLUGIN_ID, "build": info, "setup": initialized}
+    skills = validate_bundle(cached)
+    atomic_text(root / ".dev-flow/plugin-install.json", json.dumps({"plugin_id": PLUGIN_ID, "plugin_root": str(cached)}, indent=2) + "\n")
+    return {"plugin_id": PLUGIN_ID, "build": info, "skills": len(skills)}
 
 
 def check(root):
     entry = installed_entry()
     if not entry or not entry["enabled"]:
         raise ValueError("当前用户没有启用 " + PLUGIN_ID)
-    args = setup_args(root)
-    result = setup_plugin.check(args)
-    inventory = json.loads((args.plugin_root / "package-files.json").read_text())
+    if Path(entry["source"]["path"]).resolve() != (root / ".dev-flow/plugin-source").resolve():
+        raise ValueError("插件来源已改变，不能用本仓库记录核验")
+    record = json.loads((root / ".dev-flow/plugin-install.json").read_text())
+    if record["plugin_id"] != PLUGIN_ID:
+        raise ValueError("安装记录不属于本插件")
+    cached = Path(record["plugin_root"])
+    skills = validate_bundle(cached)
+    inventory = json.loads((cached / "package-files.json").read_text())
     source_files = tracked(root)
     if set(source_files) != set(inventory["files"]) or any(
-            setup_plugin.digest(root / name) != expected for name, expected in inventory["files"].items()):
+            digest(root / name) != expected for name, expected in inventory["files"].items()):
         raise ValueError("源码已变化，运行 install 重建并刷新插件")
-    return {"plugin_id": PLUGIN_ID, "enabled": True, "source_matches_cache": True, "setup": result}
+    return {"plugin_id": PLUGIN_ID, "enabled": True, "source_matches_cache": True, "skills": len(skills)}
 
 
 def remove(root):
     entry = installed_entry()
-    if entry and Path(entry["source"]["path"]).resolve() != root / ".dev-flow/plugin-source":
+    if entry and Path(entry["source"]["path"]).resolve() != (root / ".dev-flow/plugin-source").resolve():
         raise ValueError("同名插件已经换成其他来源，保留并报告")
-    result = setup_plugin.remove(setup_args(root))
     if entry:
         cli(["plugin", "remove", PLUGIN_ID])
     existing = next((m for m in cli(["plugin", "marketplace", "list"])["marketplaces"] if m["name"] == MARKETPLACE), None)
     if existing and Path(existing["root"]).resolve() == root / ".dev-flow/plugin-source":
         cli(["plugin", "marketplace", "remove", MARKETPLACE])
-    return {"plugin_id": PLUGIN_ID, "setup": result, "source_and_project_assets_preserved": True}
+    record = root / ".dev-flow/plugin-install.json"
+    if record.exists():
+        record.unlink()
+    return {"plugin_id": PLUGIN_ID, "source_and_project_assets_preserved": True}
 
 
 def main():

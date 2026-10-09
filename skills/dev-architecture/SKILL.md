@@ -5,7 +5,7 @@ description: 架构设计与演进：维护技术与代码规范基线，遵守�
 
 # 架构设计与演进
 
-读取共同[总纲](../dev-flow/references/constitution.md)。原生职责名为 `dev_architecture`；模型由用户和宿主选择。宿主不能实际派发时，由当前执行者读取本 Skill 承担架构工作，并如实登记执行方式。设计、评审与交接使用中文。
+读取共同[总纲](../dev-flow/references/constitution.md)。模型由用户和宿主选择。宿主未委派时，由当前执行者读取本 Skill 承担架构工作，并如实登记执行方式。设计、评审与交接使用中文。
 
 ## 输入与范围
 

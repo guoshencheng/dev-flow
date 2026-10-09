@@ -1,6 +1,6 @@
 # dev-flow
 
-以 Codex 为主的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付。当前已有总纲 v0.14、六职责配置与专业 Skills、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。职责配置采用宿主模型策略；本地 Plugin 0.1.0 包装和接入方式见[安装指南](docs/plugin.md)及[验证记录](reviews/2026-10-09-plugin-installation.md)。工具、专业行为、原生角色派发与真实项目成熟度分别登记；完整真实任务和运行内核继续按实测需要建设。
+以 Codex 为主的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付。当前已有总纲 v0.15、六职责专业 Skills、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。专业职责由主 Agent 或获准委派的可用子 Agent 承担，模型遵循本次用户要求与宿主策略；本地 Plugin 0.1.0 包装和接入方式见[安装指南](docs/plugin.md)及[验证记录](reviews/2026-10-09-setup-removal-and-task-routing.md)。工具、专业行为、实际委派与真实项目成熟度分别登记；完整真实任务和运行内核继续按实测需要建设。
 
 ## 维护入口
 
@@ -24,62 +24,25 @@
 - [职责能力目录](skills/dev-flow/references/role-capabilities.md)：六职责四十八项能力与执行契约。
 - [项目迭代目录协议](skills/dev-flow/references/design-document-contract.md)：每轮集中保存各阶段产物，项目级基线持续复用；[迭代索引模板](skills/dev-flow/assets/templates/iteration-index.md)。
 - [项目资产持续沉淀](skills/dev-flow/references/project-asset-maintenance.md)：现行资产、更新、有效性与后续复用。
-- [Codex 职责接入](skills/dev-flow/references/codex-agent-configuration.md)：实际配置、可用性和派发边界。
+- [职责 Skills 与执行者](skills/dev-flow/references/codex-agent-configuration.md)：通过 Skills 承担职责、可用性和委派边界。
 - [仓库文档归类](docs/document-organization.md)：执行参考、建设计划和验证证据的边界。
 - [职责建设与验证](docs/agent-development.md)、[初期总体建设方案](docs/plans/2026-10-07-development-harness-plan.md)和[能力/资产建设原始方案](docs/plans/2026-10-07-role-capabilities-and-project-assets.md)：仓库建设资料。
+- [测试先行、系统诊断与实现评审改造计划](docs/plans/2026-10-09-executable-engineering-methods.md)：补齐执行方法、记录字段和行为评测，沿用现有六职责；当前待实施。
 - [Codex 配置历史](docs/history/2026-10-08-codex-agent-setup.md)、[Ant Design 接入核验](docs/integrations/ant-design.md)及[共享组件验证](docs/integrations/shared-components.md)：历史事实与证据入口。
 
-## 全局安装与使用
-
-当前推荐 Plugin 模式，在仓库根目录执行：
+## 插件安装与使用
 
 ```sh
 python3 scripts/manage_plugin.py install
 python3 scripts/manage_plugin.py check
 ```
 
-共八个 Skills（流程、六专业职责、安装初始化）和六个职责配置。install 同时用于更新，先构建 Git 管理文件的干净包，再通过 Codex 安装缓存和初始化适配；自动迁移指向本仓库的旧链接，其他来源冲突时保留并报告。详情见[插件指南](docs/plugin.md)。
-
-源码链接模式作为可选回退；与 Plugin 模式择一。解除插件接入后在仓库根目录执行：
-
-```sh
-python3 scripts/install_global.py
-python3 scripts/install_global.py --check
-```
-
-源码链接脚本将本仓库八个 Skills 逐个链接到 `~/.agents/skills/`，将六个 `agents/dev_*.toml` 职责配置链接到 `~/.codex/agents/`，并在 `~/.codex/AGENTS.md` 中维护一个简短的流程指引区块。更改既有指引前备份到 `~/.codex/backups/dev-flow/`，其他原文保留。链接冲突时停止，不覆盖其他来源。
-
-在 Codex 中使用 `$dev-flow` 指定本流程。全局指引在新会话加载；若 Skill 列表没有刷新，重新启动 Codex。Codex 官方支持用户级 Skill 目录和符号链接扫描。[官方 Skills 说明](https://learn.chatgpt.com/docs/build-skills)
-
-产品或交互任务可使用 `$dev-product` 读取专业指导。原生职责文件省略 `model` 与 `model_reasoning_effort`，采用本次显式派发、宿主默认或父会话设置；具体任务遵循用户最新要求。只有宿主实际发现并派发 `dev_product` 后，才能记录原生角色执行。当前会话也可以由主 Agent 或获准的子 Agent 读取专业 Skill 承担工作，并如实记录调用方式。
-
-架构设计、代码架构评审或研发复盘可使用 `$dev-architecture`。源码与当前架构地图一并核验，研发结束后同步受影响模块的实际职责/域/层次和有证据的改进建议；配置不固定模型。
-
-测试策略/用例、接口与界面验证、前后端 E2E 或交付验收可使用 `$dev-acceptance`。从有效产品/UI/ARC 和经符合性 Review 的技术方案设计端到端用例，实际 AI Review 后交人工确认，再执行并持续反馈研发，修复后复验原问题及回归；Mock/替身、真实依赖与部署结果分别登记。原生职责 `dev_acceptance` 是否实际可派发在当前宿主核验。
-
-技术实现方案、功能实现、诊断修复、兼容变更与集成交付可使用 `$dev-engineering`。架构后定义页面/功能/OUT/链路，经产品符合性及相关 UI/架构 AI Review 后交测试；用例 AI Review/人工确认后实际复核实施计划并自主编码；按原始规格修复测试反馈并交回待验候选，维护项目工程索引/计划/诊断和真实启动支持。
-
-启动交付、产物/部署核验、运行诊断/恢复或环境维护可使用 `$dev-operations`。恢复真实环境/版本与授权范围，操作当前候选与核心任务，维护项目 runbook、交付和故障/恢复记录；部署未知先查询，应用回退与数据恢复分别取证。
-
-以下说明适用于源码链接回退模式：源码更新通过链接反映到全局文件，不需要重新复制。新增 Skill 或原生职责配置后再运行安装脚本；`agents/dev_*.toml` 逐个链接到 `~/.codex/agents/`，保留其他角色文件。原生角色的发现、模型设置和专业行为需要独立验证。
-
-2026-10-07 已验证：Skill 结构、全局链接、既有指引保留与备份、重复安装和冲突保护；CLI 新上下文预览已加载全局流程指引，先后发现 `dev-flow`、`dev-product` Skills。当时链接两个 Skills、一个原生职责配置。产品专业指导由两次独立的 Sol medium 执行验证，覆盖首次设计和新上下文变更复用；CLI 在原生派发尝试前拒绝了所选模型，原生发现、派发及实际模型设置仍未验收，详见[验证记录](evals/dev-product/README.md)。视觉阶段增加第三个 Skill，见[视觉与工具记录](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)；架构阶段增加第四个 Skill 和第三个职责设置，见[架构验证](evals/dev-architecture/report.md)。
-
-源码维护在 [guoshencheng/dev-flow](https://github.com/guoshencheng/dev-flow)，发布分支为 `main`。新环境先克隆，再使用本仓库安装命令：
-
-```sh
-git clone git@github.com:guoshencheng/dev-flow.git
-cd dev-flow
-python3 scripts/manage_plugin.py install
-python3 scripts/manage_plugin.py check
-```
-
-后续用 Git 更新源码，再运行 install 刷新当前插件；配置和组件仍由同一仓库维护。原 `business-guide/docs/development-harness` 入口链接到同一份参考文档，已有文件链接继续可用。
+插件包含七个 Skills：流程入口及产品、视觉、架构、研发、测试验收、运维交付。没有 setup Agent 步骤，安装不注册个人角色或改写全局指引。使用 `$dev-flow` 按[任务路由](skills/dev-flow/references/task-routing.md)选择 bugfix、正常需求、系统变更或故障流程；主 Agent 或实际可用且获准委派的子 Agent 读取专业 Skill。模型由宿主与用户本次要求决定。安装详情见[指南](docs/plugin.md)。
 
 ## 下一项建设
 
-产品 v0.8、视觉 v0.1、架构 v0.3、测试验收 v0.3、研发 v0.2 与运维交付 v0.1 已定义专业方法与项目资产维护。运维的源码包启动、运行故障与恢复工具案例见[首版验证](evals/dev-operations/report.md)，研发隔离修复案例见[记录](evals/dev-engineering/report.md)，测试执行范围见[记录](evals/dev-acceptance/report.md)，架构规范检查见[记录](reviews/2026-10-08-architecture-code-standards-check.md)。历史原型/组件证据保持原版本，见[视觉与文档验证](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)。总纲 v0.13 增加架构后端到端技术方案、符合性及用例 AI Review/人工确认，见[调整记录](reviews/2026-10-08-technical-delivery-stage.md)；保留运行/交付资产和 v0.11 的[设计与实现路由边界](reviews/2026-10-08-prototype-review-routing.md)及确认/自主实施规则。下一步选择真实任务检验完整循环和下一任务资产复用；原生派发/实际模型设置与真实项目分别实测，本地 Plugin 已接入，见[安装验证](reviews/2026-10-09-plugin-installation.md)；运行内核继续按真实任务需要建设。
+产品 v0.8、视觉 v0.1、架构 v0.3、测试验收 v0.3、研发 v0.2 与运维交付 v0.1 已定义专业方法与项目资产维护。运维的源码包启动、运行故障与恢复工具案例见[首版验证](evals/dev-operations/report.md)，研发隔离修复案例见[记录](evals/dev-engineering/report.md)，测试执行范围见[记录](evals/dev-acceptance/report.md)，架构规范检查见[记录](reviews/2026-10-08-architecture-code-standards-check.md)。历史原型/组件证据保持原版本，见[视觉与文档验证](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)。总纲 v0.13 增加架构后端到端技术方案、符合性及用例 AI Review/人工确认，见[调整记录](reviews/2026-10-08-technical-delivery-stage.md)；保留运行/交付资产和 v0.11 的[设计与实现路由边界](reviews/2026-10-08-prototype-review-routing.md)及确认/自主实施规则。下一步选择真实任务检验完整循环和下一任务资产复用；实际委派/模型设置与真实项目分别实测，本地 Plugin 已接入，见[安装验证](reviews/2026-10-09-setup-removal-and-task-routing.md)；运行内核继续按真实任务需要建设。
 
-## 解除全局接入
+## 解除插件
 
-Plugin 模式使用 `python3 scripts/manage_plugin.py remove`。源码链接模式删除由本仓库管理的八个 Skill 链接，并从全局 `AGENTS.md` 删除 `<!-- dev-flow:begin -->` 与 `<!-- dev-flow:end -->` 之间的完整区块。职责配置只删除实际指向本仓库的链接。保留原有全局规则与项目资产。
+运行 `python3 scripts/manage_plugin.py remove`，或使用宿主插件卸载入口。当前安装没有额外 Agent 接入需要解除，源码与业务项目资产保留。

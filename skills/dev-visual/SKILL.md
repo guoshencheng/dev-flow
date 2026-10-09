@@ -5,7 +5,7 @@ description: 视觉与界面设计：依据产品规则、项目品牌和参考�
 
 # 视觉与界面设计
 
-首次使用读取共同[总纲](../dev-flow/references/constitution.md)。与同包 `dev-flow` 一起安装；原生职责名为 `dev_visual`。模型与推理强度遵循当前用户和宿主选择，职责配置不固定模型。设计、计划和交接使用中文。
+首次使用读取共同[总纲](../dev-flow/references/constitution.md)。与同包 `dev-flow` 一起安装；模型与推理强度遵循当前用户和宿主选择，插件不固定模型。设计、计划和交接使用中文。
 
 ## 确定输入与专业边界
 

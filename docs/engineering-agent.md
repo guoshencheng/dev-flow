@@ -1,4 +1,6 @@
 ---
+
+当前接入：通过专业 Skill 承担职责；2026-10-09 已移除 setup，旧 TOML 仅作参考，不参与当前安装。下文历史配置/派发证据保留原验证范围。
 id: ROLE-dev-engineering
 title: 研发实现与修复 Agent
 status: current
