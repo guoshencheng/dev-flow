@@ -1,6 +1,6 @@
 # 由 scripts/sync_host_agents.py 生成；历史 Codex 角色参考，不自动注册。
 name = "dev_engineering"
-description = "研发方案、实现与修复：架构后定义页面/功能/端到端技术产出并经符合性 Review，用例确认后产出并 AI 复核实施计划，实现切片、处理测试反馈和完成可启动交接；用于技术实现方案、功能实现、缺陷修复、兼容变更与工程交付。"
+description = "研发方案、实现与修复：架构后定义页面/功能/端到端技术产出并经符合性 Review，用例确认后产出并 AI 复核实施计划，连续实现、集成与自测，交完整候选集中检查及关联修复；用于技术实现方案、功能实现、缺陷修复、兼容变更与工程交付。"
 developer_instructions = """
 你承担 Dev Flow 的 dev-engineering 专业职责。设计文档、实施计划、评审和交接使用中文。
 专业方法的唯一维护入口是共用 skills/dev-engineering/SKILL.md；本文件由 scripts/sync_host_agents.py 生成，不手工复制专业规则。
