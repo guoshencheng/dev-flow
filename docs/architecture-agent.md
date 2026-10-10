@@ -4,13 +4,13 @@
 id: ROLE-dev-architecture
 title: 架构设计与演进 Agent
 status: current
-version: 0.4
+version: 0.5
 owner: architecture
 ---
 
-# 架构设计与演进 Agent v0.4
+# 架构设计与演进 Agent v0.5
 
-更新日期：2026-10-08。原生职责 `dev_architecture`；[专业 Skill](../skills/dev-architecture/SKILL.md)；[职责配置](../agents/dev_architecture.toml)。配置省略模型与推理强度，由本次用户和宿主设置选择。
+更新日期：2026-10-10。原生职责 `dev_architecture`；[专业 Skill](../skills/dev-architecture/SKILL.md)；[职责配置](../agents/dev_architecture.toml)。配置省略模型与推理强度，由本次用户和宿主设置选择。
 
 ## 当前做什么
 
@@ -57,13 +57,13 @@ v0.3 按用户要求收敛技术 Guide：Web 使用 React（新建 Vite + React 
 
 ## 项目文档与共享
 
-优先沿用项目权威目录，无规范时使用 `docs/dev-flow/architecture/`：index/system/modules 保存当前事实，stack 保存技术/工具链和交付基线，changes 保存目标设计和确认，decisions 保存重要取舍，reviews 保存实际代码复盘，debt 关联改进。代码规范使用 `docs/dev-flow/engineering/code-standards.md` 并链接实际配置与命令。小工程允许合并，复杂业务域按需拆分。普通历史由 Git 保存，完整替换方案按协议归档。
+优先沿用项目权威目录，无规范时使用 `docs/dev-flow/architecture/`：index/system/modules 保存当前事实，stack 保存技术/工具链和交付基线，changes 保存目标设计和确认，decisions 保存重要取舍，reviews 保存实际代码复盘，debt 关联改进。代码规范使用 `docs/dev-flow/engineering/code-standards.md` 并链接实际配置与命令。小工程允许合并，复杂业务域按需拆分。架构可在需求中、重要变更后、发布前或用户授权的定期窗口参与联合维护检查，和测试以同一版本核对 ARC/OUT/TC 关系；已验证的当前事实写回长期入口，被替代的完整方案才按协议归档，不能把最新有效架构移入历史。普通历史由 Git 保存，完整替换方案按协议归档。
 
 随包提供[当前地图](../skills/dev-architecture/assets/templates/current-architecture.md)、[技术基线](../skills/dev-architecture/assets/templates/technology-baseline.md)、[变化设计](../skills/dev-architecture/assets/templates/architecture-design.md)、[代码复盘](../skills/dev-architecture/assets/templates/architecture-review.md)四个模板，复用共享 Vite 文档预览。项目事实留在项目，经过验证的通用方法再沉淀到本 Skill。
 
 ## 验证状态
 
-v0.4 扩充[完整实现评审与复盘](../skills/dev-architecture/references/retrospective-and-evolution.md)，要求开始基线至最终候选及相关未提交内容，分别给需求符合性/实现质量结论；意见核证后修复、反驳、澄清或保留待验证，定向复评及必要行为复验后关闭。
+v0.5 增加与测试验收的联合维护检查及逻辑归档：按用户手动或授权定期触发，核对同一版本的架构现状、ARC/OUT/TC 与实际证据，先更新当前基线，再归档迭代或被替代候选；`current`、`needs-review`、`superseded` 和 `archived` 分开表达。保留[完整实现评审与复盘](../skills/dev-architecture/references/retrospective-and-evolution.md)要求的开始基线至最终候选覆盖及定向复评。
 
 本轮[行为评测](../evals/dev-flow-methods/report.md)中，独立评审者实际覆盖三提交与未提交差异，检出早期权限与未提交标题问题；研发处理后，原评审者未参与实现，定向阅读并实际断言复验，四条意见按证据关闭。模型参数为本次派发策略，不进入可复用要求；宿主共享文件系统与输入声明的证明限制单列。此证据不代表全仓审计、生产身份、并发或真实项目成熟度。
 
