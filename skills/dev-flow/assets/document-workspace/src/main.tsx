@@ -1,6 +1,6 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { Component, useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { Alert, Button, ConfigProvider, Drawer, Empty, Input, Menu, Select, Space, Spin, Switch, Tag, Typography, message } from 'antd'
+import { Alert, Button, ConfigProvider, Drawer, Empty, Input, Select, Space, Spin, Switch, Tag, Tree, Typography, message } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
 import { DocumentView } from './renderers'
 import type { DocumentEntry } from './renderers'
@@ -8,6 +8,81 @@ import 'highlight.js/styles/github.css'
 import './styles.css'
 
 type Index = { project: string; roots: string[]; files: DocumentEntry[]; truncated: boolean }
+type DocumentTreeNode = {
+  key: string
+  title: React.ReactNode
+  isLeaf?: boolean
+  selectable?: boolean
+  nodeType: 'directory' | 'file'
+  path: string
+  name: string
+  children?: DocumentTreeNode[]
+}
+
+function buildDocumentTree(files: DocumentEntry[]) {
+  const roots: DocumentTreeNode[] = []
+  const nodes = new Map<string, DocumentTreeNode>()
+
+  for (const file of files) {
+    const segments = file.path.split('/')
+    let children = roots
+    let parentPath = ''
+
+    segments.forEach((segment, index) => {
+      const currentPath = parentPath ? `${parentPath}/${segment}` : segment
+      const isFile = index === segments.length - 1
+      const key = isFile ? file.path : `directory:${currentPath}`
+      let node = nodes.get(key)
+
+      if (!node) {
+        node = isFile
+          ? {
+              key,
+              title: <span className="document-tree-file" title={file.path}><span>{file.title}</span><small>{segment} · {file.kind}</small></span>,
+              isLeaf: true,
+              nodeType: 'file',
+              path: file.path,
+              name: file.title,
+            }
+          : {
+              key,
+              title: <span className="document-tree-directory">{segment}</span>,
+              children: [],
+              selectable: false,
+              nodeType: 'directory',
+              path: currentPath,
+              name: segment,
+            }
+        nodes.set(key, node)
+        children.push(node)
+      }
+
+      if (!isFile) {
+        children = node.children!
+        parentPath = currentPath
+      }
+    })
+  }
+
+  const sortNodes = (items: DocumentTreeNode[]) => {
+    items.sort((left, right) => {
+      if (left.nodeType !== right.nodeType) return left.nodeType === 'directory' ? -1 : 1
+      return left.name.localeCompare(right.name, 'zh-CN')
+    })
+    items.forEach((item) => { if (item.children) sortNodes(item.children) })
+  }
+  sortNodes(roots)
+
+  const directoryKeys = Array.from(nodes.values())
+    .filter((node) => node.nodeType === 'directory')
+    .map((node) => String(node.key))
+  const rootDirectoryKeys = roots
+    .filter((node) => node.nodeType === 'directory')
+    .map((node) => String(node.key))
+
+  return { treeData: roots, directoryKeys, rootDirectoryKeys }
+}
+
 function selectedPath() { return location.pathname.startsWith('/view/') ? decodeURIComponent(location.pathname.slice('/view/'.length)) : '' }
 class PreviewBoundary extends Component<{ children: React.ReactNode }, { error: string }> {
   state = { error: '' }
@@ -22,6 +97,8 @@ function App() {
   const [kind, setKind] = useState('all')
   const [archives, setArchives] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [expandedKeys, setExpandedKeys] = useState<React.Key[]>([])
+  const [expandedInitialized, setExpandedInitialized] = useState(false)
   const [api, holder] = message.useMessage()
   useEffect(() => {
     const controller = new AbortController()
@@ -40,7 +117,21 @@ function App() {
   }, [])
   const file = index?.files.find((entry) => entry.path === selected)
   const replacement = typeof file?.metadata.supersededBy === 'string' ? index?.files.find((entry) => entry.path === file.metadata.supersededBy) : undefined
-  const visible = index?.files.filter((entry) => (archives || !entry.path.includes('/archive/')) && (kind === 'all' || entry.kind === kind) && (entry.title + ' ' + entry.path).toLowerCase().includes(query.toLowerCase())) || []
+  const visible = useMemo(() => index?.files.filter((entry) => (archives || !entry.path.includes('/archive/')) && (kind === 'all' || entry.kind === kind) && (entry.title + ' ' + entry.path).toLowerCase().includes(query.toLowerCase())) || [], [archives, index, kind, query])
+  const documentTree = useMemo(() => buildDocumentTree(visible.slice(0, 120)), [visible])
+
+  useEffect(() => {
+    if (index && !expandedInitialized) {
+      setExpandedKeys(documentTree.rootDirectoryKeys)
+      setExpandedInitialized(true)
+    }
+  }, [documentTree.rootDirectoryKeys, expandedInitialized, index])
+
+  useEffect(() => {
+    if (!query.trim()) return
+    setExpandedKeys((current) => Array.from(new Set([...current, ...documentTree.directoryKeys])))
+  }, [documentTree.directoryKeys, query])
+
   const navigate = (next: string) => {
     const entry = index?.files.find((item) => item.path === next)
     if (!entry) return
@@ -51,7 +142,21 @@ function App() {
     <Select aria-label="文档格式" value={kind} onChange={setKind} options={[{ value: 'all', label: '全部格式' }, ...Array.from(new Set(index?.files.map((item) => item.kind))).map((value) => ({ value, label: value }))]} />
     <Space className="archive-option"><Switch checked={archives} onChange={setArchives} size="small" aria-label="显示归档" /><span>显示归档</span></Space>
     <p className="muted">{visible.length} 份资料{visible.length > 120 ? ' · 目录展示前 120 份，请搜索' : ''}</p>
-    <Menu selectedKeys={[selected]} items={visible.slice(0, 120).map((item) => ({ key: item.path, label: <span className="file-item"><span>{item.title}</span><small>{item.path}</small></span> }))} onClick={({ key }) => navigate(key)} />
+    {index && (visible.length ? <Tree
+      aria-label="文档目录"
+      className="document-tree"
+      treeData={documentTree.treeData}
+      blockNode
+      showLine
+      selectedKeys={selected ? [selected] : []}
+      expandedKeys={expandedKeys.filter((key) => documentTree.directoryKeys.includes(String(key)))}
+      autoExpandParent={Boolean(query.trim())}
+      onExpand={(keys) => setExpandedKeys(keys)}
+      onSelect={(keys) => {
+        const next = keys[0]
+        if (typeof next === 'string' && visible.some((item) => item.path === next)) navigate(next)
+      }}
+    /> : <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="没有匹配的资料" />)}
   </nav>
   return <>{holder}<div className="reader">
     <aside className="sidebar"><Typography.Title level={4}>项目设计资料</Typography.Title><p className="muted">产品规则 · 视觉规格 · 原型</p>{navigation}</aside>

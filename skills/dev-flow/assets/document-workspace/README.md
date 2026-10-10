@@ -8,6 +8,8 @@ npm run dev -- --project /项目绝对路径 --roots docs/dev-flow,design --port
 npm run url -- --project /项目绝对路径 --file docs/dev-flow/product/index.md
 ```
 
+左侧文档导航按项目相对路径展示为可展开的目录树；根目录首次打开时展开，格式/归档筛选和标题/路径搜索会保留必要的父目录，文件预览地址保持不变。
+
 复制到项目：`node scripts/preview.mjs init --project /项目绝对路径`，默认目标 `tools/design-docs`。全文件集先核验，既有不同内容保留；复制后在目标直接迭代。所需包是公开依赖，工程不发布为自有 npm 包。
 
 当前 origin、PID、根目录保存在项目 `.dev/previews/documents.json`。URL 工具核验实际服务和文件；停止后链接不可用，源文档和重启命令长期保留。采用记录保存来源 Git 提交/实际文件哈希、项目差异和验证。

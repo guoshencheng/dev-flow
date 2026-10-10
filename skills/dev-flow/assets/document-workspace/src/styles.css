@@ -7,11 +7,13 @@ body { margin: 0; color: #202b3d; background: #f5f7fb; font-family: -apple-syste
 nav .ant-select { width: 100%; margin: 12px 0; }
 .archive-option { margin: 4px 0; font-size: 13px; }
 .muted { color: #6b778c; font-size: 12px; }
-.file-item { display: flex; flex-direction: column; line-height: 1.5; padding: 8px 0; min-width: 0; }
-.file-item > span { overflow: hidden; text-overflow: ellipsis; }
-.file-item small { overflow: hidden; text-overflow: ellipsis; color: #7b8698; font-size: 10px; }
-nav .ant-menu { border: none; }
-nav .ant-menu-item { height: auto; min-height: 56px; }
+.document-tree { margin-top: 8px; }
+.document-tree-file { display: flex; flex-direction: column; min-width: 0; line-height: 1.45; padding: 2px 0; }
+.document-tree-file > span, .document-tree-file small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.document-tree-file small { color: #7b8698; font-size: 10px; }
+.document-tree-directory { font-weight: 500; }
+nav .ant-tree .ant-tree-node-content-wrapper { min-height: 36px; display: inline-flex; align-items: center; }
+nav .ant-tree .ant-tree-title { min-width: 0; flex: 1; }
 .content { padding: 28px 36px; min-width: 0; }
 .document-header { display: flex; align-items: flex-start; flex-wrap: wrap; gap: 16px; padding-bottom: 22px; }
 .document-identity { flex: 1 1 280px; min-width: 0; }
