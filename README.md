@@ -1,6 +1,6 @@
 # dev-flow
 
-支持 Codex 与 Kimi 接入的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付。当前已有总纲 v0.18、六职责专业 Skills、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。专业职责由主 Agent 或获准委派的可用子 Agent 承担，模型遵循本次用户要求与宿主策略；本地 Plugin 0.1.0 包装和接入方式见[安装指南](docs/plugin.md)及[验证记录](reviews/2026-10-09-setup-removal-and-task-routing.md)。工具、专业行为、实际委派与真实项目成熟度分别登记；完整真实任务和运行内核继续按实测需要建设。
+支持 Codex 与 Kimi 接入的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付，并提供跨职责会话监控。当前已有总纲 v0.18、六职责专业 Skills、会话监控 Skill、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。专业职责由主 Agent 或获准委派的可用子 Agent 承担，模型遵循本次用户要求与宿主策略；本地 Plugin 0.1.0 包装和接入方式见[安装指南](docs/plugin.md)及[验证记录](reviews/2026-10-09-setup-removal-and-task-routing.md)。工具、专业行为、实际委派与真实项目成熟度分别登记；完整真实任务和运行内核继续按实测需要建设。
 
 Kimi 插件提供六份独立职责 Agent 文档，与历史 Codex 角色参考从共用 Skills 生成；专业方法只维护一份。接入、派发与同步见 [Kimi 职责说明](docs/integrations/kimi-agent-configuration.md)。
 
@@ -18,6 +18,7 @@ Kimi 插件提供六份独立职责 Agent 文档，与历史 Codex 角色参考�
 - [测试验收 Agent](docs/acceptance-agent.md)：综合产品/技术方案的用例及 AI Review/人工确认、真实界面/API/E2E、交付验证与反馈复验；[专业 Skill](skills/dev-acceptance/SKILL.md)及[验证状态](evals/dev-acceptance/report.md)。
 - [研发 Agent](docs/engineering-agent.md)：架构后端到端技术方案与符合性 Review、计划 AI 复核、可运行切片、诊断修复及可启动交接；[专业 Skill](skills/dev-engineering/SKILL.md)和[首版验证](evals/dev-engineering/report.md)。
 - [运维与交付 Agent](docs/operations-agent.md)：环境与快速启动、产物版本/发布、运行信号/故障、回退/数据恢复、依赖演进与退役；[专业 Skill](skills/dev-operations/SKILL.md)和[首版验证](evals/dev-operations/report.md)。
+- [Codex 会话监控](skills/codex-session-monitor/SKILL.md)：在授权范围内检查会话进度、阻塞、完成与待处理事项，按配置发送简短 Lark 更新；[评估案例](evals/codex-session-monitor/README.md)。它是跨职责支撑能力，不是新的职责 Agent。
 - [技术栈约定](skills/dev-architecture/references/technology-stack.md)：Web React、全栈 Next.js、纯静态 Astro；[历史项目调查](docs/project-tech-stacks/2026-10-08-survey.md)仅保存当时事实与建议，其他类型暂不进入通用技术 Guide。
 - [代码规范 Guide](skills/dev-architecture/references/code-standards.md)：EditorConfig/Prettier、ESLint、TypeScript 与实际依赖规则；随包提供可复制格式配置，项目维护自己的规范和检查入口。
 - [项目文档目录与归档](skills/dev-flow/references/design-document-contract.md)：明确当前业务项目的产品、交互原型、设计/UI、技术及相关验收/交付资料；[索引模板](skills/dev-flow/assets/templates/project-document-index.md)映射现行权威位置；[项目 Vite 预览](skills/dev-flow/references/document-preview.md)生成对应项目成果的实际地址，Skill 维护默认使用源文件链接。
@@ -31,7 +32,7 @@ Kimi 插件提供六份独立职责 Agent 文档，与历史 Codex 角色参考�
 - [分支、worktree、验证与合并](skills/dev-flow/references/git-and-worktree.md)：何时分支/隔离、阶段验证、合并条件与清理。
 - [subagent 使用建议](skills/dev-flow/references/subagent-guidance.md)：两类流程的执行者选择、独立 Review、并行边界与集成责任。
 - [职责 Skills 与执行者](skills/dev-flow/references/codex-agent-configuration.md)：通过 Skills 承担职责、可用性和委派边界。
-- [文档与资产职责归属](docs/document-ownership.md)：七个 Skills 的权威边界、共享工具维护者与迁移说明。
+- [文档与资产职责归属](docs/document-ownership.md)：八个 Skills 的权威边界、共享工具维护者与迁移说明。
 - [仓库文档归类](docs/document-organization.md)：执行参考、建设计划和验证证据的边界。
 - [职责建设与验证](docs/agent-development.md)、[初期总体建设方案](docs/plans/2026-10-07-development-harness-plan.md)和[能力/资产建设原始方案](docs/plans/2026-10-07-role-capabilities-and-project-assets.md)：仓库建设资料。
 - [测试先行、系统诊断与实现评审改造计划](docs/plans/2026-10-09-executable-engineering-methods.md)：沿用六职责补齐方法与记录字段；[隔离行为评测](evals/dev-flow-methods/report.md)记录实际检出、实验、意见处理与复验边界。
@@ -46,7 +47,7 @@ python3 scripts/manage_plugin.py install
 python3 scripts/manage_plugin.py check
 ```
 
-插件包含七个 Skills：流程入口及产品、视觉、架构、研发、测试验收、运维交付。没有 setup Agent 步骤，安装不注册个人角色或改写全局指引。使用 `$dev-flow` 按[任务路由](skills/dev-flow/references/task-routing.md)选择 bugfix、正常需求、系统变更或故障流程；主 Agent 或实际可用且获准委派的子 Agent 读取专业 Skill。模型由宿主与用户本次要求决定。Kimi 使用原生插件安装与 `/skill:dev-flow`，安装详情见[指南](docs/plugin.md)。
+插件包含八个 Skills：流程入口、六个职责 Skill，以及跨职责的会话监控 Skill。没有 setup Agent 步骤，安装不注册个人角色或改写全局指引。使用 `$dev-flow` 按[任务路由](skills/dev-flow/references/task-routing.md)选择 bugfix、正常需求、系统变更或故障流程；需要监控 Codex/ChatGPT 会话时按授权加载会话监控 Skill。模型由宿主与用户本次要求决定。Kimi 使用原生插件安装与 `/skill:dev-flow`，安装详情见[指南](docs/plugin.md)。
 
 ## 下一项建设
 

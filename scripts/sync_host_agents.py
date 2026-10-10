@@ -32,8 +32,8 @@ def expected_files(root):
     manifest.update({
         "skills": "./skills/",
         "agents": "./adapters/kimi/agents/",
-        "skillInstructions": "在 Kimi 中需要且获准委派时，使用实际发现的 dev-product、dev-visual、dev-architecture、dev-engineering、dev-acceptance 或 dev-operations Agent。派发必须包含专业 Skill 的实际绝对路径、业务项目根路径、目标/阶段、有效输入与版本、确认/授权、可写范围和交接要求。宿主或用户不允许委派时由主 Agent 执行并记录独立性缺口。",
-        "interface": {"displayName": "Dev Flow", "shortDescription": "六职责研发协作、持续验收与可运行交付"},
+        "skillInstructions": "在 Kimi 中需要且获准委派时，使用实际发现的 dev-product、dev-visual、dev-architecture、dev-engineering、dev-acceptance 或 dev-operations Agent。派发必须包含专业 Skill 的实际绝对路径、业务项目根路径、目标/阶段、有效输入与版本、确认/授权、可写范围和交接要求。宿主或用户不允许委派时由主 Agent 执行并记录独立性缺口。跨职责会话监控使用实际发现的 codex-session-monitor Skill；它不产生额外 Agent，不自动创建调度或发送通知。",
+        "interface": {"displayName": "Dev Flow", "shortDescription": "六职责研发协作、会话监控与可运行交付"},
     })
     files = {"kimi.plugin.json": json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"}
     for role in ROLES:
@@ -87,7 +87,7 @@ def check(root):
         mismatches.extend(unexpected)
     if mismatches:
         raise ValueError("宿主入口未同步，运行 python3 scripts/sync_host_agents.py --write：" + ", ".join(mismatches))
-    return {"hosts": ["codex", "kimi"], "roles": len(ROLES), "shared_skills": 7, "synchronized": True}
+    return {"hosts": ["codex", "kimi"], "roles": len(ROLES), "shared_skills": 8, "synchronized": True}
 
 
 def main():

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Codex 会话监控"
+  short_description: "在授权范围内跟踪会话进度、阻塞、完成状态并发送简短更新"

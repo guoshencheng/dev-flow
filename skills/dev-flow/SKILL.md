@@ -35,6 +35,7 @@ description: 组织研发、产品交互、视觉、架构、测试验收与运�
 | 技术方案、计划、实现、诊断与自测 | [研发](../dev-engineering/SKILL.md) |
 | 测试策略/用例、实现验收、反馈与复验 | [测试验收](../dev-acceptance/SKILL.md) |
 | 环境/启动、产物/发布、运行与恢复 | [运维交付](../dev-operations/SKILL.md) |
+| Codex/ChatGPT 会话进度、阻塞、完成与 Lark 摘要 | [会话监控](../codex-session-monitor/SKILL.md) |
 
 ## 三个优先成果
 
@@ -69,6 +70,7 @@ description: 组织研发、产品交互、视觉、架构、测试验收与运�
 - 细化职责分工时，读取[能力目录](references/role-capabilities.md)中的对应职责。
 - 检索、更新或复用项目资产时，读取[持续沉淀指南](references/project-asset-maintenance.md)。
 - 整理文档历史、总结或归档迭代时，读取[文档整理与归档](references/document-archive.md)；定时触发需用户授权建立调度。
+- 监控 Codex/ChatGPT 会话、判断进度/阻塞/完成或发送 Lark 摘要时，读取[会话监控 Skill](../codex-session-monitor/SKILL.md)；收件人、发送身份、监控范围和定期检查必须得到明确授权。
 - 选择执行者或委派职责工作时，读取[职责执行说明](references/codex-agent-configuration.md)。
 - 安装、更新或诊断 Plugin 时，读取[安装指南](../../docs/plugin.md)；不要求初始化 Agent。
 

@@ -1,6 +1,6 @@
 # Kimi 职责 Agent 与派发
 
-Kimi 插件入口为包根目录 `kimi.plugin.json`，明确扫描 `adapters/kimi/agents/` 的六个 Markdown Agent，并复用 `skills/` 的七个 Skills。Codex 安装仍只启用 Skills；`agents/*.toml` 是历史配置参考，不注册个人 Agent。双端职责入口由 `scripts/sync_host_agents.py` 从共用 Skill 元信息生成；专业规则只在 Skills/参考中维护。
+Kimi 插件入口为包根目录 `kimi.plugin.json`，明确扫描 `adapters/kimi/agents/` 的六个 Markdown Agent，并复用 `skills/` 的八个 Skills。Codex 安装仍只启用 Skills；`agents/*.toml` 是历史配置参考，不注册个人 Agent。双端职责入口由 `scripts/sync_host_agents.py` 从共用 Skill 元信息生成；专业规则只在 Skills/参考中维护。`codex-session-monitor` 是跨职责支撑 Skill，不生成额外 Agent，实际会话读取和 Lark 通知能力以宿主工具和本地授权为准。
 
 ## 发现与选择
 

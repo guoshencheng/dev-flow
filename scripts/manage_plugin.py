@@ -60,9 +60,9 @@ def validate_bundle(root):
             raise ValueError("安装包路径或内容不匹配：" + relative)
     check_host_agents(root)
     skills = sorted(p.parent.name for p in (root / "skills").glob("*/SKILL.md"))
-    expected = ["dev-acceptance", "dev-architecture", "dev-engineering", "dev-flow", "dev-operations", "dev-product", "dev-visual"]
+    expected = ["codex-session-monitor", "dev-acceptance", "dev-architecture", "dev-engineering", "dev-flow", "dev-operations", "dev-product", "dev-visual"]
     if skills != expected:
-        raise ValueError("插件应包含流程及六职责 Skills")
+        raise ValueError("插件应包含流程、六职责及跨职责支撑 Skills")
     return skills
 
 

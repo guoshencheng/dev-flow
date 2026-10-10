@@ -1,6 +1,6 @@
 # Codex / Kimi Plugin 安装与维护
 
-当前插件包含一个流程 Skill 和六个专业 Skills，共七个。职责方法通过共用 Skills 提供；Kimi 清单另外声明六个职责 Agent 入口。不需要 setup Agent，也不向个人 Agent 目录写入角色配置或维护全局指引。仓库 `agents/` 的 TOML 由同步脚本生成，仅保留为 Codex 配置参考，不参与当前安装或流程。项目长期资产留在所属项目。
+当前插件包含一个流程 Skill、六个专业 Skills 和一个跨职责会话监控 Skill，共八个。职责方法通过共用 Skills 提供；Kimi 清单另外声明六个职责 Agent 入口，会话监控不新增 Agent。不需要 setup Agent，也不向个人 Agent 目录写入角色配置或维护全局指引。仓库 `agents/` 的 TOML 由同步脚本生成，仅保留为 Codex 配置参考，不参与当前安装或流程。项目长期资产留在所属项目。
 
 ## Codex 安装、更新与检查
 
@@ -11,7 +11,7 @@ python3 scripts/manage_plugin.py install
 python3 scripts/manage_plugin.py check
 ```
 
-新文件先纳入 Git。install 构建 Git 管理的当前源码，排除依赖缓存、构建产物、本机运行数据与真实环境变量文件；注册本地 marketplace，并通过 Codex 安装/更新插件。它核验安装缓存指纹与七个 Skills，不创建原生 Agent、不写个人 AGENTS.md 或全局 Skill 链接。
+新文件先纳入 Git。install 构建 Git 管理的当前源码，排除依赖缓存、构建产物、本机运行数据与真实环境变量文件；注册本地 marketplace，并通过 Codex 安装/更新插件。它核验安装缓存指纹与八个 Skills，不创建原生 Agent、不写个人 AGENTS.md 或全局 Skill 链接。
 
 本机安装路径保存在源码仓库的 `.dev-flow/plugin-install.json`，只用于只读检查缓存；它不是项目资产或 Agent 初始化状态。`check` 核验实际启用、包内容和源码一致性。能力列表未刷新时在新会话核验发现，必要时重启宿主。
 
@@ -19,7 +19,7 @@ python3 scripts/manage_plugin.py check
 
 ## Kimi 安装与双端维护
 
-Kimi 原生清单为包根目录 `kimi.plugin.json`，提供同一套七 Skills 和 `adapters/kimi/agents/` 的六个 Markdown 职责 Agent。先同步入口，再构建；新文件先纳入 Git：
+Kimi 原生清单为包根目录 `kimi.plugin.json`，提供同一套八个 Skills 和 `adapters/kimi/agents/` 的六个 Markdown 职责 Agent。先同步入口，再构建；新文件先纳入 Git：
 
 ```sh
 python3 scripts/sync_host_agents.py --write
@@ -40,6 +40,10 @@ python3 scripts/manage_plugin.py build
 Kimi 安装/启用/移除使用其原生 `/plugins` 入口，当前 Python install/check/remove 仍专用于 Codex。Kimi 清单不自动加载流程、不配置额外 MCP/Hooks，不写个人 AGENTS.md 或 SYSTEM.md。解除使用 `/plugins remove dev-flow`。
 
 维护专业方法改 Skills/参考；职责名称/说明、插件身份与版本变化后运行同步脚本。生成器统一检查 Kimi 清单与两端职责入口，构建时过期即失败；不手工维护两份专业提示。
+
+## 会话监控 Skill
+
+`skills/codex-session-monitor/SKILL.md` 随插件提供，用于手动检查或在用户授权后跟踪 Codex/ChatGPT 会话的进度、完成、阻塞和待处理事项。它不包含 Lark 凭据、收件人、会话正文或定时器，也不自动创建调度。实例配置可使用本地 `.dev/lark-session-monitor-state.json` 或 Codex Automation；这些内容不进入 Git。发送 Lark 前必须有明确的收件人、发送身份和通知范围授权；会话监控的完成状态不能替代项目架构/测试资产检查或归档协议。
 
 ## 使用与解除
 
