@@ -3,7 +3,7 @@ import path from 'node:path'
 import matter from 'gray-matter'
 import { catalog, checkedFile, contentType } from './core.mjs'
 
-export function documentPlugin(ctx) {
+export function documentPlugin(ctx, template = {}) {
   const virtual = '\0virtual:design-mdx'
   return {
     name: 'dev-flow-documents',
@@ -39,7 +39,7 @@ export function documentPlugin(ctx) {
         if (req.method !== 'GET' && req.method !== 'HEAD') return json({ error: '只接受文档读取' }, 405)
         try {
           if (request.pathname === '/__docs/index') return json(await catalog(ctx))
-          if (request.pathname === '/__docs/health') return json({ kind: 'dev-flow-documents', project: ctx.project })
+          if (request.pathname === '/__docs/health') return json({ kind: 'dev-flow-documents', project: ctx.project, templateVersion: template.version || null, templateHash: template.hash || null })
           const match = request.pathname.match(/^\/__docs\/(file|source)\/(.+)$/)
           if (!match) return json({ error: '文档入口不存在' }, 404)
           const relative = decodeURIComponent(match[2])

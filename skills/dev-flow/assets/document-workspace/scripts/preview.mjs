@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import { execFileSync } from 'node:child_process'
+import { createHash, randomUUID } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
-import { randomUUID } from 'node:crypto'
 
 const workspace = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const args = process.argv.slice(2)
@@ -12,6 +13,55 @@ while (args.length) {
   const key = args.shift()
   if (!['--project', '--roots', '--port', '--file', '--to'].includes(key) || !args.length) throw new Error('用法：preview.mjs init|serve|url --project <项目> [--roots docs/dev-flow,design] [--port 0] [--file 项目相对路径]')
   options[key.slice(2)] = args.shift()
+}
+
+const dependencyMarkers = [
+  'node_modules/vite/package.json',
+  'node_modules/react/package.json',
+  'node_modules/gray-matter/package.json',
+  'node_modules/@vitejs/plugin-react/package.json',
+]
+
+async function exists(file) {
+  try { await fs.access(file); return true } catch { return false }
+}
+
+async function ensureDependencies() {
+  if (await Promise.all(dependencyMarkers.map((relative) => exists(path.join(workspace, relative)))).then((checks) => checks.every(Boolean))) return false
+  const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm'
+  console.error('首次使用文档预览，正在按锁文件准备共享阅读器依赖…')
+  try {
+    execFileSync(npm, ['ci', '--no-audit', '--no-fund'], { cwd: workspace, stdio: 'inherit' })
+  } catch (error) {
+    throw new Error(`文档预览依赖安装失败，请检查 Node/npm 和网络：${error.message}`)
+  }
+  return true
+}
+
+async function templateFingerprint() {
+  const hash = createHash('sha256')
+  async function visit(directory, prefix = '') {
+    const entries = await fs.readdir(directory, { withFileTypes: true })
+    entries.sort((a, b) => a.name.localeCompare(b.name))
+    for (const entry of entries) {
+      if (['node_modules', 'dist'].includes(entry.name)) continue
+      const relative = path.join(prefix, entry.name).split(path.sep).join('/')
+      const full = path.join(directory, entry.name)
+      if (entry.isDirectory()) await visit(full, relative)
+      else if (entry.isFile()) {
+        hash.update(relative)
+        hash.update('\0')
+        hash.update(await fs.readFile(full))
+      }
+    }
+  }
+  await visit(workspace)
+  return hash.digest('hex')
+}
+
+async function templateInfo() {
+  const packageInfo = JSON.parse(await fs.readFile(path.join(workspace, 'package.json'), 'utf8'))
+  return { version: String(packageInfo.version || 'unknown'), hash: await templateFingerprint() }
 }
 
 async function readRuntime(project) {
@@ -77,6 +127,7 @@ async function main() {
   if (command === 'url') {
     if (!options.file) throw new Error('url 需要 --file 项目相对路径')
     const runtime = await readRuntime(project)
+    await ensureDependencies()
     const { context, checkedFile, viewPath, rawPath } = await import('./core.mjs')
     const ctx = await context(project, runtime.roots)
     await checkedFile(ctx, options.file)
@@ -85,21 +136,26 @@ async function main() {
     const index = await indexResponse.json()
     const file = index.files.find((entry) => entry.path === options.file)
     if (!file) throw new Error('文档没有进入当前索引，请检查路径或索引上限')
-    console.log(JSON.stringify({ file: options.file, kind: file.kind, status: file.status, viewUrl: runtime.origin + viewPath(options.file), rawUrl: runtime.origin + rawPath(options.file), pid: runtime.pid }, null, 2))
+    console.log(JSON.stringify({ file: options.file, kind: file.kind, status: file.status, viewUrl: runtime.origin + viewPath(options.file), rawUrl: runtime.origin + rawPath(options.file), pid: runtime.pid, templateVersion: runtime.templateVersion, templateHash: runtime.templateHash }, null, 2))
     return
   }
   if (command !== 'serve') throw new Error('支持 init、serve、url')
   let active
   try { active = await readRuntime(project) } catch { /* 失效记录不作为可用服务。 */ }
   if (active) {
+    await ensureDependencies()
     const { context } = await import('./core.mjs')
     const requestedRoots = (await context(project, (options.roots || 'docs/dev-flow,design').split(','))).roots.map((root) => root.name)
     if (JSON.stringify(active.roots) !== JSON.stringify(requestedRoots)) throw new Error('已有文档服务使用不同根目录，请复用其入口或停止旧服务后重启')
     console.log(JSON.stringify({ reused: true, origin: active.origin, project, pid: active.pid }, null, 2))
     return
   }
+  await ensureDependencies()
+  const template = await templateInfo()
   process.env.DEV_FLOW_DOC_PROJECT = project
   process.env.DEV_FLOW_DOC_ROOTS = options.roots || 'docs/dev-flow,design'
+  process.env.DEV_FLOW_DOC_TEMPLATE_VERSION = template.version
+  process.env.DEV_FLOW_DOC_TEMPLATE_HASH = template.hash
   const { context } = await import('./core.mjs')
   const ctx = await context(project, process.env.DEV_FLOW_DOC_ROOTS.split(','))
   if (!ctx.roots.length) throw new Error('指定文档根目录均不存在；先创建本次文档或通过 --roots 指定已有目录')
@@ -118,7 +174,7 @@ async function main() {
   await server.listen()
   const origin = server.resolvedUrls?.local?.[0]?.replace(/\/$/, '')
   if (!origin) { await server.close(); throw new Error('无法获取 Vite 实际地址') }
-  const runtime = { schemaVersion: 1, kind: 'dev-flow-documents', instance, project, roots: ctx.roots.map((root) => root.name), origin, pid: process.pid, startedAt: new Date().toISOString() }
+  const runtime = { schemaVersion: 1, kind: 'dev-flow-documents', instance, project, roots: ctx.roots.map((root) => root.name), origin, pid: process.pid, templateVersion: template.version, templateHash: template.hash, startedAt: new Date().toISOString() }
   await fs.mkdir(path.dirname(runtimeFile), { recursive: true })
   await fs.writeFile(runtimeFile, JSON.stringify(runtime, null, 2) + '\n')
   const stop = async () => {

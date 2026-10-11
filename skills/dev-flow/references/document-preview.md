@@ -12,17 +12,27 @@
 
 ## 接入与实际启动
 
-优先复用项目已有有效文档工具。需要统一入口时可复制源码到项目；不依赖本仓库 npm 发布。以下命令中的项目绝对路径按本次实际工程替换，Node 满足工作区 engines，使用项目包管理器：
+优先复用项目已有有效文档工具。需要统一入口时，默认直接调用已安装 Skill 中的阅读器脚本，并显式传入项目目录；不依赖本仓库 npm 发布。以下命令中的项目绝对路径按本次实际工程替换，Node 满足工作区 engines：
 
 ```sh
 # 从宿主 Skill 列表取得实际绝对目录，替换下面的占位路径
 DEV_FLOW_SKILL_DIR="/实际安装目录/skills/dev-flow"
-# 脚本先将工程复制到项目，冲突时保留项目修改
+node "$DEV_FLOW_SKILL_DIR/assets/document-workspace/scripts/preview.mjs" \
+  serve --project /项目绝对路径 --roots docs/dev-flow,design --port 0
+```
+
+首次直启时脚本按 `package-lock.json` 在共享阅读器模板目录准备依赖；其他项目复用同一份依赖，不创建 `tools/design-docs`。项目只需保留文档源文件和 `.dev/previews/documents.json` 运行记录。运行记录和健康接口包含阅读器模板版本/指纹，便于核对实际候选。
+
+需要项目级修改阅读器或兼容旧项目时，仍可复制源码到项目：
+
+```sh
 node "$DEV_FLOW_SKILL_DIR/assets/document-workspace/scripts/preview.mjs" init --project /项目绝对路径
 cd /项目绝对路径/tools/design-docs
 npm ci
 npm run dev -- --project /项目绝对路径 --roots docs/dev-flow,design --port 0
 ```
+
+复制入口会先核验全文件集，发现已有不同内容时保留项目修改并终止，不自动覆盖。
 
 端口 0 请求空闲端口，程序读取 Vite 实际地址并写入该业务项目的 `.dev/previews/documents.json`。先根据项目文档索引确定实际目录，再用 `--roots` 指定逗号分隔的项目相对目录，例如 `docs,design`；这两个目录名只是示例。不存在的目录略过，全部不存在时先创建本次确需的项目文档或改用有效目录。默认只监听本机，读取范围限定到选定目录，原型资源需在相同范围内。
 

@@ -15,6 +15,15 @@ python3 scripts/manage_plugin.py check
 
 本机安装路径保存在源码仓库的 `.dev-flow/plugin-install.json`，只用于只读检查缓存；它不是项目资产或 Agent 初始化状态。`check` 核验实际启用、包内容和源码一致性。能力列表未刷新时在新会话核验发现，必要时重启宿主。
 
+共享文档预览默认不再复制到业务项目。使用已安装 `skills/dev-flow` 目录中的阅读器脚本，并传入项目目录和文档根目录：
+
+```sh
+node "$DEV_FLOW_SKILL_DIR/assets/document-workspace/scripts/preview.mjs" \
+  serve --project /项目绝对路径 --roots docs/dev-flow,design --port 0
+```
+
+脚本首次运行时按锁文件在插件模板目录准备依赖，后续项目共享该依赖；项目只保存文档源文件和 `.dev` 运行记录。需要项目级定制时才使用 `preview.mjs init` 复制兼容工程。
+
 源码远程为 [guoshencheng/dev-flow](https://github.com/guoshencheng/dev-flow)。新环境可克隆后执行上述命令；从其他安装入口使用插件时，按该宿主的安装/更新机制处理，均无需初始化 Agent。当前版本没有 MCP 服务、后台常驻进程或生命周期 Hooks。
 
 ## Kimi 安装与双端维护

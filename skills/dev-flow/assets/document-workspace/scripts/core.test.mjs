@@ -67,6 +67,9 @@ test('实际服务地址、MDX 编译、复用、读取范围、正常退出和�
       try { runtime = JSON.parse(await fs.readFile(record, 'utf8')); break } catch { if (child.exitCode !== null) throw new Error(output); await delay(50) }
     }
     assert.ok(runtime, output)
+    assert.equal(await fs.stat(path.join(project, 'tools/design-docs')).then(() => true, () => false), false)
+    assert.equal(runtime.templateVersion, '0.1.0')
+    assert.match(runtime.templateHash, /^[0-9a-f]{64}$/)
     // 旧服务仍存活时读取旧记录，不能因默认目录改变而重复启动服务。
     const legacyRecord = path.join(project, '.dev-flow/previews/documents.json')
     await fs.mkdir(path.dirname(legacyRecord), { recursive: true })
@@ -76,9 +79,14 @@ test('实际服务地址、MDX 编译、复用、读取范围、正常退出和�
     await fs.rename(legacyRecord, record)
     const url = JSON.parse(run('url', '--file', 'docs/dev-flow/中文 空格.md'))
     assert.equal(url.viewUrl, runtime.origin + viewPath('docs/dev-flow/中文 空格.md'))
+    assert.equal(url.templateVersion, runtime.templateVersion)
+    assert.equal(url.templateHash, runtime.templateHash)
     assert.equal(JSON.parse(run('serve', '--port', '0')).reused, true)
     const compiled = await fetch(runtime.origin + '/@fs' + project + '/docs/dev-flow/demo.mdx')
     assert.equal(compiled.status, 200); assert.match(await compiled.text(), /可运行 MDX/)
+    const health = await fetch(runtime.origin + '/__docs/health').then((response) => response.json())
+    assert.equal(health.templateVersion, runtime.templateVersion)
+    assert.equal(health.templateHash, runtime.templateHash)
     for (const route of ['/__docs/file/package.json', '/__docs/file/docs/dev-flow/missing.md', '/__docs/file/docs/dev-flow/%2E%2E%2F%2E%2E%2Fpackage.json', '/@fs/etc/passwd']) {
       assert.ok([400, 403, 404].includes((await fetch(runtime.origin + route)).status), route)
     }

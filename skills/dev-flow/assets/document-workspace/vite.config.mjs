@@ -10,12 +10,13 @@ import { context } from './scripts/core.mjs'
 import { documentPlugin } from './scripts/doc-server.mjs'
 
 const workspace = path.dirname(fileURLToPath(import.meta.url))
+const template = { version: process.env.DEV_FLOW_DOC_TEMPLATE_VERSION, hash: process.env.DEV_FLOW_DOC_TEMPLATE_HASH }
 export default defineConfig(async () => {
   const ctx = await context(process.env.DEV_FLOW_DOC_PROJECT || workspace, (process.env.DEV_FLOW_DOC_ROOTS || 'docs/dev-flow,design').split(','))
   return {
     root: workspace,
     publicDir: false,
-    plugins: [{ ...mdx({ include: /\.mdx$/, remarkPlugins: [remarkGfm, remarkFrontmatter], rehypePlugins: [rehypeSlug] }), enforce: 'pre' }, react({ include: /\.[jt]sx?$|\.mdx$/ }), documentPlugin(ctx)],
+    plugins: [{ ...mdx({ include: /\.mdx$/, remarkPlugins: [remarkGfm, remarkFrontmatter], rehypePlugins: [rehypeSlug] }), enforce: 'pre' }, react({ include: /\.[jt]sx?$|\.mdx$/ }), documentPlugin(ctx, template)],
     resolve: {
       dedupe: ['react', 'react-dom'],
       alias: { react: path.join(workspace, 'node_modules/react'), 'react-dom': path.join(workspace, 'node_modules/react-dom'), antd: path.join(workspace, 'node_modules/antd') },
