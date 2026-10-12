@@ -54,6 +54,10 @@ Kimi 安装/启用/移除使用其原生 `/plugins` 入口，当前 Python insta
 
 `skills/codex-session-monitor/SKILL.md` 随插件提供，用于手动检查或在用户授权后跟踪 Codex/ChatGPT 会话的进度、完成、阻塞和待处理事项。它不包含 Lark 凭据、收件人、会话正文或定时器，也不自动创建调度。实例配置可使用本地 `.dev/lark-session-monitor-state.json` 或 Codex Automation；这些内容不进入 Git。发送 Lark 前必须有明确的收件人、发送身份和通知范围授权；会话监控的完成状态不能替代项目架构/测试资产检查或归档协议。
 
+0.1.5 的[富文本进展规范](../skills/codex-session-monitor/references/progress-message-format.md)通过 `--markdown` 发送飞书 `post`：状态分组使用标题，会话原名加粗，四项内容使用列表，用户待办加粗。同一状态只设一个标题，默认按等待你处理、阻塞、执行中、本轮结束、已完成、暂时不可读取排列，空组省略；定期检查没有新增事件时保持安静。
+
+插件更新后，核对已有授权调度的 Skill 引用，避免继续读取历史缓存。优先通过宿主 Skill 发现加载当前启用的 `codex-session-monitor`；实例必须使用绝对路径时，同步为实际安装版本。使用宿主自动化工具更新现有实例，保留频率、收件人、身份、目标会话和通知条件，不将安装操作视为新调度或扩大通知范围的授权。
+
 ## 阶段状态核验
 
 插件提供[只读核验脚本](../skills/dev-flow/scripts/check_iteration.py)，由主 Agent 按[共同协议](../skills/dev-flow/references/stage-state.md)从已有迭代索引调用。它核验声明的输入版本、确认覆盖、Review 字段、依赖次序、候选及检查/证据观察范围；退出码支持区分通过、未完成和格式错误。需要实际可用的 Python 3.9+，无第三方运行依赖。
