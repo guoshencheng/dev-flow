@@ -1,6 +1,6 @@
 # dev-flow
 
-支持 Codex 与 Kimi 接入的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付，并提供跨职责会话监控。当前已有总纲 v0.24、六职责专业 Skills、会话监控 Skill、迭代状态只读核验、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。专业职责由主 Agent 或获准委派的可用子 Agent 承担，模型遵循本次用户要求与宿主策略；本地 Plugin 0.1.0 包装和接入方式见[安装指南](docs/plugin.md)及[验证记录](reviews/2026-10-09-setup-removal-and-task-routing.md)。工具、专业行为、实际委派与真实项目成熟度分别登记；完整真实任务和后续运行能力继续按实测需要建设。
+支持 Codex 与 Kimi 接入的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付，并提供跨职责会话监控。当前已有总纲 v0.24、六职责专业 Skills、会话监控 Skill、迭代状态只读核验、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。专业职责由主 Agent 或获准委派的可用子 Agent 承担，模型遵循本次用户要求与宿主策略；本地 Plugin 0.1.2 包装和接入方式见[安装指南](docs/plugin.md)及[验证记录](reviews/2026-10-09-setup-removal-and-task-routing.md)。工具、专业行为、实际委派与真实项目成熟度分别登记；完整真实任务和后续运行能力继续按实测需要建设。
 
 Kimi 插件提供六份独立职责 Agent 文档，与历史 Codex 角色参考从共用 Skills 生成；专业方法只维护一份。接入、派发与同步见 [Kimi 职责说明](docs/integrations/kimi-agent-configuration.md)。
 

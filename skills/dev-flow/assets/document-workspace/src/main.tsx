@@ -38,7 +38,7 @@ function buildDocumentTree(files: DocumentEntry[]) {
         node = isFile
           ? {
               key,
-              title: <span className="document-tree-file" title={file.path}><span>{file.title}</span><small>{segment} · {file.kind}</small></span>,
+              title: <span className="document-tree-file" data-document-path={file.path} title={file.path}><span>{file.title}</span><small>{segment} · {file.kind}</small></span>,
               isLeaf: true,
               nodeType: 'file',
               path: file.path,
@@ -118,7 +118,11 @@ function App() {
   const file = index?.files.find((entry) => entry.path === selected)
   const replacement = typeof file?.metadata.supersededBy === 'string' ? index?.files.find((entry) => entry.path === file.metadata.supersededBy) : undefined
   const visible = useMemo(() => index?.files.filter((entry) => (archives || !entry.path.includes('/archive/')) && (kind === 'all' || entry.kind === kind) && (entry.title + ' ' + entry.path).toLowerCase().includes(query.toLowerCase())) || [], [archives, index, kind, query])
-  const documentTree = useMemo(() => buildDocumentTree(visible.slice(0, 120)), [visible])
+  const treeFiles = useMemo(() => {
+    const entries = visible.slice(0, 120)
+    return file && !entries.some((entry) => entry.path === file.path) ? [...entries, file] : entries
+  }, [visible, file])
+  const documentTree = useMemo(() => buildDocumentTree(treeFiles), [treeFiles])
 
   useEffect(() => {
     if (index && !expandedInitialized) {
@@ -132,6 +136,31 @@ function App() {
     setExpandedKeys((current) => Array.from(new Set([...current, ...documentTree.directoryKeys])))
   }, [documentTree.directoryKeys, query])
 
+  // 当前预览始终可定位，其他目录仍保留用户的展开状态。
+  useEffect(() => {
+    if (!file) return
+    const segments = file.path.split('/')
+    const ancestors = segments.slice(0, -1).map((_, index) => `directory:${segments.slice(0, index + 1).join('/')}`)
+    setExpandedKeys((current) => Array.from(new Set([...current, ...ancestors])))
+  }, [file, menuOpen])
+
+  useEffect(() => {
+    if (!file) return
+    const frame = requestAnimationFrame(() => {
+      document.querySelectorAll<HTMLElement>('[data-document-path]').forEach((node) => {
+        if (node.dataset.documentPath !== file.path || !node.getClientRects().length) return
+        const container = node.closest<HTMLElement>('.sidebar, .ant-drawer-body')
+        if (!container) return
+        const row = node.getBoundingClientRect()
+        const viewport = container.getBoundingClientRect()
+        if (row.top < viewport.top || row.bottom > viewport.bottom) {
+          container.scrollTop += row.top - viewport.top - (viewport.height - row.height) / 2
+        }
+      })
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [file, expandedKeys, menuOpen, documentTree])
+
   const navigate = (next: string) => {
     const entry = index?.files.find((item) => item.path === next)
     if (!entry) return
@@ -142,11 +171,13 @@ function App() {
     <Select aria-label="文档格式" value={kind} onChange={setKind} options={[{ value: 'all', label: '全部格式' }, ...Array.from(new Set(index?.files.map((item) => item.kind))).map((value) => ({ value, label: value }))]} />
     <Space className="archive-option"><Switch checked={archives} onChange={setArchives} size="small" aria-label="显示归档" /><span>显示归档</span></Space>
     <p className="muted">{visible.length} 份资料{visible.length > 120 ? ' · 目录展示前 120 份，请搜索' : ''}</p>
-    {index && (visible.length ? <Tree
+    {file && !visible.some((entry) => entry.path === file.path) && <p className="muted">当前预览文档仍显示在目录中</p>}
+    {index && (treeFiles.length ? <Tree
       aria-label="文档目录"
       className="document-tree"
       treeData={documentTree.treeData}
       blockNode
+      motion={null}
       showLine
       selectedKeys={selected ? [selected] : []}
       expandedKeys={expandedKeys.filter((key) => documentTree.directoryKeys.includes(String(key)))}
@@ -154,7 +185,7 @@ function App() {
       onExpand={(keys) => setExpandedKeys(keys)}
       onSelect={(keys) => {
         const next = keys[0]
-        if (typeof next === 'string' && visible.some((item) => item.path === next)) navigate(next)
+        if (typeof next === 'string' && treeFiles.some((item) => item.path === next)) navigate(next)
       }}
     /> : <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="没有匹配的资料" />)}
   </nav>
