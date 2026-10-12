@@ -49,6 +49,8 @@ owner: engineering
 
 ## 验证与后续
 
+2026-10-12 将[代码收尾](../skills/dev-flow/references/git-and-worktree.md#代码收尾)接入“开始收尾”，研发整理本轮完整变更，核对 Review/必要验证、相关源码/测试/文档保存与集成交付，保留无关修改并交接资源状态。方法与模板已同步，验证范围见[收尾记录](../reviews/2026-10-12-code-closeout.md)；不据此登记真实项目收尾或独立角色行为已通过。
+
 2026-10-12 将正式实施前的状态恢复、确认覆盖和有效计划复核统一引用[共同执行协议](../skills/dev-flow/references/execution-contract.md#按当前状态推进)，并提供[迭代索引核验](../skills/dev-flow/references/stage-state.md)。这是记录一致性工具及方法更新，实际边界见[验证记录](../evals/dev-flow-stages/report.md)，不登记新增独立角色行为或真实功能协作通过。
 
 v0.3 补[测试先行与回归有效性](../skills/dev-engineering/references/test-first-and-regression.md)、假设/控制实验诊断和[实现评审意见处理](../skills/dev-engineering/references/review-feedback.md)，计划与交接关联目标行为、失败/通过证据和测试位置。研发主责必要局部测试，验收核验证据与实际复验；低影响任务按对象裁剪。

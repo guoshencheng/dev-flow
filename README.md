@@ -1,6 +1,6 @@
 # dev-flow
 
-支持 Codex 与 Kimi 接入的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付，并提供跨职责会话监控。当前已有总纲 v0.24、六职责专业 Skills、会话监控 Skill、迭代状态只读核验、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。专业职责由主 Agent 或获准委派的可用子 Agent 承担，模型遵循本次用户要求与宿主策略；本地 Plugin 0.1.5 包装和接入方式见[安装指南](docs/plugin.md)及[验证记录](reviews/2026-10-09-setup-removal-and-task-routing.md)。工具、专业行为、实际委派与真实项目成熟度分别登记；完整真实任务和后续运行能力继续按实测需要建设。
+支持 Codex 与 Kimi 接入的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付，并提供跨职责会话监控。当前已有总纲 v0.27、六职责专业 Skills、会话监控 Skill、含实施授权检查的迭代状态只读核验、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。专业职责由主 Agent 或获准委派的可用子 Agent 承担，模型遵循本次用户要求与宿主策略；本地 Plugin 0.2.2 包装和接入方式见[安装指南](docs/plugin.md)。快速路径也须先取得用户实施同意，旧记录需关联真实授权；影响及验证见[授权调整记录](reviews/2026-10-12-implementation-authorization.md)。“开始收尾”覆盖代码整理、验证、保存与文档沉淀，见[代码收尾记录](reviews/2026-10-12-code-closeout.md)和[文档收尾记录](reviews/2026-10-12-iteration-closeout.md)。工具、专业行为、实际委派与真实项目成熟度分别登记；完整真实任务和后续运行能力继续按实测需要建设。
 
 Kimi 插件提供六份独立职责 Agent 文档，与历史 Codex 角色参考从共用 Skills 生成；专业方法只维护一份。接入、派发与同步见 [Kimi 职责说明](docs/integrations/kimi-agent-configuration.md)。
 
@@ -29,6 +29,8 @@ Kimi 插件提供六份独立职责 Agent 文档，与历史 Codex 角色参考�
 - [Ant Design 能力联用](skills/dev-visual/references/ant-design-capabilities.md)：B 端优先官方现成组件，按需联合官方 Skill、CLI 或 MCP，支持任务范围内自主接入；[临时项目核验记录](evals/dev-product/runs/2026-10-08/ant-design-capabilities/report.md)。
 - [职责能力目录](skills/dev-flow/references/role-capabilities.md)：六职责四十八项能力与执行契约。
 - [项目迭代目录协议](skills/dev-flow/references/design-document-contract.md)：每轮集中保存各阶段产物，项目级基线持续复用；[迭代索引模板](skills/dev-flow/assets/templates/iteration-index.md)。
+- [迭代收尾与归档](skills/dev-flow/references/document-archive.md#一条指令收尾当前迭代)：一条指令完成代码与文档收尾，同步相关资产、总结、遗留和项目入口，核验后逻辑归档。
+- [代码收尾](skills/dev-flow/references/git-and-worktree.md#代码收尾)：本轮代码整理、完整 Review、必要验证与本地保存，以及已授权的集成交付和资源交接。
 - [项目资产持续沉淀](skills/dev-flow/references/project-asset-maintenance.md)：现行资产、更新、有效性与后续复用。
 - [分支、worktree、验证与合并](skills/dev-flow/references/git-and-worktree.md)：何时分支/隔离、阶段验证、合并条件与清理。
 - [subagent 使用建议](skills/dev-flow/references/subagent-guidance.md)：两类流程的执行者选择、独立 Review、并行边界与集成责任。
@@ -49,6 +51,14 @@ python3 scripts/manage_plugin.py check
 ```
 
 插件包含八个 Skills：流程入口、六个职责 Skill，以及跨职责的会话监控 Skill。没有 setup Agent 步骤，安装不注册个人角色或改写全局指引。使用 `$dev-flow` 按[任务路由](skills/dev-flow/references/task-routing.md)选择 bugfix、正常需求、系统变更或故障流程；需要监控 Codex/ChatGPT 会话时按授权加载会话监控 Skill。模型由宿主与用户本次要求决定。Kimi 使用原生插件安装与 `/skill:dev-flow`，安装详情见[指南](docs/plugin.md)。
+
+迭代收尾直接说：
+
+```text
+开始收尾
+```
+
+也可显式说 `使用 $dev-flow 收尾当前迭代`。流程会定位当前项目与本轮，整理相关代码、核对完整 Review 和必要测试/构建，修复并复验原授权范围内的阻断项；同步文档与长期资产，相关成果按项目约定保存。无其他约定时形成本轮相关本地提交，推送/PR/合并/发布按已有授权推进；核验后逻辑归档，交接版本、实际结果和资源状态。缺少必需验收或交付证据时保留未完成状态；明确只整理文档时裁剪代码动作。正常交付包含这项收尾，重复调用只处理新增变化，不生成空提交。
 
 ## 下一项建设
 

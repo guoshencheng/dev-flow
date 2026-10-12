@@ -60,6 +60,10 @@ Kimi 安装/启用/移除使用其原生 `/plugins` 入口，当前 Python insta
 
 ## 阶段状态核验
 
+Plugin 0.2.0、总纲 v0.25 和执行协议 v0.12 新增[首次实施人工同意](../skills/dev-flow/references/execution-contract.md#首次实施的人工同意)，快速路径也先展示实施摘要并取得同意；已有同一范围明确授权持续有效。核验器要求含正式实现的 scope 关联有效 confirmation，其 `authorizes` 明确覆盖范围。一般设计确认、AI Review、未关联或不适用不能替代开工同意。
+
+这是对旧实施/完成核验条件的不兼容收紧，因此递增 minor。schema 仍为 1，旧记录缺少实施授权会保持未就绪；有真实历史同意时引用其摘要、版本、来源和答复，无需重复询问；没有则保持 pending，禁止倒填授权。只评审/设计等无正式实现范围无需开工同意。完整影响和验证见[调整记录](../reviews/2026-10-12-implementation-authorization.md)。
+
 插件提供[只读核验脚本](../skills/dev-flow/scripts/check_iteration.py)，由主 Agent 按[共同协议](../skills/dev-flow/references/stage-state.md)从已有迭代索引调用。它核验声明的输入版本、确认覆盖、Review 字段、依赖次序、候选及检查/证据观察范围；退出码支持区分通过、未完成和格式错误。需要实际可用的 Python 3.9+，无第三方运行依赖。
 
 这项能力不是自动 Hooks 或 MCP 拦截，不会自行调用、不修改项目、不证明真实执行或语义完整。核验器契约测试、新上下文行为及真实项目验收分别登记，见[验证记录](../evals/dev-flow-stages/report.md)。新文件须纳入 Git 管理后才能随现有 install 打包，安装不改变 Agent 或用户指引。
@@ -67,6 +71,10 @@ Kimi 安装/启用/移除使用其原生 `/plugins` 入口，当前 Python insta
 ## 使用与解除
 
 使用 `$dev-flow` 或选择插件，按[任务路由](../skills/dev-flow/references/task-routing.md)处理 bugfix 或正常需求。主 Agent 读取所需专业 Skill；需要且获准委派时，向实际可用子 Agent 提供专业 Skill 路径与明确任务。模型遵循用户及宿主本次约束。
+
+Plugin 0.2.1、总纲 v0.26 明确现有 $dev-flow 的[一条指令收尾](../skills/dev-flow/references/document-archive.md#一条指令收尾当前迭代)入口：`使用 $dev-flow 收尾当前迭代，把文档和长期资产沉淀好。` 正常交付已包含文档收尾；补做时直接同步相关资产、总结、遗留与项目入口并核验归档条件，不重启实施流程。八个 Skills 和状态 schema 保持不变，属于兼容的方法维护，验证见[收尾记录](../reviews/2026-10-12-iteration-closeout.md)。
+
+Plugin 0.2.2、总纲 v0.27 将既有代码/验证/集成方法接入收尾，直接说“开始收尾”默认包含[代码收尾](../skills/dev-flow/references/git-and-worktree.md#代码收尾)和文档沉淀。相关成果无其他约定时形成本地提交，保留无关修改；推送/PR/合并/发布沿用已有授权，仅文档任务裁剪代码动作。八个 Skills、状态 schema 和安装行为不变，属于兼容方法维护；范围和证据见[代码收尾记录](../reviews/2026-10-12-code-closeout.md)。
 
 ```sh
 python3 scripts/manage_plugin.py remove

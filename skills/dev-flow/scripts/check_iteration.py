@@ -92,6 +92,10 @@ def validate(state):
         require(isinstance(gate.get("kind"), str) and gate["kind"] in KINDS, "未知 gate.kind：" + gate["id"])
         require(isinstance(gate.get("status"), str) and gate["status"] in STATUSES, "未知 gate.status：" + gate["id"])
         string(gate.get("stage"), "gate.stage")
+        if "authorizes" in gate:
+            require(gate["kind"] == "confirmation", "只有用户 confirmation 可声明实施授权")
+            strings(gate["authorizes"], "gate.authorizes")
+            require(set(gate["authorizes"]) <= scopes.keys(), "实施授权引用了不存在的 scope")
         require(isinstance(gate.get("inputs"), dict), "gate.inputs 必须是版本映射")
         require(set(gate["inputs"]) <= artifacts.keys(), "gate.inputs 引用了不存在的 artifact")
         for version in gate["inputs"].values():
@@ -276,6 +280,18 @@ def inspect(state, root, selected=None):
         route_issues = []
         if scope["route"] == "undecided" or not scope["reason"].strip():
             route_issues.append({"gate": "route", "reason": "先确定任务路径、范围与裁剪依据"})
+        # 路径和 AI Review 不构成开工同意。允许授权与设计/用例确认合并，
+        # 但必须显式覆盖本范围、纳入实施前依赖，并有有效 passed 用户记录。
+        if scope["implementation"]:
+            authorization_ids = sorted(g for g in closure(pre_ids)
+                                       if scope_id in gates[g].get("authorizes", []))
+            if not authorization_ids:
+                route_issues.append({"gate": "implementation-authorization",
+                                     "reason": "缺少纳入实施前依赖的用户实施授权"})
+            elif not any(gates[g]["status"] == "passed" and not problems(g)
+                         for g in authorization_ids):
+                route_issues.append({"gate": authorization_ids[0],
+                                     "reason": "实施授权须为有效用户同意，不能以未答复或不适用放行"})
         pre = route_issues + [{"gate": g, "reason": issue} for g in pre_ids for issue in problems(g)]
         finish = route_issues + [{"gate": g, "reason": issue} for g in finish_ids for issue in problems(g)]
         for case_id, case in cases.items():
@@ -296,7 +312,8 @@ def inspect(state, root, selected=None):
             "can_start_implementation": can_start, "can_finish": can_finish,
             "blocking_items": finish,
             "current_stage": "ready_to_finish" if can_finish else
-            gates[blockers[0]["gate"]]["stage"] if blockers[0]["gate"] in gates else "routing",
+            gates[blockers[0]["gate"]]["stage"] if blockers[0]["gate"] in gates else
+            "implementation-authorization" if blockers[0]["gate"] == "implementation-authorization" else "routing",
             "next_action": "核验目标成果并更新项目入口后结束" if can_finish else
             ("继续已授权实现/复验，补齐 " if can_start else "完成 ") +
             blockers[0]["gate"] + "：" + blockers[0]["reason"]}

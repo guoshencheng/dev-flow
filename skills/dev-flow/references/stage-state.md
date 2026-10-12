@@ -19,7 +19,7 @@
 | `gates` | 本次需核验的确认、Review 和真实检查，见下表 |
 | `cases` | `id`、`scope`、`required_checks`；用户用例关联的全部必需 check ID；无用例的文档/探索任务允许 `[]` |
 
-`route` 取 `quick/standard/system/incident/exploration`；尚未决定用 `undecided`，核验不给实施/结束通过。`reason` 说明目标、影响、复用/裁剪及验证依据；`implementation` 表示本次是否包含正式实现。前置/完成列表由主 Agent 按执行协议确定，**脚本不会自动补齐遗漏的前置**。混合任务逐范围登记，不把一条局部更名路径套到新增平台。完整候选的整体 Review、集成与交付检查仍须列入相关范围的完成列表。
+`route` 取 `quick/standard/system/incident/exploration`；尚未决定用 `undecided`，核验不给实施/结束通过。`reason` 说明目标、影响、复用/裁剪及验证依据；`implementation` 表示本次是否包含正式实现。前置/完成列表由主 Agent 按执行协议确定；脚本固定检查含正式实现范围的用户实施授权，**其他遗漏的设计/用例等前置不会自动补齐**。混合任务逐范围登记，不把一条局部更名路径套到新增平台。完整候选的整体 Review、集成与交付检查仍须列入相关范围的完成列表。
 
 `before_implementation` 引用正式编码需要的有效确认和 Review；`before_finish` 引用当前候选必须通过的实现 Review、验收、交付及必要资产同步检查。用户 TC 的 `required_checks` 自动加入完成核验，不能仅删掉完成列表中的检查就使 TC 通过。不适用阶段可以不建 gate 并在路径依据中说明；如需显式登记不适用，也须引用实际理由记录。
 
@@ -41,6 +41,7 @@
 ### 确认、Review 与证据
 
 - **confirmation**：提供 `source`（用户消息/既有确认来源）、`quote`（必要原话）。`coverage` 只列答复明确支持的内容，不能从“按此布局”推导其他规则/用例已确认；待决内容保留在正文。已有有效确认引用原来源，不再问一次。
+- **实施授权**：含正式实现的 scope，必须在 `before_implementation` 或其 `after` 依赖中关联有效、passed 的 confirmation；该确认的 `authorizes: ["scope-ID"]` 明确覆盖本范围。仅 confirmation 可声明 `authorizes`，列表成员须为已登记 scope；普通设计确认、AI Review、未关联或不适用授权均不能放行。可在同一 gate 合并设计/用例和多个范围的实施同意，仍须分别核对其他前置。`inputs` 绑定已展示范围/预期/验证/交付的摘要或规格版本，`record/source/quote` 引用真实答复；范围变化更新受影响输入版本与授权，不能保留旧版本假装有效。
 - **review**：提供 `actor`、`mode`（`self/independent/delegated`）、`checks`（具体核对项）和 `findings`（明确零发现写 `[]`）。发现项含 `text`、`severity: blocking/nonblocking`、`status: open/closed`；开放阻断项不能 passed。检查视角和结论依据按实际填写，不以角色名称或“自查通过”代替执行。
 - **check**：提供 `expects` 与 `evidence`。每项 expects 含 `kind` 和非空 `observations`，表示用例真正需要的证据与观察；每项 evidence 含 `path`、`kind`、`observations`、`inputs`，候选检查另含 `candidate`。证据文件须存在，输入与 gate 一致，观察项必须在**相同 kind** 的有效证据中全部出现。
 
@@ -57,6 +58,8 @@ kind 取 `prototype/native-ui/web-ui/api/service/unit/artifact/other`，是证�
 未受影响的结果可以引用影响分析复用：gate 保留原 `candidate` 和证据候选，增加 `reuse: {"from_candidate": "旧候选", "to_candidate": "当前候选", "reason": "实现、输入与环境未变的具体依据", "record": "实际依据路径"}`。输入仍须匹配现行版本；脚本检查声明的一致性，不证明复用理由成立。复用不删除历史失败、不直接覆盖旧证据，也不替代最终整体集成检查。
 
 ## 调用与结果
+
+Plugin 0.2.0 起新增实施授权核验，状态格式仍为 schema 1。旧记录缺少 `authorizes` 不再获得正式实施/完成通过；恢复已有真实开工同意时引用原答复、展示范围与有效版本，不倒填历史授权，也不为格式再次问用户。没有同意则保持 pending，展示摘要后请求确认。`implementation: false` 的纯评审/设计等范围不需要开工授权，不能将实际实现错误标为 false 规避检查。
 
 从本 Skill 所在目录定位脚本，使用宿主实际可用的 Python 3.9+。设 `PLUGIN_ROOT` 为当前已启用插件根目录、`PROJECT_ROOT` 为实际业务项目根目录，路径有空格时保留引号：
 

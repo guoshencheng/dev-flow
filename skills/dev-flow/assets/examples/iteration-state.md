@@ -4,7 +4,7 @@
 
 本例将规格、简短计划/自查和结果合并在同一文件；不新增 UI、架构、人工计划审批或部署。它仅演示字段、读取与汇总，不演示完整新功能的必需前置。
 
-示例规格/计划 v1：整理一份已有记录的文案，不改变行为；针对检查和源码交付合并核验。示例 Review：执行者为主 Agent，方式为自查；核对原预期、变更范围和定向验证，没有发现。示例结果：仅有合成的 example-check 观察，不能推导实际用户行为验证。
+示例规格/计划 v1：整理一份已有记录的文案，不改变行为；针对检查和源码交付合并核验。示例 Review：执行者为主 Agent，方式为自查；核对原预期、变更范围和定向验证，没有发现。示例实施摘要：快速路径只整理已有记录文案，定向检查后交付源码；示例用户答复为“同意按这个范围开始修改并验证交付”。这是假设的合成授权，不可登记为真实同意。示例结果：仅有合成的 example-check 观察，不能推导实际用户行为验证。
 
 ```dev-flow-state
 {
@@ -13,7 +13,7 @@
   "scopes": [{
     "id": "local", "route": "quick", "implementation": true,
     "reason": "示例：既有预期内局部修改，合并简短计划和针对验证；不涉及新体验或部署",
-    "before_implementation": ["plan-review"], "before_finish": ["result-check"]
+    "before_implementation": ["plan-review", "implementation-authorize"], "before_finish": ["result-check"]
   }],
   "artifacts": [{"id": "local-spec", "path": "iteration-state.md", "version": "v1"}],
   "gates": [
@@ -25,9 +25,16 @@
       "checks": ["原预期和局部影响核对", "针对验证及交付范围核对"], "findings": []
     },
     {
+      "id": "implementation-authorize", "kind": "confirmation", "stage": "implementation-authorization",
+      "status": "passed", "authorizes": ["local"],
+      "inputs": {"local-spec": "v1"}, "required_coverage": ["RULE-local"], "coverage": ["RULE-local"],
+      "after": ["plan-review"], "record": "iteration-state.md", "completed_at": "2026-10-12T10:30:00+08:00",
+      "source": "合成示例用户消息", "quote": "同意按这个范围开始修改并验证交付"
+    },
+    {
       "id": "result-check", "kind": "check", "stage": "acceptance", "status": "passed",
       "inputs": {"local-spec": "v1"}, "required_coverage": ["TC-local"], "coverage": ["TC-local"],
-      "after": ["plan-review"], "record": "iteration-state.md", "completed_at": "2026-10-12T11:00:00+08:00",
+      "after": ["implementation-authorize"], "record": "iteration-state.md", "completed_at": "2026-10-12T11:00:00+08:00",
       "candidate": "EXAMPLE-C1",
       "expects": [{"kind": "other", "observations": ["example-check"]}],
       "evidence": [{"kind": "other", "observations": ["example-check"], "path": "iteration-state.md",

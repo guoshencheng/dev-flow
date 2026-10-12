@@ -38,11 +38,14 @@ def quick_state():
     return {"schema_version": 1, "candidate": "C1",
             "scopes": [{"id": "rename", "route": "quick", "implementation": True,
                         "reason": "按钮文案修改，已有行为和验收含义不变；局部渲染检查兼验源码交付",
-                        "before_implementation": ["plan-review"],
+                        "before_implementation": ["plan-review", "implementation-authorize"],
                         "before_finish": ["result-check"]}],
             "artifacts": [{"id": "spec", "path": "index.md", "version": "v1"}],
             "gates": [gate("plan-review", "review", ["rename"]),
-                      gate("result-check", "check", ["rename"])],
+                      gate("result-check", "check", ["rename"]),
+                      gate("implementation-authorize", "confirmation", ["rename"],
+                           stage="implementation-authorization", after=["plan-review"],
+                           authorizes=["rename"], quote="同意按此范围开始修改并验证交付")],
             "cases": [{"id": "TC-rename", "scope": "rename", "required_checks": ["result-check"]}]}
 
 
@@ -66,7 +69,8 @@ def mixed_state():
              stage="solution", after=["design-confirm"],
              checks=["产品：原规格与 OUT 双向覆盖", "UI：手机入口与恢复状态", "架构：沿用桌面契约"]),
         gate("cases-review", "review", ["TC-mobile"], stage="cases", after=["solution-review"]),
-        gate("cases-confirm", "confirmation", ["TC-mobile"], stage="cases", after=["cases-review"]),
+        gate("cases-confirm", "confirmation", ["TC-mobile"], stage="cases", after=["cases-review"],
+             authorizes=["mobile"], quote="同意这些用例预期，计划 AI 复核通过后开始实施"),
         gate("mobile-plan", "review", ["TC-mobile", "OUT-mobile"], after=["cases-confirm"]),
         gate("implementation-review", "review", ["OUT-mobile"], stage="implementation",
              candidate="C1", after=["mobile-plan"]),
@@ -97,6 +101,65 @@ class IterationChecksTest(unittest.TestCase):
     def reasons(self, result):
         return "\n".join(i["reason"] for i in result["blocking_items"])
 
+    def test_implementation_routes_require_explicit_user_authorization(self):
+        for route in ("quick", "standard", "system", "incident", "exploration"):
+            with self.subTest(route=route):
+                state = quick_state()
+                state["scopes"][0]["route"] = route
+                for item in state["gates"]:
+                    item.pop("authorizes", None)
+                result = self.inspect(state)
+                self.assertFalse(result["can_start_implementation"])
+                self.assertFalse(result["can_finish"])
+                self.assertIn("实施授权", self.reasons(result))
+
+    def test_design_confirmation_alone_does_not_authorize_implementation(self):
+        state = quick_state()
+        for item in state["gates"]:
+            item.pop("authorizes", None)
+        state["gates"].append(gate("design-only", "confirmation", ["rename"],
+                                  quote="同意文案展示"))
+        state["scopes"][0]["before_implementation"].append("design-only")
+        self.assertFalse(self.inspect(state)["can_start_implementation"])
+
+    def test_unlinked_authorization_does_not_allow_implementation(self):
+        state = quick_state()
+        state["scopes"][0]["before_implementation"] = ["plan-review"]
+        state["gates"].append(gate("unlinked", "confirmation", ["rename"], authorizes=["rename"],
+                                  quote="同意按此范围开始实现"))
+        self.assertFalse(self.inspect(state)["can_start_implementation"])
+
+    def test_authorization_cannot_be_marked_not_applicable(self):
+        state = quick_state()
+        state["gates"].append(gate("skip-authorization", "confirmation", ["rename"],
+                                  authorizes=["rename"], status="not_applicable",
+                                  reason="局部可逆修改", quote=""))
+        state["scopes"][0]["before_implementation"] = ["plan-review", "skip-authorization"]
+        self.assertFalse(self.inspect(state)["can_start_implementation"])
+
+    def test_authorization_is_bound_to_each_scope(self):
+        state = mixed_state()
+        for item in state["gates"]:
+            item.pop("authorizes", None)
+        state["gates"].append(gate("rename-start", "confirmation", ["rename"],
+                                  authorizes=["rename"], quote="只同意开始更名"))
+        state["scopes"][0]["before_implementation"].append("rename-start")
+        state["scopes"][1]["before_implementation"].append("rename-start")
+        result = self.inspect(state)
+        self.assertTrue(result["scopes"]["rename"]["can_start_implementation"])
+        self.assertFalse(result["scopes"]["mobile"]["can_start_implementation"])
+        self.assertTrue(self.inspect(state, ["rename"])["can_finish"])
+
+    def test_only_user_confirmation_can_declare_known_authorized_scopes(self):
+        for item in (gate("invalid", "review", ["rename"], authorizes=["rename"]),
+                     gate("invalid", "confirmation", ["rename"], authorizes=["missing"]),
+                     gate("invalid", "confirmation", ["rename"], authorizes="rename")):
+            with self.subTest(item=item):
+                state = quick_state()
+                state["gates"].append(item)
+                with self.assertRaises(checks.StateError):
+                    self.inspect(state)
+
     def test_small_fix_self_review_combined_document_no_extra_approvals(self):
         result = self.inspect(quick_state())
         self.assertTrue(result["can_start_implementation"])
@@ -115,7 +178,8 @@ class IterationChecksTest(unittest.TestCase):
         confirmation = self.find(state, "design-confirm")
         confirmation.update(after=["cases-review"], required_coverage=["RULE-mobile", "UI-phone", "TC-mobile"],
                             coverage=["RULE-mobile", "UI-phone", "TC-mobile"],
-                            quote="同意这份设计、手机布局和列出的用例预期")
+                            authorizes=["mobile"],
+                            quote="同意这份设计、手机布局和列出的用例预期，计划复核通过后开始实施")
         state["gates"] = [g for g in state["gates"] if g["id"] != "cases-confirm"]
         self.find(state, "mobile-plan")["after"] = ["design-confirm"]
         mobile = state["scopes"][1]
@@ -127,6 +191,36 @@ class IterationChecksTest(unittest.TestCase):
         self.find(state, "design-preview")["completed_at"] = "2026-10-01T08:00:00+08:00"
         self.find(state, "design-confirm").update(completed_at="2026-10-01T09:00:00+08:00",
                                                  source="有效历史规格 v1 的用户确认")
+        self.assertTrue(self.inspect(state)["can_start_implementation"])
+
+    def test_authorization_can_be_reused_and_transitively_required(self):
+        state = quick_state()
+        authorization = self.find(state, "implementation-authorize")
+        authorization.update(after=[], completed_at="2026-10-01T09:00:00+08:00",
+                             source="已展示同一范围的历史实施同意")
+        self.find(state, "plan-review")["after"] = ["implementation-authorize"]
+        state["scopes"][0]["before_implementation"] = ["plan-review"]
+        self.assertTrue(self.inspect(state)["can_start_implementation"])
+        authorization["status"] = "pending"
+        self.assertFalse(self.inspect(state)["can_start_implementation"])
+
+    def test_authorization_input_change_requires_affected_confirmation(self):
+        state = quick_state()
+        state["artifacts"].append({"id": "scope-summary", "path": "index.md", "version": "v2"})
+        self.find(state, "implementation-authorize")["inputs"] = {"scope-summary": "v1"}
+        result = self.inspect(state)
+        self.assertFalse(result["can_start_implementation"])
+        self.assertIn("scope-summary", self.reasons(result))
+
+    def test_one_reply_can_authorize_multiple_explicit_scopes(self):
+        state = mixed_state()
+        for item in state["gates"]:
+            item.pop("authorizes", None)
+        state["gates"].append(gate("combined-start", "confirmation", ["rename", "TC-mobile"],
+                                  authorizes=["rename", "mobile"], after=["plan-review", "cases-review"],
+                                  quote="同意更名和手机范围及预期，计划复核后开始"))
+        for scope in state["scopes"]:
+            scope["before_implementation"].append("combined-start")
         self.assertTrue(self.inspect(state)["can_start_implementation"])
 
     def test_narrow_layout_reply_does_not_confirm_rules_and_cases(self):
@@ -263,6 +357,8 @@ class IterationChecksTest(unittest.TestCase):
     def test_no_implementation_task_has_no_implementation_permission(self):
         state = quick_state()
         state["scopes"][0]["implementation"] = False
+        state["scopes"][0]["before_implementation"] = ["plan-review"]
+        self.find(state, "implementation-authorize")["status"] = "pending"
         result = self.inspect(state)
         self.assertFalse(result["can_start_implementation"])
         self.assertTrue(result["can_finish"])
