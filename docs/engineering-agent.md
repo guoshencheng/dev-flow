@@ -49,6 +49,8 @@ owner: engineering
 
 ## 验证与后续
 
+2026-10-12 将正式实施前的状态恢复、确认覆盖和有效计划复核统一引用[共同执行协议](../skills/dev-flow/references/execution-contract.md#按当前状态推进)，并提供[迭代索引核验](../skills/dev-flow/references/stage-state.md)。这是记录一致性工具及方法更新，实际边界见[验证记录](../evals/dev-flow-stages/report.md)，不登记新增独立角色行为或真实功能协作通过。
+
 v0.3 补[测试先行与回归有效性](../skills/dev-engineering/references/test-first-and-regression.md)、假设/控制实验诊断和[实现评审意见处理](../skills/dev-engineering/references/review-feedback.md)，计划与交接关联目标行为、失败/通过证据和测试位置。研发主责必要局部测试，验收核验证据与实际复验；低影响任务按对象裁剪。
 
 2026-10-09 的[隔离行为评测](../evals/dev-flow-methods/report.md)已记录独立上下文中的先测后实现、事后补测旧红/新绿、无效测试与语法失败识别、三类保存丢失实验诊断及意见修复/反驳/澄清。主 Agent 复跑 T/D，R01 原评审者独立于研发实现作定向复评。宿主无文件级输入隔离，记录派发范围与实际读取声明；不等同强制沙箱盲测、生产能力或真实项目完整协作。

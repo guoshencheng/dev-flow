@@ -61,6 +61,27 @@ class PluginPackageTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             manager.validate_bundle(bundle)
 
+    def test_stage_checker_and_example_survive_packaging(self):
+        source = Path(__file__).resolve().parents[1]
+        names = ['skills/dev-flow/scripts/check_iteration.py',
+                 'skills/dev-flow/references/stage-state.md',
+                 'skills/dev-flow/assets/examples/iteration-state.md']
+        for name in names:
+            target = self.root / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source / name, target)
+        subprocess.run(['git', 'add', '--'] + names, cwd=self.root, check=True)
+        bundle = Path(manager.build(self.root)['build_root'])
+        inventory = json.loads((bundle / 'package-files.json').read_text())
+        for name in names:
+            self.assertIn(name, inventory['files'])
+            self.assertEqual((source / name).read_bytes(), (bundle / name).read_bytes())
+        example = bundle / 'skills/dev-flow/assets/examples/iteration-state.md'
+        result = subprocess.run([sys.executable, str(bundle / names[0]), str(example),
+                                 '--root', str(example.parent)], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertTrue(json.loads(result.stdout)['can_finish'])
+
     def test_inventory_cannot_reference_outside_bundle(self):
         bundle = Path(manager.build(self.root)['build_root'])
         outside = self.base / 'outside'

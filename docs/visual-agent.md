@@ -16,7 +16,7 @@ owner: visual
 
 ## 已有基础如何复用
 
-产品与视觉共用 Vite/React、Ant Design/shadcn 基准、官方专业能力、组件预览和源码复制。现有组件工程继续位于产品 Skill 的 assets，通过共同协议引用；新的文档预览放在 `dev-flow/assets/document-workspace/`，没有重复建设组件库。
+产品与视觉共用 Vite/React、Ant Design/shadcn 基准、官方专业能力、组件预览和源码复制。现有组件工程位于视觉 Skill 的 `assets/react-workspace/`，产品通过专业指南引用；文档预览放在 `dev-flow/assets/document-workspace/`，没有重复建设组件库。
 
 产品维护用户任务、流程、功能使用限制、透出条件、具体逻辑和验收；视觉维护布局、排版、Tokens、组件与状态呈现、响应及实际视觉检查。两者完善同一有效原型，行为与呈现分别写回权威规格。完整 UI 工作通过反馈持续迭代。
 
@@ -37,7 +37,11 @@ owner: visual
 
 ## 文档、原型与预览
 
-[共同文档协议](../skills/dev-flow/references/design-document-contract.md)明确产品/视觉目录、规则、原型、证据、当前状态及历史归档。没有既有规范时，本轮规格集中在 `docs/dev-flow/iterations/<迭代ID>/`，产品为 `product/spec.md`、UI 为 `visual/design.md`，原型为 `product/prototypes/<方案>/`；跨迭代设计系统保留在项目长期资产。
+[共同文档协议](../skills/dev-flow/references/design-document-contract.md)明确产品/视觉目录、规则、原型、证据、当前状态及历史归档。没有既有规范时，UI 设计规范、页面/组件规格在项目级 `docs/dev-flow/visual/` 分别持续维护，设计稿源码沿用实际应用或稳定独立工程；迭代只引用基线与增量，UI 无变化不新建文件，少量变化合并到索引，复杂时才拆 `visual/changes.md`。一次性探索才按需使用本轮 `product/prototypes/<方案>/`，已有有效位置继续维护。
+
+2026-10-11 按本次用户反馈补齐[模块化 React 设计稿与持续复用](../skills/dev-visual/references/system-and-pages.md#原型与工程复用)，进一步明确[多端与总览](../skills/dev-visual/references/system-and-pages.md#多端独立维护与总览整合)：各端页面/视图、组件、场景、设计规范独立维护，由总览引用同一实现组合展示，移动端用独立的屏幕宽高容器展示，不默认模拟设备操作。同步总纲、专业入口、目录/路由和索引/规格模板，消除每轮新写完整 UI 的默认路径。
+
+2026-10-12 已提供可复制的 [React 设计稿模板 v0.1](../skills/dev-visual/assets/design-workspace/README.md)与安全初始化命令，包含各端独立页面、真实组件展示、Markdown 规范、主题映射、总览注册表及 iframe 尺寸容器。隔离副本已完成锁文件安装、类型/构建、浏览器状态/边界、规范热更新与静态路由检查；初始化保护已有内容，实际记录见[模板验证](../evals/dev-visual/runs/2026-10-12/react-design-template/report.md)。这属于主 Agent 实施与隔离工具验证，真实项目采用、独立职责行为与真实移动设备仍待验证；原有组件目录和文档阅读器证据保持原范围。
 
 产品文档包含原型及使用限制、功能透出、可执行授权、输入校验/计算/动作/保存/输出、异常恢复及 RULE/AC。视觉引用同一功能和规则，记录呈现与实际代码。普通修订由 Git 保存历史，完整已替换方案进入对应职责 archive，索引指向当前资产。
 

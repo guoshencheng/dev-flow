@@ -37,8 +37,8 @@ related: []
 
 | 阶段 | 默认产物位置 | 当前有效版本/状态 | 输入关联与证据、Review/确认来源 |
 | --- | --- | --- | --- |
-| 产品与交互 | `product/spec.md`、`product/prototypes/<方案>/` | 待填写 | RULE/AC、流程/限制/透出、原型场景和设计确认 |
-| 视觉/UI | `visual/design.md` | 待填写 | 产品输入、设计系统、组件/响应、检查和确认 |
+| 产品与交互 | `product/spec.md`，引用现行设计稿/原型工程；一次性探索按需用 `product/prototypes/<方案>/` | 待填写 | RULE/AC、流程/限制/透出、稳定源码路径、场景、基线/候选版本与设计确认 |
+| 视觉/UI | 本索引引用项目级规范、页面/组件规格和现行源码；复杂增量按需拆 `visual/changes.md` | 待填写 | 产品输入、各端/总览入口、内部视口、资产基线与候选、变化、检查和确认 |
 | 架构 | `architecture/design.md` | 待填写 | ARC/契约、重要取舍与确认 |
 | 技术实现方案 | `engineering/technical-solution.md` | 待填写 | OUT/页面功能/链路，产品符合性及相关 UI/架构 AI Review |
 | 测试策略与用例 | `acceptance/strategy.md`、`acceptance/cases.md` | 待填写 | 产品/技术方案版本、TC 覆盖、实际 AI Review、用户确认 |
@@ -48,6 +48,44 @@ related: []
 | 架构复盘 | `architecture/review.md` | 待填写 | 实际代码业务、模块/域合理性、资产更新及建议 |
 
 实际 AI Review 与用户确认都绑定具体对象及版本；技术方案/实施计划不增加人工审批。原型走查、实现验收、源码可启动、实际部署分别记录。
+
+### 可读取的当前状态（适用时采用）
+
+多阶段、持续实施、跨会话或混合证据任务按[状态协议](../../references/stage-state.md)在本索引维护一个代码块。下例是未定路线的占位，**不是完整功能的前置清单**。先确定路径与裁剪依据，再加入本次需要的设计/方案/用例确认、实际 Review、计划复核及整体实现/交付/资产检查；小修复可以合并记录。采用后正文表格只介绍成果与来源，阶段状态和版本由此块维护，不重复填两本台账。
+
+```dev-flow-state
+{
+  "schema_version": 1,
+  "candidate": "待形成",
+  "scopes": [{
+    "id": "scope-1", "route": "undecided", "reason": "", "implementation": true,
+    "before_implementation": [], "before_finish": ["result-check"]
+  }],
+  "artifacts": [{
+    "id": "iteration", "path": "docs/dev-flow/iterations/iteration-id/index.md", "version": "1"
+  }],
+  "gates": [{
+    "id": "result-check", "kind": "check", "stage": "acceptance", "status": "pending",
+    "inputs": {"iteration": "1"}, "required_coverage": ["TC-1"], "coverage": [], "after": []
+  }],
+  "cases": [{"id": "TC-1", "scope": "scope-1", "required_checks": ["result-check"]}]
+}
+```
+
+path/record/evidence.path 均相对实际业务项目根目录，不相对本迭代。通过记录补 completed_at 和原位置，确认补来源/必要原话/实际覆盖，Review 补实际方式/具体检查/发现，check 补预定类型/观察点及真实证据。进入受影响实现和结束前运行核验器；工具通过仍需核对前置是否遗漏、记录和证据是否真实充分。
+
+### 确认、Review 与未决摘要
+
+已有规格/用例/计划中记录时只引用，不另建报告。合并确认保留各对象范围和版本；用户的局部答复不得扩为其他规则/TC 同意。示例字段：对象和输入版本、待确认范围、答复实际范围、必要原话与来源、待决；Review 对象/输入版本、执行者/方式、具体检查、发现和阻断处理、结论/时间。状态代码块引用这些原记录。
+
+设计稿源码、页面/组件规格和设计规范在各自稳定位置持续维护，此处引用实际路径、启动方式和本轮页面/场景，不复制进迭代目录。UI 无变化时仅引用基线，不创建 visual 文件；少量变化在下面记录，复杂时再关联 `visual/changes.md`；已存在的 `visual/design.md` 可继续作为增量记录，不要求改名或另写一份。未变的有效完整规格和组件直接引用。
+
+### UI 资产引用与本轮增量（有变化时填写）
+
+| 现行规范/页面/组件与源码 | 展示端 | 输入基线 → 候选/确认版本 | 本轮变化或沿用 | 确认范围与实际检查/遗留 |
+| --- | --- | --- | --- | --- |
+
+只列受影响资产与必要共享依赖，链接其权威位置和总览/独立入口；不把完整布局、组件源码或 Token 表复制到此处。候选不能自动替代已确认基线，历史结论保留原版本。
 
 ## 交付结果与未完成项
 

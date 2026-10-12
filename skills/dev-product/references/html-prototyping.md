@@ -1,24 +1,26 @@
 # React 原型与设计稿构建、预览指南
 
-本指南让 AI 根据本次产品、交互或 UI 设计问题构建页面，新建工程默认使用 Vite + React + TypeScript，启动预览后与用户持续讨论和修改。技术与设计按共同[UI 约定](../../dev-visual/references/ui-stack-and-components.md)执行：B 端使用 Ant Design 规范和 antd；C 端 Web 优先 shadcn/ui；其他 C 端实施前先开展网上参考研究。页面内容、业务流程和视觉表现由本次任务决定，随包示例可选。
+本指南让 AI 根据本次产品、交互或 UI 设计问题持续维护项目页面，优先修改现行工程；没有合适入口时才新建 Vite + React + TypeScript。设计稿按[模块化 React 与持续复用约定](../../dev-visual/references/system-and-pages.md#原型与工程复用)拆分页面、业务模块、共享组件、主题和场景，后续反馈与需求继续修改同一工程。技术与设计按共同[UI 约定](../../dev-visual/references/ui-stack-and-components.md)执行：B 端使用 Ant Design 规范和 antd；C 端 Web 优先 shadcn/ui；其他 C 端实施前先开展网上参考研究。页面内容、业务流程和视觉表现由本次任务决定，随包示例可选。
 
 产品规格关联原型 ID、源码与版本、规则/验收、模拟范围和场景入口；目录和归档遵守[共同文档协议](../../dev-flow/references/design-document-contract.md)。Markdown/MDX 规则、HTML 原型和相关设计资产可用[统一 Vite 文档入口](../../dev-flow/references/document-preview.md)预览并按文件生成当前 URL；已有独立 React 原型继续复用其实际服务，通过产品索引关联。
+
+各端页面或视图组件、共享组件、场景数据和 UI 设计规范独立维护，由同一设计总览组合展示，独立页与总览引用同一实现。移动端放在明确宽高、内部滚动的屏幕尺寸容器中，本次默认不模拟触摸/设备操作；多端边界、总览清单、规范展示和视口隔离采用[视觉方法](../../dev-visual/references/system-and-pages.md#多端独立维护与总览整合)。现行 UI 页面/组件规格与设计规范在项目级原位更新，本轮仅关联受影响资产与增量，不每次重新写 UI 规格文件。
 
 先明确本轮需要回答的问题和成果类型。静态设计稿用于讨论信息层级、布局、文案、组件呈现和响应尺寸，需要实际渲染；可操作原型用于讨论操作顺序、状态反馈、异常恢复或方案取舍，还需实现相关操作。产品职责负责交互语义，视觉职责负责呈现，小任务可由同一执行者承担。局部且已清楚的变更可以复用现有页面，不为所有任务另建原型工程。
 
 代码原型适合检查接近真实界面的交互，但其结果仍有模拟范围；原型代码进入生产前核验真实契约、工程质量与场景，决定复用或改造后再验收。[GOV.UK 原型指导](https://www.gov.uk/service-manual/design/making-prototypes)
 
-## 默认执行：按任务构建 React 页面并启动 Vite
+## 默认执行：复用有效工程，增量修改 React 页面
 
 1. 读取本次目标、有效规格、视觉资产与项目入口；检查已有页面、包清单、开发脚本、可用运行时和正在运行的相关服务。确定成果是静态设计稿还是可操作原型，以及需要讨论的页面与状态。
-2. 已有合适工程与服务时复用；新建 Web 原型采用 Vite + React + TypeScript。检查相关共享组件及当前官方文档，依赖按项目锁文件固定；模型和推理强度不由技术栈指定。
-3. AI 实际生成或修改本次 React 页面，使用对应设计体系的组件、项目文案与代表数据。启动服务前确认入口文件或路由存在；把需求写成文档或仅启动空服务不构成页面交付。
+2. 已有合适工程与服务时复用，包括前序迭代建立且仍有效的原型；项目索引登记稳定源码/规格位置、各端场景与总览入口，迭代索引只记录资产引用、设计增量与基线版本，复杂时才拆 UI 变更记录。新建 Web 原型采用 Vite + React + TypeScript，避免每轮初始化一套工程或完整 UI 文档。检查相关共享组件及当前官方文档，依赖按项目锁文件固定；模型和推理强度不由技术栈指定。
+3. AI 实际生成或修改受影响的 React 模块，优先直接引用项目组件和主题，使用项目文案与代表数据；不同状态用场景数据和组件属性表达，不靠复制整页或把全部代码堆进单个 App.tsx。启动服务前确认入口文件或路由存在；把需求写成文档或仅启动空服务不构成页面交付。
 4. 执行已核验的启动命令，读取服务实际输出地址。在浏览器打开目标页面，检查设计稿的渲染与目标尺寸；原型还需执行核心操作和相关恢复场景。发现问题后修正并复验。
 5. 提供真实预览地址、成果位置与版本、启动和停止方式、模拟范围及已检查内容。收到反馈后继续修改同一有效成果，并更新相关决定与规格。
 
 | 情况 | 起点 |
 | --- | --- |
-| 已有运行中的项目 | 优先使用现有组件、Tokens、路由和开发服务；在允许范围内增加隔离的原型路由或 Storybook 场景 |
+| 已有应用或现行原型 | 优先使用现有页面/业务模块、组件、Tokens、路由和开发服务；必要时增加隔离的原型路由或已有 Storybook 场景 |
 | 新建 B 端原型 | Vite React 工程，使用 antd 的布局、表单、表格、反馈等组件，按需采用 `ui-antd` 的组合 |
 | 新建 C 端 Web 原型 | Vite React 工程，基于 shadcn/ui，按需复制或参考 `ui-web` 源码组件 |
 | 其他 C 端应用 | 先研究网上参考与目标平台规范；Web 原型可用 Vite 表达流程，实际平台行为还需在对应环境检查 |
@@ -28,16 +30,29 @@
 
 ## 新建 Vite React 原型
 
-在目标项目根目录执行；目录名按任务调整，确认 Node.js 满足采用版本要求、目标目录未被占用。已有工程不重新初始化：
+需要各端页面、组件展示、独立规范、移动屏幕和总览时，先用随包[React 设计稿模板](../../dev-visual/assets/design-workspace/README.md)创建稳定项目副本。已有有效工程不重复初始化；模板的示例内容按实际需求替换：
 
 ```sh
-npm create vite@latest docs/dev-flow/iterations/2026-10-09-checkout/product/prototypes/v1 -- --template react-ts --no-interactive
-cd docs/dev-flow/iterations/2026-10-09-checkout/product/prototypes/v1
+DEV_VISUAL_SKILL_DIR="/实际安装目录/skills/dev-visual"
+node "$DEV_VISUAL_SKILL_DIR/scripts/design-template.mjs" init \
+  --project /项目绝对路径 --dir design/prototype
+cd /项目绝对路径/design/prototype
+npm ci
+npm run dev
+```
+
+工具只在空目标复制源码、规范、锁文件与来源哈希，不改写项目指引或包清单。文档在项目索引映射到稳定权威位置，迭代仅记录增量。打开服务实际地址的 `#/overview/pages`；具体路由、尺寸边界与扩展方式见模板说明。
+
+只在没有合适工程时初始化。在目标项目根目录执行；无现有目录约定时采用跨迭代的稳定位置 `design/prototype/`，确认 Node.js 满足采用版本要求、目标目录未被占用。已有工程直接修改，不重新初始化：
+
+```sh
+npm create vite@latest design/prototype -- --template react-ts --no-interactive
+cd design/prototype
 npm install
 npm run dev -- --host 127.0.0.1 --port 5173
 ```
 
-AI 将默认欢迎页替换成本次实际页面。B 端安装 antd 并直接导入需要的组件；主题通过 ConfigProvider 与 Tokens 管理。C 端 Web 根据[官方 Vite 接入说明](https://ui.shadcn.com/docs/installation/vite)配置 Tailwind 与别名后执行 shadcn 初始化、添加所需组件；也可使用 shadcn CLI 的 Vite 模板。使用已有共享组件时按[工作区接入说明](../../dev-visual/assets/react-workspace/README.md)复制或参考源码、记录来源哈希和项目差异。命令依据当前[Vite 官方指南](https://vite.dev/guide/)核验；初始化使用当前工具，项目提交锁文件保持复现。
+AI 将默认欢迎页替换成本次实际页面，按[模块化设计稿](../../dev-visual/references/system-and-pages.md#模块化-react-设计稿)组织源码；`index.html` 只保留应用挂载入口。B 端安装 antd 并直接导入需要的组件；主题通过 ConfigProvider 与 Tokens 管理。C 端 Web 根据[官方 Vite 接入说明](https://ui.shadcn.com/docs/installation/vite)配置 Tailwind 与别名后执行 shadcn 初始化、添加所需组件；也可使用 shadcn CLI 的 Vite 模板。使用已有共享组件时按[工作区接入说明](../../dev-visual/assets/react-workspace/README.md)复制或参考源码、记录来源哈希和项目差异。命令依据当前[Vite 官方指南](https://vite.dev/guide/)核验；初始化使用当前工具，项目提交锁文件保持复现。
 
 打开服务实际输出地址；修改源码通过 Vite 热更新，Ctrl+C 停止。端口冲突时换用空闲端口或读取 Vite 自动选择的端口，报告实际地址，保留其他任务的服务。检查构建与必要场景，不将欢迎页或组件展示页当成当前需求原型。
 

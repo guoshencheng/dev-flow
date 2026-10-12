@@ -27,7 +27,7 @@
 
 ## 可操作原型、设计参考与复用
 
-按用户指定的[UI 技术与共享组件约定](../skills/dev-visual/references/ui-stack-and-components.md)建设：新建原型默认 Vite + React + TypeScript；B 端使用 Ant Design 规范、优先 antd 组件并按需扩展；C 端 Web 优先 shadcn/ui；其他 C 端应用先做网上参考研究。AI 依照[原型与设计稿指南](../skills/dev-product/references/html-prototyping.md)生成任务页面、启动并持续讨论，已有项目优先复用有效工程入口。静态设计稿检查渲染，可操作原型还需检查核心行为。
+按用户指定的[UI 技术与共享组件约定](../skills/dev-visual/references/ui-stack-and-components.md)建设：新建原型默认 Vite + React + TypeScript；B 端使用 Ant Design 规范、优先 antd 组件并按需扩展；C 端 Web 优先 shadcn/ui；其他 C 端应用先做网上参考研究。AI 依照[原型与设计稿指南](../skills/dev-product/references/html-prototyping.md)生成或修改任务页面、启动并持续讨论，已有项目优先复用有效工程入口。2026-10-11 补齐跨迭代持续维护与[模块化设计稿](../skills/dev-visual/references/system-and-pages.md#模块化-react-设计稿)：现行 UI 规范/页面/组件与各端源码分开维护，迭代只引用变化与确认版本，总览组合展示，移动端容器仅模拟屏幕尺寸。2026-10-12 提供完整[React 设计稿模板](../skills/dev-visual/assets/design-workspace/README.md)，隔离副本的初始化、状态/交互、视口边界、规范更新和构建路由检查见[验证记录](../evals/dev-visual/runs/2026-10-12/react-design-template/report.md)；真实项目复用仍待验证。静态设计稿检查渲染，可操作原型还需检查核心行为。
 
 [React 工作区](../skills/dev-visual/assets/react-workspace/README.md)随专业 Skill 维护，提供 B/C 源码、独立示例与可选择目录。v0.6 按用户要求采用源码复制或参考实现，项目直接维护和快速迭代；目录展示本地导入的使用示例与完整源码文件集，按组件 ID 可查询、复制并记录来源哈希。项目已有基底优先复用，保留项目定制，通用改进验证后回收。当前仓库无远程地址，跨机器 Git 获取尚未执行。
 

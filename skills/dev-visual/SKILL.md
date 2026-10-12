@@ -13,13 +13,13 @@ description: 视觉与界面设计：依据产品规则、项目品牌和参考�
 
 按[视觉规格协议](references/specification-contract.md)维护视觉成果。视觉负责布局、呈现、Tokens、组件/状态与实际视觉检查，主责设计/UI 文档及原型的呈现与响应复核；产品主责其流程/规则/交互走查，不默认转交测试验收。产品负责任务、透出语义、流程与业务规则；视觉改变如果影响这些行为，关联产品规格并共同更新。允许同一执行者兼任，但交互预期和视觉依据分别记录。页面原型可在授权范围修改，生产逻辑和独立功能验收由相应职责完成。
 
-共同基础按[UI 约定](references/ui-stack-and-components.md)使用：B 端先参考并直接使用 Ant Design 现成组件，C 端 Web 优先 shadcn/ui；其他 C 端先浏览目标平台和同类参考。按需联用[Ant Design 专业能力](references/ant-design-capabilities.md)。复用同包[React 源码与预览](references/component-preview-and-reuse.md)，不重复建立组件目录或要求先发布自有 npm 包。
+共同基础按[UI 约定](references/ui-stack-and-components.md)使用：B 端先参考并直接使用 Ant Design 现成组件，C 端 Web 优先 shadcn/ui；其他 C 端先浏览目标平台和同类参考。按需联用[Ant Design 专业能力](references/ant-design-capabilities.md)。复用同包[React 源码与预览](references/component-preview-and-reuse.md)，不重复建立组件目录或要求先发布自有 npm 包。没有有效设计工程且需要整套多端设计工作台时采用[React 设计稿模板](assets/design-workspace/README.md)，复制到项目后持续维护；已有工程直接更新。
 
 ## 设计与持续对焦
 
 1. 根据问题读取[参考与视觉方向](references/reference-and-direction.md)，复用有效资产，选择有来源与适用边界的视觉规则；重要取舍按实际需要提供候选。
 2. 按[设计系统与页面规则](references/system-and-pages.md)明确布局、信息层级、字体、间距、色彩、组件、状态与目标窗口变化。Tokens 关联实际代码，保留基础控件的焦点和键盘行为。
-3. 需要讨论设计时复用[React 原型指南](../dev-product/references/html-prototyping.md)或共同[项目文档预览](../dev-flow/references/document-preview.md)，实际形成该项目的页面/MDX/设计稿并复用或启动服务，关联项目设计/UI 索引。已有原型在同一有效入口完善，不为每个角色重建服务；通用 Skill 参考不能代替项目设计成果。
+3. 需要讨论设计时，按[模块化设计稿与持续复用](references/system-and-pages.md#模块化-react-设计稿)维护有效工程与项目级现行规格，按页面、业务模块、共享组件和场景拆分，只修改受影响部分。按[多端与总览](references/system-and-pages.md#多端独立维护与总览整合)分别维护各端页面/视图、组件和设计规范，再由同一总览组合展示；移动端使用[屏幕尺寸容器](references/system-and-pages.md#移动端屏幕尺寸预览)，默认只模拟宽高。不按迭代重新生成完整 UI 文件。启动与操作采用[React 原型指南](../dev-product/references/html-prototyping.md)，文档采用共同[项目文档预览](../dev-flow/references/document-preview.md)，关联项目设计/UI 索引及源码/确认版本。
 4. 按[实际视觉检查](references/rendered-review.md)检查当前版本的渲染、真实内容与相关状态；定位问题后定向修改、复验，保持与产品/研发/测试的反馈关系。
 5. 依[项目视觉资产](references/project-assets.md)维护现行规格、设计系统、代码映射、参考、决定与证据；目录和归档遵守共同[文档协议](../dev-flow/references/design-document-contract.md)。
 
@@ -33,4 +33,4 @@ description: 视觉与界面设计：依据产品规则、项目品牌和参考�
 
 交接关联产品规则/验收、源码位置、有效规格、参考和证据，说明复用/更新资产、变化影响与能力缺口。最终生产视觉需要针对实际集成页面重新核验；原型通过不自动表示生产页面通过。
 
-本次阶段产物统一归入 `docs/dev-flow/iterations/<迭代ID>/` 的对应职责目录，由迭代索引关联版本、Review、确认与证据。项目级职责目录用于跨迭代的现行基线和复用资产；已有权威位置通过迭代索引映射。详见[迭代目录协议](../dev-flow/references/design-document-contract.md)。
+现行设计规范、各端页面/组件规格与源码在各自稳定位置维护；迭代索引记录资产引用、版本、增量、Review/确认与结果。UI 无变化仅引用，少量变化合并在索引，复杂时按需拆到 `docs/dev-flow/iterations/<迭代ID>/visual/changes.md`，不每轮写完整 design 文件。已有权威位置与历史结论按[视觉资产协议](references/project-assets.md)和[迭代目录协议](../dev-flow/references/design-document-contract.md)维护。

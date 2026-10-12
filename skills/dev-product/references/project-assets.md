@@ -4,7 +4,7 @@
 
 先明确业务项目及根路径，从项目文档索引定位产品、交互原型、设计/UI 和技术入口，再读取项目 `AGENTS.md`、相关规格、代码或接口、设计资源与验收资产。已有权威位置继续维护，通过项目索引关联，不复制出第二套事实。
 
-按共同[迭代目录协议](../../dev-flow/references/design-document-contract.md)，本次规格保存在 `docs/dev-flow/iterations/<迭代ID>/product/spec.md`，原型放在同目录 `prototypes/<方案>/`，参考和决定在本次 product 目录按需拆分。项目产品索引指向现行有效规格与规则来源，跨迭代模式保留在项目长期资产中，不复制两套现行事实。
+按共同[迭代目录协议](../../dev-flow/references/design-document-contract.md)，本次规格保存在 `docs/dev-flow/iterations/<迭代ID>/product/spec.md`，参考、决定和原型变更记录在本次 product 目录按需拆分。设计稿/原型源码跨迭代维护在实际应用或稳定的独立工程，迭代引用同一源码路径、基线提交和场景；仅一次性独立探索可用本轮 `prototypes/<方案>/`，不每轮复制完整工程。项目产品索引指向现行有效规格与规则来源，跨迭代模式保留在项目长期资产中，不复制两套现行事实。
 
 专业内容按[产品规格协议](specification-contract.md)维护，目录、版本与归档继续引用共同协议。
 

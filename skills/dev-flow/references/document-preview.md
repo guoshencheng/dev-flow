@@ -48,7 +48,7 @@ npm run dev -- --project /项目绝对路径 --roots docs/dev-flow,design --port
 
 ```sh
 node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/iterations/迭代ID/product/spec.md
-node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/iterations/迭代ID/visual/design.md
+node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/visual/pages/页面ID.md
 node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/iterations/迭代ID/architecture/design.md
 node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/iterations/迭代ID/product/prototypes/方案/index.html
 ```
@@ -64,7 +64,7 @@ node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/
 | Markdown | react-markdown + GFM：标题、表格、任务列表、脚注、相对链接/图片、代码高亮与锚点；YAML 元信息用于状态与索引 |
 | MDX | 官方 `@mdx-js/rollup` 编译，可在文档中使用 React 示例和注入的 Ant Design Button/Alert/Space/Table；只编译项目可信源码，导入依赖需在工程中存在 |
 | Mermaid、`.mmd` | 代码块或独立文件实际渲染流程/状态等图，解析失败明确显示错误 |
-| HTML | 保留相对脚本、样式和资源，隔离 iframe 展示；`rawUrl` 可直接打开原型。完整 React 原型优先继续使用已有 Vite 工程，再从文档关联 |
+| HTML | 保留相对脚本、样式和资源，隔离 iframe 展示；`rawUrl` 可直接打开已有纯 HTML 原型。模块化 React 设计稿由自身应用/Vite 工程运行，再从文档关联，源码 `index.html` 不等于可独立运行的设计稿 |
 | PDF | PDF.js 逐页渲染与翻页；原文件同时保留，文档的文本规则建议另有可读源 |
 | PNG/JPEG/SVG/WebP/GIF/AVIF | 原生图片预览；用于设计图、截图等有版本的资产 |
 | DOCX | Mammoth 转语义 HTML 并消毒，支持常见标题、段落和表格；精确排版需原件或同版本 PDF |
@@ -74,6 +74,14 @@ node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/
 | PPTX、旧 Office、Figma/Sketch/Draw.io/Excalidraw 等专用源格式 | 保留原文件下载，关联同版本 PDF/HTML/SVG/图片导出或已有原工具入口；按实际需要接入相应转换器，不声称原格式已完整渲染 |
 
 文本接口上限 2 MiB、单个原文件 50 MiB、索引 2500 个文件；过大内容拆分或使用原工具，明确截断与覆盖。对无法可靠解析的格式提供原件和具体错误，而不是显示空白后声称成功。新增格式优先使用已维护的成熟工具，补齐相关真实文件和浏览器验证后再登记支持。
+
+## 模块化设计稿入口
+
+React 设计稿的持续维护与模块组织采用[视觉指南](../../dev-visual/references/system-and-pages.md#原型与工程复用)。文档阅读器展示规格、决定、组件/源码映射及局部 MDX 示例；完整设计稿复用同一项目的应用或独立 Vite 服务，在项目索引登记其源码路径、启动命令、场景路由和确认版本。
+
+各端页面/组件、设计规范与尺寸容器独立维护，由设计总览组合渲染；总览采用自身 React 服务，提供同一整合页与必要独立入口，不在文档阅读器中复制业务页面。移动端总览按[屏幕尺寸预览](../../dev-visual/references/system-and-pages.md#移动端屏幕尺寸预览)展示指定内部宽高，模拟范围默认仅屏幕尺寸。现行规范/页面文档在项目级持续维护，迭代文档地址按需指向变更记录，不每轮创建完整 UI 文档。
+
+`preview.mjs url` 核验文档文件地址，不生成独立 React 应用的业务路由，也不把任意 `.tsx` 源文件编译成可操作设计稿。提供页面入口时读取该应用服务实际输出的 origin，再定位确实存在的路由并打开检查；不要将 Vite 源码 `index.html` 经 HTML 阅读器打开后当成 React 运行结果。已有 MDX 编译依赖按阅读器实际工程核验，不默认把业务应用的组件依赖安装进共享阅读器。
 
 来源：[react-markdown](https://github.com/remarkjs/react-markdown)、[MDX/Vite](https://mdxjs.com/docs/getting-started/#vite)、[Mermaid](https://mermaid.js.org/config/usage.html)、[Mammoth](https://github.com/mwilliamson/mammoth.js)、[ExcelJS](https://github.com/exceljs/exceljs)、[PDF.js](https://mozilla.github.io/pdf.js/)。工具采用版本与依赖许可随锁文件保留。
 

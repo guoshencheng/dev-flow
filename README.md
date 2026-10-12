@@ -1,6 +1,6 @@
 # dev-flow
 
-支持 Codex 与 Kimi 接入的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付，并提供跨职责会话监控。当前已有总纲 v0.18、六职责专业 Skills、会话监控 Skill、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。专业职责由主 Agent 或获准委派的可用子 Agent 承担，模型遵循本次用户要求与宿主策略；本地 Plugin 0.1.0 包装和接入方式见[安装指南](docs/plugin.md)及[验证记录](reviews/2026-10-09-setup-removal-and-task-routing.md)。工具、专业行为、实际委派与真实项目成熟度分别登记；完整真实任务和运行内核继续按实测需要建设。
+支持 Codex 与 Kimi 接入的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付，并提供跨职责会话监控。当前已有总纲 v0.24、六职责专业 Skills、会话监控 Skill、迭代状态只读核验、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。专业职责由主 Agent 或获准委派的可用子 Agent 承担，模型遵循本次用户要求与宿主策略；本地 Plugin 0.1.0 包装和接入方式见[安装指南](docs/plugin.md)及[验证记录](reviews/2026-10-09-setup-removal-and-task-routing.md)。工具、专业行为、实际委派与真实项目成熟度分别登记；完整真实任务和后续运行能力继续按实测需要建设。
 
 Kimi 插件提供六份独立职责 Agent 文档，与历史 Codex 角色参考从共用 Skills 生成；专业方法只维护一份。接入、派发与同步见 [Kimi 职责说明](docs/integrations/kimi-agent-configuration.md)。
 
@@ -12,6 +12,7 @@ Kimi 插件提供六份独立职责 Agent 文档，与历史 Codex 角色参考�
 - [总纲](skills/dev-flow/references/constitution.md)：共同协作、交付与项目沉淀协议。
 - [流程 Skill](skills/dev-flow/SKILL.md)：调用入口和按需阅读规则。
 - [设计确认与自主实施](skills/dev-flow/references/execution-contract.md)：用户确认体验与重要架构，研发技术方案经符合性 Review，测试综合产品/方案设计用例并 AI Review，人工确认后计划/AI 复核、自主实现与端到端交付。
+- [阶段状态与核验](skills/dev-flow/references/stage-state.md)：在原迭代索引核对范围、确认覆盖、实际 Review、输入版本、候选及逐必需检查；[工具测试与行为评测边界](evals/dev-flow-stages/report.md)。
 - [产品与交互 Agent](docs/product-agent.md)：职责边界、首版能力与验证状态；[专业 Skill](skills/dev-product/SKILL.md)和[案例证据](evals/dev-product/README.md)。
 - [视觉与界面 Agent](docs/visual-agent.md)：专业方法、共同基础复用、视觉资产与实际检查；[专业 Skill](skills/dev-visual/SKILL.md)。
 - [架构设计与演进 Agent](docs/architecture-agent.md)：整洁架构、项目技术基线、业务域与模块分工、设计契约、代码业务 Review 与研发复盘；[专业 Skill](skills/dev-architecture/SKILL.md)。
