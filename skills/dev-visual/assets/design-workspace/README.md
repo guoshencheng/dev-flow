@@ -9,8 +9,8 @@ Vite + React + TypeScript 独立工程。页面、组件、设计规范、主题
 ```sh
 DEV_VISUAL_SKILL_DIR="/实际安装目录/skills/dev-visual"
 node "$DEV_VISUAL_SKILL_DIR/scripts/design-template.mjs" init \
-  --project /项目绝对路径 --dir design/prototype
-cd /项目绝对路径/design/prototype
+  --project /项目绝对路径 --dir docs/dev-flow/visual/prototype
+cd /项目绝对路径/docs/dev-flow/visual/prototype
 npm ci
 npm run dev
 ```
@@ -31,7 +31,7 @@ npm run dev
 | 屏幕尺寸外壳 | `src/preview/DeviceViewport.tsx` | 宽高、显示缩放和 iframe；不模拟设备操作 |
 | 迭代增量格式 | `docs/iteration-change.example.md` | 小变化写项目迭代索引，复杂时才拆变更记录 |
 
-资产入口见 [docs/visual/index.md](docs/visual/index.md)。可原位维护模板文档并由项目索引映射；已有 `docs/dev-flow/visual/` 时迁移必要内容、调整 `?raw` 导入和链接，保留一个现行权威位置。不要为了每次迭代再次复制模板、规范或页面源码。
+资产入口见 [docs/visual/index.md](docs/visual/index.md)。模板文档供初始化参考；采用后将现行规范合并到项目的 `docs/dev-flow/visual/`，调整 `?raw` 导入和链接，保留一个现行权威位置。不要为了每次迭代再次复制模板、规范或页面源码。
 
 ## 各端入口与尺寸边界
 

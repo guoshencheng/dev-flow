@@ -22,7 +22,7 @@ async function listSource(directory, prefix = '') {
   return files.sort()
 }
 
-export async function initDesignTemplate({ project, directory = 'design/prototype' }) {
+export async function initDesignTemplate({ project, directory = 'docs/dev-flow/visual/prototype' }) {
   if (!project) throw new Error('需要 --project 指定实际项目目录。')
   const projectRoot = await fs.realpath(path.resolve(project))
   if (!(await fs.stat(projectRoot)).isDirectory()) throw new Error('项目路径不是目录。')
@@ -67,7 +67,7 @@ export async function initDesignTemplate({ project, directory = 'design/prototyp
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try {
     const [command, ...args] = process.argv.slice(2)
-    if (command !== 'init') throw new Error('用法：node design-template.mjs init --project /项目绝对路径 [--dir design/prototype]')
+    if (command !== 'init') throw new Error('用法：node design-template.mjs init --project /项目绝对路径 [--dir docs/dev-flow/visual/prototype]')
     const options = {}
     for (let index = 0; index < args.length; index += 2) {
       const name = args[index]

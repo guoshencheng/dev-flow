@@ -8,7 +8,7 @@ iteration: iteration-id
 
 # 架构变化设计
 
-采用时默认保存为 `docs/dev-flow/iterations/<迭代ID>/architecture/design.md`，由同一迭代索引关联输入版本、Review/确认与结果。已有权威位置通过该索引映射，按实际范围裁剪。
+采用时默认保存为 `docs/dev-flow/iterations/<迭代ID>/architecture/design.md`，由同一迭代索引关联输入版本、Review/确认与结果。已有的 `docs/dev-flow/` 内权威位置通过该索引映射；目录外文档按共同文档协议整理迁入，按实际范围裁剪。
 
 按任务裁剪；设计意图与现有实现分别表达。
 

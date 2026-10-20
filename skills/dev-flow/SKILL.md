@@ -49,7 +49,7 @@ description: 组织研发、产品交互、视觉、架构、测试验收与运�
 
 开始写入前按[分支/worktree 建议](references/git-and-worktree.md)核对基线、现有修改、目标分支和工作位置；执行者选择遵守[subagent 使用建议](references/subagent-guidance.md)及当前委派权限。实现/修复按研发的[测试保护](../dev-engineering/references/test-first-and-regression.md)和[诊断方法](../dev-engineering/references/diagnosis-and-feedback.md)进行，实际实现 Review 检查[完整变更](../dev-architecture/references/retrospective-and-evolution.md)，按[意见闭环](../dev-engineering/references/review-feedback.md)处理。
 
-项目知识保存在所属项目。迭代索引关联范围、版本、Review、确认与结果，阶段产物按 `docs/dev-flow/iterations/<迭代ID>/` 维护；长期资产通过项目入口引用。建文档、委派写入和提交采用[文档协议](references/design-document-contract.md#agent-文档控制)，单次运行/Review 过程默认保存在忽略的本机目录，交接只提炼接手所需内容。
+项目知识保存在所属项目。项目文档（含产品、设计、架构、研发、验收与交付）及独立设计原型统一在 `docs/dev-flow/` 下维护；持续复用的原型工程放在 `docs/dev-flow/visual/prototype/`。正式应用、测试和工具源码保留实际工程位置。迭代索引关联范围、版本、Review、确认与结果，阶段产物按 `docs/dev-flow/iterations/<迭代ID>/` 维护；长期资产通过项目入口引用。建文档、委派写入和提交采用[文档协议](references/design-document-contract.md#agent-文档控制)，单次运行/Review 过程默认保存在忽略的本机目录，交接只提炼接手所需内容。
 
 UI 按[视觉资产协议](../dev-visual/references/project-assets.md)持续维护独立规范、各端页面/组件规格和源码，总览组合展示。迭代只引用现行资产、记录版本与增量；无变化不创建 UI 文件，少量变化合并到索引，复杂时按需拆变更记录，不因阶段产物按迭代组织而重写完整 UI。
 

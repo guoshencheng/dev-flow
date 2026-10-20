@@ -33,4 +33,4 @@ description: 视觉与界面设计：依据产品规则、项目品牌和参考�
 
 交接关联产品规则/验收、源码位置、有效规格、参考和证据，说明复用/更新资产、变化影响与能力缺口。最终生产视觉需要针对实际集成页面重新核验；原型通过不自动表示生产页面通过。
 
-现行设计规范、各端页面/组件规格与源码在各自稳定位置维护；迭代索引记录资产引用、版本、增量、Review/确认与结果。UI 无变化仅引用，少量变化合并在索引，复杂时按需拆到 `docs/dev-flow/iterations/<迭代ID>/visual/changes.md`，不每轮写完整 design 文件。已有权威位置与历史结论按[视觉资产协议](references/project-assets.md)和[迭代目录协议](../dev-flow/references/design-document-contract.md)维护。
+现行设计规范、各端页面/组件规格统一在 `docs/dev-flow/visual/` 下维护，独立原型源码放在其中的 `prototype/`；正式应用源码保留实际工程位置；迭代索引记录资产引用、版本、增量、Review/确认与结果。UI 无变化仅引用，少量变化合并在索引，复杂时按需拆到 `docs/dev-flow/iterations/<迭代ID>/visual/changes.md`，不每轮写完整 design 文件。已有文档统一在 `docs/dev-flow/` 下维护，历史结论按[视觉资产协议](references/project-assets.md)和[迭代目录协议](../dev-flow/references/design-document-contract.md)维护。

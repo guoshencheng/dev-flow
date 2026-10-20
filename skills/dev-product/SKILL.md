@@ -50,4 +50,4 @@ B 端先核验项目已有实现，再参考 Ant Design 官方完整组件体系
 
 交接说明成果及版本、实际来源、流程与验收覆盖、已观察结果、未执行项、关键问题及下游依赖，以及项目资产复用、更新与能力缺口。后续视觉、架构或测试反馈改变行为时回到对应规则和场景定向更新。
 
-本次阶段产物统一归入 `docs/dev-flow/iterations/<迭代ID>/` 的对应职责目录，由迭代索引关联版本、Review、确认与证据。项目级职责目录用于跨迭代的现行基线和复用资产；已有权威位置通过迭代索引映射。详见[迭代目录协议](../dev-flow/references/design-document-contract.md)。
+本次阶段产物统一归入 `docs/dev-flow/iterations/<迭代ID>/` 的对应职责目录，由迭代索引关联版本、Review、确认与证据。项目级职责目录用于跨迭代的现行基线和复用资产；已有的 `docs/dev-flow/` 内权威位置通过迭代索引映射；目录外文档按共同文档协议整理迁入。详见[迭代目录协议](../dev-flow/references/design-document-contract.md)。

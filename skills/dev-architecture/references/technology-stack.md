@@ -26,7 +26,7 @@
 
 ## 技术基线与持续建设
 
-沿用已有权威位置；无规范时在 `docs/dev-flow/architecture/stack.md` 使用[技术基线模板](../assets/templates/technology-baseline.md)，小项目可并入架构入口。保存实际单元/状态、技术与工具链、代码规范和检查/启动/交付入口、依据版本与未核验项。已确定的框架直接引用本约定，项目重要选择关联 ADR/ARC；不抄写锁文件和 schema 的全部内容。
+在 `docs/dev-flow/` 下沿用已有权威位置；尚无基线时在 `docs/dev-flow/architecture/stack.md` 使用[技术基线模板](../assets/templates/technology-baseline.md)，小项目可并入架构入口。保存实际单元/状态、技术与工具链、代码规范和检查/启动/交付入口、依据版本与未核验项。已确定的框架直接引用本约定，项目重要选择关联 ADR/ARC；不抄写锁文件和 schema 的全部内容。
 
 框架大版本、安装/CI、代码规范、模块/数据或交付变化后定向更新基线；复盘核对真实入口与有效决定，记录偏差和必要建议。遵守既有基线的实现直接推进，只按[执行协议](../../dev-flow/references/execution-contract.md)确认改变重要决定的部分。
 

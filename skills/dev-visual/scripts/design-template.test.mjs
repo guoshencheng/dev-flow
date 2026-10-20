@@ -12,6 +12,7 @@ async function isolated(run) {
 
 test('复制自包含工程、独立规范与锁文件，排除运行产物', () => isolated(async (project) => {
   const { target } = await initDesignTemplate({ project })
+  assert.equal(target, path.join(await fs.realpath(project), 'docs/dev-flow/visual/prototype'))
   assert.ok(await fs.stat(path.join(target, 'src/features/orders/views/MobileOrderPage.tsx')))
   assert.ok(await fs.stat(path.join(target, 'docs/visual/system.md')))
   assert.ok(await fs.stat(path.join(target, 'package-lock.json')))
@@ -31,7 +32,7 @@ test('重复初始化保留项目定制与其他文件', () => isolated(async (p
 }))
 
 test('已有非模板目录也不会部分覆盖', () => isolated(async (project) => {
-  const target = path.join(project, 'design/prototype')
+  const target = path.join(project, 'docs/dev-flow/visual/prototype')
   await fs.mkdir(target, { recursive: true })
   await fs.writeFile(path.join(target, 'existing.txt'), '保留')
   await assert.rejects(initDesignTemplate({ project }), /已有内容/)

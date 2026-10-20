@@ -8,7 +8,7 @@ iteration: iteration-id
 
 # 功能验收用例
 
-默认保存为 `docs/dev-flow/iterations/<迭代ID>/acceptance/cases.md`。供用户确认行为、预期和覆盖；技术细节采用[技术验证模板](technical-checks.md)，由同一迭代索引关联。已有权威位置优先复用。
+默认保存为 `docs/dev-flow/iterations/<迭代ID>/acceptance/cases.md`。供用户确认行为、预期和覆盖；技术细节采用[技术验证模板](technical-checks.md)，由同一迭代索引关联。优先复用 `docs/dev-flow/` 内已有权威文档；目录外文档按共同文档协议整理迁入。
 
 ## 本次验收什么
 

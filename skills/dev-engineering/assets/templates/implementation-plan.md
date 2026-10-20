@@ -8,7 +8,7 @@ iteration: iteration-id
 
 # 实现计划与 AI 复核
 
-采用时默认保存为 `docs/dev-flow/iterations/<迭代ID>/engineering/implementation-plan.md`，由同一迭代索引关联输入版本、Review/确认与结果。已有权威位置通过该索引映射，按实际范围裁剪。
+采用时默认保存为 `docs/dev-flow/iterations/<迭代ID>/engineering/implementation-plan.md`，由同一迭代索引关联输入版本、Review/确认与结果。已有的 `docs/dev-flow/` 内权威位置通过该索引映射；目录外文档按共同文档协议整理迁入，按实际范围裁剪。
 
 项目/根路径、任务范围和交付模式：
 当前源码提交及相关未提交差异：

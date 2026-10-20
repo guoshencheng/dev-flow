@@ -8,7 +8,7 @@ iteration: iteration-id
 
 # 交付与发布记录
 
-采用时默认保存为 `docs/dev-flow/iterations/<迭代ID>/operations/delivery.md`，由同一迭代索引关联输入版本、Review/确认与结果。已有权威位置通过该索引映射，按实际范围裁剪。
+采用时默认保存为 `docs/dev-flow/iterations/<迭代ID>/operations/delivery.md`，由同一迭代索引关联输入版本、Review/确认与结果。已有的 `docs/dev-flow/` 内权威位置通过该索引映射；目录外文档按共同文档协议整理迁入，按实际范围裁剪。
 
 日期、实际执行者/方式、项目/根路径、交付模式、要求与有效输入：
 

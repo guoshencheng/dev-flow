@@ -35,19 +35,19 @@
 ```sh
 DEV_VISUAL_SKILL_DIR="/实际安装目录/skills/dev-visual"
 node "$DEV_VISUAL_SKILL_DIR/scripts/design-template.mjs" init \
-  --project /项目绝对路径 --dir design/prototype
-cd /项目绝对路径/design/prototype
+  --project /项目绝对路径 --dir docs/dev-flow/visual/prototype
+cd /项目绝对路径/docs/dev-flow/visual/prototype
 npm ci
 npm run dev
 ```
 
 工具只在空目标复制源码、规范、锁文件与来源哈希，不改写项目指引或包清单。文档在项目索引映射到稳定权威位置，迭代仅记录增量。打开服务实际地址的 `#/overview/pages`；具体路由、尺寸边界与扩展方式见模板说明。
 
-只在没有合适工程时初始化。在目标项目根目录执行；无现有目录约定时采用跨迭代的稳定位置 `design/prototype/`，确认 Node.js 满足采用版本要求、目标目录未被占用。已有工程直接修改，不重新初始化：
+只在没有合适工程时初始化。在目标项目根目录执行；独立原型统一采用稳定位置 `docs/dev-flow/visual/prototype/`，确认 Node.js 满足采用版本要求、目标目录未被占用。已有工程直接修改，不重新初始化：
 
 ```sh
-npm create vite@latest design/prototype -- --template react-ts --no-interactive
-cd design/prototype
+npm create vite@latest docs/dev-flow/visual/prototype -- --template react-ts --no-interactive
+cd docs/dev-flow/visual/prototype
 npm install
 npm run dev -- --host 127.0.0.1 --port 5173
 ```

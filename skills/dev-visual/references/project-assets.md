@@ -1,6 +1,6 @@
 # 视觉资产复用与持续维护
 
-按共同[文档与归档协议](../../dev-flow/references/design-document-contract.md)定位本次业务项目的设计/UI 资产，在项目主索引登记视觉入口，并关联产品与技术资料；已有权威目录优先。现行 UI 页面、组件说明与设计规范默认在 `docs/dev-flow/visual/` 独立持续维护，设计稿源码留在稳定工程；迭代只引用资产与版本并记录变化，复杂时按需拆出 `docs/dev-flow/iterations/<迭代ID>/visual/changes.md`，不每轮复制完整规格或源码。通过产品功能 ID、RULE/AC、原型 PT 和必要证据关联，讨论/确认提供该项目设计资料与总览/独立页面的实际入口，不以通用 Skill 说明替代。
+按共同[文档与归档协议](../../dev-flow/references/design-document-contract.md)定位本次业务项目的设计/UI 资产，在项目主索引登记视觉入口，并关联产品与技术资料；优先复用 `docs/dev-flow/` 内已有权威目录。现行 UI 页面、组件说明与设计规范默认在 `docs/dev-flow/visual/` 独立持续维护，独立设计稿源码维护在 `docs/dev-flow/visual/prototype/`，正式应用源码留在实际工程；迭代只引用资产与版本并记录变化，复杂时按需拆出 `docs/dev-flow/iterations/<迭代ID>/visual/changes.md`，不每轮复制完整规格或源码。通过产品功能 ID、RULE/AC、原型 PT 和必要证据关联，讨论/确认提供该项目设计资料与总览/独立页面的实际入口，不以通用 Skill 说明替代。
 
 专业内容按[视觉规格协议](specification-contract.md)维护；UI 基准、Ant Design 联用和共享组件方法由视觉主责维护，产品/研发/测试按需引用，不各自复制一份。
 

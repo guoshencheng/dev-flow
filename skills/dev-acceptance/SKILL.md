@@ -54,4 +54,4 @@ description: 测试与验收：综合产品规则、经 Review 的端到端技�
 
 需要细化职责能力时，读取[能力目录](../dev-flow/references/role-capabilities.md)中的对应职责；实际验证范围以当前候选的执行证据为准。
 
-本次阶段产物统一归入 `docs/dev-flow/iterations/<迭代ID>/` 的对应职责目录，由迭代索引关联版本、Review、确认与证据。项目级职责目录用于跨迭代的现行基线和复用资产；已有权威位置通过迭代索引映射。详见[迭代目录协议](../dev-flow/references/design-document-contract.md)。
+本次阶段产物统一归入 `docs/dev-flow/iterations/<迭代ID>/` 的对应职责目录，由迭代索引关联版本、Review、确认与证据。项目级职责目录用于跨迭代的现行基线和复用资产；已有的 `docs/dev-flow/` 内权威位置通过迭代索引映射；目录外文档按共同文档协议整理迁入。详见[迭代目录协议](../dev-flow/references/design-document-contract.md)。

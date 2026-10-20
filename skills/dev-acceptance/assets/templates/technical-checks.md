@@ -8,7 +8,7 @@ iteration: iteration-id
 
 # 技术验证拆解与对齐 Review
 
-默认保存为 `docs/dev-flow/iterations/<迭代ID>/acceptance/technical-checks.md`。承接[用户验收用例](acceptance-cases.md)的技术检查，供研发、测试与 Review 使用；技术方法不另设人工审批。已有权威位置优先复用。
+默认保存为 `docs/dev-flow/iterations/<迭代ID>/acceptance/technical-checks.md`。承接[用户验收用例](acceptance-cases.md)的技术检查，供研发、测试与 Review 使用；技术方法不另设人工审批。优先复用 `docs/dev-flow/` 内已有权威文档；目录外文档按共同文档协议整理迁入。
 
 ## 有效输入与版本
 
