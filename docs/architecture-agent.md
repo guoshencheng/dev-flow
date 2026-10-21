@@ -1,26 +1,20 @@
 ---
-
-当前接入：通过专业 Skill 承担职责；2026-10-09 已移除 setup，旧 TOML 仅作参考，不参与当前安装。下文历史配置/派发证据保留原验证范围。
 id: ROLE-dev-architecture
 title: 架构设计与演进 Agent
 status: current
-version: 0.5
+version: 0.6
 owner: architecture
 ---
 
-# 架构设计与演进 Agent v0.5
+# 架构职责现状
 
-更新日期：2026-10-10。原生职责 `dev_architecture`；[专业 Skill](../skills/dev-architecture/SKILL.md)；[职责配置](../agents/dev_architecture.toml)。配置省略模型与推理强度，由本次用户和宿主设置选择。
+更新日期：2026-10-21。专业入口为[dev-architecture](../skills/dev-architecture/SKILL.md)。本轮新流程已有源码、安装及隔离代表场景证据，尚未以真实业务 UI 项目验证完整协作；历史评测只证明各自原对象与范围。
 
-## 当前做什么
+架构在产品/UI 候选期间基于真实代码反馈功能位置、交互形式、成本及状态 UI 的必要性。完整功能的架构和具体实现由研发主笔统一写入 `engineering/design.md`，架构执行者独立 Review 模块、依赖、契约、数据、权限与恢复；发现和定向复核写入 `engineering/review.md`。重大系统专题仍可按需另建架构设计，每轮默认不另产架构方案。
 
-以整洁架构为基础，先按业务能力细分域、用例、模块职责、公开契约和数据所有权，再说明策略/机制层次与真实目录。业务域、架构层、模块、目录和运行服务分别映射；不靠目录名或层数判断合规。源码依赖朝向业务策略，React/antd、HTTP/ORM 和 SDK 通过外层适配。
+架构独立复核 `engineering/implementation-plan.md` 的依赖、测试保护、集成及交付。实施前核对有效业务完成标准、设计/计划 Review 与授权；正式 TC 在完整实现后维护、独立 Review 并执行。完整候选形成后架构独立 Review 全部代码变化；实际验收和交付核验后在 `architecture/closeout.md` 核对设计差异、真实结果、长期资产和遗留。模板见[技术收尾](../skills/dev-architecture/assets/templates/architecture-closeout.md)。
 
-架构同时参与设计、实现计划 AI 复核、相关实施变化、交付符合性核验和研发结束后的代码业务复盘。用户确认重要架构选择及测试预期，实现计划由 AI 复核后自主实施，继续遵守[执行协议](../skills/dev-flow/references/execution-contract.md)。
-
-v0.3 按用户要求收敛技术 Guide：Web 使用 React（新建 Vite + React + TS），全栈使用 Next.js，纯静态使用 Astro；其他类型暂不建设通用技术 Guide，历史调查保留为资料。已定选择直接沿用，并新增 EditorConfig/Prettier、ESLint、类型与依赖规则的[代码规范](../skills/dev-architecture/references/code-standards.md)及可复制格式配置。
-
-研发前按[架构基线表](../skills/dev-architecture/references/design-and-contracts.md#研发前应明确的架构基线)确定本次模块/依赖、接口/数据、权限/失败恢复、质量、运行交付和维护事项。已有有效决定直接复用，具体规范由工具执行，不增加人工计划审批。
+标准领域任务在 Harness 可用且允许委派时默认使用专业 subagent，作者和独立评审分离；整体进度只由唯一 Todo/Progress 维护。旧项目有效权威文件可索引映射复用。模型与强度按用户本次要求及宿主配置，不固化到专业方法。
 
 ## 具体能力与产物
 
@@ -33,7 +27,7 @@ v0.3 按用户要求收敛技术 Guide：Web 使用 React（新建 Vite + React 
 | A05 技术与质量取舍 | 复用已定技术约定，核对规范、入口、代码工具链与交付并维护基线；根据实际目标确定性能/可靠性/容量/成本假设和测量证据 |
 | A06 信任与权限 | 身份/租户、数据访问、可信执行边界和对应正向/拒绝检查 |
 | A07 演进与恢复 | 分阶段变化、兼容期、数据检查、切换/恢复条件，避免将代码回滚当成数据恢复 |
-| A08 复盘与维护 | 研发后的实际代码业务 Review、架构合理性评价、现状/模块地图更新与有证据的改动建议 |
+| A08 复盘与维护 | 完整实现独立 Review、技术收尾、现状/模块地图更新与有证据的改动建议 |
 
 首版重点 A01/A02/A03/A08，涉及数据时同时落实 A04；当前 A05 保留三类技术约定和持续基线，代码规范支撑 A02/A05。指导覆盖与实际验证分开，配置存在不表示全部能力已经成熟。
 
@@ -49,7 +43,7 @@ v0.3 按用户要求收敛技术 Guide：Web 使用 React（新建 Vite + React 
 
 ## 研发结束后如何参与
 
-实质研发完成后，基于最终候选、有效设计和验收证据复核相关代码业务，更新当前系统和模块分工，评价依赖、数据与业务规则的合理性。首次接入、跨域变化、迁移和重复缺陷扩大到相应影响；局部修复定向核验，无变化时记录复用。交付前必需约束与复盘可合并检查。
+实质研发完成后，基于最终候选、有效设计和验收证据复核相关代码业务，更新当前系统和模块分工，评价依赖、数据与业务规则的合理性。首次接入、跨域变化、迁移和重复缺陷扩大到相应影响；局部修复定向核验，无变化时记录复用。交付前必需约束与技术收尾可合并检查；设计/计划/完整实现的独立意见保存在 `engineering/review.md`。
 
 每条建议给出代码/运行证据、业务影响、优先级、具体模块/目录/契约改动、收益与代价、实施依赖及验证/恢复方式。当前事实、有效目标、偏差和待验证风险分别记录。违反本次必需条件的问题回到修复循环；可选演进入待办。仅 Review 时不自动修改生产代码。
 
@@ -57,11 +51,13 @@ v0.3 按用户要求收敛技术 Guide：Web 使用 React（新建 Vite + React 
 
 ## 项目文档与共享
 
-优先沿用项目权威目录，无规范时使用 `docs/dev-flow/architecture/`：index/system/modules 保存当前事实，stack 保存技术/工具链和交付基线，changes 保存目标设计和确认，decisions 保存重要取舍，reviews 保存实际代码复盘，debt 关联改进。代码规范使用 `docs/dev-flow/engineering/code-standards.md` 并链接实际配置与命令。小工程允许合并，复杂业务域按需拆分。架构可在需求中、重要变更后、发布前或用户授权的定期窗口参与联合维护检查，和测试以同一版本核对 ARC/OUT/TC 关系；已验证的当前事实写回长期入口，被替代的完整方案才按协议归档，不能把最新有效架构移入历史。普通历史由 Git 保存，完整替换方案按协议归档。
+优先沿用项目权威目录，无规范时使用 `docs/dev-flow/architecture/`：index/system/modules 保存当前事实，stack 保存技术/工具链和交付基线，decisions 保存重要取舍；本轮统一设计和独立 Review 在迭代 `engineering/`，技术收尾在迭代 `architecture/`，debt 关联改进。代码规范使用 `docs/dev-flow/engineering/code-standards.md` 并链接实际配置与命令。小工程允许合并，复杂业务域按需拆分。架构可在需求中、重要变更后、发布前或用户授权的定期窗口参与联合维护检查，和测试以同一版本核对 ARC/OUT/TC 关系；已验证的当前事实写回长期入口，被替代的完整方案才按协议归档，不能把最新有效架构移入历史。普通历史由 Git 保存，完整替换方案按协议归档。
 
-随包提供[当前地图](../skills/dev-architecture/assets/templates/current-architecture.md)、[技术基线](../skills/dev-architecture/assets/templates/technology-baseline.md)、[变化设计](../skills/dev-architecture/assets/templates/architecture-design.md)、[代码复盘](../skills/dev-architecture/assets/templates/architecture-review.md)四个模板，复用共享 Vite 文档预览。项目事实留在项目，经过验证的通用方法再沉淀到本 Skill。
+随包提供[当前地图](../skills/dev-architecture/assets/templates/current-architecture.md)、[技术基线](../skills/dev-architecture/assets/templates/technology-baseline.md)、[重大系统专题设计](../skills/dev-architecture/assets/templates/architecture-design.md)、[专项代码复核](../skills/dev-architecture/assets/templates/architecture-review.md)和[技术收尾](../skills/dev-architecture/assets/templates/architecture-closeout.md)模板，复用共享 Vite 文档预览。项目事实留在项目，经过验证的通用方法再沉淀到本 Skill。
 
 ## 验证状态
+
+2026-10-21 的[本轮技术收尾](plans/2026-10-21-flow-revision/architecture-closeout.md)区分四层证据：C2-62e99b8b7a6d 的完整源码独立 Review 与 P6 静态/工具检查、Plugin 0.3.0 的 Codex 实际安装及首次 check、P8 新会话/原生派发的隔离代表场景、未执行的真实业务 UI 项目。[P8 独立行为报告](../evals/dev-flow-stages/2026-10-21-behavior-report.md)对新会话发现及固定七场景逐项判通过。隔离订单备注项目另有独立[技术收尾](../.dev/runs/flow-revision/behavior-inputs/post-candidate/docs/dev-flow/iterations/order-note/architecture/closeout.md)，核对 C2 项目源码、正式 TC/CH 与本机 zipapp；该项目的 C2 与插件执行候选不是同一对象，不能从 P6 检查或合成项目推断真实业务完整交付。
 
 v0.5 增加与测试验收的联合维护检查及逻辑归档：按用户手动或授权定期触发，核对同一版本的架构现状、ARC/OUT/TC 与实际证据，先更新当前基线，再归档迭代或被替代候选；`current`、`needs-review`、`superseded` 和 `archived` 分开表达。保留[完整实现评审与复盘](../skills/dev-architecture/references/retrospective-and-evolution.md)要求的开始基线至最终候选覆盖及定向复评。
 

@@ -6,9 +6,9 @@ owner: architecture
 iteration: iteration-id
 ---
 
-# 代码架构复核与研发复盘
+# 专项代码架构复核
 
-采用时默认保存为 `docs/dev-flow/iterations/<迭代ID>/architecture/review.md`，由同一迭代索引关联输入版本、Review/确认与结果。已有的 `docs/dev-flow/` 内权威位置通过该索引映射；目录外文档按共同文档协议整理迁入，按实际范围裁剪。
+仅专项独立架构审查时采用；本轮完整实现 Review 的权威位置是 `engineering/review.md`，技术收尾为 `architecture/closeout.md`。采用时可保存为 `docs/dev-flow/iterations/<迭代ID>/architecture/review.md`，由同一迭代索引关联输入版本、Review/确认与结果。已有的 `docs/dev-flow/` 内权威位置通过该索引映射；目录外文档按共同文档协议整理迁入，按实际范围裁剪。
 
 ## 当前结论与来源
 

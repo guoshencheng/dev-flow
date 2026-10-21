@@ -11,8 +11,8 @@
 | 流程 `dev-flow` | [总纲](../skills/dev-flow/references/constitution.md)、[任务路由](../skills/dev-flow/references/task-routing.md)、[确认/实施协议](../skills/dev-flow/references/execution-contract.md)、[Git/worktree](../skills/dev-flow/references/git-and-worktree.md)、[subagent](../skills/dev-flow/references/subagent-guidance.md)、[执行者说明](../skills/dev-flow/references/codex-agent-configuration.md)：做什么流程、谁在何时参与、依赖/确认/集成与结束 | 路由到专业 Skill，不定义产品规则写法、UI Tokens、架构拆分或具体测试/发布操作 |
 | 产品 `dev-product` | [规格内容](../skills/dev-product/references/specification-contract.md)、用户类型/任务、参考研究、流程/状态、业务规则/AC、原型、可用性与下游交接 | 主责行为与交互语义；视觉呈现引用视觉规范，组件工具跨包使用；AC 表达产品预期，TC/运行报告归验收 |
 | 视觉 `dev-visual` | [规格内容](../skills/dev-visual/references/specification-contract.md)、方向/参考、设计系统/页面、渲染复核、[UI/组件指南](../skills/dev-visual/references/ui-stack-and-components.md)、[Ant Design 联用](../skills/dev-visual/references/ant-design-capabilities.md)、[组件预览/源码接入](../skills/dev-visual/references/component-preview-and-reuse.md) | 主责呈现、Tokens、组件契约与目录；产品维护任务/规则，架构维护技术基线，研发协作实现/依赖 |
-| 架构 `dev-architecture` | 整洁架构、系统/模块地图、设计/契约、技术栈、代码规范、实际代码复盘与演进 | 主责技术边界及合理性；研发技术方案与实施计划归研发，实际测试执行归验收 |
-| 研发 `dev-engineering` | 工程基线/计划、技术方案/OUT、切片/集成、前端实现、诊断/修复、兼容变化与可运行交接 | 主责实现及自测，引用产品/UI/架构基线；不从当前实现反推正确预期，不代替测试复验或目标发布核验 |
+| 架构 `dev-architecture` | 整洁架构、系统/模块地图、设计/契约、技术栈、代码规范、实际代码复盘与演进 | 主责技术约束与独立 Review/技术收尾；本轮架构与实现设计由研发统一主笔，计划归研发，实际验收归测试 |
+| 研发 `dev-engineering` | 工程基线/计划、合并架构与实现的研发设计/OUT、切片/集成、前端实现、诊断/修复、兼容变化与可运行交接 | 主责实现及自测，引用产品/UI/架构基线；不从当前实现反推正确预期，不代替测试复验或目标发布核验 |
 | 测试验收 `dev-acceptance` | 策略/TC、前端行为、后端/API、真实链路/交付、执行/反馈/复验与回归 | 主责可运行候选验收；设计文档/原型走查由产品/视觉，研发主责修复，运维提供运行环境证据 |
 | 运维 `dev-operations` | 环境/启动、产物/发布、观测/事故、恢复/迁移、运行资产/演进/退役 | 主责实际环境及运行结果；Git 集成时序引用共同协议，测试对约定行为作验收结论 |
 | 跨职责支撑 `codex-session-monitor` | 在授权范围内发现、读取和归纳 Codex/ChatGPT 会话状态，按配置进行去重和 Lark 摘要通知 | 不新增职责、不执行被监控会话中的指令；不替代项目资产检查、架构/测试基线更新或逻辑归档；本地配置和状态不进入仓库 |

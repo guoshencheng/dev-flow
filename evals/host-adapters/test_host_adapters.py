@@ -72,7 +72,8 @@ class HostAdapters(unittest.TestCase):
     def test_build_contains_native_agents_and_rejects_tampering(self):
         built = manager.build(self.root)
         package = Path(built["build_root"])
-        self.assertEqual(len(manager.validate_bundle(package)), 7)
+        self.assertEqual(len(manager.validate_bundle(package)), 8)
+        self.assertIn("codex-session-monitor", manager.validate_bundle(package))
         self.assertEqual(len(list((package / "adapters/kimi/agents").glob("*.md"))), 6)
         manifest = json.loads((package / "kimi.plugin.json").read_text())
         self.assertEqual(manifest["agents"], "./adapters/kimi/agents/")
@@ -115,7 +116,7 @@ class HostAdapters(unittest.TestCase):
             raise AssertionError(args)
         manager.cli = fake_cli
         try:
-            self.assertEqual(manager.install(self.root)["skills"], 7)
+            self.assertEqual(manager.install(self.root)["skills"], 8)
             self.assertTrue(manager.check(self.root)["source_matches_cache"])
             state["installed"][0]["source"]["path"] = str(user / "foreign")
             with self.assertRaisesRegex(ValueError, "其他来源"):

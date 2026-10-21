@@ -2,6 +2,16 @@
 
 当前插件包含一个流程 Skill、六个专业 Skills 和一个跨职责会话监控 Skill，共八个。职责方法通过共用 Skills 提供；Kimi 清单另外声明六个职责 Agent 入口，会话监控不新增 Agent。不需要 setup Agent，也不向个人 Agent 目录写入角色配置或维护全局指引。仓库 `agents/` 的 TOML 由同步脚本生成，仅保留为 Codex 配置参考，不参与当前安装或流程。项目长期资产留在所属项目。
 
+## 0.3.0 的流程变化与迁移
+
+当前源码版本为 0.3.0，总纲 v0.29、执行协议 v0.13。正式完整 TC 的维护/Review/执行从实施前移到完整候选后，领域工作默认原生 subagent，整体进度覆盖最终目标；这改变旧流程前置关系，按 0.x 不兼容调整递增 minor。八个 Skills 与状态 schema 1 保持。
+
+旧项目先恢复真实基线与原授权，不删除有效回归或历史确认，也不倒填未执行的 Review。标准路径实施前引用业务完成标准、研发设计/计划 Review 与明确范围授权；实现后正式用例及交付核验属于完成依赖。现有权威文件可映射复用，新项目默认研发设计、Review、计划和架构收尾四篇独立文档。标准/系统实现范围在结束核验时不能靠空 cases 宣称完成；实施前正式 cases 尚未形成不因此阻断开工。
+
+标准/系统范围依赖链中的专业 Review 须真实独立执行，不能把 `self` 或仅声明 `delegated` 作为独立通过。跨范围合并授权后的间接 Review 用 `review_scopes` 标识实际归属；旧记录缺归属时核实原记录再补字段，不重新索取同范围授权。状态迁移详见[阶段状态协议](../skills/dev-flow/references/stage-state.md)。
+
+多阶段任务使用一个持久 Progress/索引维护完整阶段和当前/下一步，其他入口只引用。安装成功、原生派发、新会话发现、隔离行为案例与真实业务项目验证分别记录；当前运行版本以安装后的 check 和实际发现为准，不以本段源码版本代替。
+
 ## Codex 安装、更新与检查
 
 在 Git 仓库根目录运行：
@@ -64,13 +74,13 @@ Plugin 0.2.0、总纲 v0.25 和执行协议 v0.12 新增[首次实施人工同�
 
 这是对旧实施/完成核验条件的不兼容收紧，因此递增 minor。schema 仍为 1，旧记录缺少实施授权会保持未就绪；有真实历史同意时引用其摘要、版本、来源和答复，无需重复询问；没有则保持 pending，禁止倒填授权。只评审/设计等无正式实现范围无需开工同意。完整影响和验证见[调整记录](../reviews/2026-10-12-implementation-authorization.md)。
 
-插件提供[只读核验脚本](../skills/dev-flow/scripts/check_iteration.py)，由主 Agent 按[共同协议](../skills/dev-flow/references/stage-state.md)从已有迭代索引调用。它核验声明的输入版本、确认覆盖、Review 字段、依赖次序、候选及检查/证据观察范围；退出码支持区分通过、未完成和格式错误。需要实际可用的 Python 3.9+，无第三方运行依赖。
+插件提供[只读核验脚本](../skills/dev-flow/scripts/check_iteration.py)，由主 Agent 按[共同协议](../skills/dev-flow/references/stage-state.md)从选定的唯一 Progress/既有索引调用。它核验声明的输入版本、确认覆盖、Review 字段、依赖次序、候选及检查/证据观察范围；退出码支持区分通过、未完成和格式错误。需要实际可用的 Python 3.9+，无第三方运行依赖。
 
 这项能力不是自动 Hooks 或 MCP 拦截，不会自行调用、不修改项目、不证明真实执行或语义完整。核验器契约测试、新上下文行为及真实项目验收分别登记，见[验证记录](../evals/dev-flow-stages/report.md)。新文件须纳入 Git 管理后才能随现有 install 打包，安装不改变 Agent 或用户指引。
 
 ## 使用与解除
 
-使用 `$dev-flow` 或选择插件，按[任务路由](../skills/dev-flow/references/task-routing.md)处理 bugfix 或正常需求。主 Agent 读取所需专业 Skill；需要且获准委派时，向实际可用子 Agent 提供专业 Skill 路径与明确任务。模型遵循用户及宿主本次约束。
+使用 `$dev-flow` 或选择插件，按[任务路由](../skills/dev-flow/references/task-routing.md)处理 bugfix 或正常需求。主 Agent 协调范围、依赖、全局进度和集成；标准跨职责任务默认委派实际可用且允许的 Harness subagent，提供专业 Skill、原要求、有效输入/版本和明确写入边界，独立评审与作者分离。模型遵循用户及宿主本次约束。
 
 Plugin 0.2.1、总纲 v0.26 明确现有 $dev-flow 的[一条指令收尾](../skills/dev-flow/references/document-archive.md#一条指令收尾当前迭代)入口：`使用 $dev-flow 收尾当前迭代，把文档和长期资产沉淀好。` 正常交付已包含文档收尾；补做时直接同步相关资产、总结、遗留与项目入口并核验归档条件，不重启实施流程。八个 Skills 和状态 schema 保持不变，属于兼容的方法维护，验证见[收尾记录](../reviews/2026-10-12-iteration-closeout.md)。
 

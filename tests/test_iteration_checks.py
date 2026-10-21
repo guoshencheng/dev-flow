@@ -41,7 +41,7 @@ def quick_state():
                         "before_implementation": ["plan-review", "implementation-authorize"],
                         "before_finish": ["result-check"]}],
             "artifacts": [{"id": "spec", "path": "index.md", "version": "v1"}],
-            "gates": [gate("plan-review", "review", ["rename"]),
+            "gates": [gate("plan-review", "review", ["rename"], review_scopes=["rename"]),
                       gate("result-check", "check", ["rename"]),
                       gate("implementation-authorize", "confirmation", ["rename"],
                            stage="implementation-authorization", after=["plan-review"],
@@ -52,10 +52,11 @@ def quick_state():
 def mixed_state():
     result = quick_state()
     result["scopes"].append({"id": "mobile", "route": "standard", "implementation": True,
-                            "reason": "新增手机体验，复用桌面业务而重新确认手机布局、用例和覆盖",
+                            "reason": "新增手机体验；实施前确认业务完成标准，完整候选后维护正式 TC",
                             "before_implementation": ["design-preview", "design-confirm", "solution-review",
-                                                      "cases-review", "cases-confirm", "mobile-plan"],
-                            "before_finish": ["implementation-review", "reopen", "share"]})
+                                                      "mobile-plan", "mobile-start"],
+                            "before_finish": ["implementation-review", "cases-review", "reopen", "share",
+                                              "delivery-check"]})
     preview = gate("design-preview", "check", ["UI-phone"])
     preview.pop("candidate")
     preview.update(stage="design", expects=[{"kind": "prototype", "observations": ["UI-phone"]}])
@@ -63,24 +64,37 @@ def mixed_state():
                             "inputs": {"spec": "v1"}, "path": "evidence.txt"}]
     result["gates"].extend([
         preview,
-        gate("design-confirm", "confirmation", ["RULE-mobile", "UI-phone"],
+        gate("design-confirm", "confirmation", ["RULE-mobile", "UI-phone", "AC-mobile"],
              stage="design", after=["design-preview"]),
         gate("solution-review", "review", ["RULE-mobile", "UI-phone", "OUT-mobile"],
-             stage="solution", after=["design-confirm"],
-             checks=["产品：原规格与 OUT 双向覆盖", "UI：手机入口与恢复状态", "架构：沿用桌面契约"]),
-        gate("cases-review", "review", ["TC-mobile"], stage="cases", after=["solution-review"]),
-        gate("cases-confirm", "confirmation", ["TC-mobile"], stage="cases", after=["cases-review"],
-             authorizes=["mobile"], quote="同意这些用例预期，计划 AI 复核通过后开始实施"),
-        gate("mobile-plan", "review", ["TC-mobile", "OUT-mobile"], after=["cases-confirm"]),
+             stage="solution", after=["design-confirm"], review_scopes=["mobile"],
+             actor="独立架构执行者", mode="independent",
+             checks=["产品：原规格与结果双向覆盖", "UI：手机入口与恢复状态", "架构：沿用桌面契约"]),
+        gate("mobile-plan", "review", ["AC-mobile", "OUT-mobile"], after=["solution-review"],
+             actor="独立架构执行者", mode="independent", review_scopes=["mobile"]),
+        gate("mobile-start", "confirmation", ["mobile"], stage="implementation-authorization",
+             after=["mobile-plan"], authorizes=["mobile"], quote="同意按已确认标准开始手机实现"),
         gate("implementation-review", "review", ["OUT-mobile"], stage="implementation",
-             candidate="C1", after=["mobile-plan"]),
-        gate("reopen", "check", ["TC-mobile"], expects=[{"kind": "native-ui", "observations": ["app-reopen"]}],
+             candidate="C1", after=["mobile-start"], actor="独立架构执行者", mode="independent",
+             review_scopes=["mobile"]),
+        gate("cases-review", "review", ["AC-mobile", "TC-mobile"], stage="cases", candidate="C1",
+             after=["implementation-review"], actor="独立验收执行者", mode="independent",
+             review_scopes=["mobile"],
+             checks=["对照实施前确认的完成标准", "覆盖及交付证据可执行性"]),
+        gate("reopen", "check", ["TC-mobile"], after=["cases-review"],
+             expects=[{"kind": "native-ui", "observations": ["app-reopen"]}],
              evidence=[{"kind": "native-ui", "observations": ["app-reopen"], "candidate": "C1",
                         "inputs": {"spec": "v1"}, "path": "evidence.txt"}]),
-        gate("share", "check", ["TC-mobile"], expects=[{"kind": "native-ui", "observations": ["system-share"]}],
+        gate("share", "check", ["TC-mobile"], after=["cases-review"],
+             expects=[{"kind": "native-ui", "observations": ["system-share"]}],
              evidence=[{"kind": "native-ui", "observations": ["system-share"], "candidate": "C1",
-                        "inputs": {"spec": "v1"}, "path": "evidence.txt"}])])
-    result["cases"].append({"id": "TC-mobile", "scope": "mobile", "required_checks": ["reopen", "share"]})
+                        "inputs": {"spec": "v1"}, "path": "evidence.txt"}]),
+        gate("delivery-check", "check", ["TC-mobile"], stage="delivery", after=["cases-review"],
+             expects=[{"kind": "artifact", "observations": ["launch-and-core-task"]}],
+             evidence=[{"kind": "artifact", "observations": ["launch-and-core-task"],
+                        "candidate": "C1", "inputs": {"spec": "v1"}, "path": "evidence.txt"}])])
+    result["cases"].append({"id": "TC-mobile", "scope": "mobile",
+                            "required_checks": ["reopen", "share", "delivery-check"]})
     return result
 
 
@@ -171,20 +185,115 @@ class IterationChecksTest(unittest.TestCase):
         self.assertTrue(result["can_finish"])
         self.assertEqual(len(result["scopes"]), 2)
 
-    def test_one_reply_can_confirm_prepared_design_and_reviewed_cases(self):
+    def test_standard_design_and_plan_self_review_block_implementation(self):
+        for gate_id in ("solution-review", "mobile-plan"):
+            with self.subTest(gate_id=gate_id):
+                state = mixed_state()
+                self.find(state, gate_id)["mode"] = "self"
+                result = self.inspect(state)
+                self.assertFalse(result["scopes"]["mobile"]["can_start_implementation"])
+                self.assertIn("独立执行者", self.reasons(result))
+                self.assertTrue(result["scopes"]["rename"]["can_finish"])
+
+    def test_all_standard_professional_self_reviews_cannot_pass(self):
         state = mixed_state()
-        # 合并展示前先完成候选/Review；正式编码仍等最终一次答复。
-        self.find(state, "solution-review")["after"] = ["design-preview"]
-        confirmation = self.find(state, "design-confirm")
-        confirmation.update(after=["cases-review"], required_coverage=["RULE-mobile", "UI-phone", "TC-mobile"],
-                            coverage=["RULE-mobile", "UI-phone", "TC-mobile"],
-                            authorizes=["mobile"],
-                            quote="同意这份设计、手机布局和列出的用例预期，计划复核通过后开始实施")
-        state["gates"] = [g for g in state["gates"] if g["id"] != "cases-confirm"]
-        self.find(state, "mobile-plan")["after"] = ["design-confirm"]
+        for gate_id in ("solution-review", "mobile-plan", "cases-review", "implementation-review"):
+            self.find(state, gate_id)["mode"] = "self"
+        result = self.inspect(state)
+        self.assertFalse(result["scopes"]["mobile"]["can_start_implementation"])
+        self.assertFalse(result["scopes"]["mobile"]["can_finish"])
+        self.assertTrue(result["scopes"]["rename"]["can_finish"])
+
+    def test_standard_review_cannot_hide_in_authorization_dependency(self):
+        state = mixed_state()
         mobile = state["scopes"][1]
-        mobile["before_implementation"].remove("cases-confirm")
+        mobile["before_implementation"] = ["design-preview", "design-confirm", "mobile-start"]
+        for gate_id in ("solution-review", "mobile-plan"):
+            self.find(state, gate_id)["mode"] = "self"
+        result = self.inspect(state)
+        self.assertFalse(result["scopes"]["mobile"]["can_start_implementation"])
+        self.assertFalse(result["scopes"]["mobile"]["can_finish"])
+        self.assertIn("独立执行者", self.reasons(result))
+        self.assertTrue(result["scopes"]["rename"]["can_finish"])
+
+    def test_indirect_standard_review_cannot_claim_other_scope(self):
+        state = mixed_state()
+        state["scopes"][1]["before_implementation"] = ["design-preview", "design-confirm", "mobile-start"]
+        self.find(state, "mobile-plan")["review_scopes"] = ["rename"]
+        result = self.inspect(state)
+        self.assertFalse(result["scopes"]["mobile"]["can_start_implementation"])
+        self.assertIn("归属与标准/系统范围", self.reasons(result))
+
+    def test_shared_authorization_requires_indirect_review_attribution(self):
+        state = mixed_state()
+        state["gates"].append(gate("combined-start", "confirmation", ["rename", "AC-mobile"],
+                                   authorizes=["rename", "mobile"], after=["plan-review", "mobile-plan"],
+                                   quote="同意更名与手机范围开始"))
+        state["scopes"][1]["before_implementation"] = ["design-preview", "design-confirm", "combined-start"]
+        self.find(state, "mobile-plan").pop("review_scopes")
+        result = self.inspect(state)
+        self.assertFalse(result["scopes"]["mobile"]["can_start_implementation"])
+        self.assertIn("缺少 review_scopes", self.reasons(result))
+
+    def test_standard_case_and_implementation_self_review_block_finish_only(self):
+        for gate_id in ("cases-review", "implementation-review"):
+            with self.subTest(gate_id=gate_id):
+                state = mixed_state()
+                self.find(state, gate_id)["mode"] = "self"
+                result = self.inspect(state)
+                self.assertTrue(result["scopes"]["mobile"]["can_start_implementation"])
+                self.assertFalse(result["scopes"]["mobile"]["can_finish"])
+                self.assertIn("独立执行者", self.reasons(result))
+
+    def test_standard_direct_review_cannot_opt_out_of_independence(self):
+        state = mixed_state()
+        self.find(state, "mobile-plan").update(mode="self", requires_independent=False)
+        self.assertFalse(self.inspect(state)["scopes"]["mobile"]["can_start_implementation"])
+
+    def test_declared_independent_review_rejects_self_outside_standard(self):
+        state = quick_state()
+        self.find(state, "plan-review")["requires_independent"] = True
+        self.assertFalse(self.inspect(state)["can_start_implementation"])
+        self.find(state, "plan-review")["requires_independent"] = False
+        self.assertTrue(self.inspect(state)["can_finish"])
+
+    def test_standard_implementation_does_not_depend_on_formal_cases(self):
+        state = mixed_state()
+        self.find(state, "cases-review")["status"] = "pending"
         self.assertTrue(self.inspect(state)["can_start_implementation"])
+        self.assertFalse(self.inspect(state)["can_finish"])
+
+    def test_standard_scope_can_start_before_cases_but_cannot_finish_empty_cases(self):
+        state = mixed_state()
+        state["cases"] = [case for case in state["cases"] if case["scope"] != "mobile"]
+        for gate_id in ("cases-review", "reopen", "share", "delivery-check"):
+            self.find(state, gate_id)["status"] = "pending"
+        result = self.inspect(state)
+        self.assertTrue(result["can_start_implementation"])
+        self.assertFalse(result["can_finish"])
+        self.assertIn("空 cases", self.reasons(result))
+        for gate_id in ("cases-review", "reopen", "share", "delivery-check"):
+            self.find(state, gate_id)["status"] = "passed"
+        state["cases"].append({"id": "TC-mobile", "scope": "mobile",
+                               "required_checks": ["reopen", "share", "delivery-check"]})
+        self.assertTrue(self.inspect(state)["can_finish"])
+
+    def test_formal_case_review_and_delivery_are_finish_conditions(self):
+        for gate_id in ("cases-review", "delivery-check"):
+            with self.subTest(gate_id=gate_id):
+                state = mixed_state()
+                self.find(state, gate_id)["status"] = "pending"
+                result = self.inspect(state)
+                self.assertTrue(result["can_start_implementation"])
+                self.assertFalse(result["can_finish"])
+
+    def test_formal_case_review_is_bound_to_current_candidate(self):
+        state = mixed_state()
+        state["candidate"] = "C2"
+        result = self.inspect(state)
+        self.assertTrue(result["can_start_implementation"])
+        self.assertFalse(result["can_finish"])
+        self.assertIn("未绑定当前候选", self.reasons(result))
 
     def test_existing_confirmation_can_be_reused_without_new_user_reply(self):
         state = mixed_state()
@@ -216,18 +325,17 @@ class IterationChecksTest(unittest.TestCase):
         state = mixed_state()
         for item in state["gates"]:
             item.pop("authorizes", None)
-        state["gates"].append(gate("combined-start", "confirmation", ["rename", "TC-mobile"],
-                                  authorizes=["rename", "mobile"], after=["plan-review", "cases-review"],
+        state["gates"].append(gate("combined-start", "confirmation", ["rename", "AC-mobile"],
+                                  authorizes=["rename", "mobile"], after=["plan-review", "mobile-plan"],
                                   quote="同意更名和手机范围及预期，计划复核后开始"))
         for scope in state["scopes"]:
             scope["before_implementation"].append("combined-start")
         self.assertTrue(self.inspect(state)["can_start_implementation"])
 
-    def test_narrow_layout_reply_does_not_confirm_rules_and_cases(self):
+    def test_narrow_layout_reply_does_not_confirm_rules_and_completion_standard(self):
         state = mixed_state()
         design = self.find(state, "design-confirm")
         design.update(coverage=["UI-phone"], quote="iPad 沿用 Mac；iPhone 按此布局")
-        self.find(state, "cases-confirm")["status"] = "pending"
         result = self.inspect(state)
         self.assertFalse(result["can_start_implementation"])
         self.assertIn("RULE-mobile", self.reasons(result))
@@ -243,7 +351,7 @@ class IterationChecksTest(unittest.TestCase):
         self.assertFalse(result["can_start_implementation"])
         self.assertIn("执行早于前置完成", self.reasons(result))
 
-    def test_plan_review_before_case_confirmation_is_not_effective(self):
+    def test_plan_review_before_design_confirmation_is_not_effective(self):
         state = mixed_state()
         self.find(state, "mobile-plan")["completed_at"] = "2026-10-12T09:00:00+08:00"
         self.assertFalse(self.inspect(state)["can_start_implementation"])
@@ -267,7 +375,7 @@ class IterationChecksTest(unittest.TestCase):
 
     def test_quote_and_confirmation_source_are_required(self):
         state = mixed_state()
-        self.find(state, "cases-confirm").pop("quote")
+        self.find(state, "design-confirm").pop("quote")
         self.assertIn("确认缺少 quote", self.reasons(self.inspect(state)))
 
     def test_service_save_load_is_not_app_reopen(self):
@@ -380,6 +488,16 @@ class IterationChecksTest(unittest.TestCase):
         path.write_text(content + content, encoding="utf-8")
         result = subprocess.run([sys.executable, str(SCRIPT), str(path), "--root", str(self.root)], capture_output=True)
         self.assertEqual(result.returncode, 2)
+
+    def test_progress_file_can_be_the_only_state_authority(self):
+        path = self.root / "Progress.md"
+        path.write_text("# 进度权威\n\n```dev-flow-state\n" +
+                        json.dumps(mixed_state(), ensure_ascii=False) + "\n```\n", encoding="utf-8")
+        (self.root / "index.md").write_text("[总体进度](Progress.md)\n", encoding="utf-8")
+        result = subprocess.run([sys.executable, str(SCRIPT), str(path), "--root", str(self.root)],
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertTrue(json.loads(result.stdout)["can_finish"])
 
     def test_repository_example_is_executable_and_template_stays_pending(self):
         example = ROOT / "skills/dev-flow/assets/examples/iteration-state.md"

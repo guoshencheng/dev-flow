@@ -10,15 +10,15 @@
 | 技术基线 | `architecture/stack.md`：执行形态与各单元状态、实际技术/工具链、有效决定、安装/运行/交付链及依据；小工程可并入 index |
 | 代码规范 | `engineering/code-standards.md`：沿用现有工程规范；工具/权威配置、命名/依赖规则、检查入口、适用范围与例外；架构入口/技术基线链接它 |
 | 域详细契约 | `architecture/domains/<域ID>.md`：确有独立规则和跨模块细节时拆出；链接权威定义 |
-| 变化设计 | `iterations/<迭代ID>/architecture/design.md`：目标、约束、取舍、迁移和确认基线；未实现部分保持目标标记 |
+| 变化设计 | `iterations/<迭代ID>/engineering/design.md`：研发主笔合并架构与实现；重大系统专题才另建 `architecture/design.md` |
 | 重要决策 | `architecture/decisions/<决策ID>.md`：背景、决定/状态、权衡、来源与替代关系，避免抄写每项内部实现 |
-| 代码复盘 | `iterations/<迭代ID>/architecture/review.md`：当前候选检查、代码业务发现、建议与实际证据 |
+| 代码复盘 | `iterations/<迭代ID>/engineering/review.md`：独立设计/计划/完整实现 Review；架构技术收尾使用 `architecture/closeout.md` |
 | 改进与偏差 | `architecture/debt.md`：链接项目实际任务/缺陷，优先级、责任、范围、依赖、收益/代价、验证和状态 |
 | 完整替换方案 | 迭代候选：`iterations/<迭代ID>/archive/architecture/<资产ID>/`；长期基线：`architecture/archive/<YYYY-MM-DD>/<资产ID>/`：必要旧方案及替代关系；日常修订用 Git 历史 |
 
 表中短路径均相对于 `docs/dev-flow/`。检查证据和实际工具运行记录统一放 `.dev/runs/<迭代ID>/architecture/<记录ID>/`，默认不提交；重要结构取舍、Review 结论和未关闭项提炼到架构文档或正式交接。证据文件不混入目标设计冒充已验收，本机记录不能成为跨机器接手的唯一事实来源。
 
-模板按任务裁剪：[当前架构与模块](../assets/templates/current-architecture.md)、[技术基线](../assets/templates/technology-baseline.md)、[变化设计](../assets/templates/architecture-design.md)、[代码复盘](../assets/templates/architecture-review.md)。小项目可在同一文档分开现状、目标和发现；模块足够复杂时再拆域文件。新职责与项目共用现有 Git 管理和[Vite 文档预览](../../dev-flow/references/document-preview.md)，无需独立文档服务。
+模板按任务裁剪：[当前架构与模块](../assets/templates/current-architecture.md)、[技术基线](../assets/templates/technology-baseline.md)、[重大系统专题设计](../assets/templates/architecture-design.md)、[技术收尾](../assets/templates/architecture-closeout.md)。小项目可在同一文档分开现状、目标和发现；模块足够复杂时再拆域文件。新职责与项目共用现有 Git 管理和[Vite 文档预览](../../dev-flow/references/document-preview.md)，无需独立文档服务。
 
 ## 有效性与归档
 
@@ -34,7 +34,7 @@
 
 ## 与测试的联合维护检查
 
-架构资产不只在需求“结束”时更新。用户可以手动触发，或授权按项目、范围和频率定期触发联合维护检查；实施中改变行为、契约或交付边界的事项仍须立即走[需求变更闸门](../../dev-flow/references/execution-contract.md#实施中的需求变更闸门)，不能等待维护窗口。
+架构资产不只在需求“结束”时更新。标准任务整体进度只在迭代 Todo/Progress 维护，设计、Review、计划和收尾均引用；已有有效权威文件可索引映射复用，不强制迁移或复制。用户可以手动触发，或授权按项目、范围和频率定期触发联合维护检查；实施中改变行为、契约或交付边界的事项仍须立即走[需求变更闸门](../../dev-flow/references/execution-contract.md#实施中的需求变更闸门)，不能等待维护窗口。
 
 联合检查使用同一源码/候选版本，核对系统/模块地图、接口/数据/权限/恢复约束与实际实现，并检查 ARC/OUT/TC 是否仍能从架构约束连到真实测试和证据。检查后将已实现且有效的事实写回项目级 `architecture/`，将未实现目标、待核验风险和被替代方案分别保留为目标、`needs-review` 或 `superseded`；测试和研发提供证据，架构负责整合当前地图与决策关系。
 

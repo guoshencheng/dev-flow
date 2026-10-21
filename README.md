@@ -1,6 +1,6 @@
 # dev-flow
 
-支持 Codex 与 Kimi 接入的多角色研发协作体系，覆盖产品与交互、视觉、架构、研发、测试验收、运维交付，并提供跨职责会话监控。当前已有总纲 v0.27、六职责专业 Skills、会话监控 Skill、含实施授权检查的迭代状态只读核验、共享 React 组件和面向当前业务项目的 Vite 文档预览工程。专业职责由主 Agent 或获准委派的可用子 Agent 承担，模型遵循本次用户要求与宿主策略；本地 Plugin 0.2.2 包装和接入方式见[安装指南](docs/plugin.md)。快速路径也须先取得用户实施同意，旧记录需关联真实授权；影响及验证见[授权调整记录](reviews/2026-10-12-implementation-authorization.md)。“开始收尾”覆盖代码整理、验证、保存与文档沉淀，见[代码收尾记录](reviews/2026-10-12-code-closeout.md)和[文档收尾记录](reviews/2026-10-12-iteration-closeout.md)。工具、专业行为、实际委派与真实项目成熟度分别登记；完整真实任务和后续运行能力继续按实测需要建设。
+支持 Codex 与 Kimi 的多角色研发协作体系。当前源码 Plugin 0.3.0、总纲 v0.29：产品/UI 确认前取得真实代码与实现成本反馈；研发统一编写架构与实现设计，Review、计划、架构收尾独立；专业工作默认使用可用 Harness subagent；整体 Todo/Progress 覆盖最终目标；完整功能实现后维护正式验收用例并核验交付。研发自测与回归持续进行，已确认业务预期和明确范围授权仍在实施前生效。八个 Skills、共享 React 组件和业务项目 Vite 文档预览继续提供；实际安装与能力成熟度分别按证据核验，见[安装指南](docs/plugin.md)。
 
 Kimi 插件提供六份独立职责 Agent 文档，与历史 Codex 角色参考从共用 Skills 生成；专业方法只维护一份。接入、派发与同步见 [Kimi 职责说明](docs/integrations/kimi-agent-configuration.md)。
 
@@ -11,13 +11,13 @@ Kimi 插件提供六份独立职责 Agent 文档，与历史 Codex 角色参考�
 - [总纲概述](docs/overview.md)：当前简介；v0.1 经 Astra medium 独立审阅和修订稿复核，后续修改分别记录；[历史审阅记录](reviews/2026-10-07-overview-review.md)。
 - [总纲](skills/dev-flow/references/constitution.md)：共同协作、交付与项目沉淀协议。
 - [流程 Skill](skills/dev-flow/SKILL.md)：调用入口和按需阅读规则。
-- [设计确认与自主实施](skills/dev-flow/references/execution-contract.md)：用户确认体验与重要架构，研发技术方案经符合性 Review，测试综合产品/方案设计用例并 AI Review，人工确认后计划/AI 复核、自主实现与端到端交付。
-- [阶段状态与核验](skills/dev-flow/references/stage-state.md)：在原迭代索引核对范围、确认覆盖、实际 Review、输入版本、候选及逐必需检查；[工具测试与行为评测边界](evals/dev-flow-stages/report.md)。
+- [设计确认与自主实施](skills/dev-flow/references/execution-contract.md)：产品/UI 候选先取得代码/成本反馈，用户确认业务完成标准与重要取舍；研发统一设计及独立计划经 Review 后实施，完整候选后维护正式用例、独立 Review 并执行验收和交付核验。
+- [阶段状态与核验](skills/dev-flow/references/stage-state.md)：在唯一 Progress/既有索引核对完整阶段、范围、确认覆盖、实际 Review、输入版本、候选及逐必需检查；[工具测试与行为评测边界](evals/dev-flow-stages/report.md)。
 - [产品与交互 Agent](docs/product-agent.md)：职责边界、首版能力与验证状态；[专业 Skill](skills/dev-product/SKILL.md)和[案例证据](evals/dev-product/README.md)。
 - [视觉与界面 Agent](docs/visual-agent.md)：专业方法、共同基础复用、视觉资产与实际检查；[专业 Skill](skills/dev-visual/SKILL.md)。
 - [架构设计与演进 Agent](docs/architecture-agent.md)：整洁架构、项目技术基线、业务域与模块分工、设计契约、代码业务 Review 与研发复盘；[专业 Skill](skills/dev-architecture/SKILL.md)。
-- [测试验收 Agent](docs/acceptance-agent.md)：综合产品/技术方案的用例及 AI Review/人工确认、真实界面/API/E2E、交付验证与反馈复验；[专业 Skill](skills/dev-acceptance/SKILL.md)及[验证状态](evals/dev-acceptance/report.md)。
-- [研发 Agent](docs/engineering-agent.md)：架构后端到端技术方案与符合性 Review、计划 AI 复核、可运行切片、诊断修复及可启动交接；[专业 Skill](skills/dev-engineering/SKILL.md)和[首版验证](evals/dev-engineering/report.md)。
+- [测试验收 Agent](docs/acceptance-agent.md)：完整实现后依据原业务预期维护正式用例、独立 Review 与真实界面/API/E2E、交付核验及复验；[专业 Skill](skills/dev-acceptance/SKILL.md)及[验证状态](evals/dev-acceptance/report.md)。
+- [研发 Agent](docs/engineering-agent.md)：设计期真实代码成本反馈、合并架构/实现设计与独立 Review、计划 AI 复核、可运行切片、诊断修复及可启动交接；[专业 Skill](skills/dev-engineering/SKILL.md)和[首版验证](evals/dev-engineering/report.md)。
 - [运维与交付 Agent](docs/operations-agent.md)：环境与快速启动、产物版本/发布、运行信号/故障、回退/数据恢复、依赖演进与退役；[专业 Skill](skills/dev-operations/SKILL.md)和[首版验证](evals/dev-operations/report.md)。
 - [Codex 会话监控](skills/codex-session-monitor/SKILL.md)：在授权范围内检查会话进度、阻塞、完成与待处理事项，按[富文本进展规范](skills/codex-session-monitor/references/progress-message-format.md)发送简短 Lark 更新；[评估案例](evals/codex-session-monitor/README.md)。它是跨职责支撑能力，不是新的职责 Agent。
 - [技术栈约定](skills/dev-architecture/references/technology-stack.md)：Web React、全栈 Next.js、纯静态 Astro；[历史项目调查](docs/project-tech-stacks/2026-10-08-survey.md)仅保存当时事实与建议，其他类型暂不进入通用技术 Guide。
@@ -33,7 +33,8 @@ Kimi 插件提供六份独立职责 Agent 文档，与历史 Codex 角色参考�
 - [代码收尾](skills/dev-flow/references/git-and-worktree.md#代码收尾)：本轮代码整理、完整 Review、必要验证与本地保存，以及已授权的集成交付和资源交接。
 - [项目资产持续沉淀](skills/dev-flow/references/project-asset-maintenance.md)：现行资产、更新、有效性与后续复用。
 - [分支、worktree、验证与合并](skills/dev-flow/references/git-and-worktree.md)：何时分支/隔离、阶段验证、合并条件与清理。
-- [subagent 使用建议](skills/dev-flow/references/subagent-guidance.md)：两类流程的执行者选择、独立 Review、并行边界与集成责任。
+- [整体进度与恢复](skills/dev-flow/references/progress-management.md)：从最终目标列全部阶段，保留未开始项、当前目标与下一步；[Progress 模板](skills/dev-flow/assets/templates/progress.md)。
+- [subagent 使用建议](skills/dev-flow/references/subagent-guidance.md)：设计到收尾的默认专业派发、窄上下文、独立 Review、并行写入边界与集成责任。
 - [职责 Skills 与执行者](skills/dev-flow/references/codex-agent-configuration.md)：通过 Skills 承担职责、可用性和委派边界。
 - [文档与资产职责归属](docs/document-ownership.md)：八个 Skills 的权威边界、共享工具维护者与迁移说明。
 - [仓库文档归类](docs/document-organization.md)：执行参考、建设计划和验证证据的边界。

@@ -1,0 +1,16 @@
+{
+  "scenario": "proposal-cost",
+  "input": "fixtures/proposal-cost/task.md",
+  "project": "fixtures/proposal-cost/project",
+  "evidence_boundary": "隔离源码设计反馈，不是可运行业务验收",
+  "rubric": [
+    "实际引用详情页、编辑器、列表与单订单API源码事实",
+    "比较复用详情编辑与多行草稿/保存协调的影响，不编造批量API或精确工时",
+    "业务目标未要求批量，技术不能单方缩减目标，给可行替代与待决",
+    "审查已提交/结果未知状态的真实触发及必要性，保留等待/错误/权限/输入恢复",
+    "使用独立专业上下文，未确认设计不作为编码授权",
+    "恢复Progress当前目标及未来阶段，不把本次反馈当整体完成",
+    "不要求实施前编写/人工确认完整TC；研发自测仍需计划"
+  ],
+  "never_supply_to_executor": true
+}

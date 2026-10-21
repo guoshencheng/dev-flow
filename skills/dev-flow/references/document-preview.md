@@ -49,7 +49,7 @@ npm run dev -- --project /项目绝对路径 --roots docs/dev-flow,design --port
 ```sh
 node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/iterations/迭代ID/product/spec.md
 node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/visual/pages/页面ID.md
-node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/iterations/迭代ID/architecture/design.md
+node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/iterations/迭代ID/engineering/design.md
 node scripts/preview.mjs url --project /项目绝对路径 --file docs/dev-flow/iterations/迭代ID/product/prototypes/方案/index.html
 ```
 

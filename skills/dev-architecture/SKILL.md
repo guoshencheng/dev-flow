@@ -15,11 +15,12 @@ description: 架构设计与演进：维护技术与代码规范基线，遵守�
 
 ## 按当前阶段工作
 
-- **设计或系统变更：** 读取[整洁架构与细化拆分](references/clean-architecture.md)，从真实业务能力划分职责；按[设计与契约](references/design-and-contracts.md)说明方案、重要取舍、架构约束和验证方式。候选完整可审阅后，依[执行协议](../dev-flow/references/execution-contract.md)确认重要设计；已有有效确认直接复用。
+- **产品/UI 与设计：** 基于实际代码、组件、接口、数据及状态链路，比较功能位置和交互形式的成本；判断状态 UI 的真实触发、用户价值和操作差异。按[设计与契约](references/design-and-contracts.md)向研发统一设计提供架构约束与重要取舍。重大系统专题可按需单独设计，每轮默认不另产架构方案。
 - **技术与工程基线：** 读取[技术栈约定](references/technology-stack.md)，直接采用 React Web、Next.js 全栈或 Astro 纯静态的已定选择；其他类型依项目自身规范，暂不提供通用选型 Guide。建立/调整代码规范时读取[代码规范](references/code-standards.md)，落实成熟格式/lint/类型检查与实际模块约束。核对规范、入口和构建链，保留有效既有工程基线。
 - **理解工程或代码评审：** 读取[系统与模块地图](references/system-and-module-map.md)，沿实际业务入口追踪实现、数据与依赖，输出目录到模块、模块到业务域/层次的映射。架构评审读相关业务实现，目录树和 import 清单仅作线索。
-- **架构后的技术方案与研发过程：** 按[研发技术方案](../dev-engineering/references/technical-delivery-design.md)参与页面/功能/链路/OUT 的契约与架构 AI Review，产品主责需求符合性；通过后交测试综合原产品设计用例，经用例 AI Review/人工确认后形成实施计划并 AI 复核。实施中检查依赖方向、契约与不变量，向研发/测试交接可执行反馈，默认不增加人工技术方案/计划 Review。
-- **交付与复盘：** 读取[复盘与演进](references/retrospective-and-evolution.md)。交付前核验本次架构必需约束；实质研发结束后复核实际代码业务、总结当前系统及模块分工，判断合理性并给出必要建议。局部修复定向更新，跨域/迁移或首次基线按实际影响扩大范围。
+- **统一研发设计与计划：** 研发主笔 `engineering/design.md` 合并架构与具体实现；架构独立 Review 模块、依赖、契约、数据、权限和恢复，产品/UI 核对业务与呈现。评审意见、处理和定向复核写入 `engineering/review.md`。架构独立复核实施计划的依赖、测试保护、集成和交付。实施前核对有效业务完成标准、设计/计划 Review 与明确授权，不以前置正式 TC 为门槛。
+- **完整实现与技术收尾：** 读取[复盘与演进](references/retrospective-and-evolution.md)。完整候选后独立 Review 全部变更，实际验收与交付核验后以[技术收尾模板](assets/templates/architecture-closeout.md)核对设计差异、Review、验证、当前架构资产和遗留。必需问题回修复循环。
+
 
 实际实现评审覆盖任务开始基线到最终候选的完整变更及相关未提交修改，分别给需求符合性与实现质量结论；多提交任务不能只审最后一个提交。意见沿用项目 tracker，依据证据处理并定向复评，必要行为由验收复验，不凭“已修改”关闭阻断项。
 
@@ -31,10 +32,10 @@ description: 架构设计与演进：维护技术与代码规范基线，遵守�
 
 ## 项目沉淀与交接
 
-按[项目架构资产](references/project-assets.md)复用既有权威位置，并在项目主索引登记技术文档入口；没有规范时，本次设计与复盘放在迭代的 `architecture/`，当前系统/模块/技术基线放在 `docs/dev-flow/architecture/`。当前事实、确认目标、评审发现、历史决策分别关联，源代码变化后更新受影响地图和约束，不把未实现的目标登记成现状。讨论/确认时复用[项目文档预览](../dev-flow/references/document-preview.md)，核验该业务项目服务与实际架构/工程文档后提供地址；通用 Skill/Guide 不作为项目架构成果。
+按[项目架构资产](references/project-assets.md)复用既有权威位置，并在项目主索引登记技术文档入口；没有规范时，本轮统一设计、Review 与计划放在迭代的 `engineering/`，技术收尾放在 `architecture/`，当前系统/模块/技术基线放在 `docs/dev-flow/architecture/`。当前事实、确认目标、评审发现、历史决策分别关联，源代码变化后更新受影响地图和约束，不把未实现的目标登记成现状。讨论/确认时复用[项目文档预览](../dev-flow/references/document-preview.md)，核验该业务项目服务与实际架构/工程文档后提供地址；通用 Skill/Guide 不作为项目架构成果。
 
 交接至少包含：当前结论和范围、源版本与覆盖、系统/模块/业务域及依赖变化、相关约束与实际检查、问题优先级和处理状态、建议的收益/代价与验证、资产复用和更新、未覆盖项与能力缺口。无需改动时说明成立依据；已验证有效的项目方法才进入通用能力候选。
 
 需要细化职责能力时，读取[能力目录](../dev-flow/references/role-capabilities.md)中的对应职责；实际验证范围以当前候选的执行证据为准。
 
-本次阶段产物统一归入 `docs/dev-flow/iterations/<迭代ID>/` 的对应职责目录，由迭代索引关联版本、Review、确认与证据。项目级职责目录用于跨迭代的现行基线和复用资产；已有的 `docs/dev-flow/` 内权威位置通过迭代索引映射；目录外文档按共同文档协议整理迁入。详见[迭代目录协议](../dev-flow/references/design-document-contract.md)。
+本次阶段产物统一归入 `docs/dev-flow/iterations/<迭代ID>/` 的对应职责目录，由迭代索引关联版本、Review、确认与证据。项目级职责目录用于跨迭代的现行基线和复用资产；已有有效权威文件通过迭代索引映射复用，不强制迁移或复制。整体进度仅在迭代 Todo/Progress 维护，设计、计划和收尾只引用其状态。标准领域工作在 Harness 可用且允许委派时默认交专业 subagent，作者和独立评审分离；主会话负责协调与集成。详见[迭代目录协议](../dev-flow/references/design-document-contract.md)。

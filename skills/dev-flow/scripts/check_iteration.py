@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""只读核验迭代索引中的 dev-flow-state；不证明记录真实性或拦截操作。"""
+"""只读核验选定 Markdown/JSON 权威文件中的 dev-flow-state；不证明记录真实性。"""
 
 import argparse
 from datetime import datetime
@@ -63,7 +63,7 @@ def read_state(path):
     if Path(path).suffix == ".json":
         return json.loads(content)
     blocks = re.findall(r"^```dev-flow-state\s*\n(.*?)^```\s*$", content, re.M | re.S)
-    require(len(blocks) == 1, "迭代索引必须恰有一个 dev-flow-state 代码块")
+    require(len(blocks) == 1, "状态权威文件必须恰有一个 dev-flow-state 代码块")
     return json.loads(blocks[0])
 
 
@@ -92,6 +92,13 @@ def validate(state):
         require(isinstance(gate.get("kind"), str) and gate["kind"] in KINDS, "未知 gate.kind：" + gate["id"])
         require(isinstance(gate.get("status"), str) and gate["status"] in STATUSES, "未知 gate.status：" + gate["id"])
         string(gate.get("stage"), "gate.stage")
+        if "requires_independent" in gate:
+            require(gate["kind"] == "review" and type(gate["requires_independent"]) is bool,
+                    "requires_independent 只能是 Review 的布尔字段")
+        if "review_scopes" in gate:
+            require(gate["kind"] == "review", "review_scopes 只能用于 Review")
+            strings(gate["review_scopes"], "review_scopes", nonempty=True)
+            require(set(gate["review_scopes"]) <= scopes.keys(), "review_scopes 引用了不存在的 scope")
         if "authorizes" in gate:
             require(gate["kind"] == "confirmation", "只有用户 confirmation 可声明实施授权")
             strings(gate["authorizes"], "gate.authorizes")
@@ -154,7 +161,7 @@ def inspect(state, root, selected=None):
         return result
 
     # 完成汇总依赖的实际检查也须绑定候选，不能藏在 summary 的 after 中复用旧结果。
-    # 实施前设计/方案/用例 Review 则只绑定有效输入。
+    # 实施前设计/研发方案 Review 只绑定有效输入；正式用例 Review 在候选后。
     direct_final = {g for s in scopes.values() for g in s["before_finish"]}
     direct_final.update(g for c in cases.values() for g in c["required_checks"])
     pre_gates = closure([g for s in scopes.values() for g in s["before_implementation"]])
@@ -219,6 +226,8 @@ def inspect(state, root, selected=None):
                     issues.append("Review 缺少执行者")
                 if not isinstance(gate.get("mode"), str) or gate["mode"] not in {"self", "independent", "delegated"}:
                     issues.append("Review 缺少实际执行方式")
+                elif gate.get("requires_independent") and gate["mode"] != "independent":
+                    issues.append("声明的独立 Review 不能由作者自查或仅以委派方式代替")
                 try:
                     strings(gate.get("checks"), "review.checks", nonempty=True)
                 except StateError as exc:
@@ -278,6 +287,38 @@ def inspect(state, root, selected=None):
                                        [g for c in cases.values() if c["scope"] == scope_id
                                         for g in c["required_checks"]]))
         route_issues = []
+        # 单范围授权的依赖仍属于该范围；跨范围合并授权的依赖须由 Review 自述归属。
+        # 这样既检查藏在 after 中的标准评审，也不把另一个快路径的自查误算进来。
+        def independence_issues(ids):
+            if scope["route"] not in {"standard", "system"}:
+                return []
+            issues = []
+            pending = [(gate_id, True) for gate_id in ids]
+            seen = set()
+            while pending:
+                gate_id, owned = pending.pop()
+                if (gate_id, owned) in seen:
+                    continue
+                seen.add((gate_id, owned))
+                gate = gates[gate_id]
+                if gate["kind"] == "review":
+                    declared = gate.get("review_scopes")
+                    if owned and declared is not None and scope_id not in declared:
+                        issues.append({"gate": gate_id,
+                                       "reason": "Review 归属与标准/系统范围的依赖链冲突"})
+                    if not owned and declared is None:
+                        issues.append({"gate": gate_id,
+                                       "reason": "跨范围依赖链中的 Review 缺少 review_scopes 归属"})
+                    if (owned or scope_id in (declared or [])) and gate["status"] == "passed" and (
+                            gate.get("mode") != "independent"):
+                        issues.append({"gate": gate_id,
+                                       "reason": "标准/系统范围的专业 Review 须由独立执行者完成"})
+                child_owned = owned
+                if gate["kind"] == "confirmation" and gate.get("authorizes"):
+                    authorized = gate["authorizes"]
+                    child_owned = len(authorized) == 1 and authorized[0] == scope_id
+                pending.extend((dependency, child_owned) for dependency in gate["after"])
+            return list({(item["gate"], item["reason"]): item for item in issues}.values())
         if scope["route"] == "undecided" or not scope["reason"].strip():
             route_issues.append({"gate": "route", "reason": "先确定任务路径、范围与裁剪依据"})
         # 路径和 AI Review 不构成开工同意。允许授权与设计/用例确认合并，
@@ -292,8 +333,13 @@ def inspect(state, root, selected=None):
                          for g in authorization_ids):
                 route_issues.append({"gate": authorization_ids[0],
                                      "reason": "实施授权须为有效用户同意，不能以未答复或不适用放行"})
-        pre = route_issues + [{"gate": g, "reason": issue} for g in pre_ids for issue in problems(g)]
-        finish = route_issues + [{"gate": g, "reason": issue} for g in finish_ids for issue in problems(g)]
+        pre = (route_issues + [{"gate": g, "reason": issue} for g in pre_ids for issue in problems(g)]
+               + independence_issues(pre_ids))
+        finish = (route_issues + [{"gate": g, "reason": issue} for g in finish_ids for issue in problems(g)]
+                  + independence_issues(pre_ids + scope["before_finish"]))
+        if scope["implementation"] and scope["route"] in {"standard", "system"} and not any(
+                case["scope"] == scope_id for case in cases.values()):
+            finish.append({"gate": "cases", "reason": "标准/系统实现范围尚未声明正式验收用例，不能以空 cases 收口"})
         for case_id, case in cases.items():
             if case["scope"] != scope_id:
                 continue
@@ -313,7 +359,8 @@ def inspect(state, root, selected=None):
             "blocking_items": finish,
             "current_stage": "ready_to_finish" if can_finish else
             gates[blockers[0]["gate"]]["stage"] if blockers[0]["gate"] in gates else
-            "implementation-authorization" if blockers[0]["gate"] == "implementation-authorization" else "routing",
+            "implementation-authorization" if blockers[0]["gate"] == "implementation-authorization" else
+            "acceptance" if blockers[0]["gate"] == "cases" else "routing",
             "next_action": "核验目标成果并更新项目入口后结束" if can_finish else
             ("继续已授权实现/复验，补齐 " if can_start else "完成 ") +
             blockers[0]["gate"] + "：" + blockers[0]["reason"]}

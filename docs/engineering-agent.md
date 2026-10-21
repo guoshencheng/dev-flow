@@ -1,35 +1,27 @@
 ---
-
-当前接入：通过专业 Skill 承担职责；2026-10-09 已移除 setup，旧 TOML 仅作参考，不参与当前安装。下文历史配置/派发证据保留原验证范围。
 id: ROLE-dev-engineering
 title: 研发实现与修复 Agent
 status: current
-version: 0.3
+version: 0.4
 owner: engineering
 ---
 
-# 研发 Agent v0.3
+# 研发职责现状
 
-更新日期：2026-10-08。原生职责 `dev_engineering`，配置见[dev_engineering.toml](../agents/dev_engineering.toml)，专业入口为[dev-engineering](../skills/dev-engineering/SKILL.md)。不固定模型/强度，宿主不可派发时当前执行者按 Skill 承担职责并如实记录。
+更新日期：2026-10-21。专业入口为[dev-engineering](../skills/dev-engineering/SKILL.md)。本轮新流程已有源码、安装及隔离代表场景证据，尚未以真实业务 UI 项目验证完整协作；下列历史记录保持原验证对象和范围。
 
-## 从有效设计到可运行成果
+研发在产品/UI 设计期间基于真实代码反馈功能位置、交互形式和状态必要性。完整功能由研发主笔 `engineering/design.md`，合并架构与实现；独立架构执行者 Review，产品/UI 核对业务和呈现，详细意见在 `engineering/review.md`。设计有效后研发编写独立 `engineering/implementation-plan.md`，接受独立计划复核；已有同范围实施授权直接复用。正式 TC 在完整实现后维护、独立 Review 并执行，研发局部测试和回归随实施进行。
 
-2026-10-09 调整实施时序：连续实现、集成和研发自测，完整候选再集中 Review 与正式验收；内部切片不作为交付门槛，关联问题批量修复并定向复评/复验。主会话委派后持续执行或实际等待。指导与模板已更新，整套真实任务效果仍待验证，规则见[执行协议](../skills/dev-flow/references/execution-contract.md)。
+研发连续实现、集成和自测后交完整候选，架构独立 Review 完整变化，测试正式验收并执行交付核验；架构在 `architecture/closeout.md` 整合实际设计差异、Review、验证、资产和遗留。整体进度只由现行 Todo/Progress 维护，各文档引用。已有有效权威文件可以索引映射复用，不强制迁移。
 
-研发先读取有效产品/交互/UI、架构与工程入口，在架构设计/重要确认后形成端到端技术实现方案：拟交付的页面/入口、功能、OUT/链路、接口/模块/数据/权限/恢复及实际交付产出。产品复核需求符合性，视觉/架构按影响参与 AI Review；通过后交测试综合原产品设计用例。
-
-用例 AI Review/人工确认后，研发关联方案/OUT 与 TC 产出实施计划并实际 AI 复核，通过后自主编码；技术方案和计划不另加人工审批。已有有效 Review/确认复用，局部任务按变化裁剪，重要假设失效定向重审，改变确认基线只请求受影响部分决定。
-
-以用户/接口行为形成纵向可运行切片，按整洁架构落实域、用例和适配职责，实际集成界面、接口与数据。测试带候选和证据反馈，研发复现/诊断/修复、自测原问题及相关回归并交回待验版本，测试实际复验后关闭。自测、兼任执行与独立验收分别登记。
-
-工程采用已定 React Web、Next.js 全栈、Astro 纯静态，既有工程局部工作沿用有效基线。B 端优先 antd，C Web 优先 shadcn/ui；自有共享组件复制/参考源码，在项目直接维护 Git 来源、差异与验证。代码规范、类型/行为/集成/构建和启动按实际工程入口落实。
+标准领域工作在 Harness 可用且允许委派时默认使用专业 subagent，作者与独立评审分离，主会话负责协调和集成。模型和强度按本次用户与宿主配置，不固定在专业方法中。无法独立委派时如实记录执行方式和缺口。模板见[设计](../skills/dev-engineering/assets/templates/technical-delivery-design.md)、[Review](../skills/dev-engineering/assets/templates/engineering-review.md)和[计划](../skills/dev-engineering/assets/templates/implementation-plan.md)。
 
 ## 八项能力如何落实
 
 | 能力 | 具体判断与项目产物 | 验证方式 |
 | --- | --- | --- |
 | E01 工程理解 | 真实入口、代码功能映射、依赖/消费者、有效规范和候选 | 对照实际源码与命令，识别过期资产和他人修改 |
-| E02 方案、计划与切片 | 架构后端到端技术方案/OUT/符合性 Review；用例确认后切片/依赖/实施计划/AI 复核 | 方案忠于产品/UI/ARC，TC 与 OUT/原规则关联，实施计划覆盖完整链路及交付 |
+| E02 方案、计划与切片 | 统一研发设计及独立跨职责 Review；有效业务预期和设计 Review 后编写独立计划并复核 | 设计忠于产品/UI/ARC，计划覆盖完整链路及交付；正式 TC 在完整实现后维护、Review 与执行 |
 | E03 前端实现 | 组件、真实数据、状态/恢复、设计和规则映射 | 实际操作及相关渲染/目标设备符合基线 |
 | E04 业务与接口 | 用例、输入/权限/错误、持久化与适用副作用 | 真实接口/数据结果、拒绝场景和相关不变量 |
 | E05 诊断修复 | 最小复现、原因证据、实现补丁与待验候选 | 原场景与受影响回归，不能放宽验收关闭 |
@@ -37,17 +29,19 @@ owner: engineering
 | E07 工程工具 | 适用自动化、格式/lint/类型、行为与构建入口 | 实际执行并证明目标，不以实现镜像测试代替 |
 | E08 集成交付 | 集成版本/锁文件、配置样例、真实运行支持和交接 | 声明环境按说明准备/启动并完成核心任务 |
 
-专业方法分为[技术方案与符合性 Review](../skills/dev-engineering/references/technical-delivery-design.md)、[基线与计划](../skills/dev-engineering/references/baseline-and-plan.md)、[切片与集成](../skills/dev-engineering/references/slices-and-integration.md)、[前端](../skills/dev-engineering/references/frontend-implementation.md)、[诊断与反馈](../skills/dev-engineering/references/diagnosis-and-feedback.md)、[兼容变更](../skills/dev-engineering/references/compatible-changes.md)、[工程资产与交付](../skills/dev-engineering/references/project-assets-and-delivery.md)，入口按需读取。
+专业方法分为[统一研发设计与独立 Review](../skills/dev-engineering/references/technical-delivery-design.md)、[基线与计划](../skills/dev-engineering/references/baseline-and-plan.md)、[切片与集成](../skills/dev-engineering/references/slices-and-integration.md)、[前端](../skills/dev-engineering/references/frontend-implementation.md)、[诊断与反馈](../skills/dev-engineering/references/diagnosis-and-feedback.md)、[兼容变更](../skills/dev-engineering/references/compatible-changes.md)、[工程资产与交付](../skills/dev-engineering/references/project-assets-and-delivery.md)，入口按需读取。
 
 ## 职责边界与项目持续维护
 
 研发拥有生产实现和必要工程/测试工具修改，保留他人工作。产品/视觉拥有有效语义与呈现，架构拥有边界/契约与重要取舍，测试拥有实际验收和缺陷复验，运维拥有目标环境/运行。研发可以调整内部实现和测试执行方法，不能将实现偏差改写为产品预期或更换 Mock 掩盖失败。
 
-已有工程规范优先，没有时使用 `docs/dev-flow/engineering/index.md`、`changes/<任务ID>/technical-solution.md`、`plans/<任务ID>.md` 与按需待验交接，复杂诊断关联既有缺陷记录。四个随包模板对应入口、技术方案/符合性 Review、计划/AI 复核及交接；自动化和实现保留实际源码位置。技术方案方法见[专业参考](../skills/dev-engineering/references/technical-delivery-design.md)。
+已有工程规范优先，没有时使用 `docs/dev-flow/engineering/index.md`、迭代 `engineering/design.md`、`engineering/review.md`、`engineering/implementation-plan.md` 和 `architecture/closeout.md` 与按需待验交接，复杂诊断关联既有缺陷记录。随包模板对应工程入口、统一设计、独立 Review、实施计划及交接；自动化和实现保留实际源码位置。统一设计方法见[专业参考](../skills/dev-engineering/references/technical-delivery-design.md)。
 
-项目索引关联工程、产品/UI、架构、测试及运行；每轮更新受影响技术方案/OUT/Review、代码映射、规范、计划、诊断/回归和交付知识，新任务读取并核验有效性。讨论/确认预览业务项目成果，Skill 方法文件使用源文件。研发结束向架构交接实际模块/契约/业务变化与证据，参与现状同步和有范围的复盘。
+项目索引关联工程、产品/UI、架构、测试及运行；每轮更新受影响设计/Review、代码映射、规范、计划、诊断/回归和交付知识，新任务读取并核验有效性。讨论/确认预览业务项目成果，Skill 方法文件使用源文件。研发结束向架构交接实际模块/契约/业务变化与证据，参与现状同步和有范围的复盘。
 
 ## 验证与后续
+
+2026-10-21 新流程源码候选 C2-62e99b8b7a6d 的[独立完整变更 Review](../reviews/2026-10-21-flow-implementation-review.md)已关闭现行概览旧入口 F1、标准范围间接 `self` Review 冒充独立的 F2；[P6 检查](../.dev/runs/flow-revision/p6/static-review.md)覆盖四篇正式模板的 34 个实例链接、状态核验 44 项与宿主适配 6 项。0.3.0 已在 Codex 本机安装并首次 check 一致。[P8 独立行为报告](../evals/dev-flow-stages/2026-10-21-behavior-report.md)判定新会话发现及固定七个隔离场景通过，覆盖设计期真实代码成本反馈、局部修复、混合范围和订单备注 C2 的作者修复/独立复评；技术边界见[本轮收尾](plans/2026-10-21-flow-revision/architecture-closeout.md)。订单备注的独立实现 Review 关闭 IR-01，研发局部 5 项自测与正式 8 项 TC 各自记录，不互相折算。真实业务 UI 项目的产品/视觉回应和完整交付仍待验证。
 
 2026-10-12 将[代码收尾](../skills/dev-flow/references/git-and-worktree.md#代码收尾)接入“开始收尾”，研发整理本轮完整变更，核对 Review/必要验证、相关源码/测试/文档保存与集成交付，保留无关修改并交接资源状态。方法与模板已同步，验证范围见[收尾记录](../reviews/2026-10-12-code-closeout.md)；不据此登记真实项目收尾或独立角色行为已通过。
 

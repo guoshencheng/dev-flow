@@ -1,6 +1,6 @@
 ---
 name: dev-acceptance
-description: "测试与验收：综合产品规则、经 Review 的端到端技术方案和架构约束设计用例，经 AI Review 后交用户确认；识别实施中的需求变化，先补齐受影响用例并按风险判定真实 E2E；在完整候选集中执行界面/API/E2E/交付验证与定向复验；用于用例策略、实现验收和回归；设计原型走查由产品/视觉主责。"
+description: "测试与验收：早期反馈可测性，完整候选后依据已确认产品/设计完成标准维护正式用例并独立 AI Review，执行界面/API/E2E/交付核验与定向复验；用于用例策略、实现验收和回归；设计原型走查由产品/视觉主责。"
 override: false
 subagents: []
 disallowedTools:

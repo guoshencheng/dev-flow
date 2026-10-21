@@ -1,38 +1,19 @@
 # 工程资产、集成交付与新上下文
 
-项目文档统一在 `docs/dev-flow/` 下维护，优先复用其中已有权威位置，[共同目录与归档](../../dev-flow/references/design-document-contract.md)关联产品/UI、技术、测试和运行。没有规范时按实际需要采用下列入口，局部任务可合并文档。表中短路径相对 `docs/dev-flow/`；本次方案、计划、交接在同一迭代内，工程索引与通用规范为跨迭代资产。
+项目文档在 `docs/dev-flow/` 下维护，先复用已有有效权威位置，通过迭代索引映射，不强制迁移或复制。无约定时本轮使用：
 
-| 资产 | 默认权威位置与维护内容 |
+| 资产 | 默认位置与维护内容 |
 | --- | --- |
-| 工程索引 | `docs/dev-flow/engineering/index.md`：真实安装单元/命令、代码功能映射、规范/计划/测试/运行入口、当前版本 |
-| 技术实现方案与符合性 Review | `iterations/<迭代ID>/engineering/technical-solution.md`：页面/入口/功能/OUT/完整链路与产品/UI/ARC 覆盖、实际方案 Review、交测试版本 |
-| 实现计划与 AI 复核 | `iterations/<迭代ID>/engineering/implementation-plan.md`：输入/确认范围、切片与依赖、检查和交付、实际复核与重要调整 |
-| 工程规范 | 复用现有规范或 `engineering/code-standards.md`；实际配置/入口仍在源码中，按[规范 Guide](../../dev-architecture/references/code-standards.md)维护 |
-| 诊断与回归 | 既有缺陷/测试记录优先；复杂共用经验可放 `engineering/diagnostics/<问题ID>.md`，关联版本、原因、证据和有效范围 |
-| 待验工程交接 | `iterations/<迭代ID>/engineering/handoff.md` 或既有 PR/任务记录：集成候选、变更、自测、待验和真实启动支持 |
-| 自动化与可复用实现 | 保存在实际测试/源码/脚本目录；文档链接权威实现与采用来源，不维护脱离源码的副本 |
-| 运行与交付 | 复用项目运行 README 或 `docs/dev-flow/operations/`：前置条件、环境样例、准备/启动/停止、产物和版本、目标环境 |
+| 工程索引 | `engineering/index.md`：真实安装单元、命令、代码映射和权威入口 |
+| 研发设计 | `iterations/<迭代ID>/engineering/design.md`：业务链路、架构及实现的统一设计 |
+| 独立 Review | `iterations/<迭代ID>/engineering/review.md`：设计、计划、完整实现的对象版本、发现、处理和复核 |
+| 实施计划 | `iterations/<迭代ID>/engineering/implementation-plan.md`：步骤、依赖、自测、集成与交付安排 |
+| 架构技术收尾 | `iterations/<迭代ID>/architecture/closeout.md`：实际实现与设计差异、验证、资产和遗留 |
+| 工程交接 | `iterations/<迭代ID>/engineering/handoff.md` 或现行任务/PR：候选、自测、启动与待验项 |
+| 规范、自动化与源码 | 复用项目权威位置，文档引用实际配置和代码 |
 
-随包提供[工程索引](../assets/templates/engineering-index.md)、[技术方案](../assets/templates/technical-delivery-design.md)、[计划](../assets/templates/implementation-plan.md)和[交接](../assets/templates/engineering-handoff.md)模板。项目主索引登记工程/技术方案/用例/运行权威入口，普通历史由 Git 保存，完整替代方案按共同规则归档；不要每次复制全部产品、架构、用例或生成空目录。
+模板为[工程索引](../assets/templates/engineering-index.md)、[设计](../assets/templates/technical-delivery-design.md)、[Review](../assets/templates/engineering-review.md)、[计划](../assets/templates/implementation-plan.md)和[交接](../assets/templates/engineering-handoff.md)。正式 Review 的结论及未关闭项持久保存；普通运行日志和重试过程留在项目约定本机目录。总体进度仅由现行 Todo/Progress 维护，各文档引用其阶段与候选状态。
 
-## 可启动与实际产物
+交接声明源码候选、真实命令与结果、配置/身份/数据准备、启动/停止入口、核心任务、已知缺口及适用环境。构建、健康与核心任务分别验证；开发服务可访问不自动等于完整交付。研发自测、正式验收、可运行交付与部署状态分别记录。运维提供实际环境和产物版本，验收执行后置正式用例及交付核验，架构收尾引用原证据。
 
-自测结果记录在测试报告或既有缺陷记录中；工程交接提供当前候选、启动/复跑入口、已完成与未完成项、限制和接手步骤。日志、探针和生成输出按项目临时目录约定处理，不额外维护过程证据文档。
-
-先明确交付模式：源码快速启动、安装产物、预览/生产部署或指定成果。没有部署目标的试点优先提供可启动源码，外部部署仍依实际授权。
-
-交接项目 runtime、包管理器/锁文件、安装与配置样例、测试身份/数据准备、真实 dev/build/start/停止入口及工作目录。示例不得包含真实密钥、会话或个人数据。命令来自实际工程，健康探测和核心任务分别验证；端口自动变化时报告实际地址和服务版本，不能拼接未运行入口。
-
-声明干净启动/交付时，在新工作副本按说明准备依赖、配置和样例，操作核心任务及相关恢复。沿用宿主已装 runtime/浏览器/本地替身时记录边界，不能称为全新机器或目标部署验证。React Vite 的 dev 与构建产物、Next 构建/启动与目标环境、Astro 静态输出分别依实际工程验证，不能把开发服务器可访问升级为完整交付。
-
-提供当前集成候选、实际构建/启动/核心链路的命令和证据，依[测试方案](../../dev-acceptance/references/end-to-end-and-delivery.md)接受验收。研发交接待验版本，运维接手环境与运行，架构对受影响实际模块/业务做复盘；必要约束未成立继续修复，可选演进登记待办。
-
-运维接手后的环境/进程归属、产物/目标发布、观测与恢复使用[运维 Skill](../../dev-operations/SKILL.md)，项目运行资料沿用其[资产协议](../../dev-operations/references/project-assets-and-evolution.md)。应用回退和数据恢复分别处理，目标实际版本重新核验；研发提供输入/诊断与实现修复，不将工程自测直接写成独立验收或已上线。
-
-## 持续沉淀
-
-“开始收尾”包含[代码收尾](../../dev-flow/references/git-and-worktree.md#代码收尾)：核对本轮完整差异、Review/验证与版本，相关源码/测试/文档按约定保存；工程交接注明最终分支/提交、尚未保存或未集成内容、交付与资源状态。项目无其他约定时形成本轮相关本地提交，推送/合并/发布按已有授权推进；尚待验收的候选与完整交付分开记录。
-
-每轮更新发生变化的技术方案/OUT/符合性 Review、代码映射、规范/工具入口、计划与复核、有效诊断/回归和启动知识；报告复用/更新与未核验内容。方案与 TC/确认/证据关联，需求或接口变化时标明受影响版本与待复核范围。当前事实带来源版本，候选或旧报告不自动成为当前通过。下一任务从索引恢复，再核对源码/契约/环境和证据失效范围。
-
-项目文档预览仅面向该业务项目的成果；维护 Skill 使用源文件。通用代码/脚本候选需有适用边界、Git 来源和行为验证后再进入共享库或 Skill，项目采用默认复制/参考源码，本地迭代，不要求内部包发布。
+代码收尾核对完整差异、必要 Review 与验证、相关源码/测试/文档保存，保留无关修改。更新受影响工程索引、有效设计/计划引用及诊断知识；未实现目标或旧候选通过不能覆写当前事实。
