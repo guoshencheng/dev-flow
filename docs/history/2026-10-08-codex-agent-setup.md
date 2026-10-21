@@ -42,29 +42,29 @@ Skill 中的 `agents/openai.yaml` 用于该 Skill 的界面元信息与调用策
 
 实际源文件是[dev_product.toml](../../agents/dev_product.toml)，角色名为 `dev_product`，没有固定模型或推理强度。源码模式读取全局 dev-product Skill；Plugin 初始化时适配为实际插件路径，再按需读取共同协议、专业方法和项目入口。
 
-配套[专业 Skill](../../skills/dev-product/SKILL.md)细化流程与状态、规则与验收、验证与交接、项目资产持续维护四类方法。设计与能力状态见[职责说明](../product-agent.md)，实际案例与调用方式见[验证记录](../../evals/dev-product/README.md)。
+配套[专业 Skill](../../agents/prompts/product.md)细化流程与状态、规则与验收、验证与交接、项目资产持续维护四类方法。设计与能力状态见[职责说明](../product-agent.md)，实际案例与调用方式见[验证记录](../../evals/dev-product/README.md)。
 
 当前先使用专业 Skill 承担产品工作；需要原生派发时，在支持所选模型的宿主核验实际发现、派发和模型设置。后续职责沿用这四部分结构，根据代表任务细化能力和失败处理。
 
 ## 视觉职责
 
-[dev_visual.toml](../../agents/dev_visual.toml) 与 [dev-visual Skill](../../skills/dev-visual/SKILL.md)维护参考与方向、设计系统、页面呈现、实际渲染检查、交接与资产复用。产品与视觉使用[共同文档协议](../../skills/dev-flow/references/design-document-contract.md)和[统一预览工具](../../skills/dev-flow/references/document-preview.md)，分别负责规则与呈现。当前完成指导、配置、工具和模拟案例检查；独立专业行为、原生派发及真实项目复用仍需验证，见[视觉职责说明](../visual-agent.md)。
+[dev_visual.toml](../../agents/dev_visual.toml) 与 [dev-visual Skill](../../agents/prompts/visual.md)维护参考与方向、设计系统、页面呈现、实际渲染检查、交接与资产复用。产品与视觉使用[共同文档协议](../../skills/document-management/references/document-contract.md)和[统一预览工具](../../skills/document-management/references/document-preview.md)，分别负责规则与呈现。当前完成指导、配置、工具和模拟案例检查；独立专业行为、原生派发及真实项目复用仍需验证，见[视觉职责说明](../visual-agent.md)。
 
 ## 架构职责
 
-[dev_architecture.toml](../../agents/dev_architecture.toml) 与 [dev-architecture Skill](../../skills/dev-architecture/SKILL.md)细化整洁架构、技术与代码规范基线、业务域/模块责任、接口/数据契约、实际代码复核与研发后的架构复盘。当前技术 Guide 只定义 React Web、Next.js 全栈与 Astro 纯静态；以当前源码维护系统和目录模块地图、合理性判断与改进建议，复用共同确认协议、文档预览和 Git 资产，配置无固定模型。专业产物和验证范围见[架构职责说明](../architecture-agent.md)、[v0.1 行为验证](../../evals/dev-architecture/report.md)、[v0.2 历史选型检查](../../reviews/2026-10-08-architecture-stack-check.md)与[v0.3 规范检查](../../reviews/2026-10-08-architecture-code-standards-check.md)。
+[dev_architecture.toml](../../agents/dev_architecture.toml) 与 [dev-architecture Skill](../../agents/prompts/architecture.md)细化整洁架构、技术与代码规范基线、业务域/模块责任、接口/数据契约、实际代码复核与研发后的架构复盘。当前技术 Guide 只定义 React Web、Next.js 全栈与 Astro 纯静态；以当前源码维护系统和目录模块地图、合理性判断与改进建议，复用共同确认协议、文档预览和 Git 资产，配置无固定模型。专业产物和验证范围见[架构职责说明](../architecture-agent.md)、[v0.1 行为验证](../../evals/dev-architecture/report.md)、[v0.2 历史选型检查](../../reviews/2026-10-08-architecture-stack-check.md)与[v0.3 规范检查](../../reviews/2026-10-08-architecture-code-standards-check.md)。
 
 ## 测试验收职责
 
-[dev_acceptance.toml](../../agents/dev_acceptance.toml) 与 [dev-acceptance Skill](../../skills/dev-acceptance/SKILL.md)定义综合原产品与经 Review 技术方案的用例/策略，实际 AI Review 后交人工确认，分别指导前端交互、真实接口/数据、前后端 E2E、交付与回归。依据有效 RULE/AC/ARC 执行，持续反馈研发、复验原问题和相关回归，保留 Mock 边界、失败/跳过/不稳定与当前版本证据；项目维护策略/用例/报告和回归资产。配置不固定模型，工具与行为、原生派发与真实项目证据见[职责说明](../acceptance-agent.md)和[首版验证](../../evals/dev-acceptance/report.md)。
+[dev_acceptance.toml](../../agents/dev_acceptance.toml) 与 [dev-acceptance Skill](../../agents/prompts/acceptance.md)定义综合原产品与经 Review 技术方案的用例/策略，实际 AI Review 后交人工确认，分别指导前端交互、真实接口/数据、前后端 E2E、交付与回归。依据有效 RULE/AC/ARC 执行，持续反馈研发、复验原问题和相关回归，保留 Mock 边界、失败/跳过/不稳定与当前版本证据；项目维护策略/用例/报告和回归资产。配置不固定模型，工具与行为、原生派发与真实项目证据见[职责说明](../acceptance-agent.md)和[首版验证](../../evals/dev-acceptance/report.md)。
 
 ## 研发职责
 
-[dev_engineering.toml](../../agents/dev_engineering.toml) 与 [dev-engineering Skill](../../skills/dev-engineering/SKILL.md)细化架构后页面/功能/OUT/链路的技术实现方案与符合性 Review、工程基线/代码映射、用例 Review/人工确认后的实施计划和 AI 复核、整洁架构下的可运行切片、前后端实现、证据诊断与测试复验、兼容重构/升级/迁移、集成和可启动交接。项目持续维护工程/运行资产，已确认基线不由实现反推，内部步骤自主调整；配置无固定模型，当前行为和接入边界见[职责说明](../engineering-agent.md)与[首版验证](../../evals/dev-engineering/report.md)。
+[dev_engineering.toml](../../agents/dev_engineering.toml) 与 [dev-engineering Skill](../../agents/prompts/engineering.md)细化架构后页面/功能/OUT/链路的技术实现方案与符合性 Review、工程基线/代码映射、用例 Review/人工确认后的实施计划和 AI 复核、整洁架构下的可运行切片、前后端实现、证据诊断与测试复验、兼容重构/升级/迁移、集成和可启动交接。项目持续维护工程/运行资产，已确认基线不由实现反推，内部步骤自主调整；配置无固定模型，当前行为和接入边界见[职责说明](../engineering-agent.md)与[首版验证](../../evals/dev-engineering/report.md)。
 
 ## 运维与交付职责
 
-运维职责见[dev_operations.toml](../../agents/dev_operations.toml) 与 [dev-operations Skill](../../skills/dev-operations/SKILL.md)，细化环境/启动、产物版本/实际发布、存活/就绪/业务信号、故障恢复、应用回退/数据恢复与迁移、依赖资源及退役交接。运行资产在项目 README/runbook 或按需 `docs/dev-flow/operations/` 持续维护；外部动作依实际授权，未知发布先查询，配置无固定模型。方法与接入状态见[职责说明](../operations-agent.md)，隔离源码包/HTTP 数据恢复工具案例见[首版验证](../../evals/dev-operations/report.md)。
+运维职责见[dev_operations.toml](../../agents/dev_operations.toml) 与 [dev-operations Skill](../../agents/prompts/operations.md)，细化环境/启动、产物版本/实际发布、存活/就绪/业务信号、故障恢复、应用回退/数据恢复与迁移、依赖资源及退役交接。运行资产在项目 README/runbook 或按需 `docs/dev-flow/operations/` 持续维护；外部动作依实际授权，未知发布先查询，配置无固定模型。方法与接入状态见[职责说明](../operations-agent.md)，隔离源码包/HTTP 数据恢复工具案例见[首版验证](../../evals/dev-operations/report.md)。
 
 ## 逐个建设的交付和验收
 

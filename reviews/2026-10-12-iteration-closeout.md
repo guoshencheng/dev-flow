@@ -25,4 +25,4 @@ Plugin 0.2.1、总纲 v0.26；执行协议与状态 schema 沿用 0.2.0 版本�
 
 本机 Codex `python3 scripts/manage_plugin.py install` / `check` 已通过：实际启用、八 Skills、`source_matches_cache=true`。源码候选为上述提交加原有修改和本轮差异；本轮新增文件已纳入 Git 管理。构建目录为 `/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/plugin-source`，缓存为 `/Users/guoshencheng/.codex/plugins/cache/dev-flow-local/dev-flow/0.2.1`，最终包清单及指纹位于构建目录 `package-files.json`。交接补齐后重新构建/安装该尚未交付候选并核验，最终原始输出保存到忽略目录 `.dev-flow/releases/0.2.1-install.json` 与 `0.2.1-check.json`，不将单次日志沉淀到长期资产。Kimi 清单与职责入口已同步，未执行其原生安装/重载；新会话核验宿主发现，必要时重启。
 
-本轮静态检查和打包/安装核验只能证明文档入口、引用及交付内容一致。真实业务项目的一条指令收尾与下一任务复用仍待实际任务验证，不升级为专业行为或真实项目成熟度。后续从 [收尾参考](../skills/dev-flow/references/document-archive.md#一条指令收尾当前迭代)、[项目资产维护](../skills/dev-flow/references/project-asset-maintenance.md)和 [README](../README.md)继续；未增加通用方法建设事项。
+本轮静态检查和打包/安装核验只能证明文档入口、引用及交付内容一致。真实业务项目的一条指令收尾与下一任务复用仍待实际任务验证，不升级为专业行为或真实项目成熟度。后续从 [收尾参考](../skills/document-management/references/archive.md#一条指令收尾当前迭代)、[项目资产维护](../skills/document-management/references/asset-maintenance.md)和 [README](../README.md)继续；未增加通用方法建设事项。

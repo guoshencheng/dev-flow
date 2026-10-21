@@ -1,5 +1,7 @@
 ---
 
+> 2026-10-21 结构调整：当前专业责任源为 [agents/prompts/operations.md](../agents/prompts/operations.md)，操作路由见 [能力清单](../capabilities.json)。长篇规范和模板随职责参考/资产或对应操作 Skill。下文首版建设及既有验证记录保留历史版本事实；本轮实际结果见[实施进度](plans/2026-10-21-agent-skill-reorganization/Progress.md)，不因迁移自动视为行为或原生派发通过。
+
 当前接入：通过专业 Skill 承担职责；2026-10-09 已移除 setup，旧 TOML 仅作参考，不参与当前安装。下文历史配置/派发证据保留原验证范围。
 id: ROLE-dev-operations
 title: 运维与交付 Agent
@@ -10,7 +12,7 @@ owner: operations
 
 # 运维与交付 Agent v0.1
 
-日期：2026-10-08。原生职责 `dev_operations`，源配置[dev_operations.toml](../agents/dev_operations.toml)，专业入口[dev-operations](../skills/dev-operations/SKILL.md)。配置不固定模型/推理强度；当前执行者按 Skill 承担工作与原生发现/派发分别记录。
+日期：2026-10-08。原生职责 `dev_operations`，源配置[dev_operations.toml](../agents/dev_operations.toml)，专业入口[dev-operations](../agents/prompts/operations.md)。配置不固定模型/推理强度；当前执行者按 Skill 承担工作与原生发现/派发分别记录。
 
 ## 从工程候选到可用交付
 
@@ -33,7 +35,7 @@ owner: operations
 | O07 环境演进 | 服务/资源/依赖归属与约束、实际问题和消费者、变更待办 | 变化后重新核验目标、健康及相关业务/性能，不虚构容量结论 |
 | O08 退役与交接 | 下游/调度/路由/数据保留、替代入口、自有资源清理与运行交接 | 下游可用、数据安排与旧入口/资源状态分别核验 |
 
-方法按[环境与启动](../skills/dev-operations/references/environment-and-startup.md)、[产物与发布](../skills/dev-operations/references/artifacts-and-release.md)、[观测与故障](../skills/dev-operations/references/observation-and-incidents.md)、[恢复与迁移](../skills/dev-operations/references/recovery-and-migrations.md)、[运行资产与演进](../skills/dev-operations/references/project-assets-and-evolution.md)读取。技术沿用 React/Vite、Next.js、Astro 与既有项目基线，不新增厂商或其他通用技术选型。
+方法按[环境与启动](../skills/runtime-operations/references/environment-and-startup.md)、[产物与发布](../skills/release-and-recovery/references/artifacts-and-release.md)、[观测与故障](../skills/runtime-operations/references/observation-and-incidents.md)、[恢复与迁移](../skills/release-and-recovery/references/recovery-and-migrations.md)、[运行资产与演进](../skills/release-and-recovery/references/evolution-and-retirement.md)读取。技术沿用 React/Vite、Next.js、Astro 与既有项目基线，不新增厂商或其他通用技术选型。
 
 ## 项目沉淀与当前验证
 

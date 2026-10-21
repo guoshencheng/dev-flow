@@ -17,8 +17,8 @@
 | 能力 | 已有依据与证据 | 本轮补齐 |
 | --- | --- | --- |
 | 测试先行与回归有效性 | 用例先确认、随实现维护自动化、自测/复验；[研发案例](../../evals/dev-engineering/report.md)已记录缺陷源码失败、修复后通过及无写入副作用 | 区分用例确认与行为测试先失败；定义失败有效性判断、事后补测验证和无效测试识别 |
-| 系统根因诊断 | [诊断参考](../../skills/dev-engineering/references/diagnosis-and-feedback.md)要求复现、原因证据与最小修复；已有保存缺失、越权、输入丢失案例 | 从观察到假设、边界取证、受控实验的具体步骤，以及被否定假设的记录与转向 |
-| 实现评审与意见闭环 | 技术方案符合性 Review、[代码业务复盘](../../skills/dev-architecture/references/retrospective-and-evolution.md)、[缺陷复验状态](../../skills/dev-acceptance/assets/templates/defect.md) | 明确完整实际变更的评审输入、需求符合性/实现质量两类结论，以及正确、错误、模糊和证据不足意见的处理与关闭 |
+| 系统根因诊断 | [诊断参考](../../skills/defect-diagnosis/references/diagnosis.md)要求复现、原因证据与最小修复；已有保存缺失、越权、输入丢失案例 | 从观察到假设、边界取证、受控实验的具体步骤，以及被否定假设的记录与转向 |
+| 实现评审与意见闭环 | 技术方案符合性 Review、[代码业务复盘](../../agents/references/architecture/review-and-closeout.md)、[缺陷复验状态](../../skills/acceptance-execution/assets/templates/defect.md) | 明确完整实际变更的评审输入、需求符合性/实现质量两类结论，以及正确、错误、模糊和证据不足意见的处理与关闭 |
 
 已有案例作为复用基线，保留历史版本与证明边界。它们不直接证明新增方法已被执行者采用。
 
@@ -37,17 +37,17 @@
 | 文件 | 改造内容 |
 | --- | --- |
 | 新增 `skills/dev-engineering/references/test-first-and-regression.md` | 上述四类执行路径、有效失败判断、隔离旧实现的方法和裁剪边界 |
-| [工程基线与计划](../../skills/dev-engineering/references/baseline-and-plan.md)及[研发入口](../../skills/dev-engineering/SKILL.md) | 按新增行为、缺陷、事后补测路由至新参考；区分用例确认与脚本执行 |
-| [实施计划模板](../../skills/dev-engineering/assets/templates/implementation-plan.md) | 每个必要行为列目标行为/规则、验证方式、预定测试位置、待取得的失败与通过证据；执行后回填链接，计划阶段不虚构结果 |
-| [工程交接模板](../../skills/dev-engineering/assets/templates/engineering-handoff.md) | 记录目标行为、失败证据、通过证据、测试位置及对应候选；说明先测/事后补测/可重复步骤/未验证 |
-| [验收运行参考](../../skills/dev-acceptance/references/execution-and-feedback.md) | 核对目标断言是否在旧错误实现上失败，识别旧新均通过的无效保护；区分目标失败、环境失败和未执行 |
-| [验收入口](../../skills/dev-acceptance/SKILL.md) | 明确研发主责随实现编写必要局部测试，验收主责覆盖、证据核验和实际复验；复用现有测试资产入口 |
+| [工程基线与计划](../../agents/references/engineering/baseline-and-plan.md)及[研发入口](../../agents/prompts/engineering.md) | 按新增行为、缺陷、事后补测路由至新参考；区分用例确认与脚本执行 |
+| [实施计划模板](../../agents/assets/engineering/implementation-plan.md) | 每个必要行为列目标行为/规则、验证方式、预定测试位置、待取得的失败与通过证据；执行后回填链接，计划阶段不虚构结果 |
+| [工程交接模板](../../agents/assets/engineering/engineering-handoff.md) | 记录目标行为、失败证据、通过证据、测试位置及对应候选；说明先测/事后补测/可重复步骤/未验证 |
+| [验收运行参考](../../skills/acceptance-execution/references/execution-and-feedback.md) | 核对目标断言是否在旧错误实现上失败，识别旧新均通过的无效保护；区分目标失败、环境失败和未执行 |
+| [验收入口](../../agents/prompts/acceptance.md) | 明确研发主责随实现编写必要局部测试，验收主责覆盖、证据核验和实际复验；复用现有测试资产入口 |
 
 失败/通过证据至少可定位到候选、测试版本、身份/数据、实际命令或步骤、目标断言与结果。已有运行记录存有这些字段时只关联，不复制整份日志。
 
 ## 二、系统根因诊断
 
-直接扩充[诊断与反馈](../../skills/dev-engineering/references/diagnosis-and-feedback.md)，不建立独立诊断账本。
+直接扩充[诊断与反馈](../../skills/defect-diagnosis/references/diagnosis.md)，不建立独立诊断账本。
 
 1. 核对候选、环境、身份、数据及实际入口，取得可重复现象；保存原始预期与实际。
 2. 查看近期变化，在同条件下找正常样本，比较触发条件、路径与数据差异；没有正常样本时明确记录，不猜测历史行为。
@@ -56,7 +56,7 @@
 5. 每次实验只改变必要变量，记录控制条件、操作、预期、实际与结论。假设被否定后依据新证据转向；不能把一次修复后偶然通过等同于根因证明。
 6. 原因得到支持后做最小修复，再执行原问题、相关回归与必要副作用检查，交回待复验候选。
 
-在[缺陷模板](../../skills/dev-acceptance/assets/templates/defect.md)的“诊断与修复”内增加简短表格：
+在[缺陷模板](../../skills/acceptance-execution/assets/templates/defect.md)的“诊断与修复”内增加简短表格：
 
 | 假设 ID/观察依据 | 假设 | 实验与控制条件 | 预期 | 实际/证据 | 支持、否定或待验证/下一步 |
 | --- | --- | --- | --- | --- | --- |
@@ -69,7 +69,7 @@
 
 ### 发起与执行
 
-扩充[架构复盘参考](../../skills/dev-architecture/references/retrospective-and-evolution.md)，明确实际实现评审可以与交付核验/复盘合并，但必须留下对实际变更的结论。
+扩充[架构复盘参考](../../agents/references/architecture/review-and-closeout.md)，明确实际实现评审可以与交付核验/复盘合并，但必须留下对实际变更的结论。
 
 评审包包含原始要求、有效 RULE/AC/UI/ARC/OUT、任务开始基线、最终候选、基线至候选的完整变更、相关未提交修改、实际测试证据和已知缺口。基线包含与任务相关的初始未提交内容；使用快照/指纹标明初始内容、任务修改和其他既有修改，不覆盖他人工作。多提交任务不能只审最后一个提交。
 
@@ -93,9 +93,9 @@
 
 沿用项目 tracker，每条意见至少包含：编号、原意见、证据/规则、影响与优先级、处理决定及依据、责任人、修复候选（无修复则说明）、定向复评与行为复验结果、状态。产品/架构解决依据或规则分歧，研发不得修改验收预期迁就实现。
 
-复用[缺陷模板](../../skills/dev-acceptance/assets/templates/defect.md)的 open → awaiting-retest → closed/reopen 闭环。对非行为意见，明确对应的澄清/证据复核和关闭者；行为缺陷仍需验收复验。错误意见以“不成立/不采用＋复核证据”关闭，证据不足意见继续待验证，不新建第二套状态账本。候选源码变化后，受影响测试重新执行，过期结果不能沿用为通过。
+复用[缺陷模板](../../skills/acceptance-execution/assets/templates/defect.md)的 open → awaiting-retest → closed/reopen 闭环。对非行为意见，明确对应的澄清/证据复核和关闭者；行为缺陷仍需验收复验。错误意见以“不成立/不采用＋复核证据”关闭，证据不足意见继续待验证，不新建第二套状态账本。候选源码变化后，受影响测试重新执行，过期结果不能沿用为通过。
 
-扩充[架构复盘模板](../../skills/dev-architecture/assets/templates/architecture-review.md)：任务开始基线/完整变更覆盖、需求符合性与实现质量结论、意见 tracker 入口与关闭证据。扩充缺陷模板的意见处理字段，研发入口及工程交接关联意见方法和未关闭项。
+扩充[架构复盘模板](../../agents/assets/architecture/templates/architecture-review.md)：任务开始基线/完整变更覆盖、需求符合性与实现质量结论、意见 tracker 入口与关闭证据。扩充缺陷模板的意见处理字段，研发入口及工程交接关联意见方法和未关闭项。
 
 允许且实际能够委派时采用独立上下文，给评审者完整原始输入；受宿主或授权限制时记录主 Agent 自查及缺少独立复核。配置文件不固化模型/强度，派发遵循当次用户与宿主要求。自查不登记为独立评审。
 

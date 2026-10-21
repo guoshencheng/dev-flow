@@ -1,6 +1,6 @@
 # “开始收尾”的代码处理与工程交接
 
-日期：2026-10-12。用户在文档收尾入口确定后，希望同时做好代码收尾。原有[Git 与集成指南](../skills/dev-flow/references/git-and-worktree.md)已规定候选验证、提交建议、合并及资源保留；本轮将其接入“开始收尾”的默认路径，专业内容继续引用现行研发、架构、测试与运维方法。
+日期：2026-10-12。用户在文档收尾入口确定后，希望同时做好代码收尾。原有[Git 与集成指南](../skills/git-workflow/references/git-and-worktree.md)已规定候选验证、提交建议、合并及资源保留；本轮将其接入“开始收尾”的默认路径，专业内容继续引用现行研发、架构、测试与运维方法。
 
 ## 范围与方案
 
@@ -20,7 +20,7 @@
 
 ## 验证、版本与交接
 
-Plugin 0.2.2、总纲 v0.27；八个 Skills、六职责、执行协议、状态 schema 和安装脚本保持原有接口，属于兼容方法维护。本轮相关规范位于[代码收尾](../skills/dev-flow/references/git-and-worktree.md#代码收尾)，主流程在[收尾入口](../skills/dev-flow/references/document-archive.md#一条指令收尾当前迭代)，研发采用[工程资产](../skills/dev-engineering/references/project-assets-and-delivery.md)和[交接模板](../skills/dev-engineering/assets/templates/engineering-handoff.md)。
+Plugin 0.2.2、总纲 v0.27；八个 Skills、六职责、执行协议、状态 schema 和安装脚本保持原有接口，属于兼容方法维护。本轮相关规范位于[代码收尾](../skills/git-workflow/references/git-and-worktree.md#代码收尾)，主流程在[收尾入口](../skills/document-management/references/archive.md#一条指令收尾当前迭代)，研发采用[工程资产](../agents/references/engineering/handoff.md)和[交接模板](../agents/assets/engineering/engineering-handoff.md)。
 
 主 Agent 自查用户要求、已安装基线及从开始提交到候选的完整相关差异，包括此前实施授权核验器/测试、收尾入口、专业引用和模板。核对了本地保存与远端动作边界、混合暂存内容、失效证据/待验候选、已有提交复用、仅文档范围、资源归属及归档条件；已补齐工程成果保存和交付缺口的归档约束，未发现开放阻断项。这是实际自查，不声明独立评审或新上下文行为通过。
 

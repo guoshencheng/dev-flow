@@ -4,7 +4,7 @@
 
 ## 范围与实施前自查
 
-新增[Git/worktree 建议](../skills/dev-flow/references/git-and-worktree.md)及[subagent 建议](../skills/dev-flow/references/subagent-guidance.md)，同步总纲 v0.16、执行协议 v0.6、任务路由、执行者说明、工程基线和发布参考。迭代索引、计划与工程交接补充现有记录字段，不增加独立台账。
+新增[Git/worktree 建议](../skills/git-workflow/references/git-and-worktree.md)及[subagent 建议](../skills/subagent-coordination/references/dispatch-and-lifecycle.md)，同步总纲 v0.16、执行协议 v0.6、任务路由、执行者说明、工程基线和发布参考。迭代索引、计划与工程交接补充现有记录字段，不增加独立台账。
 
 实施范围是指导与模板，沿用已有 bugfix/正常需求、确认与自主实施边界。计划为先写两份按场景选择的参考，再连接入口与模板，最后检查适用性、引用及实际插件缓存。实施前主 Agent AI 自查结论：范围明确，不涉及代码逻辑、安装脚本或业务项目迁移；文档验证足以覆盖本次静态成果，完整流程行为不能由本次自查证明。
 

@@ -4,7 +4,7 @@
 
 ## 已定义与接入
 
-[职责说明](../../docs/engineering-agent.md)、[Skill](../../skills/dev-engineering/SKILL.md)与[原生配置](../../agents/dev_engineering.toml)细化 E01–E08：工程基线与代码映射、实现计划/AI 复核、纵向切片、前端/业务接口实现、证据诊断、兼容变更、工程检查及集成交付；六份按需参考与三个项目模板支持持续维护。
+[职责说明](../../docs/engineering-agent.md)、[Skill](../../agents/prompts/engineering.md)与[原生配置](../../agents/dev_engineering.toml)细化 E01–E08：工程基线与代码映射、实现计划/AI 复核、纵向切片、前端/业务接口实现、证据诊断、兼容变更、工程检查及集成交付；六份按需参考与三个项目模板支持持续维护。
 
 沿用已确认产品/UI、重要架构和可读用例，实施计划由 AI 复核通过后自主实现，不新增人工计划审批。真实接口/数据、UI/错误恢复、待验交接和项目工程资产分别落实；共享代码复制/参考并记录 Git 来源，没有新增内部 npm 发布依赖。
 

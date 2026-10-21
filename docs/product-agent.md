@@ -1,5 +1,7 @@
 # 产品与交互 Agent v0.8
 
+> 2026-10-21 结构调整：当前专业责任源为 [agents/prompts/product.md](../agents/prompts/product.md)，操作路由见 [能力清单](../capabilities.json)。长篇规范和模板随职责参考/资产或对应操作 Skill。下文首版建设及既有验证记录保留历史版本事实；本轮实际结果见[实施进度](plans/2026-10-21-agent-skill-reorganization/Progress.md)，不因迁移自动视为行为或原生派发通过。
+
 2026-10-09 文档归属调整：产品维护行为/交互规格及原型方法；共享 UI 组件指南、预览工具和 React 组件工作区由视觉主责，产品跨包引用。历史验证仍保留当时归属与证据范围，见[职责归属表](document-ownership.md)。
 
 当前接入：通过专业 Skill 承担职责；2026-10-09 已移除 setup，旧 TOML 仅作参考，不参与当前安装。下文历史配置/派发证据保留原验证范围。
@@ -23,21 +25,21 @@
 | P06 | 按问题选择场景、原型或实际应用验证，区分真实观察与推演 |
 | P07、P08 | 依据真实反馈维护候选改进和有效决定；暂保留基础指导 |
 
-方法和项目资产规则位于[专业 Skill](../skills/dev-product/SKILL.md)。原生配置位于[职责文件](../agents/dev_product.toml)。共同协议依赖随包安装的 `dev-flow`，专业知识不会仅因角色名称存在而自动加载。
+方法和项目资产规则位于[职责提示词](../agents/prompts/product.md)。原生配置位于[职责文件](../agents/dev_product.toml)。共同协议依赖随包安装的 `dev-flow`，专业知识不会仅因角色名称存在而自动加载。
 
 ## 可操作原型、设计参考与复用
 
-按用户指定的[UI 技术与共享组件约定](../skills/dev-visual/references/ui-stack-and-components.md)建设：新建原型默认 Vite + React + TypeScript；B 端使用 Ant Design 规范、优先 antd 组件并按需扩展；C 端 Web 优先 shadcn/ui；其他 C 端应用先做网上参考研究。AI 依照[原型与设计稿指南](../skills/dev-product/references/html-prototyping.md)生成或修改任务页面、启动并持续讨论，已有项目优先复用有效工程入口。2026-10-11 补齐跨迭代持续维护与[模块化设计稿](../skills/dev-visual/references/system-and-pages.md#模块化-react-设计稿)：现行 UI 规范/页面/组件与各端源码分开维护，迭代只引用变化与确认版本，总览组合展示，移动端容器仅模拟屏幕尺寸。2026-10-12 提供完整[React 设计稿模板](../skills/dev-visual/assets/design-workspace/README.md)，隔离副本的初始化、状态/交互、视口边界、规范更新和构建路由检查见[验证记录](../evals/dev-visual/runs/2026-10-12/react-design-template/report.md)；真实项目复用仍待验证。静态设计稿检查渲染，可操作原型还需检查核心行为。
+按用户指定的[UI 技术与共享组件约定](../agents/references/visual/ui-baseline.md)建设：新建原型默认 Vite + React + TypeScript；B 端使用 Ant Design 规范、优先 antd 组件并按需扩展；C 端 Web 优先 shadcn/ui；其他 C 端应用先做网上参考研究。AI 依照[原型与设计稿指南](../skills/react-prototyping/references/build-and-preview.md)生成或修改任务页面、启动并持续讨论，已有项目优先复用有效工程入口。2026-10-11 补齐跨迭代持续维护与[模块化设计稿](../skills/react-prototyping/references/multi-device-preview.md#模块化-react-设计稿)：现行 UI 规范/页面/组件与各端源码分开维护，迭代只引用变化与确认版本，总览组合展示，移动端容器仅模拟屏幕尺寸。2026-10-12 提供完整[React 设计稿模板](../skills/react-prototyping/assets/design-workspace/README.md)，隔离副本的初始化、状态/交互、视口边界、规范更新和构建路由检查见[验证记录](../evals/dev-visual/runs/2026-10-12/react-design-template/report.md)；真实项目复用仍待验证。静态设计稿检查渲染，可操作原型还需检查核心行为。
 
-[React 工作区](../skills/dev-visual/assets/react-workspace/README.md)随专业 Skill 维护，提供 B/C 源码、独立示例与可选择目录。v0.6 按用户要求采用源码复制或参考实现，项目直接维护和快速迭代；目录展示本地导入的使用示例与完整源码文件集，按组件 ID 可查询、复制并记录来源哈希。项目已有基底优先复用，保留项目定制，通用改进验证后回收。当前仓库无远程地址，跨机器 Git 获取尚未执行。
+[React 工作区](../skills/component-reuse/assets/react-workspace/README.md)随专业 Skill 维护，提供 B/C 源码、独立示例与可选择目录。v0.6 按用户要求采用源码复制或参考实现，项目直接维护和快速迭代；目录展示本地导入的使用示例与完整源码文件集，按组件 ID 可查询、复制并记录来源哈希。项目已有基底优先复用，保留项目定制，通用改进验证后回收。当前仓库无远程地址，跨机器 Git 获取尚未执行。
 
-v0.7 明确 B 端先参考 Ant Design 官方完整组件与示例，现成组件直接使用 antd，共享目录补充组合。SelectionSummary/ActionCard 是自有组合，Button/Card 是保留许可的官方 shadcn/ui 源码。按[Ant Design 能力联用](../skills/dev-visual/references/ant-design-capabilities.md)联合官方 `antd` Skill、CLI 或已连接 MCP，缺失且当前任务需要时自主采用项目级或临时接入；按项目实际版本核验组件，不固定 Agent 模型。
+v0.7 明确 B 端先参考 Ant Design 官方完整组件与示例，现成组件直接使用 antd，共享目录补充组合。SelectionSummary/ActionCard 是自有组合，Button/Card 是保留许可的官方 shadcn/ui 源码。按[Ant Design 能力联用](../skills/component-reuse/references/ant-design-capabilities.md)联合官方 `antd` Skill、CLI 或已连接 MCP，缺失且当前任务需要时自主采用项目级或临时接入；按项目实际版本核验组件，不固定 Agent 模型。
 
-v0.8 按[共同文档协议](../skills/dev-flow/references/design-document-contract.md)维护产品功能规格与视觉关联，明确原型设计、使用限制、功能透出、可执行授权和具体业务逻辑；规则与验收有稳定编号和来源，普通历史由 Git 保存，完整已替换方案归档。采用[统一 Vite 文档预览](../skills/dev-flow/references/document-preview.md)实际启动、按源文件生成地址。视觉已有独立[配置与专业指导](visual-agent.md)，两者复用共同基础并分别维护资产。
+v0.8 按[共同文档协议](../skills/document-management/references/document-contract.md)维护产品功能规格与视觉关联，明确原型设计、使用限制、功能透出、可执行授权和具体业务逻辑；规则与验收有稳定编号和来源，普通历史由 Git 保存，完整已替换方案归档。采用[统一 Vite 文档预览](../skills/document-management/references/document-preview.md)实际启动、按源文件生成地址。视觉已有独立[配置与专业指导](visual-agent.md)，两者复用共同基础并分别维护资产。
 
-v0.3 提供的[示例工具](../skills/dev-product/scripts/prototype.py)保留为可选起点。内置 C 端预约与 B 端批量任务，支持确认方案对比、状态切换、模拟提交、异常恢复与反馈 JSON；所有示例均为候选和模拟。项目页面按本次目标生成，不要求沿用示例业务、布局、讨论面板或反馈导出功能。
+v0.3 提供的[示例工具](../skills/react-prototyping/scripts/prototype.py)保留为可选起点。内置 C 端预约与 B 端批量任务，支持确认方案对比、状态切换、模拟提交、异常恢复与反馈 JSON；所有示例均为候选和模拟。项目页面按本次目标生成，不要求沿用示例业务、布局、讨论面板或反馈导出功能。
 
-[参考研究与方案创造](../skills/dev-product/references/reference-research-and-ideation.md)提供按问题搜索、实际任务拆解、机制比较和候选验证的方法。[C/B 端设计指导](../skills/dev-product/references/consumer-and-business-design.md)从任务、频率、熟练度、数据、权限与错误成本选择模式。[项目资产协议](../skills/dev-product/references/project-assets.md)补齐参考、原型、反馈、决定、模式和验收的关联、失效与跨任务复用。
+[参考研究与方案创造](../skills/product-specification/references/reference-research.md)提供按问题搜索、实际任务拆解、机制比较和候选验证的方法。[C/B 端设计指导](../agents/references/product/consumer-and-business-design.md)从任务、频率、熟练度、数据、权限与错误成本选择模式。[项目资产协议](../skills/document-management/references/professional-assets.md#产品)补齐参考、原型、反馈、决定、模式和验收的关联、失效与跨任务复用。
 
 随包示例服务只发布原型 public/ 目录，其反馈需要复制或下载保存到项目；其他工程可直接在项目文档记录反馈。设计讨论以任务和待决问题为起点，经过实际查看或操作与反馈更新页面，再将有效决定写回权威规格；用户界面偏好、原型操作、真实用户证据与生产验收分别记录。
 
@@ -72,7 +74,7 @@ v0.5 的历史组件接入证据见[React 工作区记录](../evals/dev-product/
 
 使用 `$dev-flow` 组织协作，产品任务读取 `$dev-product`。当前可通过专业 Skill 执行；原生 `dev_product` 需要在目标宿主完成发现、派发和实际模型设置核验。全局源文件通过链接维护，代码与具体项目知识仍保存在各项目。
 
-本轮 2026-10-21 流程修订在[产品 Skill](../skills/dev-product/SKILL.md)增加产品/UI 候选确认前的真实代码与成本反馈，以及产品回应、必要状态保留和受影响业务决定；完整正式用例调整为实现后维护与 Review。本轮已在隔离项目实际派发技术反馈与另一原生上下文独立 Review，见[行为报告](../evals/dev-flow-stages/2026-10-21-behavior-report.md)；产品职责自身的独立原生执行、实际产品回应及真实业务项目运行验收仍未验证。下一次真实项目试点应提供现有界面、工程入口和实际运行条件，检验设计与技术交叉 Review、最终业务覆盖、交付及下一任务资产复用；历史隔离案例仍只证明当时版本的行为。
+本轮 2026-10-21 流程修订在[产品 Skill](../agents/prompts/product.md)增加产品/UI 候选确认前的真实代码与成本反馈，以及产品回应、必要状态保留和受影响业务决定；完整正式用例调整为实现后维护与 Review。本轮已在隔离项目实际派发技术反馈与另一原生上下文独立 Review，见[行为报告](../evals/dev-flow-stages/2026-10-21-behavior-report.md)；产品职责自身的独立原生执行、实际产品回应及真实业务项目运行验收仍未验证。下一次真实项目试点应提供现有界面、工程入口和实际运行条件，检验设计与技术交叉 Review、最终业务覆盖、交付及下一任务资产复用；历史隔离案例仍只证明当时版本的行为。
 
 ## Kimi 宿主接入（2026-10-09）
 

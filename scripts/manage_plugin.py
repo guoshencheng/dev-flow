@@ -11,7 +11,7 @@ import subprocess
 import sys
 import tempfile
 
-from sync_host_agents import check as check_host_agents
+from sync_host_agents import check as check_host_agents, load_capabilities
 
 
 PLUGIN_ID = "dev-flow@dev-flow-local"
@@ -54,16 +54,17 @@ def validate_bundle(root):
     if inventory["owner"] != "dev-flow":
         raise ValueError("安装包不属于 Dev Flow")
     for relative, expected in inventory["files"].items():
+        if Path(relative).is_absolute() or ".." in Path(relative).parts:
+            raise ValueError("安装包路径越界：" + relative)
         candidate = root / relative
         file = candidate.resolve()
-        if root.resolve() not in file.parents or candidate.is_symlink() or digest(file) != expected:
+        if root.resolve() not in file.parents or candidate.is_symlink() or not file.is_file() or digest(file) != expected:
             raise ValueError("安装包路径或内容不匹配：" + relative)
+    actual = {p.relative_to(root).as_posix() for p in root.rglob("*") if p.is_file() and p.name != "package-files.json"}
+    if actual != set(inventory["files"]):
+        raise ValueError("安装包文件与指纹清单不一致")
     check_host_agents(root)
-    skills = sorted(p.parent.name for p in (root / "skills").glob("*/SKILL.md"))
-    expected = ["codex-session-monitor", "dev-acceptance", "dev-architecture", "dev-engineering", "dev-flow", "dev-operations", "dev-product", "dev-visual"]
-    if skills != expected:
-        raise ValueError("插件应包含流程、六职责及跨职责支撑 Skills")
-    return skills
+    return load_capabilities(root)["skills"]
 
 
 def tracked(root):
@@ -83,7 +84,7 @@ def tracked(root):
         if source.is_file():
             files.append(entry)
     for required in ("plugin.json", ".codex-plugin/plugin.json", ".agents/plugins/marketplace.json",
-                     "kimi.plugin.json", "scripts/sync_host_agents.py", "skills/dev-flow/SKILL.md"):
+                     "kimi.plugin.json", "capabilities.json", "scripts/sync_host_agents.py", "skills/dev-flow/SKILL.md"):
         if required not in files:
             raise ValueError("需要先将新插件文件纳入 Git：" + required)
     return files
@@ -130,7 +131,7 @@ def build(root):
 
 
 def installed_entry():
-    return next((p for p in cli(["plugin", "list"])["installed"] if p["pluginId"] == PLUGIN_ID), None)
+    return next((p for p in cli(["plugin", "list", "--marketplace", MARKETPLACE])["installed"] if p["pluginId"] == PLUGIN_ID), None)
 
 
 def install(root):

@@ -3,7 +3,7 @@ __pycache__/
 *.pyc
 .dev-flow/
 /.dev/
-node_modules/
+node_modules
 dist/
 *.tsbuildinfo
 *.tgz

@@ -1,3 +1,0 @@
-interface:
-  display_name: "测试与验收"
-  short_description: "完整候选后按已确认完成标准维护用例并独立复核，执行端到端及交付验收与缺陷复验"

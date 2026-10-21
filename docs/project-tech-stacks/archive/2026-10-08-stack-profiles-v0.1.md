@@ -8,7 +8,7 @@ owner: architecture
 
 # 各类工程的架构与交付约束（历史草案）
 
-2026-10-08 用户要求将通用技术 Guide 收敛为 React Web、Next.js 全栈与 Astro 纯静态；其他类型暂不建设。本文件移出 Skill，仅保存 v0.2 职责建设时的历史草案，不作为现行选型指令。当前约定见[技术栈](../../../skills/dev-architecture/references/technology-stack.md)。
+2026-10-08 用户要求将通用技术 Guide 收敛为 React Web、Next.js 全栈与 Astro 纯静态；其他类型暂不建设。本文件移出 Skill，仅保存 v0.2 职责建设时的历史草案，不作为现行选型指令。当前约定见[技术栈](../../../agents/references/architecture/technology-stack.md)。
 
 ## React Web 与全栈 Web
 

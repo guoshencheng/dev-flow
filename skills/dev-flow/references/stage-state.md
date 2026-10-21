@@ -6,7 +6,7 @@
 
 多阶段、跨会话任务先选本轮 `Progress.md` 作为总体进度权威，列出最终目标的完整阶段、当前阶段、未开展项、执行者和下一步；原 `index.md` 只链接它。若已明确选择索引或原生 Todo 为权威，沿用该入口，另一入口只作链接或投影，不手工双写总体状态。**可读的全局 Progress 不以 JSON 状态块为前提。**需要结构化核验时，才在选定的 Markdown 权威文件内放**一个** `dev-flow-state` JSON 代码块，保存范围、有效版本及 gate 状态；正文只解释成果和链接。规格、用例、实际 Review/确认原记录与本机运行证据仍在各自权威位置。无须迁移已有文档或补抄历史日志；仅恢复本次所需的有效事实。
 
-采用[迭代模板](../assets/templates/iteration-index.md)或已有 Progress。需要看完整格式时参考[局部修复示例](../assets/examples/iteration-state.md)；这是合成示例，不能原样登记为项目通过。状态可以引用合并在同一索引内的规格、确认、Review 和结果。
+采用[迭代模板](../../document-management/assets/templates/iteration-index.md)或已有 Progress。需要看完整格式时参考[局部修复示例](../assets/examples/iteration-state.md)；这是合成示例，不能原样登记为项目通过。状态可以引用合并在同一索引内的规格、确认、Review 和结果。
 
 ### 顶层与工作范围
 

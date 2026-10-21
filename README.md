@@ -1,72 +1,65 @@
-# dev-flow
+# Dev Flow
 
-支持 Codex 与 Kimi 的多角色研发协作体系。当前源码 Plugin 0.3.0、总纲 v0.29：产品/UI 确认前取得真实代码与实现成本反馈；研发统一编写架构与实现设计，Review、计划、架构收尾独立；专业工作默认使用可用 Harness subagent；整体 Todo/Progress 覆盖最终目标；完整功能实现后维护正式验收用例并核验交付。研发自测与回归持续进行，已确认业务预期和明确范围授权仍在实施前生效。八个 Skills、共享 React 组件和业务项目 Vite 文档预览继续提供；实际安装与能力成熟度分别按证据核验，见[安装指南](docs/plugin.md)。
+面向 Codex 与 Kimi 的六职责研发协作插件。流程、专业职责和操作技能分别维护：`dev-flow` 只安排阶段、依赖、授权和完成条件；六职责 Agent 提示词承担专业判断；操作 Skills 提供具体方法与工具。项目业务事实保存在所属项目。
 
-Kimi 插件提供六份独立职责 Agent 文档，与历史 Codex 角色参考从共用 Skills 生成；专业方法只维护一份。接入、派发与同步见 [Kimi 职责说明](docs/integrations/kimi-agent-configuration.md)。
+本轮发布候选 **0.4.0**，总纲 **0.30**。这是对 0.3.0 的能力组织调整，保留已有设计确认、实施授权、独立 Review、完整候选后正式 TC/验收以及交付条件；旧六职责 Skill 退出，改为六份实质性职责提示词和按需操作技能。当前安装与验证以[本轮进度](docs/plans/2026-10-21-agent-skill-reorganization/Progress.md)及真实检查记录为准。
 
-验证结果见 [Kimi 适配记录](reviews/2026-10-09-kimi-agent-adaptation.md)：原生加载/派发链路已检查，真实模型专业行为另行验证。
+## 能力入口
 
-## 维护入口
+| 内容 | 唯一维护源 | 作用 |
+| --- | --- | --- |
+| 流程 | [dev-flow](skills/dev-flow/SKILL.md)、[总纲](skills/dev-flow/references/constitution.md) | 路径、阶段、参与职责、前置依赖、授权、变更、整体完成与收尾 |
+| 六职责 | [agents/prompts](agents/prompts/) | 专业目标、判断原则、责任边界及交接标准 |
+| 专业参考和写作模板 | [agents/references](agents/references/)、[agents/assets](agents/assets/) | 长篇标准、评审检查表、设计/计划/收尾模板；按需读取 |
+| 操作技能 | 下表的 Skills | 独立操作触发、输入、执行方法与可核验输出 |
+| 候选能力声明 | [capabilities.json](capabilities.json) | Skill 清单、角色路由与必需资源；生成/打包校验使用 |
 
-- [总纲概述](docs/overview.md)：当前简介；v0.1 经 Astra medium 独立审阅和修订稿复核，后续修改分别记录；[历史审阅记录](reviews/2026-10-07-overview-review.md)。
-- [总纲](skills/dev-flow/references/constitution.md)：共同协作、交付与项目沉淀协议。
-- [流程 Skill](skills/dev-flow/SKILL.md)：调用入口和按需阅读规则。
-- [设计确认与自主实施](skills/dev-flow/references/execution-contract.md)：产品/UI 候选先取得代码/成本反馈，用户确认业务完成标准与重要取舍；研发统一设计及独立计划经 Review 后实施，完整候选后维护正式用例、独立 Review 并执行验收和交付核验。
-- [阶段状态与核验](skills/dev-flow/references/stage-state.md)：在唯一 Progress/既有索引核对完整阶段、范围、确认覆盖、实际 Review、输入版本、候选及逐必需检查；[工具测试与行为评测边界](evals/dev-flow-stages/report.md)。
-- [产品与交互 Agent](docs/product-agent.md)：职责边界、首版能力与验证状态；[专业 Skill](skills/dev-product/SKILL.md)和[案例证据](evals/dev-product/README.md)。
-- [视觉与界面 Agent](docs/visual-agent.md)：专业方法、共同基础复用、视觉资产与实际检查；[专业 Skill](skills/dev-visual/SKILL.md)。
-- [架构设计与演进 Agent](docs/architecture-agent.md)：整洁架构、项目技术基线、业务域与模块分工、设计契约、代码业务 Review 与研发复盘；[专业 Skill](skills/dev-architecture/SKILL.md)。
-- [测试验收 Agent](docs/acceptance-agent.md)：完整实现后依据原业务预期维护正式用例、独立 Review 与真实界面/API/E2E、交付核验及复验；[专业 Skill](skills/dev-acceptance/SKILL.md)及[验证状态](evals/dev-acceptance/report.md)。
-- [研发 Agent](docs/engineering-agent.md)：设计期真实代码成本反馈、合并架构/实现设计与独立 Review、计划 AI 复核、可运行切片、诊断修复及可启动交接；[专业 Skill](skills/dev-engineering/SKILL.md)和[首版验证](evals/dev-engineering/report.md)。
-- [运维与交付 Agent](docs/operations-agent.md)：环境与快速启动、产物版本/发布、运行信号/故障、回退/数据恢复、依赖演进与退役；[专业 Skill](skills/dev-operations/SKILL.md)和[首版验证](evals/dev-operations/report.md)。
-- [Codex 会话监控](skills/codex-session-monitor/SKILL.md)：在授权范围内检查会话进度、阻塞、完成与待处理事项，按[富文本进展规范](skills/codex-session-monitor/references/progress-message-format.md)发送简短 Lark 更新；[评估案例](evals/codex-session-monitor/README.md)。它是跨职责支撑能力，不是新的职责 Agent。
-- [技术栈约定](skills/dev-architecture/references/technology-stack.md)：Web React、全栈 Next.js、纯静态 Astro；[历史项目调查](docs/project-tech-stacks/2026-10-08-survey.md)仅保存当时事实与建议，其他类型暂不进入通用技术 Guide。
-- [代码规范 Guide](skills/dev-architecture/references/code-standards.md)：EditorConfig/Prettier、ESLint、TypeScript 与实际依赖规则；随包提供可复制格式配置，项目维护自己的规范和检查入口。
-- [项目文档目录与归档](skills/dev-flow/references/design-document-contract.md)：明确当前业务项目的产品、交互原型、设计/UI、技术及相关验收/交付资料；[索引模板](skills/dev-flow/assets/templates/project-document-index.md)映射现行权威位置；[项目 Vite 预览](skills/dev-flow/references/document-preview.md)生成对应项目成果的实际地址，Skill 维护默认使用源文件链接。
-- [原型与设计稿指南](skills/dev-product/references/html-prototyping.md)：AI 按任务构建页面、新建默认 Vite + React、启动预览与持续讨论；随包示例可选。[参考研究](skills/dev-product/references/reference-research-and-ideation.md)和[C/B 设计指导](skills/dev-product/references/consumer-and-business-design.md)。
-- [UI 技术与共享组件约定](skills/dev-visual/references/ui-stack-and-components.md)：B 端 Ant Design/antd、C 端 Web shadcn/ui、其他 C 端先研究参考；[React 工作区](skills/dev-visual/assets/react-workspace/README.md)及[组件清单](skills/dev-visual/assets/react-workspace/catalog.md)由本 Git 仓库维护。
-- [组件预览与源码复用](skills/dev-visual/references/component-preview-and-reuse.md)：可操作组件目录、完整源码文件集、快速复制到项目和定制后的差异合并；[当前验证记录](evals/dev-product/runs/2026-10-08/component-gallery/report.md)。
-- [Ant Design 能力联用](skills/dev-visual/references/ant-design-capabilities.md)：B 端优先官方现成组件，按需联合官方 Skill、CLI 或 MCP，支持任务范围内自主接入；[临时项目核验记录](evals/dev-product/runs/2026-10-08/ant-design-capabilities/report.md)。
-- [职责能力目录](skills/dev-flow/references/role-capabilities.md)：六职责四十八项能力与执行契约。
-- [项目迭代目录协议](skills/dev-flow/references/design-document-contract.md)：每轮集中保存各阶段产物，项目级基线持续复用；[迭代索引模板](skills/dev-flow/assets/templates/iteration-index.md)。
-- [迭代收尾与归档](skills/dev-flow/references/document-archive.md#一条指令收尾当前迭代)：一条指令完成代码与文档收尾，同步相关资产、总结、遗留和项目入口，核验后逻辑归档。
-- [代码收尾](skills/dev-flow/references/git-and-worktree.md#代码收尾)：本轮代码整理、完整 Review、必要验证与本地保存，以及已授权的集成交付和资源交接。
-- [项目资产持续沉淀](skills/dev-flow/references/project-asset-maintenance.md)：现行资产、更新、有效性与后续复用。
-- [分支、worktree、验证与合并](skills/dev-flow/references/git-and-worktree.md)：何时分支/隔离、阶段验证、合并条件与清理。
-- [整体进度与恢复](skills/dev-flow/references/progress-management.md)：从最终目标列全部阶段，保留未开始项、当前目标与下一步；[Progress 模板](skills/dev-flow/assets/templates/progress.md)。
-- [subagent 使用建议](skills/dev-flow/references/subagent-guidance.md)：设计到收尾的默认专业派发、窄上下文、独立 Review、并行写入边界与集成责任。
-- [职责 Skills 与执行者](skills/dev-flow/references/codex-agent-configuration.md)：通过 Skills 承担职责、可用性和委派边界。
-- [文档与资产职责归属](docs/document-ownership.md)：八个 Skills 的权威边界、共享工具维护者与迁移说明。
-- [仓库文档归类](docs/document-organization.md)：执行参考、建设计划和验证证据的边界。
-- [职责建设与验证](docs/agent-development.md)、[初期总体建设方案](docs/plans/2026-10-07-development-harness-plan.md)和[能力/资产建设原始方案](docs/plans/2026-10-07-role-capabilities-and-project-assets.md)：仓库建设资料。
-- [测试先行、系统诊断与实现评审改造计划](docs/plans/2026-10-09-executable-engineering-methods.md)：沿用六职责补齐方法与记录字段；[隔离行为评测](evals/dev-flow-methods/report.md)记录实际检出、实验、意见处理与复验边界。
-- [Codex 配置历史](docs/history/2026-10-08-codex-agent-setup.md)、[Ant Design 接入核验](docs/integrations/ant-design.md)及[共享组件验证](docs/integrations/shared-components.md)：历史事实与证据入口。
+六职责分别为[产品](agents/prompts/product.md)、[视觉](agents/prompts/visual.md)、[架构](agents/prompts/architecture.md)、[研发](agents/prompts/engineering.md)、[测试验收](agents/prompts/acceptance.md)、[运维交付](agents/prompts/operations.md)。所有宿主入口从提示词源生成，不反向从 Skill 描述推导职责，不手工维护第二份专业规则。
 
-## 插件安装与使用
+## 操作 Skills
 
-Codex 安装：
+| Skill | 操作对象 |
+| --- | --- |
+| [git-workflow](skills/git-workflow/SKILL.md) | 基线、分支/worktree、完整差异、提交、冲突与已授权集成 |
+| [subagent-coordination](skills/subagent-coordination/SKILL.md) | 能力发现、任务包、隔离写入、派发/等待与结果收集 |
+| [document-management](skills/document-management/SKILL.md) | 文档目录/索引/版本/链接、Web 阅读、总结与逻辑归档 |
+| [product-specification](skills/product-specification/SKILL.md) | 将任务与决定表达为流程、状态、RULE/可观察 AC |
+| [react-prototyping](skills/react-prototyping/SKILL.md) | 原型构建、设计工作台、多端场景与真实预览 |
+| [component-reuse](skills/component-reuse/SKILL.md) | 组件/API发现、示例预览、源码文件集复制与主题接入 |
+| [visual-verification](skills/visual-verification/SKILL.md) | 真实页面、内容/状态/窗口的呈现检查与复验 |
+| [codebase-mapping](skills/codebase-mapping/SKILL.md) | 代码业务链、模块、调用/依赖、数据与符号现状地图 |
+| [regression-verification](skills/regression-verification/SKILL.md) | 目标失败、旧新对照和测试保护有效性 |
+| [defect-diagnosis](skills/defect-diagnosis/SKILL.md) | 最小复现、假设实验、未知根因与修复建议 |
+| [acceptance-case-design](skills/acceptance-case-design/SKILL.md) | 正式用例、技术覆盖和证据要求 |
+| [acceptance-execution](skills/acceptance-execution/SKILL.md) | 界面/API/E2E/交付用例执行、缺陷和复验 |
+| [runtime-operations](skills/runtime-operations/SKILL.md) | 环境/配置、启动停止、运行版本与信号诊断 |
+| [release-and-recovery](skills/release-and-recovery/SKILL.md) | 分别按授权进行发布、回退/恢复及资源退役 |
+| [codex-session-monitor](skills/codex-session-monitor/SKILL.md) | 授权范围内的会话状态跟踪、去重和通知 |
+
+加上流程入口共 16 个 Skill。数量是当前清单结果，不作为未来能力建设目标。独立 Git、文档、派发等操作不强制启动完整研发流程；流程可安排对应职责按需调用 Skill。模型与强度遵循本次用户和宿主设置。
+
+## 安装与使用
 
 ```sh
+python3 scripts/sync_host_agents.py --write
+python3 scripts/sync_host_agents.py --check
 python3 scripts/manage_plugin.py install
 python3 scripts/manage_plugin.py check
 ```
 
-插件包含八个 Skills：流程入口、六个职责 Skill，以及跨职责的会话监控 Skill。没有 setup Agent 步骤，安装不注册个人角色或改写全局指引。使用 `$dev-flow` 按[任务路由](skills/dev-flow/references/task-routing.md)选择 bugfix、正常需求、系统变更或故障流程；需要监控 Codex/ChatGPT 会话时按授权加载会话监控 Skill。模型由宿主与用户本次要求决定。Kimi 使用原生插件安装与 `/skill:dev-flow`，安装详情见[指南](docs/plugin.md)。
+新文件先纳入 Git，安装只打包受管理源码。检查实际启用、缓存/源码指纹、声明 Skill 与角色资源；不注册个人 Agent，不改写全局用户指引。新会话能力发现、原生派发、隔离工具案例和真实项目验证分别记录。Kimi 使用独立原生安装/重载路径，见[安装指南](docs/plugin.md)。
 
-迭代收尾直接说：
+完整任务使用 `$dev-flow`；说“开始收尾”进入[收尾流程](skills/dev-flow/references/closeout.md)。主 Agent 核对完整候选 Review、必要验证、技术收尾及交付，再调用 Git 保存与文档归档。已有同范围授权复用，缺少必需证据保持未完成。仅文档整理按明确范围裁剪。
 
-```text
-开始收尾
-```
+直接在线阅读项目文档可使用 [document-management](skills/document-management/references/document-preview.md) 中的脚本，显式传项目根路径；文档与独立原型仍由所属项目维护，预览 URL 依赖实际运行服务。
 
-也可显式说 `使用 $dev-flow 收尾当前迭代`。流程会定位当前项目与本轮，整理相关代码、核对完整 Review 和必要测试/构建，修复并复验原授权范围内的阻断项；同步文档与长期资产，相关成果按项目约定保存。无其他约定时形成本轮相关本地提交，推送/PR/合并/发布按已有授权推进；核验后逻辑归档，交接版本、实际结果和资源状态。缺少必需验收或交付证据时保留未完成状态；明确只整理文档时裁剪代码动作。正常交付包含这项收尾，重复调用只处理新增变化，不生成空提交。
+## 维护与证据
 
-## 下一项建设
+- [本轮设计与归纳图](docs/plans/2026-10-21-agent-skill-reorganization.md)、[迁移清单](docs/plans/2026-10-21-agent-skill-reorganization/migration-plan.md)、[总体进度](docs/plans/2026-10-21-agent-skill-reorganization/Progress.md)。
+- [边界评审](reviews/2026-10-21-agent-skill-reorganization-boundaries.md)、[职责建设与验证](docs/agent-development.md)、[文档归类](docs/document-organization.md)、[权威归属](docs/document-ownership.md)。
+- [阶段状态核验](skills/dev-flow/references/stage-state.md)：检查声明的版本/候选/依赖，不证明真实执行和专业质量。
+- [技术基线](agents/references/architecture/technology-stack.md)、[代码规范](agents/references/architecture/code-standards.md)、[UI 基准](agents/references/visual/ui-baseline.md)分别维护唯一专业来源，项目具体版本和例外留项目。
 
-总纲 v0.18、研发 v0.3、测试验收 v0.4 与架构 v0.4 已补齐测试先行/保护有效性、系统实验诊断及完整实现评审/意见闭环，见[本轮结果](evals/dev-flow-methods/report.md)。独立上下文在隔离样本实际执行并取得定向复验；宿主没有文件级输入隔离，不升级为生产或真实项目成熟度。下一步在真实任务采用这三套方法并验证连续任务资产复用。
+历史版本的职责能力编号和验证记录保留原事实：[旧能力目录](docs/history/2026-10-21-role-capabilities.md)、[评测入口](evals/)。导航可更新到现行源，旧结果不能折算成本轮实现、宿主加载或真实业务项目通过。
 
-此前产品 v0.8、视觉 v0.1、架构 v0.3、测试验收 v0.3、研发 v0.2 与运维交付 v0.1 已定义专业方法与项目资产维护。运维的源码包启动、运行故障与恢复工具案例见[首版验证](evals/dev-operations/report.md)，研发隔离修复案例见[记录](evals/dev-engineering/report.md)，测试执行范围见[记录](evals/dev-acceptance/report.md)，架构规范检查见[记录](reviews/2026-10-08-architecture-code-standards-check.md)。历史原型/组件证据保持原版本，见[视觉与文档验证](evals/dev-visual/runs/2026-10-08/visual-and-documents/report.md)。总纲 v0.13 增加架构后端到端技术方案、符合性及用例 AI Review/人工确认，见[调整记录](reviews/2026-10-08-technical-delivery-stage.md)；保留运行/交付资产和 v0.11 的[设计与实现路由边界](reviews/2026-10-08-prototype-review-routing.md)及确认/自主实施规则。下一步选择真实任务检验完整循环和下一任务资产复用；实际委派/模型设置与真实项目分别实测，本地 Plugin 已接入，见[安装验证](reviews/2026-10-09-setup-removal-and-task-routing.md)；运行内核继续按真实任务需要建设。
-
-## 解除插件
-
-Codex 运行 `python3 scripts/manage_plugin.py remove`；Kimi 使用 `/plugins remove dev-flow`，或使用对应宿主插件卸载入口。当前安装没有额外 Agent 接入需要解除，源码与业务项目资产保留。
+解除安装使用 `python3 scripts/manage_plugin.py remove`；Kimi 使用 `/plugins remove dev-flow`。源码、个人配置和业务项目资产保留。

@@ -1,16 +1,16 @@
 # Codex / Kimi Plugin 安装与维护
 
-当前插件包含一个流程 Skill、六个专业 Skills 和一个跨职责会话监控 Skill，共八个。职责方法通过共用 Skills 提供；Kimi 清单另外声明六个职责 Agent 入口，会话监控不新增 Agent。不需要 setup Agent，也不向个人 Agent 目录写入角色配置或维护全局指引。仓库 `agents/` 的 TOML 由同步脚本生成，仅保留为 Codex 配置参考，不参与当前安装或流程。项目长期资产留在所属项目。
+当前 0.4.0 发布候选提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由 agents/prompts 中的实质提示词承载。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。安装与能力发现状态以本轮实际验证记录为准。
 
-## 0.3.0 的流程变化与迁移
+## 0.4.0 的能力组织与迁移
 
-当前源码版本为 0.3.0，总纲 v0.29、执行协议 v0.13。正式完整 TC 的维护/Review/执行从实施前移到完整候选后，领域工作默认原生 subagent，整体进度覆盖最终目标；这改变旧流程前置关系，按 0.x 不兼容调整递增 minor。八个 Skills 与状态 schema 1 保持。
+流程只维护阶段、参与职责、依赖、授权、变更及完成条件；Git、subagent、文档操作独立。旧 dev-product/dev-visual/dev-architecture/dev-engineering/dev-acceptance/dev-operations 六个职责 Skill 退出发现，直接任务按同名职责 Agent 提示词执行，并按需调用操作 Skill。现行调用方引用需更新；历史评测与已经复制到业务项目的源码保留原始事实，不强制改写。
 
-旧项目先恢复真实基线与原授权，不删除有效回归或历史确认，也不倒填未执行的 Review。标准路径实施前引用业务完成标准、研发设计/计划 Review 与明确范围授权；实现后正式用例及交付核验属于完成依赖。现有权威文件可映射复用，新项目默认研发设计、Review、计划和架构收尾四篇独立文档。标准/系统实现范围在结束核验时不能靠空 cases 宣称完成；实施前正式 cases 尚未形成不因此阻断开工。
+agents/prompts 是专业责任唯一维护源，capabilities.json 声明本包 Skill 与角色路由；生成器组合 common.md 与完整专业提示词，并将链接按各宿主入口位置重新定位。生成物不手工编辑；生成一致性不证明原生发现/派发。资源声明及递归引用由打包检查验证，未声明、缺失或越界不能靠简单数量检查通过。
 
-标准/系统范围依赖链中的专业 Review 须真实独立执行，不能把 `self` 或仅声明 `delegated` 作为独立通过。跨范围合并授权后的间接 Review 用 `review_scopes` 标识实际归属；旧记录缺归属时核实原记录再补字段，不重新索取同范围授权。状态迁移详见[阶段状态协议](../skills/dev-flow/references/stage-state.md)。
+Codex agents/*.toml 仍为参考入口，不自动注册个人 Agent；Harness 允许时给实际子 Agent 加载公共约束和职责源。Kimi 清单声明六个原生职责入口。没有 setup，不维护全局 AGENTS.md，不把 Codex 安装视作 Kimi 已安装。
 
-多阶段任务使用一个持久 Progress/索引维护完整阶段和当前/下一步，其他入口只引用。安装成功、原生派发、新会话发现、隔离行为案例与真实业务项目验证分别记录；当前运行版本以安装后的 check 和实际发现为准，不以本段源码版本代替。
+总纲 0.30 是归属调整，保留 0.29 的有效设计/重要取舍、独立设计/计划 Review、明确范围实施授权、连续实现/自测、完整候选后正式 TC/独立 Review/验收及交付关系；状态 schema 仍为 1。旧记录只按真实来源恢复，不倒填执行，也不重新索取已有同范围授权。
 
 ## Codex 安装、更新与检查
 
@@ -21,14 +21,14 @@ python3 scripts/manage_plugin.py install
 python3 scripts/manage_plugin.py check
 ```
 
-新文件先纳入 Git。install 构建 Git 管理的当前源码，排除依赖缓存、构建产物、本机运行数据与真实环境变量文件；注册本地 marketplace，并通过 Codex 安装/更新插件。它核验安装缓存指纹与八个 Skills，不创建原生 Agent、不写个人 AGENTS.md 或全局 Skill 链接。
+新文件先纳入 Git。install 构建 Git 管理的当前源码，排除依赖缓存、构建产物、本机运行数据与真实环境变量文件；注册本地 marketplace，并通过 Codex 安装/更新插件。它核验安装缓存指纹与候选清单声明的 Skills，不创建原生 Agent、不写个人 AGENTS.md 或全局 Skill 链接。
 
 本机安装路径保存在源码仓库的 `.dev-flow/plugin-install.json`，只用于只读检查缓存；它不是项目资产或 Agent 初始化状态。`check` 核验实际启用、包内容和源码一致性。能力列表未刷新时在新会话核验发现，必要时重启宿主。
 
-共享文档预览默认不再复制到业务项目。使用已安装 `skills/dev-flow` 目录中的阅读器脚本，并传入项目目录和文档根目录：
+共享文档预览默认不再复制到业务项目。使用已安装 `skills/document-management` 目录中的阅读器脚本，并传入项目目录和文档根目录：
 
 ```sh
-node "$DEV_FLOW_SKILL_DIR/assets/document-workspace/scripts/preview.mjs" \
+node "$DOCUMENT_SKILL_DIR/assets/document-workspace/scripts/preview.mjs" \
   serve --project /项目绝对路径 --roots docs/dev-flow,design --port 0
 ```
 
@@ -38,7 +38,7 @@ node "$DEV_FLOW_SKILL_DIR/assets/document-workspace/scripts/preview.mjs" \
 
 ## Kimi 安装与双端维护
 
-Kimi 原生清单为包根目录 `kimi.plugin.json`，提供同一套八个 Skills 和 `adapters/kimi/agents/` 的六个 Markdown 职责 Agent。先同步入口，再构建；新文件先纳入 Git：
+Kimi 原生清单为包根目录 `kimi.plugin.json`，提供同一套 Skills 和 `adapters/kimi/agents/` 的六个 Markdown 职责 Agent。先同步入口，再构建；新文件先纳入 Git：
 
 ```sh
 python3 scripts/sync_host_agents.py --write
@@ -54,11 +54,11 @@ python3 scripts/manage_plugin.py build
 /plugins reload
 ```
 
-新会话使用 `/skill:dev-flow`。专业职责按需派发，输入包含实际安装包 Skill 路径和业务项目上下文，详见 [Kimi 职责说明](integrations/kimi-agent-configuration.md)。本地插件从受管副本运行，修改源文件后重新构建并在 Kimi 重新安装；只改源码不表示缓存已更新。
+新会话使用 `/skill:dev-flow`。专业职责按需派发，输入包含实际安装包根路径、职责提示词、所需操作 Skill 与业务项目上下文，详见 [Kimi 职责说明](integrations/kimi-agent-configuration.md)。本地插件从受管副本运行，修改源文件后重新构建并在 Kimi 重新安装；只改源码不表示缓存已更新。
 
 Kimi 安装/启用/移除使用其原生 `/plugins` 入口，当前 Python install/check/remove 仍专用于 Codex。Kimi 清单不自动加载流程、不配置额外 MCP/Hooks，不写个人 AGENTS.md 或 SYSTEM.md。解除使用 `/plugins remove dev-flow`。
 
-维护专业方法改 Skills/参考；职责名称/说明、插件身份与版本变化后运行同步脚本。生成器统一检查 Kimi 清单与两端职责入口，构建时过期即失败；不手工维护两份专业提示。
+维护职责改 agents/prompts，长篇标准/模板改 agents/references 与 agents/assets，操作方法改相应 Skills；能力路由改 capabilities.json。职责、路由、插件身份或版本变化后运行同步脚本。生成器统一检查 Kimi 清单与两端职责入口，构建时过期即失败；不手工维护两份专业提示。
 
 ## 会话监控 Skill
 
@@ -80,11 +80,11 @@ Plugin 0.2.0、总纲 v0.25 和执行协议 v0.12 新增[首次实施人工同�
 
 ## 使用与解除
 
-使用 `$dev-flow` 或选择插件，按[任务路由](../skills/dev-flow/references/task-routing.md)处理 bugfix 或正常需求。主 Agent 协调范围、依赖、全局进度和集成；标准跨职责任务默认委派实际可用且允许的 Harness subagent，提供专业 Skill、原要求、有效输入/版本和明确写入边界，独立评审与作者分离。模型遵循用户及宿主本次约束。
+使用 `$dev-flow` 或选择插件，按[任务路由](../skills/dev-flow/references/task-routing.md)处理 bugfix 或正常需求。主 Agent 协调范围、依赖、全局进度和集成；标准跨职责任务默认委派实际可用且允许的 Harness subagent，提供专业提示词、所需操作 Skill、原要求、有效输入/版本和明确写入边界，独立评审与作者分离。模型遵循用户及宿主本次约束。
 
-Plugin 0.2.1、总纲 v0.26 明确现有 $dev-flow 的[一条指令收尾](../skills/dev-flow/references/document-archive.md#一条指令收尾当前迭代)入口：`使用 $dev-flow 收尾当前迭代，把文档和长期资产沉淀好。` 正常交付已包含文档收尾；补做时直接同步相关资产、总结、遗留与项目入口并核验归档条件，不重启实施流程。八个 Skills 和状态 schema 保持不变，属于兼容的方法维护，验证见[收尾记录](../reviews/2026-10-12-iteration-closeout.md)。
+Plugin 0.2.1、总纲 v0.26 明确现有 $dev-flow 的[一条指令收尾](../skills/dev-flow/references/closeout.md)入口：`使用 $dev-flow 收尾当前迭代，把文档和长期资产沉淀好。` 正常交付已包含文档收尾；补做时直接同步相关资产、总结、遗留与项目入口并核验归档条件，不重启实施流程。候选清单声明的 Skills 和状态 schema 保持不变，属于兼容的方法维护，验证见[收尾记录](../reviews/2026-10-12-iteration-closeout.md)。
 
-Plugin 0.2.2、总纲 v0.27 将既有代码/验证/集成方法接入收尾，直接说“开始收尾”默认包含[代码收尾](../skills/dev-flow/references/git-and-worktree.md#代码收尾)和文档沉淀。相关成果无其他约定时形成本地提交，保留无关修改；推送/PR/合并/发布沿用已有授权，仅文档任务裁剪代码动作。八个 Skills、状态 schema 和安装行为不变，属于兼容方法维护；范围和证据见[代码收尾记录](../reviews/2026-10-12-code-closeout.md)。
+Plugin 0.2.2、总纲 v0.27 将既有代码/验证/集成方法接入收尾，直接说“开始收尾”默认包含[代码收尾](../skills/git-workflow/references/git-and-worktree.md#代码收尾)和文档沉淀。相关成果无其他约定时形成本地提交，保留无关修改；推送/PR/合并/发布沿用已有授权，仅文档任务裁剪代码动作。候选清单声明的 Skills、状态 schema 和安装行为不变，属于兼容方法维护；范围和证据见[代码收尾记录](../reviews/2026-10-12-code-closeout.md)。
 
 ```sh
 python3 scripts/manage_plugin.py remove

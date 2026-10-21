@@ -1,5 +1,7 @@
 ---
 
+> 2026-10-21 结构调整：当前专业责任源为 [agents/prompts/acceptance.md](../agents/prompts/acceptance.md)，操作路由见 [能力清单](../capabilities.json)。长篇规范和模板随职责参考/资产或对应操作 Skill。下文首版建设及既有验证记录保留历史版本事实；本轮实际结果见[实施进度](plans/2026-10-21-agent-skill-reorganization/Progress.md)，不因迁移自动视为行为或原生派发通过。
+
 当前接入：通过专业 Skill 承担职责；2026-10-09 已移除 setup，旧 TOML 仅作参考，不参与当前安装。下文历史配置/派发证据保留原验证范围。
 id: ROLE-dev-acceptance
 title: 测试与验收 Agent
@@ -10,7 +12,7 @@ owner: acceptance
 
 # 测试与验收 Agent v0.6
 
-更新日期：2026-10-10。原生职责 `dev_acceptance`，配置见[dev_acceptance.toml](../agents/dev_acceptance.toml)，专业入口为[dev-acceptance](../skills/dev-acceptance/SKILL.md)。配置不固定模型/强度，实际执行方式与成熟度分别登记。
+更新日期：2026-10-10。原生职责 `dev_acceptance`，配置见[dev_acceptance.toml](../agents/dev_acceptance.toml)，专业入口为[dev-acceptance](../agents/prompts/acceptance.md)。配置不固定模型/强度，实际执行方式与成熟度分别登记。
 
 ## 职责与执行关系
 
@@ -50,7 +52,7 @@ v0.2 明确阶段与对象：设计文档/原型的流程、规则、交互及�
 | T07 缺陷对焦 | 最小复现、版本/证据、研发反馈、修复版本、原问题复验与关闭 |
 | T08 自动化与复用 | 项目工具/数据隔离、稳定检查、失效管理与新任务可恢复资产 |
 
-对应方法分为[策略与用例](../skills/dev-acceptance/references/strategy-and-cases.md)、[前端与界面](../skills/dev-acceptance/references/frontend-and-ui.md)、[后端接口](../skills/dev-acceptance/references/backend-and-api.md)、[完整链路与交付](../skills/dev-acceptance/references/end-to-end-and-delivery.md)、[执行与反馈](../skills/dev-acceptance/references/execution-and-feedback.md)、[项目资产](../skills/dev-acceptance/references/project-assets.md)。主入口按需加载，工具兼容与实际命令在项目采用时核验。
+对应方法分为[策略与用例](../skills/acceptance-case-design/references/strategy-and-cases.md)、[前端与界面](../skills/acceptance-execution/references/frontend-and-ui.md)、[后端接口](../skills/acceptance-execution/references/backend-and-api.md)、[完整链路与交付](../skills/acceptance-execution/references/end-to-end-and-delivery.md)、[执行与反馈](../skills/acceptance-execution/references/execution-and-feedback.md)、[项目资产](../skills/document-management/references/professional-assets.md#测试验收)。主入口按需加载，工具兼容与实际命令在项目采用时核验。
 
 ## 项目目录、预览与持续建设
 

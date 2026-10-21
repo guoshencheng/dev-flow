@@ -116,7 +116,7 @@ P8 实际派发与下一步：
 - [实施计划模板](../2026-10-21-engineering-implementation-plan-template.md)
 - [架构技术收尾模板](../2026-10-21-architecture-closeout-template.md)
 
-已进入插件的正式模板：[统一研发设计](../../../skills/dev-engineering/assets/templates/technical-delivery-design.md)、[独立 Review](../../../skills/dev-engineering/assets/templates/engineering-review.md)、[实施计划](../../../skills/dev-engineering/assets/templates/implementation-plan.md)、[架构技术收尾](../../../skills/dev-architecture/assets/templates/architecture-closeout.md)、[全局 Progress](../../../skills/dev-flow/assets/templates/progress.md)。上方四篇讨论模板保留设计过程，项目采用这些正式模板。
+已进入插件的正式模板：[统一研发设计](../../../agents/assets/engineering/technical-delivery-design.md)、[独立 Review](../../../agents/assets/engineering/engineering-review.md)、[实施计划](../../../agents/assets/engineering/implementation-plan.md)、[架构技术收尾](../../../agents/assets/architecture/templates/architecture-closeout.md)、[全局 Progress](../../../skills/dev-flow/assets/templates/progress.md)。上方四篇讨论模板保留设计过程，项目采用这些正式模板。
 
 ## 结束条件与恢复提示
 

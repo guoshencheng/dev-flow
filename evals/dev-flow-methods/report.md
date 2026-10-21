@@ -4,7 +4,7 @@
 
 ## 方法与字段
 
-新增[测试先行](../../skills/dev-engineering/references/test-first-and-regression.md)及[意见处理](../../skills/dev-engineering/references/review-feedback.md)，扩充[实验诊断](../../skills/dev-engineering/references/diagnosis-and-feedback.md)、[完整实现评审](../../skills/dev-architecture/references/retrospective-and-evolution.md)和[验收回归核验](../../skills/dev-acceptance/references/execution-and-feedback.md)。
+新增[测试先行](../../skills/regression-verification/references/test-first-and-regression.md)及[意见处理](../../agents/references/engineering/review-feedback.md)，扩充[实验诊断](../../skills/defect-diagnosis/references/diagnosis.md)、[完整实现评审](../../agents/references/architecture/review-and-closeout.md)和[验收回归核验](../../skills/acceptance-execution/references/execution-and-feedback.md)。
 
 实施计划/工程交接补目标行为、测试位置、失败与通过证据；缺陷记录补假设—实验—结果和意见处理；架构模板补完整变更、需求符合性/实现质量两类结论与意见关闭证据。总纲 v0.17、能力目录和相关 Skill 路由至这些参考，继续复用原 tracker 与 bugfix 裁剪规则，不增加人工计划审批或新职责。
 

@@ -173,7 +173,7 @@ updated: 2026-10-21
 4. **模板与工具**：落地四篇模板、Todo/Progress 模板和场景示例；核验状态依赖及任意权威路径支持；核验器未硬编码 TC 实施前置，保留当前 schema 并调整声明的依赖、夹具及行为评测；针对新标准路径、基线内修复、候选失效和验收缺项做相应检查，不能只改文字。
 5. **发布与验证**：候选通过后按仓库版本约定升级插件并同步清单，验证安装、实际启用与源码指纹；旧项目根据有效基线迁移，不批量改写历史确认或测试证据。新流程改变实施前置，版本影响需明确说明。
 
-现行源码入口见[总纲](../../skills/dev-flow/references/constitution.md)、[执行协议](../../skills/dev-flow/references/execution-contract.md)、[任务路由](../../skills/dev-flow/references/task-routing.md)、[Subagent 指导](../../skills/dev-flow/references/subagent-guidance.md)和[状态格式](../../skills/dev-flow/references/stage-state.md)。本轮[独立 Review 记录](../../reviews/2026-10-21-flow-revision-review.md)保留主方案 0.2 与四篇模板 0.4 的讨论候选结论；0.3 的完整进度范围、Progress 和实施计划 0.2 已完成补充 Review，具体发现与复核见同一记录。P1 方案 Review 不代表后续插件改造、安装或运行验证通过。
+现行源码入口见[总纲](../../skills/dev-flow/references/constitution.md)、[执行协议](../../skills/dev-flow/references/execution-contract.md)、[任务路由](../../skills/dev-flow/references/task-routing.md)、[Subagent 指导](../../skills/subagent-coordination/references/dispatch-and-lifecycle.md)和[状态格式](../../skills/dev-flow/references/stage-state.md)。本轮[独立 Review 记录](../../reviews/2026-10-21-flow-revision-review.md)保留主方案 0.2 与四篇模板 0.4 的讨论候选结论；0.3 的完整进度范围、Progress 和实施计划 0.2 已完成补充 Review，具体发现与复核见同一记录。P1 方案 Review 不代表后续插件改造、安装或运行验证通过。
 
 ## 九、本轮有效实施与收尾引用
 
@@ -188,4 +188,4 @@ updated: 2026-10-21
 | [新会话及隔离行为独立评判](../../evals/dev-flow-stages/2026-10-21-behavior-report.md) | 0.3.0，新会话发现及固定七场景通过；不扩写为真实业务 UI 全链路通过 |
 | [独立架构技术收尾](2026-10-21-flow-revision/architecture-closeout.md) | 1.0，技术收尾完成；核对实际差异、Review/验收/交付与能力边界，最终包同步和整体交接由协调者完成 |
 
-正式可采用的技术文档来自插件：[统一研发设计](../../skills/dev-engineering/assets/templates/technical-delivery-design.md)、[Review](../../skills/dev-engineering/assets/templates/engineering-review.md)、[实施计划](../../skills/dev-engineering/assets/templates/implementation-plan.md)、[架构技术收尾](../../skills/dev-architecture/assets/templates/architecture-closeout.md)。讨论模板保留过程，项目使用这些正式模板。
+正式可采用的技术文档来自插件：[统一研发设计](../../agents/assets/engineering/technical-delivery-design.md)、[Review](../../agents/assets/engineering/engineering-review.md)、[实施计划](../../agents/assets/engineering/implementation-plan.md)、[架构技术收尾](../../agents/assets/architecture/templates/architecture-closeout.md)。讨论模板保留过程，项目使用这些正式模板。

@@ -1,10 +1,10 @@
 {
   "name": "dev-flow",
-  "version": "0.3.0",
-  "description": "多角色研发协作：产品与交互、视觉、架构、研发、测试验收、运维交付，会话监控，以及项目资产持续维护。",
+  "version": "0.4.0",
+  "description": "流程编排、六职责 Agent 与可复用操作 Skills：Git、派发、文档、设计、研发、验收、运行交付及会话监控。",
   "skills": "./skills/",
   "agents": "./adapters/kimi/agents/",
-  "skillInstructions": "在 Kimi 宿主可用且允许委派时，标准跨职责任务默认使用实际发现的 dev-product、dev-visual、dev-architecture、dev-engineering、dev-acceptance 或 dev-operations Agent。派发必须包含专业 Skill 的实际绝对路径、业务项目根路径、目标/阶段、有效输入与版本、确认/授权、可写范围和交接要求。宿主或用户不允许委派时由主 Agent 执行并记录独立性缺口。跨职责会话监控使用实际发现的 codex-session-monitor Skill；它不产生额外 Agent，不自动创建调度或发送通知。",
+  "skillInstructions": "按任务对象发现并派发六职责原生 Agent；派发时提供业务项目根路径、目标/阶段、有效输入与版本、授权来源、可写范围和交接要求。专业操作 Skills 按任务选用。宿主或用户不允许委派时主 Agent 执行并记录独立性缺口；会话监控不自动创建调度或发送通知。",
   "interface": {
     "displayName": "Dev Flow",
     "shortDescription": "六职责研发协作、会话监控与可运行交付"

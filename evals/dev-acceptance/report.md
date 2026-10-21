@@ -4,9 +4,9 @@
 
 ## 已建设内容
 
-[职责说明](../../docs/acceptance-agent.md)、[专业 Skill](../../skills/dev-acceptance/SKILL.md)与[原生配置](../../agents/dev_acceptance.toml)定义不同方案：局部行为/组件、前端页面、真实 API/数据、前后端 E2E、交付与按风险扩展的回归/专项。可读用例关联 RULE/AC/ARC，用户确认预期，AI 维护自动化并持续反馈、复验；配置没有模型/强度覆盖。
+[职责说明](../../docs/acceptance-agent.md)、[专业 Skill](../../agents/prompts/acceptance.md)与[原生配置](../../agents/dev_acceptance.toml)定义不同方案：局部行为/组件、前端页面、真实 API/数据、前后端 E2E、交付与按风险扩展的回归/专项。可读用例关联 RULE/AC/ARC，用户确认预期，AI 维护自动化并持续反馈、复验；配置没有模型/强度覆盖。
 
-共同流程接入该职责；项目策略/用例/自动化、数据/环境、缺陷/报告和回归由[资产协议](../../skills/dev-acceptance/references/project-assets.md)维护。讨论/确认预览业务项目资料，不打开 Skill 网页替代。成熟工具依据已核对的官方 Playwright、Testing Library、Vitest 与 Next 文档，各专业参考保留直接来源。
+共同流程接入该职责；项目策略/用例/自动化、数据/环境、缺陷/报告和回归由[资产协议](../../skills/document-management/references/professional-assets.md#测试验收)维护。讨论/确认预览业务项目资料，不打开 Skill 网页替代。成熟工具依据已核对的官方 Playwright、Testing Library、Vitest 与 Next 文档，各专业参考保留直接来源。
 
 ## 实际工具案例
 

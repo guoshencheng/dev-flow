@@ -19,25 +19,11 @@ class PluginPackageTests(unittest.TestCase):
         self.root = self.base / 'repo'
         self.root.mkdir()
         source = Path(__file__).resolve().parents[1]
-        for name in ['plugin.json', '.codex-plugin/plugin.json', '.agents/plugins/marketplace.json']:
-            target = self.root / name
+        # 夹具与实际打包使用相同源码边界，排除本机旧目录、依赖和构建物。
+        for relative in manager.tracked(source):
+            target = self.root / relative
             target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(source / name, target)
-        for skill in (source / 'skills').glob('*/SKILL.md'):
-            target = self.root / 'skills' / skill.parent.name / 'SKILL.md'
-            target.parent.mkdir(parents=True)
-            shutil.copy2(skill, target)
-        for name in ['kimi.plugin.json']:
-            target = self.root / name
-            shutil.copy2(source / name, target)
-        (self.root / 'scripts').mkdir(parents=True, exist_ok=True)
-        shutil.copy2(source / 'scripts/sync_host_agents.py', self.root / 'scripts/sync_host_agents.py')
-        for directory in ['agents', 'adapters/kimi/agents']:
-            for file in (source / directory).rglob('*'):
-                if file.is_file():
-                    target = self.root / directory / file.relative_to(source / directory)
-                    target.parent.mkdir(parents=True, exist_ok=True)
-                    shutil.copy2(file, target)
+            shutil.copy2(source / relative, target)
         subprocess.run(['git', 'init', '-q', str(self.root)], check=True)
         subprocess.run(['git', 'add', '.'], cwd=self.root, check=True)
         subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.com', 'commit', '-qm', 'fixture'], cwd=self.root, check=True)
@@ -48,11 +34,12 @@ class PluginPackageTests(unittest.TestCase):
     def test_package_without_setup_and_rebuild(self):
         result = manager.build(self.root)
         bundle = Path(result['build_root'])
-        self.assertEqual(len(manager.validate_bundle(bundle)), 8)
+        self.assertEqual(len(manager.validate_bundle(bundle)), 16)
         self.assertFalse((bundle / 'skills/dev-flow-setup').exists())
         self.assertFalse((bundle / 'scripts/setup_plugin.py').exists())
         original = result['package_hash']
-        (self.root / 'skills/dev-flow/SKILL.md').write_text('changed')
+        skill = self.root / 'skills/dev-flow/SKILL.md'
+        skill.write_text(skill.read_text() + '\nchanged\n')
         self.assertNotEqual(manager.build(self.root)['package_hash'], original)
 
     def test_tampered_cache_is_rejected(self):
@@ -111,13 +98,13 @@ class PluginPackageTests(unittest.TestCase):
                 shutil.copytree(self.root / '.dev-flow/plugin-source', cached)
                 present.append(entry)
                 return {'installedPath': str(cached)}
-            if args == ['plugin', 'list']:
+            if args == ['plugin', 'list', '--marketplace', manager.MARKETPLACE]:
                 return {'installed': present}
             if args[:2] == ['plugin', 'remove']:
                 present.clear()
             return {}
         with patch.object(manager, 'cli', side_effect=fake_cli), patch.object(Path, 'home', return_value=personal):
-            self.assertEqual(manager.install(self.root)['skills'], 8)
+            self.assertEqual(manager.install(self.root)['skills'], 16)
             self.assertTrue(manager.check(self.root)['source_matches_cache'])
             manager.remove(self.root)
         self.assertEqual(guide.read_text(), '已有流程指引')
@@ -130,6 +117,74 @@ class PluginPackageTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 manager.install(self.root)
         self.assertFalse((self.root / '.dev-flow/plugin-source').exists())
+
+    def test_missing_prompt_and_routed_skill_are_rejected(self):
+        (self.root / 'agents/prompts/product.md').unlink()
+        with self.assertRaisesRegex(ValueError, '缺少包内文件'):
+            manager.build(self.root)
+        source = Path(__file__).resolve().parents[1]
+        shutil.copy2(source / 'agents/prompts/product.md', self.root / 'agents/prompts/product.md')
+        manifest = self.root / 'capabilities.json'
+        value = json.loads(manifest.read_text())
+        value['roles']['product']['skills'] = ['missing-skill']
+        manifest.write_text(json.dumps(value))
+        with self.assertRaisesRegex(ValueError, '路由无效'):
+            manager.build(self.root)
+
+    def test_missing_linked_resource_and_undeclared_skill_are_rejected(self):
+        path = self.root / 'agents/prompts/product.md'
+        path.write_text(path.read_text() + '\n[缺项](../references/product/missing.md)\n')
+        with self.assertRaisesRegex(ValueError, '引用缺失'):
+            manager.build(self.root)
+        source = Path(__file__).resolve().parents[1]
+        shutil.copy2(source / 'agents/prompts/product.md', path)
+        extra = self.root / 'skills/dev-product/SKILL.md'
+        extra.parent.mkdir(exist_ok=True)
+        extra.write_text('---\nname: dev-product\ndescription: retired role\n---\n')
+        with self.assertRaisesRegex(ValueError, '未声明'):
+            manager.build(self.root)
+
+    def test_missing_referenced_template_and_tool_are_rejected(self):
+        template = self.root / 'agents/assets/engineering/engineering-handoff.md'
+        template.unlink()
+        with self.assertRaisesRegex(ValueError, '缺少包内文件|引用缺失'):
+            manager.build(self.root)
+        source = Path(__file__).resolve().parents[1]
+        shutil.copy2(source / 'agents/assets/engineering/engineering-handoff.md', template)
+        tool = self.root / 'skills/dev-flow/scripts/check_iteration.py'
+        tool.unlink()
+        with self.assertRaisesRegex(ValueError, '缺少包内文件'):
+            manager.build(self.root)
+
+    def test_generated_host_links_match_source(self):
+        import importlib
+        generator = importlib.import_module('sync_host_agents')
+        expected = generator.expected_files(self.root)
+        for relative in ('agents/dev_product.toml', 'adapters/kimi/agents/dev-product.md'):
+            self.assertEqual((self.root / relative).read_text(), expected[relative])
+        self.assertIn('agents/references', expected['adapters/kimi/agents/dev-product.md'])
+
+    def test_broken_professional_template_link_is_rejected(self):
+        template = self.root / 'agents/assets/engineering/engineering-review.md'
+        template.write_text(template.read_text() + '\n[旧路径](../../../skills/dev-engineering/assets/design.md)\n')
+        with self.assertRaisesRegex(ValueError, '引用缺失'):
+            manager.build(self.root)
+
+    def test_broken_operational_asset_link_is_rejected(self):
+        template = self.root / 'skills/document-management/assets/templates/iteration-index.md'
+        template.write_text(template.read_text() + '\n[错误进度](MissingProgress.md)\n')
+        with self.assertRaisesRegex(ValueError, '引用缺失'):
+            manager.build(self.root)
+
+    def test_unlinked_professional_template_is_required(self):
+        (self.root / 'agents/assets/architecture/templates/architecture-review.md').unlink()
+        with self.assertRaisesRegex(ValueError, '缺少包内文件'):
+            manager.build(self.root)
+
+    def test_installed_lookup_does_not_scan_other_marketplaces(self):
+        with patch.object(manager, 'cli', return_value={'installed': []}) as command:
+            self.assertIsNone(manager.installed_entry())
+        command.assert_called_once_with(['plugin', 'list', '--marketplace', manager.MARKETPLACE])
 
 
 if __name__ == '__main__':

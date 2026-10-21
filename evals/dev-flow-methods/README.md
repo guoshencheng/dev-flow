@@ -1,6 +1,6 @@
 # 可执行研发方法评测
 
-对应[改造计划](../../docs/plans/2026-10-09-executable-engineering-methods.md)。跨研发、架构和验收复用六职责，不新增 Agent。新方法见[测试保护](../../skills/dev-engineering/references/test-first-and-regression.md)、[实验诊断](../../skills/dev-engineering/references/diagnosis-and-feedback.md)、[完整实现评审](../../skills/dev-architecture/references/retrospective-and-evolution.md)和[意见处理](../../skills/dev-engineering/references/review-feedback.md)。
+对应[改造计划](../../docs/plans/2026-10-09-executable-engineering-methods.md)。跨研发、架构和验收复用六职责，不新增 Agent。新方法见[测试保护](../../skills/regression-verification/references/test-first-and-regression.md)、[实验诊断](../../skills/defect-diagnosis/references/diagnosis.md)、[完整实现评审](../../agents/references/architecture/review-and-closeout.md)和[意见处理](../../agents/references/engineering/review-feedback.md)。
 
 ## 输入与运行
 

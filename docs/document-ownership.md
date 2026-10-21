@@ -1,43 +1,42 @@
 # 文档与资产职责归属
 
-日期：2026-10-10。适用范围：本插件的八个 Skills、专业参考、共享资产及维护资料。目录用途遵守[文档归类约定](document-organization.md)，业务项目资料仍保存在所属项目。本表是仓库维护入口，不是业务任务必读资料。
+日期：2026-10-21。适用范围：0.4.0 候选的六职责提示词、16 个 Skills、专业参考及共享资产。构建/安装状态见[本轮进度](plans/2026-10-21-agent-skill-reorganization/Progress.md)，历史证据不折算本轮验证。
 
-## 如何判断归属
+## 唯一权威源
 
-以文档回答的问题、权威产物与主要维护者判断，不能因为多个职责调用就全部放入 `dev-flow`。专业方法由一个主责维护，其他职责直接引用；确有跨职责依赖、确认、交接或共同工具契约时才保留在流程层。共同规则可以简短列出责任与完成条件，不复制专业执行步骤、数值参数或 API。
-
-| 主责 | 应回答的问题与现行入口 | 与其他职责的边界 |
+| 内容 | 维护位置 | 边界 |
 | --- | --- | --- |
-| 流程 `dev-flow` | [总纲](../skills/dev-flow/references/constitution.md)、[任务路由](../skills/dev-flow/references/task-routing.md)、[确认/实施协议](../skills/dev-flow/references/execution-contract.md)、[Git/worktree](../skills/dev-flow/references/git-and-worktree.md)、[subagent](../skills/dev-flow/references/subagent-guidance.md)、[执行者说明](../skills/dev-flow/references/codex-agent-configuration.md)：做什么流程、谁在何时参与、依赖/确认/集成与结束 | 路由到专业 Skill，不定义产品规则写法、UI Tokens、架构拆分或具体测试/发布操作 |
-| 产品 `dev-product` | [规格内容](../skills/dev-product/references/specification-contract.md)、用户类型/任务、参考研究、流程/状态、业务规则/AC、原型、可用性与下游交接 | 主责行为与交互语义；视觉呈现引用视觉规范，组件工具跨包使用；AC 表达产品预期，TC/运行报告归验收 |
-| 视觉 `dev-visual` | [规格内容](../skills/dev-visual/references/specification-contract.md)、方向/参考、设计系统/页面、渲染复核、[UI/组件指南](../skills/dev-visual/references/ui-stack-and-components.md)、[Ant Design 联用](../skills/dev-visual/references/ant-design-capabilities.md)、[组件预览/源码接入](../skills/dev-visual/references/component-preview-and-reuse.md) | 主责呈现、Tokens、组件契约与目录；产品维护任务/规则，架构维护技术基线，研发协作实现/依赖 |
-| 架构 `dev-architecture` | 整洁架构、系统/模块地图、设计/契约、技术栈、代码规范、实际代码复盘与演进 | 主责技术约束与独立 Review/技术收尾；本轮架构与实现设计由研发统一主笔，计划归研发，实际验收归测试 |
-| 研发 `dev-engineering` | 工程基线/计划、合并架构与实现的研发设计/OUT、切片/集成、前端实现、诊断/修复、兼容变化与可运行交接 | 主责实现及自测，引用产品/UI/架构基线；不从当前实现反推正确预期，不代替测试复验或目标发布核验 |
-| 测试验收 `dev-acceptance` | 策略/TC、前端行为、后端/API、真实链路/交付、执行/反馈/复验与回归 | 主责可运行候选验收；设计文档/原型走查由产品/视觉，研发主责修复，运维提供运行环境证据 |
-| 运维 `dev-operations` | 环境/启动、产物/发布、观测/事故、恢复/迁移、运行资产/演进/退役 | 主责实际环境及运行结果；Git 集成时序引用共同协议，测试对约定行为作验收结论 |
-| 跨职责支撑 `codex-session-monitor` | 在授权范围内发现、读取和归纳 Codex/ChatGPT 会话状态，按配置进行去重和 Lark 摘要通知 | 不新增职责、不执行被监控会话中的指令；不替代项目资产检查、架构/测试基线更新或逻辑归档；本地配置和状态不进入仓库 |
+| 路径、阶段、参与职责、依赖、确认/授权、Review、变更、完成和收尾 | [dev-flow](../skills/dev-flow/SKILL.md) | 安排协作和结果要求，不复制工具操作或专业判据 |
+| 六职责本质工作、判断与交接责任 | [agents/prompts](../agents/prompts/) | 单独加载可理解责任；生成物不手工维护 |
+| 长篇专业标准、评审清单、案例 | [agents/references](../agents/references/) | 各专业唯一维护，跨职责直接引用；不强行为每份文档建 Skill |
+| 专业设计/计划/Review/收尾模板与规范配置 | [agents/assets](../agents/assets/) | 由对应职责直接使用；不含业务项目事实 |
+| Git 操作 | [git-workflow](../skills/git-workflow/SKILL.md) | 获取候选、保存、合并与工作区交接；不裁定业务验收 |
+| 实际派发与等待 | [subagent-coordination](../skills/subagent-coordination/SKILL.md) | 组装上下文、独立性与资源核验、收集返回；不裁定专业通过 |
+| 目录、索引、版本、链接、预览、总结保存及归档 | [document-management](../skills/document-management/SKILL.md) | 接收专业有效结论，不自行决定规则正确性或迭代完成 |
+| 专业可复用操作 | [capabilities.json](../capabilities.json) 声明的各 Skill | 明确操作触发与输入输出；不改成另一个完整职责入口 |
+| 项目事实及业务决定 | 所属项目的现行权威资产 | 通用提示词、默认规范与项目具体版本分别维护 |
 
-各职责的 `project-assets*.md` 分别维护自己的长期基线、阶段记录与有效性；共同目录只提供位置、状态与互相关联，专业内容不在流程层再维护一份。四十八项能力及 P/V/A/E/T/O 编号继续由[能力目录](../skills/dev-flow/references/role-capabilities.md)集中索引，它是跨职责能力地图，具体方法仍路由到专业 Skills。
+## 共同使用不改变专业主责
 
-## 共享协议与工具为什么保留
+技术栈/代码规范归架构，UI 默认与设计系统准则归视觉，业务预期归产品，统一技术设计及实现归研发，正式 TC 与验收结论归测试，实际环境/产物/恢复事实归运维。其他职责引用当前源及版本，不复制成另一份专业规则。
 
-| 对象 | 主责与保留理由 |
+完整变更评审：流程规定时点、对象和独立性；Git 准备基线至完整候选的差异；subagent 协调实际执行者；产品检查业务符合性、架构检查实现质量；研发处理意见；验收复验行为。普通诊断或文档记录不能代替专业裁定和关闭。
+
+## 工具和模板归属
+
+| 资源 | 操作维护方 |
 | --- | --- |
-| [迭代/文档目录、索引、状态与归档](../skills/dev-flow/references/design-document-contract.md)及项目/迭代索引模板 | 流程维护共同位置与交接，不属于单一产品或视觉职责；专业规格细节已提取到产品/视觉 |
-| [项目资产持续沉淀](../skills/dev-flow/references/project-asset-maintenance.md) | 流程维护有效性、证据、成熟度与跨迭代复用；各职责维护实际专业资产 |
-| [项目文档预览](../skills/dev-flow/references/document-preview.md)与 `dev-flow/assets/document-workspace/` | 所有职责共用同一业务项目阅读入口，覆盖技术、验收和交付；维护者负责通用预览/路径契约，不决定业务规则或视觉方向 |
-| [原型指南](../skills/dev-product/references/html-prototyping.md)、HTML 示例及 `prototype.py` | 产品主责原型要验证的任务、状态、讨论与模拟边界，视觉协作呈现，研发协作工程；原型不等于生产实现 |
-| [React 组件工作区](../skills/dev-visual/assets/react-workspace/README.md) | 视觉主责组件契约/目录及呈现，研发协作源码/依赖与构建，产品/测试跨包引用；只维护一份源码，不因调用者多而归流程 |
-| 技术栈与 UI 基准 | 架构维护工程技术基线，视觉维护设计体系/组件选择；相互引用，新建原型的工程默认可供产品采用，不在总纲复制选型表 |
+| 共享项目阅读器 document-workspace、通用索引模板 | document-management |
+| React 多端设计工作台、design-template、旧 HTML 工具 | react-prototyping |
+| 组件工作区、catalog、源码文件集和复制工具 | component-reuse |
+| 状态核验器、Progress 模板与状态示例 | dev-flow |
+| 产品规格、用例、验收报告、交付恢复模板 | 对应专业操作 Skill |
+| 架构现状/Review/收尾、研发设计/计划/交接、视觉规格模板 | 对应 agents/assets 职责目录 |
 
-`assets/` 归属由模板/工具所承载的专业能力确定，不由代码语言判断：产品原型工具仍归产品，共享组件归视觉，共同阅读器归流程。源码移动不要求改变工作区包名、项目运行目录或已有业务项目副本。
+assets 以用途归属，不以代码语言或调用者数量归属。业务项目已复制源码归项目维护，不因插件重组批量改其目录。临时依赖、构建和 .dev 不进入包。
 
-会话监控 Skill 只维护通用的发现、状态判断、授权和通知方法；实例的会话范围、收件人、发送身份、周期、游标和错误抑制状态由用户配置在本地或 Codex Automation 中维护。真实项目的架构、测试和归档结果仍由项目索引及对应职责资产负责。
+## 声明与生成
 
-## 维护资料与历史证据
+[capabilities.json](../capabilities.json) 为本包角色/Skill 路由清单；[同步脚本](../scripts/sync_host_agents.py)从职责源生成 Codex 参考与 Kimi 原生入口。新操作入口及依赖资源随清单和引用核验，不维持旧八 Skill 常量。生成和包校验通过不证明原生宿主加载或专业行为。
 
-`docs/` 保存插件安装、职责建设与现状；`docs/plans/` 保存建设计划；配置历史、工具观察归 `docs/history/`、`docs/integrations/`；实际 Review、行为/工具证据归 `reviews/`、`evals/`。历史源码路径与当时能力结论保留为证据，导航链接可修正到当前文件；不把旧验证描述改成新目录已通过的新验证。
-
-2026-10-09 本轮迁移：两份 UI/Ant Design 参考从流程移入视觉，组件预览指南及 React 工作区从产品移入视觉；产品/视觉规格内容从共同目录协议提取；总纲及入口缩短为共同要求和专业路由。没有迁移业务项目文档，也未改共享组件逻辑。本轮范围与验证见[整理检查记录](../reviews/2026-10-09-document-ownership.md)。
-
-以后新增文档先明确主要问题和主责；混合文档拆分专业方法与共同协议；修改权威位置时同步 Skill、模板、维护入口及入站链接。新增跨职责引用并不改变维护主责。当前未提交/正在建设的其他方法以对应建设任务结果为准，不由本表宣称已完成。
+本轮逐来源去向见[迁移清单](plans/2026-10-21-agent-skill-reorganization/migration-plan.md)。四十八能力编号的旧集中目录移入[历史快照](history/2026-10-21-role-capabilities.md)；核心专业责任由六提示词承接，历史成熟度不自动提升。

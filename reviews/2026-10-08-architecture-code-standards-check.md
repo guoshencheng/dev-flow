@@ -4,9 +4,9 @@
 
 ## 本轮范围
 
-用户明确确定 React Web、Next.js 全栈与 Astro 纯静态三项选择，其他类型暂不建设通用技术 Guide。现行[技术约定](../skills/dev-architecture/references/technology-stack.md)按此收敛；原多平台草案移出 Skill，保存为[历史文件](../docs/project-tech-stacks/archive/2026-10-08-stack-profiles-v0.1.md)，原调查标为 superseded。历史检查仅修复归档跳转并标明原路径，保留原检查范围与结论。
+用户明确确定 React Web、Next.js 全栈与 Astro 纯静态三项选择，其他类型暂不建设通用技术 Guide。现行[技术约定](../agents/references/architecture/technology-stack.md)按此收敛；原多平台草案移出 Skill，保存为[历史文件](../docs/project-tech-stacks/archive/2026-10-08-stack-profiles-v0.1.md)，原调查标为 superseded。历史检查仅修复归档跳转并标明原路径，保留原检查范围与结论。
 
-新增[代码规范](../skills/dev-architecture/references/code-standards.md)、可复制格式配置与实际命令约定，并在[架构设计](../skills/dev-architecture/references/design-and-contracts.md)中细化研发前应明确的基线。职责配置、能力目录与项目规范入口同步更新，模型/强度未固定，重要确认与 AI 计划复核协议保持现行规则。
+新增[代码规范](../agents/references/architecture/code-standards.md)、可复制格式配置与实际命令约定，并在[架构设计](../agents/references/architecture/design-and-contracts.md)中细化研发前应明确的基线。职责配置、能力目录与项目规范入口同步更新，模型/强度未固定，重要确认与 AI 计划复核协议保持现行规则。
 
 ## 工具选择与来源
 

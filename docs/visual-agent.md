@@ -1,5 +1,7 @@
 ---
 
+> 2026-10-21 结构调整：当前专业责任源为 [agents/prompts/visual.md](../agents/prompts/visual.md)，操作路由见 [能力清单](../capabilities.json)。长篇规范和模板随职责参考/资产或对应操作 Skill。下文首版建设及既有验证记录保留历史版本事实；本轮实际结果见[实施进度](plans/2026-10-21-agent-skill-reorganization/Progress.md)，不因迁移自动视为行为或原生派发通过。
+
 2026-10-09 文档归属调整：视觉维护 UI/组件基准、Ant Design 联用、组件预览与共享 React 工作区，研发协作实现/依赖；新增视觉规格内容协议。目录归属不表示新增真实项目行为已验证，见[职责归属表](document-ownership.md)。
 
 当前接入：通过专业 Skill 承担职责；2026-10-09 已移除 setup，旧 TOML 仅作参考，不参与当前安装。下文历史配置/派发证据保留原验证范围。
@@ -12,7 +14,7 @@ owner: visual
 
 # 视觉与界面 Agent v0.1
 
-更新日期：2026-10-08。原生职责 `dev_visual`；[专业 Skill](../skills/dev-visual/SKILL.md)；[职责配置](../agents/dev_visual.toml)。配置省略模型和推理强度，由用户与宿主选择。
+更新日期：2026-10-08。原生职责 `dev_visual`；[职责提示词](../agents/prompts/visual.md)；[职责配置](../agents/dev_visual.toml)。配置省略模型和推理强度，由用户与宿主选择。
 
 ## 已有基础如何复用
 
@@ -37,15 +39,15 @@ owner: visual
 
 ## 文档、原型与预览
 
-[共同文档协议](../skills/dev-flow/references/design-document-contract.md)明确产品/视觉目录、规则、原型、证据、当前状态及历史归档。没有既有规范时，UI 设计规范、页面/组件规格在项目级 `docs/dev-flow/visual/` 分别持续维护，设计稿源码沿用实际应用或稳定独立工程；迭代只引用基线与增量，UI 无变化不新建文件，少量变化合并到索引，复杂时才拆 `visual/changes.md`。一次性探索才按需使用本轮 `product/prototypes/<方案>/`，已有有效位置继续维护。
+[共同文档协议](../skills/document-management/references/document-contract.md)明确产品/视觉目录、规则、原型、证据、当前状态及历史归档。没有既有规范时，UI 设计规范、页面/组件规格在项目级 `docs/dev-flow/visual/` 分别持续维护，设计稿源码沿用实际应用或稳定独立工程；迭代只引用基线与增量，UI 无变化不新建文件，少量变化合并到索引，复杂时才拆 `visual/changes.md`。一次性探索才按需使用本轮 `product/prototypes/<方案>/`，已有有效位置继续维护。
 
-2026-10-11 按本次用户反馈补齐[模块化 React 设计稿与持续复用](../skills/dev-visual/references/system-and-pages.md#原型与工程复用)，进一步明确[多端与总览](../skills/dev-visual/references/system-and-pages.md#多端独立维护与总览整合)：各端页面/视图、组件、场景、设计规范独立维护，由总览引用同一实现组合展示，移动端用独立的屏幕宽高容器展示，不默认模拟设备操作。同步总纲、专业入口、目录/路由和索引/规格模板，消除每轮新写完整 UI 的默认路径。
+2026-10-11 按本次用户反馈补齐[模块化 React 设计稿与持续复用](../skills/react-prototyping/references/multi-device-preview.md#原型与工程复用)，进一步明确[多端与总览](../skills/react-prototyping/references/multi-device-preview.md#多端独立维护与总览整合)：各端页面/视图、组件、场景、设计规范独立维护，由总览引用同一实现组合展示，移动端用独立的屏幕宽高容器展示，不默认模拟设备操作。同步总纲、专业入口、目录/路由和索引/规格模板，消除每轮新写完整 UI 的默认路径。
 
-2026-10-12 已提供可复制的 [React 设计稿模板 v0.1](../skills/dev-visual/assets/design-workspace/README.md)与安全初始化命令，包含各端独立页面、真实组件展示、Markdown 规范、主题映射、总览注册表及 iframe 尺寸容器。隔离副本已完成锁文件安装、类型/构建、浏览器状态/边界、规范热更新与静态路由检查；初始化保护已有内容，实际记录见[模板验证](../evals/dev-visual/runs/2026-10-12/react-design-template/report.md)。这属于主 Agent 实施与隔离工具验证，真实项目采用、独立职责行为与真实移动设备仍待验证；原有组件目录和文档阅读器证据保持原范围。
+2026-10-12 已提供可复制的 [React 设计稿模板 v0.1](../skills/react-prototyping/assets/design-workspace/README.md)与安全初始化命令，包含各端独立页面、真实组件展示、Markdown 规范、主题映射、总览注册表及 iframe 尺寸容器。隔离副本已完成锁文件安装、类型/构建、浏览器状态/边界、规范热更新与静态路由检查；初始化保护已有内容，实际记录见[模板验证](../evals/dev-visual/runs/2026-10-12/react-design-template/report.md)。这属于主 Agent 实施与隔离工具验证，真实项目采用、独立职责行为与真实移动设备仍待验证；原有组件目录和文档阅读器证据保持原范围。
 
 产品文档包含原型及使用限制、功能透出、可执行授权、输入校验/计算/动作/保存/输出、异常恢复及 RULE/AC。视觉引用同一功能和规则，记录呈现与实际代码。普通修订由 Git 保存历史，完整已替换方案进入对应职责 archive，索引指向当前资产。
 
-[Vite 文档工程](../skills/dev-flow/assets/document-workspace/README.md)支持 Markdown/MDX/Mermaid、HTML、PDF、图片、Word/表格转换和文本；专用格式有明确原件/导出回退。通过 `preview.mjs url` 核验当前服务和源路径后生成地址，不要求手工记忆端口。详情见[预览协议](../skills/dev-flow/references/document-preview.md)。
+[Vite 文档工程](../skills/document-management/assets/document-workspace/README.md)支持 Markdown/MDX/Mermaid、HTML、PDF、图片、Word/表格转换和文本；专用格式有明确原件/导出回退。通过 `preview.mjs url` 核验当前服务和源路径后生成地址，不要求手工记忆端口。详情见[预览协议](../skills/document-management/references/document-preview.md)。
 
 ## 验证状态与限制
 
@@ -53,7 +55,7 @@ owner: visual
 
 没有把主 Agent 实施与工具检查登记为 `dev_visual` 原生派发或独立专业行为评测。原生发现/派发、不同模型下的专业行为、新上下文视觉资产复用与真实用户/生产项目仍需实测；产品已有的历史隔离证据保持对应原版本。
 
-本轮 2026-10-21 流程修订在[视觉 Skill](../skills/dev-visual/SKILL.md)增加候选确认前的技术反馈、状态 UI 必要性判断与视觉回应，并明确完整实现后的实际页面核验和正式用例承接。本轮隔离技术反馈及其独立 Review 已有实际原生派发，见[行为报告](../evals/dev-flow-stages/2026-10-21-behavior-report.md)；视觉职责自身的原生专业执行、实际 UI 回应和真实生产界面核验仍未验证，历史工具和隔离案例结论保持原范围。后续真实 UI 任务用同一规格/原型完成跨职责 Review、实现核验和下一任务复用。
+本轮 2026-10-21 流程修订在[视觉 Skill](../agents/prompts/visual.md)增加候选确认前的技术反馈、状态 UI 必要性判断与视觉回应，并明确完整实现后的实际页面核验和正式用例承接。本轮隔离技术反馈及其独立 Review 已有实际原生派发，见[行为报告](../evals/dev-flow-stages/2026-10-21-behavior-report.md)；视觉职责自身的原生专业执行、实际 UI 回应和真实生产界面核验仍未验证，历史工具和隔离案例结论保持原范围。后续真实 UI 任务用同一规格/原型完成跨职责 Review、实现核验和下一任务复用。
 
 ## Kimi 宿主接入（2026-10-09）
 

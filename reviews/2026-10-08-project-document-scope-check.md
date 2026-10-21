@@ -7,9 +7,9 @@
 本轮修改：
 
 - 总纲 v0.8、流程入口和三个职责先定位业务项目/根路径，再从项目索引恢复相关分类文档。
-- [项目文档协议 v0.2](../skills/dev-flow/references/design-document-contract.md)定义产品、交互原型、设计/UI、技术及相关验收/交付资料的权威位置、职责、状态、版本与归档。
-- 新增[项目索引模板](../skills/dev-flow/assets/templates/project-document-index.md)，只登记实际资产和缺口，保留既有目录。
-- [项目预览指南](../skills/dev-flow/references/document-preview.md)要求项目讨论/确认提供该项目索引及相关成果的真实预览；通用方法不作为项目成果。Skill 维护默认检查源文件、内容与引用，渲染/原型变化按范围实际核验。
+- [项目文档协议 v0.2](../skills/document-management/references/document-contract.md)定义产品、交互原型、设计/UI、技术及相关验收/交付资料的权威位置、职责、状态、版本与归档。
+- 新增[项目索引模板](../skills/document-management/assets/templates/project-document-index.md)，只登记实际资产和缺口，保留既有目录。
+- [项目预览指南](../skills/document-management/references/document-preview.md)要求项目讨论/确认提供该项目索引及相关成果的真实预览；通用方法不作为项目成果。Skill 维护默认检查源文件、内容与引用，渲染/原型变化按范围实际核验。
 - 阅读器说明同步项目选择规则。可执行逻辑、依赖和安装脚本未修改。
 
 本轮检查限于 Skill 结构、本地引用、TOML/JSON 解析、既有格式资产指纹、全局符号链接与差异检查。未启动/轮询文档服务，未打开浏览器，未为任何业务项目虚构文档或确认记录。

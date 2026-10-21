@@ -1,6 +1,6 @@
 # 架构后技术方案与用例 Review 流程检查
 
-日期：2026-10-08。范围：[建设计划及实施前 AI 自查](../docs/plans/2026-10-08-technical-delivery-stage.md)、[共同执行协议](../skills/dev-flow/references/execution-contract.md)、[技术方案方法](../skills/dev-engineering/references/technical-delivery-design.md)与[用例方法](../skills/dev-acceptance/references/strategy-and-cases.md)。主 Agent 自查及规则推演，未委派，不声称独立评审、原生派发或真实项目执行。
+日期：2026-10-08。范围：[建设计划及实施前 AI 自查](../docs/plans/2026-10-08-technical-delivery-stage.md)、[共同执行协议](../skills/dev-flow/references/execution-contract.md)、[技术方案方法](../agents/references/engineering/technical-delivery-design.md)与[用例方法](../skills/acceptance-case-design/references/strategy-and-cases.md)。主 Agent 自查及规则推演，未委派，不声称独立评审、原生派发或真实项目执行。
 
 ## 实际规则推演
 
