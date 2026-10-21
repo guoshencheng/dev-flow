@@ -27,3 +27,5 @@
 分段独立Review认可职责分层方向，已对R01–R06及旧身份文案进行定向复核。R07/R08的最终补充与完整发布候选仍由最终独立复核检查，不能凭作者“已修复”提前关闭。实际验收和安装结果见[验收记录](../docs/plans/2026-10-21-agent-skill-reorganization/verification.md)，总体状态见[Progress](../docs/plans/2026-10-21-agent-skill-reorganization/Progress.md)。
 
 只读Review、隔离工具案例、Harness职责演练、原生角色发现及真实业务项目各自报告。本记录不把样本中的缺陷检出写成样本业务已实现或生产通过。
+
+最终定向复核：138项必需资源与Git源码一致，14项隔离测试通过；未单独链接的架构Review模板缺失现被正确拒绝，来源限定查询避免等待其他marketplace。独立执行者已确认R01–R09在其声明范围关闭；完整结论见[最终Review](2026-10-21-agent-skill-reorganization-final.md)。

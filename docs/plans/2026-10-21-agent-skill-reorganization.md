@@ -1,6 +1,6 @@
 # Agent 职责与操作 Skills 重组规划
 
-日期：2026-10-21。状态：用户已授权实施，迁移候选已形成，独立Review与验收进行中；实际安装结果见[总体进度](2026-10-21-agent-skill-reorganization/Progress.md)。基线：插件 0.3.0，总纲协议 0.29。配套：[迁移清单与实施安排](2026-10-21-agent-skill-reorganization/migration-plan.md)。
+日期：2026-10-21。状态：用户授权范围已实施，源码和验收通过，Codex0.4.0已安装；实际安装结果见[总体进度](2026-10-21-agent-skill-reorganization/Progress.md)。基线：插件 0.3.0，总纲协议 0.29。配套：[迁移清单与实施安排](2026-10-21-agent-skill-reorganization/migration-plan.md)。
 
 ## 目标与边界
 

@@ -1,6 +1,6 @@
 # Codex / Kimi Plugin 安装与维护
 
-当前 0.4.0 发布候选提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由 agents/prompts 中的实质提示词承载。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。安装与能力发现状态以本轮实际验证记录为准。
+当前 0.4.0 提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由 agents/prompts 中的实质提示词承载。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。安装与能力发现状态以本轮实际验证记录为准。
 
 ## 0.4.0 的能力组织与迁移
 
