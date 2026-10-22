@@ -1,6 +1,6 @@
 # Codex / Kimi Plugin 安装与维护
 
-当前源码候选 0.5.0 提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由 agents/prompts 中的实质提示词承载。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-22-progress-and-flow-confirmation/Progress.md)。
+当前源码 0.5.0 提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由 agents/prompts 中的实质提示词承载。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-22-progress-and-flow-confirmation/Progress.md)。
 
 0.5.0 / 总纲 0.31 要求每轮迭代单独维护 `Progress.md`，开始前主动展示入口和整体路径，取得用户流程确认后进入后续阶段；流程确认、业务设计确认和实施授权分别记录，可明确合并，已有同范围有效确认复用。索引/原生 Todo 不再替代迭代总体进度，旧活动迭代接续时迁入有效状态，已结束历史不追溯改写。这是 0.x 阶段的流程不兼容收紧，因此递增 minor；schema 1 和只读核验代码保持兼容，不能把核验器通过当作已确认流程。Agent 工作交接负责执行者之间移交上下文与责任，面向用户报告成果称完成说明。
 

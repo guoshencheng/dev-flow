@@ -14,7 +14,7 @@
 | AC-04 | 同范围已有明确流程确认及实施授权时复用，不重复询问 | [隔离演练 C](behavior-verification.md)：复用给定场景确认材料，实际替换 README 文案并检查；不将模拟材料写成真实用户历史授权 |
 | AC-05 | Agent 工作交接与用户完成说明用途清楚，结果报告不等于责任已移交 | 独立 Review 的 R1 发现已修订并经原评审者定向关闭；补齐双方、下一责任、授权/写入边界及接收核对 |
 | AC-06 | 模板和原有核验/打包能力不回归，宿主入口同源一致 | 最终 58 项 Python 检查通过；3 个受影响 Skill quick_validate 通过；宿主同步检查及 git diff --check 通过。模板迁移后断言 Progress 占位不能放行、索引不含状态块 |
-| AC-07 | 升版安装后实际启用、缓存版本、资源及源码指纹一致 | 待实际 install/check 后补结果，不以清单版本或静态 Review 替代安装成功 |
+| AC-07 | 升版安装后实际启用、缓存版本、资源及源码指纹一致 | 实际 install/check 已通过：0.5.0、enabled=true、16 Skill、source_matches_cache=true；最终文档保存后再次构建核对，字节级结果以本机 final 日志为准 |
 
 ## 自动化与复核证据
 
@@ -26,6 +26,10 @@
 
 ## 安装与完成说明
 
-待安装与实际检查完成后记录版本、构建/缓存位置、源码保存和本机核验入口。新会话能力发现、Kimi 原生重载、既有真实业务仓库迁移及生产行为不在本轮执行范围；本轮不会向原行程分类会话发送消息或改其文件。
+已实际安装 Codex 0.5.0，首次 check 为 enabled=true、source_matches_cache=true、16 Skill。构建目录 `/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/plugin-source`，缓存 `/Users/guoshencheng/.codex/plugins/cache/dev-flow-local/dev-flow/0.5.0`。安装器校验 capabilities 所声明资源与源码/缓存指纹。源码规则及验证已保存为本地提交 `4e16eb7`，本篇等最终文档另随收尾提交保存；无远端推送或主干合并。
+
+首次原始输出为 `.dev/runs/progress-flow-confirmation/install-initial.json` 与 `check-initial.json`。最终文档保存后的重建/核验输出位置为同目录 `install-final.json`、`check-final.json`，实际缓存路径记录在忽略的 `.dev-flow/plugin-install.json`，包文件及指纹清单为缓存中的 `package-files.json`；不把自包含包摘要写入包内文档制造循环依赖。
+
+新会话能力发现、Kimi 原生重载、既有真实业务仓库迁移及生产行为不在本轮执行范围；本轮未向原行程分类会话发送消息或修改其文件。已运行会话不会仅因更新安装缓存就自动重读新版规则，新任务应在新会话发现实际启用版本。
 
 静态规则、隔离演练与契约测试分别证明其覆盖范围；状态核验器不会自动发现未声明的流程确认，不能据其通过声称拥有运行时阻断保障。
