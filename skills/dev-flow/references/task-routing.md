@@ -2,7 +2,7 @@
 
 按对象、行为/契约变化、风险和当前阶段选择路径；授权、Review 与完成依赖见[执行协议](execution-contract.md)。开始即按[总体进度](progress-management.md)列出直到最终目标的全部阶段。具体 Git、派发和文档操作分别调用[git-workflow](../../git-workflow/SKILL.md)、[subagent-coordination](../../subagent-coordination/SKILL.md)、[document-management](../../document-management/SKILL.md)。
 
-各路径均先展示独立 Progress 与整体路径并取得[流程确认](execution-contract.md#流程开始前的用户确认)，有效确认直接复用。只读了解与流程草案可先做；仅查询、解释或独立局部操作不因此新建一轮完整研发迭代。
+各路径均先按 [Skill 入口](../SKILL.md#从目标推进到完成)创建或恢复独立 Progress，展示整体路径并取得[流程确认](execution-contract.md#流程开始前的用户确认)，有效确认直接复用。只读了解与流程草案可先做。未启动 Dev Flow 的查询、解释或独立局部操作不因此新建完整迭代；一旦明确宣布启动 Dev Flow，不以“轻量调研”省略文档和确认。咨询转入设计/研发且没有有效确认时，首条进度说明明确进入待流程确认阶段，再完成文档、展示和确认。
 
 用户要求“开始收尾”时进入[收尾流程](closeout.md)，沿用本轮有效流程确认；没有有效确认则先展示剩余路径确认。明确仅整理文档则按范围裁剪，不重新进入功能设计与实现。
 

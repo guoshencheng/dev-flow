@@ -2,7 +2,7 @@
 
 面向 Codex 与 Kimi 的六职责研发协作插件。流程、专业职责和操作技能分别维护：`dev-flow` 只安排阶段、依赖、授权和完成条件；六职责 Agent 提示词承担专业判断；操作 Skills 提供具体方法与工具。项目业务事实保存在所属项目。
 
-当前源码版本 **0.5.0**，总纲 **0.31**：每轮迭代独立维护全局 `Progress.md`，先展示整体路径并取得用户流程确认，再进入后续阶段；区分 Agent 工作交接与面向用户的完成说明。既有设计确认、实施授权、独立 Review、完整候选后正式 TC/验收及交付条件继续适用。实际验证、Codex 安装和完成状态见[本轮 Progress](docs/plans/2026-10-22-progress-and-flow-confirmation/Progress.md)。
+当前源码版本 **0.5.1**，总纲 **0.32**：在“从目标推进到完成”集中说明启动 Dev Flow 时创建独立 `Progress.md`、展示整体流程并等待用户确认，以及持续更新的责任；咨询转设计同样先通知确认，已加载的职责提示词无需重复读取。既有设计/实施授权、Review、验收与交付条件继续适用。实际验证与 Codex 安装状态见[本轮 Progress](docs/plans/2026-10-22-flow-entry-clarification/Progress.md)。
 
 ## 能力入口
 

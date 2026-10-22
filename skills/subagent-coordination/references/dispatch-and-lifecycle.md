@@ -6,7 +6,7 @@
 
 先核验宿主支持的 Agent 工具、当前并发、用户/项目要求和可用模型。局部顺序工作、强共享接口或交接成本过高时可直接执行；实际必须独立而无法提供时，保留待独立检查，不将主 Agent 自查改记通过。
 
-所需专业目标与判断来自同包 `agents/prompts/` 的[产品](../../../agents/prompts/product.md)、[视觉](../../../agents/prompts/visual.md)、[架构](../../../agents/prompts/architecture.md)、[研发](../../../agents/prompts/engineering.md)、[测试](../../../agents/prompts/acceptance.md)、[运维](../../../agents/prompts/operations.md)。读取专业提示词与[公共约束](../../../agents/prompts/common.md)；只有原生入口确实加载两者时才无需手工传入。操作技能按任务选择，不固定模型或推理强度。
+优先使用实际已加载所需职责与公共约束的 Agent，直接提供下述任务包，不重复读取或传入相同的源提示词。未加载时按[宿主加载与降级规则](host-execution.md)，从同包 `agents/prompts/` 的[产品](../../../agents/prompts/product.md)、[视觉](../../../agents/prompts/visual.md)、[架构](../../../agents/prompts/architecture.md)、[研发](../../../agents/prompts/engineering.md)、[测试](../../../agents/prompts/acceptance.md)、[运维](../../../agents/prompts/operations.md)及[公共约束](../../../agents/prompts/common.md)补充所需内容。这些链接是维护源与未加载时的降级入口，不是每次派发的必读清单。长篇参考、模板和操作技能按任务需要读取，不固定模型或推理强度。
 
 ## 最小充分任务包
 

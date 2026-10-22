@@ -1,6 +1,6 @@
 # Dev Flow 当前能力概览
 
-日期：2026-10-22。当前源码 Plugin **0.5.0**、流程总纲 **0.31**，共 **16 个 Skill** 和六职责提示词。本轮唯一总体状态是[独立进度与流程确认 Progress](plans/2026-10-22-progress-and-flow-confirmation/Progress.md)，实际验证及安装状态由其关联，[安装方法](plugin.md)单独维护。版本声明不替代实际启用、缓存和新会话发现结果。
+日期：2026-10-22。当前源码 Plugin **0.5.1**、流程总纲 **0.32**，共 **16 个 Skill** 和六职责提示词。本轮唯一总体状态是[启动入口与提示词加载澄清 Progress](plans/2026-10-22-flow-entry-clarification/Progress.md)，实际验证及安装状态由其关联，[安装方法](plugin.md)单独维护。版本声明不替代实际启用、缓存和新会话发现结果。
 
 ## 能力分层
 

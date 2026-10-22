@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "dev-flow",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "repository": "https://github.com/guoshencheng/dev-flow",
   "description": "流程编排、六职责 Agent 与可复用操作 Skills：Git、派发、文档、设计、研发、验收、运行交付及会话监控。",
   "extensions": {

@@ -1,6 +1,8 @@
 # Codex / Kimi Plugin 安装与维护
 
-当前源码 0.5.0 提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由 agents/prompts 中的实质提示词承载。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-22-progress-and-flow-confirmation/Progress.md)。
+当前源码 0.5.1 提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-22-flow-entry-clarification/Progress.md)。
+
+0.5.1 / 总纲 0.32 是对 0.5.0 既有要求的入口和方法澄清：进度规则、模板、状态核验入口及更新责任集中到 Skill 的“从目标推进到完成”；开始执行 Dev Flow 必须先建流程文档、展示路径并取得用户确认，咨询转设计且没有有效确认时首条进度说明先通知。实际已加载角色正文与公共约束时不重读维护源；未加载才补充，长篇专业 reference/模板按需读取。本版不改变角色注册机制、状态 schema 或核验算法。
 
 0.5.0 / 总纲 0.31 要求每轮迭代单独维护 `Progress.md`，开始前主动展示入口和整体路径，取得用户流程确认后进入后续阶段；流程确认、业务设计确认和实施授权分别记录，可明确合并，已有同范围有效确认复用。索引/原生 Todo 不再替代迭代总体进度，旧活动迭代接续时迁入有效状态，已结束历史不追溯改写。这是 0.x 阶段的流程不兼容收紧，因此递增 minor；schema 1 和只读核验代码保持兼容，不能把核验器通过当作已确认流程。Agent 工作交接负责执行者之间移交上下文与责任，面向用户报告成果称完成说明。
 
@@ -12,7 +14,7 @@
 
 agents/prompts 是专业责任唯一维护源，capabilities.json 声明本包 Skill 与角色路由；生成器组合 common.md 与完整专业提示词，并将链接按各宿主入口位置重新定位。生成物不手工编辑；生成一致性不证明原生发现/派发。资源声明及递归引用由打包检查验证，未声明、缺失或越界不能靠简单数量检查通过。
 
-Codex agents/*.toml 仍为参考入口，不自动注册个人 Agent；Harness 允许时给实际子 Agent 加载公共约束和职责源。Kimi 清单声明六个原生职责入口。没有 setup，不维护全局 AGENTS.md，不把 Codex 安装视作 Kimi 已安装。
+Codex agents/*.toml 已内嵌公共约束与职责正文，但仍为参考入口，不自动注册个人 Agent。优先使用宿主实际已加载的职责 Agent；使用未加载角色的 Harness 通用子 Agent 时才补充缺失正文，并记录真实方式。Kimi 清单声明六个原生职责入口，实际加载后同样不重读同源正文。没有 setup，不维护全局 AGENTS.md，不把 Codex 安装视作 Kimi 已安装。
 
 总纲 0.30 是归属调整，保留 0.29 的有效设计/重要取舍、独立设计/计划 Review、明确范围实施授权、连续实现/自测、完整候选后正式 TC/独立 Review/验收及交付关系；状态 schema 仍为 1。旧记录只按真实来源恢复，不倒填执行，也不重新索取已有同范围授权。
 
@@ -58,7 +60,7 @@ python3 scripts/manage_plugin.py build
 /plugins reload
 ```
 
-新会话使用 `/skill:dev-flow`。专业职责按需派发，输入包含实际安装包根路径、职责提示词、所需操作 Skill 与业务项目上下文，详见 [Kimi 职责说明](integrations/kimi-agent-configuration.md)。本地插件从受管副本运行，修改源文件后重新构建并在 Kimi 重新安装；只改源码不表示缓存已更新。
+新会话使用 `/skill:dev-flow`。专业职责按需派发，输入包含实际安装包根路径、所需操作资源与业务项目任务包，实际已加载角色时无需重复传提示词，未加载才补充；详见 [Kimi 职责说明](integrations/kimi-agent-configuration.md)。本地插件从受管副本运行，修改源文件后重新构建并在 Kimi 重新安装；只改源码不表示缓存已更新。
 
 Kimi 安装/启用/移除使用其原生 `/plugins` 入口，当前 Python install/check/remove 仍专用于 Codex。Kimi 清单不自动加载流程、不配置额外 MCP/Hooks，不写个人 AGENTS.md 或 SYSTEM.md。解除使用 `/plugins remove dev-flow`。
 
@@ -84,7 +86,7 @@ Plugin 0.2.0、总纲 v0.25 和执行协议 v0.12 新增[首次实施人工同�
 
 ## 使用与解除
 
-使用 `$dev-flow` 或选择插件，按[任务路由](../skills/dev-flow/references/task-routing.md)处理 bugfix 或正常需求。主 Agent 协调范围、依赖、全局进度和集成；标准跨职责任务默认委派实际可用且允许的 Harness subagent，提供专业提示词、所需操作 Skill、原要求、有效输入/版本和明确写入边界，独立评审与作者分离。模型遵循用户及宿主本次约束。
+使用 `$dev-flow` 或选择插件，按[任务路由](../skills/dev-flow/references/task-routing.md)处理 bugfix 或正常需求。主 Agent 协调范围、依赖、全局进度和集成；标准跨职责任务默认委派实际可用且允许的 Harness subagent，提供所需操作资源、原要求、有效输入/版本和明确写入边界，仅未加载角色时补充缺失提示词，独立评审与作者分离。模型遵循用户及宿主本次约束。
 
 Plugin 0.2.1、总纲 v0.26 明确现有 $dev-flow 的[一条指令收尾](../skills/dev-flow/references/closeout.md)入口：`使用 $dev-flow 收尾当前迭代，把文档和长期资产沉淀好。` 正常交付已包含文档收尾；补做时直接同步相关资产、总结、遗留与项目入口并核验归档条件，不重启实施流程。候选清单声明的 Skills 和状态 schema 保持不变，属于兼容的方法维护，验证见[收尾记录](../reviews/2026-10-12-iteration-closeout.md)。
 
