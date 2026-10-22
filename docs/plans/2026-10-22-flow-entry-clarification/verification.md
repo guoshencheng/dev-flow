@@ -13,7 +13,7 @@
 | AC-03 | 从咨询转两端 UI 时，首条预告明确待流程确认，当前最终回复给出实际 Progress 链接及确认请求，未确认不设计 | 前两轮首条不足保留；第三轮首条实际明确先建进度、展示整体流程、请求确认，后因额度中断；恢复后读回未确认Progress、更新并展示路径和链接，明确请求确认，未做UI。新增复用条件不改变此无确认分支，按下文边界引用观察 |
 | AC-04 | 同范围已有确认续作时不再等待整体流程确认，仍不扩写为正式实现授权 | 同一隔离项目追加用户明确确认后，实际更新原Progress并产出两端文字UI候选，未重复索取整体确认，未做正式实现；主 Agent 已读回文件和实际回复 |
 | AC-05 | 相关契约及生成/链接/Skill 格式不回归 | 58 项既有 Python 检查通过；生成一致性、git diff --check 和两个受影响 Skill 的 quick_validate 通过 |
-| AC-06 | 新版本实际安装启用，缓存及声明资源与源码一致 | 待实际 install/check，不以清单版本代替安装结果 |
+| AC-06 | 新版本实际安装启用，缓存及声明资源与源码一致 | 2026-10-23 实际安装0.5.1并check通过：enabled=true、source_matches_cache=true、16 Skill；最终文档保存后再次重建核对，字节级记录以本机final日志为准 |
 
 ## 初轮多轮情景观察与修订
 
@@ -57,4 +57,11 @@
 
 ## 安装和源码保存
 
-待行为结果、定向复核和安装检查成立后更新实际候选、版本、构建/缓存位置及本地提交。新会话实际发现、Kimi 原生重载、真实产品 UI 与生产行为不在本轮执行范围。
+2026-10-23 已实际安装并检查 Codex 0.5.1，749个包内文件、16 Skill；检查确认启用、资源声明完整及源码/缓存一致。源码规则及已核验证据保存为本地提交 `f255ab3`；最终文档另随收尾提交保存。本轮未推送、合并主干或发送其它会话消息。
+
+- 构建位置：`/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/plugin-source`。
+- 实际缓存：`/Users/guoshencheng/.codex/plugins/cache/dev-flow-local/dev-flow/0.5.1`。
+- 首次实际结果：`.dev/runs/flow-entry-clarification/install-initial.json` 与 `check-initial.json`。
+- 最终文档保存后的重建/核验记录位置：同目录 `install-final.json` 与 `check-final.json`；实际安装路径另保存在忽略的 `.dev-flow/plugin-install.json`，包文件/指纹清单为缓存中的 `package-files.json`。不在包内文档记录自包含包摘要，避免循环依赖。
+
+范围内修改、独立复核及限定验证已完成，早期不足、修正和证据版本边界均保留。新会话实际发现、Kimi 原生重载、真实产品 UI 与生产行为未在本轮执行；已运行会话不会仅因缓存安装而自动重新读取规则。这里交付的是更明确的提示词执行约束，不是程序自动拦截。
