@@ -1,6 +1,6 @@
 # Dev Flow 当前能力概览
 
-日期：2026-10-21。当前源码 Plugin **0.4.0**、流程总纲 **0.30**，共 **16 个 Skill** 和六职责提示词。本轮唯一总体状态是[重组 Progress](plans/2026-10-21-agent-skill-reorganization/Progress.md)，验证与安装分别见[验收记录](plans/2026-10-21-agent-skill-reorganization/verification.md)和[安装指南](plugin.md)。版本声明不替代实际启用、缓存和新会话发现结果。
+日期：2026-10-22。当前源码 Plugin **0.4.1**、流程总纲 **0.30**，共 **16 个 Skill** 和六职责提示词。本轮唯一总体状态是[重组 Progress](plans/2026-10-21-agent-skill-reorganization/Progress.md)，验证与安装分别见[验收记录](plans/2026-10-21-agent-skill-reorganization/verification.md)和[安装指南](plugin.md)。版本声明不替代实际启用、缓存和新会话发现结果。
 
 ## 能力分层
 
@@ -37,3 +37,5 @@
 Codex参考入口不自动注册个人角色；Kimi生成原生入口且需分别安装/重载。按用户本轮选择先完成Codex，Kimi留待原生会话更新。新会话的能力刷新、隔离工具样本、Harness专业演练、原生角色发现和真实项目验证分别登记。
 
 历史建设、48项能力编号与旧版本评测保留原事实，[旧能力目录](history/2026-10-21-role-capabilities.md)可追溯；不以旧结果宣称新结构已通过。未来按真实调用需要提取操作Skill，不按角色名或文档数量增加入口。
+
+主干集成维护版 0.4.1 保留既有技术图示规范，迁入职责参考、示例和统一设计模板；实际验证与交付见[收尾记录](../reviews/2026-10-22-main-integration.md)。

@@ -6,6 +6,7 @@
     "agents/assets/architecture/code-standards/base/prettierignore.txt",
     "agents/assets/architecture/code-standards/base/prettierrc.json",
     "agents/assets/architecture/code-standards/package-scripts.json",
+    "agents/assets/architecture/examples/technical-diagrams.md",
     "agents/assets/architecture/templates/architecture-closeout.md",
     "agents/assets/architecture/templates/architecture-design.md",
     "agents/assets/architecture/templates/architecture-review.md",

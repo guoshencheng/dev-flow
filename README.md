@@ -2,7 +2,7 @@
 
 面向 Codex 与 Kimi 的六职责研发协作插件。流程、专业职责和操作技能分别维护：`dev-flow` 只安排阶段、依赖、授权和完成条件；六职责 Agent 提示词承担专业判断；操作 Skills 提供具体方法与工具。项目业务事实保存在所属项目。
 
-当前源码与Codex安装版本 **0.4.0**，总纲 **0.30**。这是对 0.3.0 的能力组织调整，保留已有设计确认、实施授权、独立 Review、完整候选后正式 TC/验收以及交付条件；旧六职责 Skill 退出，改为六份实质性职责提示词和按需操作技能。当前安装与验证以[本轮进度](docs/plans/2026-10-21-agent-skill-reorganization/Progress.md)及真实检查记录为准。
+当前源码与Codex安装版本 **0.4.1**，总纲 **0.30**。这是对 0.3.0 的能力组织调整，保留已有设计确认、实施授权、独立 Review、完整候选后正式 TC/验收以及交付条件；旧六职责 Skill 退出，改为六份实质性职责提示词和按需操作技能。当前安装与验证以[本轮进度](docs/plans/2026-10-21-agent-skill-reorganization/Progress.md)及真实检查记录为准。
 
 ## 能力入口
 
@@ -58,6 +58,7 @@ python3 scripts/manage_plugin.py check
 - [本轮设计与归纳图](docs/plans/2026-10-21-agent-skill-reorganization.md)、[迁移清单](docs/plans/2026-10-21-agent-skill-reorganization/migration-plan.md)、[总体进度](docs/plans/2026-10-21-agent-skill-reorganization/Progress.md)。
 - [边界评审](reviews/2026-10-21-agent-skill-reorganization-boundaries.md)、[职责建设与验证](docs/agent-development.md)、[文档归类](docs/document-organization.md)、[权威归属](docs/document-ownership.md)。
 - [阶段状态核验](skills/dev-flow/references/stage-state.md)：检查声明的版本/候选/依赖，不证明真实执行和专业质量。
+- [技术图示规范](agents/references/architecture/technical-diagrams.md)统一选图、边界/箭头语义及图示 Review；[可改写示例](agents/assets/architecture/examples/technical-diagrams.md)。
 - [技术基线](agents/references/architecture/technology-stack.md)、[代码规范](agents/references/architecture/code-standards.md)、[UI 基准](agents/references/visual/ui-baseline.md)分别维护唯一专业来源，项目具体版本和例外留项目。
 
 历史版本的职责能力编号和验证记录保留原事实：[旧能力目录](docs/history/2026-10-21-role-capabilities.md)、[评测入口](evals/)。导航可更新到现行源，旧结果不能折算成本轮实现、宿主加载或真实业务项目通过。
