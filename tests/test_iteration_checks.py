@@ -502,10 +502,13 @@ class IterationChecksTest(unittest.TestCase):
     def test_repository_example_is_executable_and_template_stays_pending(self):
         example = ROOT / "skills/dev-flow/assets/examples/iteration-state.md"
         self.assertTrue(checks.inspect(checks.read_state(example), example.parent)["can_finish"])
-        template = ROOT / "skills/document-management/assets/templates/iteration-index.md"
+        template = ROOT / "skills/dev-flow/assets/templates/progress.md"
         result = checks.inspect(checks.read_state(template), self.root)
         self.assertFalse(result["can_start_implementation"])
         self.assertFalse(result["can_finish"])
+        index = ROOT / "skills/document-management/assets/templates/iteration-index.md"
+        with self.assertRaises(checks.StateError):
+            checks.read_state(index)
 
 
 if __name__ == "__main__":

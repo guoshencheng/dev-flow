@@ -1,6 +1,8 @@
 # Codex / Kimi Plugin 安装与维护
 
-当前 0.4.1 提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由 agents/prompts 中的实质提示词承载。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。安装与能力发现状态以本轮实际验证记录为准。
+当前源码候选 0.5.0 提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由 agents/prompts 中的实质提示词承载。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-22-progress-and-flow-confirmation/Progress.md)。
+
+0.5.0 / 总纲 0.31 要求每轮迭代单独维护 `Progress.md`，开始前主动展示入口和整体路径，取得用户流程确认后进入后续阶段；流程确认、业务设计确认和实施授权分别记录，可明确合并，已有同范围有效确认复用。索引/原生 Todo 不再替代迭代总体进度，旧活动迭代接续时迁入有效状态，已结束历史不追溯改写。这是 0.x 阶段的流程不兼容收紧，因此递增 minor；schema 1 和只读核验代码保持兼容，不能把核验器通过当作已确认流程。Agent 工作交接负责执行者之间移交上下文与责任，面向用户报告成果称完成说明。
 
 0.4.1 将主干既有技术图示规范并入新职责资源与统一研发设计，保留 0.4.0 的能力边界；主干集成与实际交付见[收尾记录](../reviews/2026-10-22-main-integration.md)。
 
@@ -76,7 +78,7 @@ Plugin 0.2.0、总纲 v0.25 和执行协议 v0.12 新增[首次实施人工同�
 
 这是对旧实施/完成核验条件的不兼容收紧，因此递增 minor。schema 仍为 1，旧记录缺少实施授权会保持未就绪；有真实历史同意时引用其摘要、版本、来源和答复，无需重复询问；没有则保持 pending，禁止倒填授权。只评审/设计等无正式实现范围无需开工同意。完整影响和验证见[调整记录](../reviews/2026-10-12-implementation-authorization.md)。
 
-插件提供[只读核验脚本](../skills/dev-flow/scripts/check_iteration.py)，由主 Agent 按[共同协议](../skills/dev-flow/references/stage-state.md)从选定的唯一 Progress/既有索引调用。它核验声明的输入版本、确认覆盖、Review 字段、依赖次序、候选及检查/证据观察范围；退出码支持区分通过、未完成和格式错误。需要实际可用的 Python 3.9+，无第三方运行依赖。
+插件提供[只读核验脚本](../skills/dev-flow/scripts/check_iteration.py)，由主 Agent 按[共同协议](../skills/dev-flow/references/stage-state.md)从本轮独立 Progress 调用。它核验已声明的输入版本、确认覆盖、Review 字段、依赖次序、候选及检查/证据观察范围；不会自动发现遗漏的流程确认，仍须人工核对真实答复。为读取旧记录/夹具仍接受索引或 JSON 路径，不改变当前 Progress 规则。退出码支持区分通过、未完成和格式错误；需要实际可用的 Python 3.9+，无第三方运行依赖。
 
 这项能力不是自动 Hooks 或 MCP 拦截，不会自行调用、不修改项目、不证明真实执行或语义完整。核验器契约测试、新上下文行为及真实项目验收分别登记，见[验证记录](../evals/dev-flow-stages/report.md)。新文件须纳入 Git 管理后才能随现有 install 打包，安装不改变 Agent 或用户指引。
 

@@ -2,11 +2,13 @@
 
 适用范围与确认/Review/完成规则以[执行协议](execution-contract.md#按当前状态推进)为准。核验器只读检查声明的记录一致性；不是 Hooks、MCP 服务或运行时拦截，不能证明记录真实、依赖完整、设计质量或语义覆盖。
 
-## 选一个进度权威，引用原记录
+## 迭代独立 Progress，引用原记录
 
-多阶段、跨会话任务先选本轮 `Progress.md` 作为总体进度权威，列出最终目标的完整阶段、当前阶段、未开展项、执行者和下一步；原 `index.md` 只链接它。若已明确选择索引或原生 Todo 为权威，沿用该入口，另一入口只作链接或投影，不手工双写总体状态。**可读的全局 Progress 不以 JSON 状态块为前提。**需要结构化核验时，才在选定的 Markdown 权威文件内放**一个** `dev-flow-state` JSON 代码块，保存范围、有效版本及 gate 状态；正文只解释成果和链接。规格、用例、实际 Review/确认原记录与本机运行证据仍在各自权威位置。无须迁移已有文档或补抄历史日志；仅恢复本次所需的有效事实。
+每轮迭代在独立 `Progress.md` 维护唯一总体进度，列出最终目标的完整阶段、当前阶段、未开展项、执行者和下一步；`index.md` 与原生 Todo 只链接或投影它。接续旧活动迭代时迁入有效总体状态及状态块，原入口改引用；历史证据不改写。**可读的全局 Progress 不以 JSON 状态块为前提。**需要结构化核验时，只在 Progress 内放**一个** `dev-flow-state` JSON 代码块，保存范围、有效版本及 gate 状态。规格、用例、实际 Review/确认原记录与本机运行证据仍在各自权威位置。
 
-采用[迭代模板](../../document-management/assets/templates/iteration-index.md)或已有 Progress。需要看完整格式时参考[局部修复示例](../assets/examples/iteration-state.md)；这是合成示例，不能原样登记为项目通过。状态可以引用合并在同一索引内的规格、确认、Review 和结果。
+采用 [Progress 模板](../assets/templates/progress.md)，由[迭代索引](../../document-management/assets/templates/iteration-index.md)链接。需要看完整状态格式时参考[局部修复示例](../assets/examples/iteration-state.md)；这是合成示例，不能原样登记为项目通过。状态可以引用合并在索引内的规格、确认、Review 和结果。
+
+流程确认按[执行协议](execution-contract.md#流程开始前的用户确认)实际执行，不以脚本通过代替。需要结构化登记时，以 `kind: confirmation`、`stage: workflow-confirmation` 关联独立的流程方案版本，把它加入后续 gate 的 `after` 依赖；只有答复明确包含实施授权时才填 `authorizes`。流程版本不随普通状态更新时间变化。schema 1 核验器仍只检查已声明依赖，不能自动发现遗漏的流程确认，也不强制文件名；本版收紧的是 Agent 执行规则，不宣称新增运行时拦截。
 
 ### 顶层与工作范围
 
@@ -73,7 +75,7 @@ python3 "$PLUGIN_ROOT/skills/dev-flow/scripts/check_iteration.py" \
   --root "$PROJECT_ROOT" --phase implementation
 ```
 
-结束前使用 `--phase finish`（默认），核验全部范围。可用 `--scope <范围ID>` 调查/推进独立部分，结果会列出 selected_scopes，不能据此宣布整个迭代完成。JSON 夹具也可作为输入。脚本接受显式 Markdown/JSON 路径，不限定文件名；生产状态保存在本轮选定的唯一权威文件。改用索引时将命令路径替换成 `index.md`。
+结束前使用 `--phase finish`（默认），核验全部范围。可用 `--scope <范围ID>` 调查/推进独立部分，结果会列出 selected_scopes，不能据此宣布整个迭代完成。JSON 夹具也可作为输入。脚本为读取旧记录和测试夹具继续接受显式 Markdown/JSON 路径，不限定文件名；当前迭代执行状态统一保存在独立 Progress，不因此允许沿用索引作为总体进度。
 
 输出包含 `can_start_implementation/can_finish/blocking_items/next_action`、逐范围 current_stage 和逐用例结果。退出码：`0` 所选阶段记录成立，`1` 尚有阻断，`2` 格式/引用错误。脚本不修改任何记录，未知格式和坏引用失败关闭。
 

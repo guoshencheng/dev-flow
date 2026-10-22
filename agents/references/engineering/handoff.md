@@ -12,7 +12,7 @@
 | 工程交接 | `iterations/<迭代ID>/engineering/handoff.md` 或现行任务/PR：候选、自测、启动与待验项 |
 | 规范、自动化与源码 | 复用项目权威位置，文档引用实际配置和代码 |
 
-模板为[工程索引](../../../skills/document-management/assets/templates/engineering-index.md)、[设计](../../assets/engineering/technical-delivery-design.md)、[Review](../../assets/engineering/engineering-review.md)、[计划](../../assets/engineering/implementation-plan.md)和[交接](../../assets/engineering/engineering-handoff.md)。正式 Review 的结论及未关闭项持久保存；普通运行日志和重试过程留在项目约定本机目录。总体进度仅由现行 Todo/Progress 维护，各文档引用其阶段与候选状态。
+模板为[工程索引](../../../skills/document-management/assets/templates/engineering-index.md)、[设计](../../assets/engineering/technical-delivery-design.md)、[Review](../../assets/engineering/engineering-review.md)、[计划](../../assets/engineering/implementation-plan.md)和[交接](../../assets/engineering/engineering-handoff.md)。正式 Review 的结论及未关闭项持久保存；普通运行日志和重试过程留在项目约定本机目录。总体进度仅由现行 Progress 维护，各文档引用其阶段与候选状态。
 
 交接声明源码候选、真实命令与结果、配置/身份/数据准备、启动/停止入口、核心任务、已知缺口及适用环境。构建、健康与核心任务分别验证；开发服务可访问不自动等于完整交付。研发自测、正式验收、可运行交付与部署状态分别记录。运维提供实际环境和产物版本，验收执行后置正式用例及交付核验，架构收尾引用原证据。
 

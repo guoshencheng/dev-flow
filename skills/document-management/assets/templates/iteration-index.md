@@ -12,16 +12,16 @@ related: []
 
 采用到 `docs/dev-flow/iterations/<迭代ID>/index.md`。仅填写本轮实际需要的阶段与路径；本模板不是完整阶段的强制清单，采用后删除说明。
 
-本轮多阶段工作默认在 `Progress.md` 维护唯一总体进度，本索引只链接：总体进度（采用后填写本轮唯一 `Progress.md` 的实际相对链接）。若已明确选择本索引为权威，则把状态块放在本文件且 Progress 只引用，不双写。维护本轮目标、有效产物和交接/结果；正式独立 Review 的对象版本、发现、处理和结论持久保存在 `engineering/review.md` 或项目已有权威 Review 位置，主设计引用其结论。逐次运行日志、临时取证和 Review 原始过程写忽略的本机目录，不每次执行追加持久文件；接手信息写 handoff/result。
+每轮迭代在独立 `Progress.md` 维护唯一总体进度，本索引只链接：总体进度（采用后填写本轮实际相对链接）。采用[Progress 模板](../../../dev-flow/assets/templates/progress.md)，不把状态块放在本索引。维护本轮目标、有效产物和工作交接/结果；正式独立 Review 的对象版本、发现、处理和结论持久保存在 `engineering/review.md` 或项目已有权威 Review 位置，主设计引用其结论。逐次运行日志、临时取证和 Review 原始过程写忽略的本机目录，不每次执行追加持久文件；接手信息写 handoff/result。
 
-选定的进度权威须从开始覆盖最终目标的全部阶段：设计与技术反馈、研发设计及交叉 Review、实施计划及授权、连续实现与自测、完整候选的正式用例独立 Review、验收与交付核验、架构技术收尾、整体保存与结束。每项列负责人、完成条件、当前状态；未开始写待开始，未知写待核验。阶段切换、派发回报、基线/候选变化和结束前更新当前目标、下一步与未完成项。
+Progress 须从开始覆盖最终目标的全部阶段：整体流程展示与用户确认、设计与技术反馈、研发设计及交叉 Review、实施计划及授权、连续实现与自测、完整候选的正式用例独立 Review、验收与交付核验、架构技术收尾、整体保存与完成说明。每项列负责人、依赖、完成条件、成果入口与当前状态；阶段切换、派发/工作交接回报、基线/候选变化和结束前由主 Agent 更新 Progress，本索引不另记总体状态。
 
 ## 目标、范围与输入
 
 - 项目、迭代 ID、功能 ID 与任务类型：待填写。
 - 用户目标、交付结果、本轮范围与非目标：待填写。
 - 前序迭代、依赖、有效产品/UI/架构/测试与代码基线：链接实际来源及版本。
-- 完整阶段、当前阶段、未开展项、候选版本和维护职责：见选定的进度权威；未执行不能标为通过。
+- 完整阶段、当前阶段、未开展项、候选版本和维护职责：见独立 Progress；未执行不能标为通过。
 
 ## 工程执行与协作选择
 
@@ -39,6 +39,7 @@ related: []
 
 | 阶段 | 默认产物位置 | 当前有效版本/状态 | 输入关联与证据、Review/确认来源 |
 | --- | --- | --- | --- |
+| 整体流程 | `Progress.md` | 待填写流程方案版本 | 实际展示入口与路径、用户流程确认来源；与业务确认和实施授权分别记录 |
 | 产品与交互 | `product/spec.md`，引用现行设计稿/原型工程；一次性探索按需用 `product/prototypes/<方案>/` | 待填写 | RULE/AC、流程/限制/透出、稳定源码路径、场景、基线/候选版本与设计确认 |
 | 视觉/UI | 本索引引用项目级规范、页面/组件规格和现行源码；复杂增量按需拆 `visual/changes.md` | 待填写 | 产品输入、各端/总览入口、内部视口、资产基线与候选、变化、检查和确认 |
 | 研发设计 | `engineering/design.md` | 待填写 | 架构与实现统一设计、OUT/链路、实施前确认的产品/设计完成标准 |
@@ -46,40 +47,17 @@ related: []
 | 正式测试策略与用例 | `acceptance/strategy.md`、`acceptance/cases.md`、`acceptance/technical-checks.md` | 候选完整后维护 | 实施前已确认预期、当前候选、独立 AI Review；既有预期内细化不等例行人工确认 |
 | 实施授权 | 原确认记录或本索引 | 待填写 | 已展示的范围/结果/验证/交付版本、用户答复与来源、明确开工范围；可与设计确认合并 |
 | 实施 | `engineering/implementation-plan.md`、`engineering/handoff.md` | 待填写 | 计划复核、切片、集成版本、自测与完整候选交接 |
-| 验收结果/交接 | `acceptance/result.md` 或现有交接入口 | 待填写 | 当前候选、阶段结果、限制、缺陷及接手/复跑要求；各轮报告默认本机私有 |
+| 验收结果 | `acceptance/result.md` | 待填写 | 当前候选、阶段结果、限制、缺陷与复跑要求；供完成说明及工作交接引用，各轮报告默认本机私有 |
 | 运维/交付 | `operations/delivery.md` | 待填写 | 实际启动/产物/目标环境/版本、结果和恢复 |
 | 架构技术收尾 | `architecture/closeout.md` | 待填写 | 设计差异、实现 Review、验收/交付结果、资产更新及遗留 |
 
 实际 AI Review 与用户确认都绑定具体对象及版本；技术方案/实施计划不增加人工技术审批。首次正式实现须取得明确实施同意，快速路径也适用；已有同一范围授权直接复用。原型走查、实现验收、源码可启动、实际部署分别记录。
 
-### 可读取的当前状态（适用时采用）
+实际 Agent 工作交接另在 handoff 或既有结果的独立分节中记录交出方、接收方、下一项责任、输入/候选、授权及写入边界、未完成与证据、接收核对；主 Agent 核验后更新 Progress。上表的验收结果或面向用户的完成说明不自动表示接收方已接手。
 
-多阶段、持续实施、跨会话或混合证据任务按[状态协议](../../../dev-flow/references/stage-state.md)在选定的唯一进度权威中维护一个代码块；若本索引仅作入口，将下方示例移至 Progress 并从本索引链接。下例是未定路线的占位，**不是完整功能的前置清单**。先确定路径与裁剪依据，再加入本次需要的设计确认、研发设计 Review、计划复核及实施授权；完整候选后再加入正式 TC 独立 Review、验收/交付与资产检查；小修复可以合并记录。采用后正文表格只介绍成果与来源，阶段状态和版本由此块维护，不重复填两本台账。
+### 结构化状态入口（按需）
 
-```dev-flow-state
-{
-  "schema_version": 1,
-  "candidate": "待形成",
-  "scopes": [{
-    "id": "scope-1", "route": "undecided", "reason": "", "implementation": true,
-    "before_implementation": ["implementation-authorize"], "before_finish": ["result-check"]
-  }],
-  "artifacts": [{
-    "id": "iteration", "path": "docs/dev-flow/iterations/iteration-id/index.md", "version": "1"
-  }],
-  "gates": [{
-    "id": "implementation-authorize", "kind": "confirmation", "stage": "implementation-authorization",
-    "status": "pending", "authorizes": ["scope-1"], "inputs": {"iteration": "1"},
-    "required_coverage": ["scope-1"], "coverage": [], "after": []
-  }, {
-    "id": "result-check", "kind": "check", "stage": "acceptance", "status": "pending",
-    "inputs": {"iteration": "1"}, "required_coverage": ["TC-1"], "coverage": [], "after": []
-  }],
-  "cases": [{"id": "TC-1", "scope": "scope-1", "required_checks": ["result-check"]}]
-}
-```
-
-path/record/evidence.path 均相对实际业务项目根目录，不相对本迭代。通过记录补 completed_at 和原位置，确认补来源/必要原话/实际覆盖，Review 补实际方式/具体检查/发现，check 补预定类型/观察点及真实证据。进入受影响实现和结束前运行核验器；工具通过仍需核对前置是否遗漏、记录和证据是否真实充分。
+需要只读核验时，按[状态协议](../../../dev-flow/references/stage-state.md)和[合成示例](../../../dev-flow/assets/examples/iteration-state.md)在独立 Progress 中维护一个状态块，本索引只关联该文件。可读 Progress 不以 JSON 为前提；本模板不附可直接留在索引内的状态块。先确认整体路径，再按实际依赖登记设计、计划、实施授权、完整候选 Review 和正式验收；脚本只检查声明，不能替代实际流程确认。
 
 ### 确认、Review 与未决摘要
 

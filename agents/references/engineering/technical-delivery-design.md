@@ -10,7 +10,7 @@
 
 从原始目标和有效 RULE/AC/UI/ARC 双向核对功能，写清可观察完成标准、范围、核心链路（入口到业务与数据结果）、失败恢复、模块职责、依赖、接口与数据契约、权限、兼容、关键实现逻辑及代码位置、验证与交付方式。现状与目标分别表达；权威 API/schema 直接引用。设计阶段只定义关键验证结果和研发自测方式，无需提前编写完整正式 TC。
 
-主文档末尾引用独立 `engineering/review.md`、`engineering/implementation-plan.md` 和 `architecture/closeout.md`，注明实际版本、状态及简短结论；尚未形成者标待编写。整体阶段仅引用唯一 Todo/Progress，不在设计中维护第二份状态。对象变化后核对引用结论是否失效。
+主文档末尾引用独立 `engineering/review.md`、`engineering/implementation-plan.md` 和 `architecture/closeout.md`，注明实际版本、状态及简短结论；尚未形成者标待编写。整体阶段仅引用唯一 Progress，不在设计中维护第二份状态。对象变化后核对引用结论是否失效。
 
 ## 用图表达结构与核心链路
 
