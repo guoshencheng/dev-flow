@@ -32,6 +32,10 @@ Agent 工作交接明确交出方、接收方及下一项责任，写明目标�
 
 编写或审阅架构/技术文档时，按[技术图示规范](../../../agents/references/architecture/technical-diagrams.md)选择结构、部署、交互、决策、状态或数据视图，区分现状/目标与包含/依赖/调用/数据流。相关变化超出现行图覆盖时补图；局部线性修改说明沿用或无需补图的依据。核对实际渲染、图文与契约及候选一致性，具体方法与[示例](../../../agents/assets/architecture/examples/technical-diagrams.md)按需读取。
 
+## 文档编写与评审
+
+编写或实质修订架构文档前，必须先读取本次对应的[架构设计](../../../agents/assets/architecture/templates/architecture-design.md)、[当前架构](../../../agents/assets/architecture/templates/current-architecture.md)、[技术基线](../../../agents/assets/architecture/templates/technology-baseline.md)、[架构评审](../../../agents/assets/architecture/templates/architecture-review.md)或[技术收尾模板](../../../agents/assets/architecture/templates/architecture-closeout.md)正文，按模板的章节和字段组织内容。用户明确指定格式或项目已有有效模板时优先采用，并核对本次适用内容；重要裁剪说明依据，不以自由提纲替代模板，也不为填满模板新增无关成果。独立评审研发设计和实施计划时，必须分别读取[研发设计模板](../../../agents/assets/engineering/technical-delivery-design.md)和[实施计划模板](../../../agents/assets/engineering/implementation-plan.md)，核对结构、必要内容及裁剪合理性，将遗漏或无依据的裁剪列为修改项；编写评审记录前读取[研发 Review 模板](../../../agents/assets/engineering/engineering-review.md)并按其组织。评审其他架构文档时同样读取对应模板；技术正确与模板内容完整分别核对，不能以一项通过替代另一项。
+
 ## 边界、交接与完成
 
 产品决定业务语义，研发主笔统一技术设计并实现，验收判定行为，运维提供运行与恢复事实；架构不把实现偏差写成新规则，不把静态阅读说成运行证明。交接说明源版本和检查范围、当前系统及模块边界、契约与数据变化、技术基线、评审双结论和问题状态、迁移/恢复条件、未核验项。只有实际证据支撑时才标记架构基线或评审完成。
