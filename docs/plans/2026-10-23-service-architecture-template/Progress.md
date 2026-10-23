@@ -1,6 +1,6 @@
 ---
 title: 服务端架构文档模板完善
-status: active
+status: current
 updated: 2026-10-23
 workflow_version: 3
 ---
@@ -22,8 +22,8 @@ workflow_version: 3
 - 开始基线：`18d41cb49f1bdca44d3fbe8a37501a40b9a9c496`；开始时工作区干净。
 - 当前依据：现行研发设计模板、架构设计/当前架构模板、架构职责和技术图示规范。当前已有通用图示要求，但服务端分层、Service/Usecase 清单与业务时序、数据模型关系的模板字段需进一步明确。
 - 整体结束条件：用户要求均有明确填写位置和核对标准，普通功能与独立架构文档要求一致，示例可读且不冒充项目事实，引用及适用检查通过，遗留和验证限制如实记录。
-- 当前阶段：C3 源码已通过；用户新增授权升级、宿主安装核验、收尾和远程主干推送，0.6.1 首轮安装/独立读回通过，正在保存技术收尾记录，随后提交并最终重建安装及推送主干。
-- 下一步：计划复核后升级 0.6.1、验证和安装到 Codex，核验实际启用/缓存/角色，然后提交、快进并推送 origin/main；全过程更新本页。
+- 当前阶段：已完成0.6.1升版、独立复核/技术收尾、实际Codex启用、提交后重建检查及远程main普通推送；首个交付提交6beaa27已核对远端一致。当前完成记录随最终提交采用相同安装/远端核验，实际最终HEAD见交付原始结果。
+- 下一步：后续会话使用0.6.1总架构/迭代研发/收尾规则；本轮无未关闭内容或安装阻断。新会话模型行为、真实业务项目和Kimi原生安装保留未执行状态。
 
 ## 总体里程碑
 
@@ -107,10 +107,21 @@ workflow_version: 3
 | 升版、生成同步及隔离验证 | 完成 | 主 Agent；计划有效 | 发布版本及测试证据 |
 | 发布候选独立复核 | 完成 | 原独立评审者 | Review 新轮次 |
 | Codex 构建安装及生效核验 | 完成 | 主 Agent；固定候选及通过的复核 | delivery、原始安装/check 结果 |
-| 技术收尾、保存和最终重建 | 进行中 | 架构独立结论，主 Agent 保存与执行 | Review、delivery 及本页 |
-| 主干快进、远程推送与最终核对 | 待开始 | 主 Agent；用户已授权 | 本地/远程 SHA、最终 check |
+| 技术收尾、保存和最终重建 | 完成 | 架构独立结论，主 Agent 保存与执行 | Review、delivery 及本页 |
+| 主干快进、远程推送与最终核对 | 完成 | 主 Agent；用户已授权 | 本地/远程 SHA、最终 check |
 
 - 发布计划复核：原 `service_architecture_review`（sol medium）实际核对用户范围、计划第九节、安装指南与代码入口、本地/远程祖先关系，结论可执行、无阻断；要求最终记录保存后重建验明指纹，已纳入执行步骤。
 
 
 - 当前发布实证：79项全集回归通过；37文件发布Review、首轮实际0.6.1 install/check/readback及原评审者独立缓存/CLI/766文件/6角色/65引用/用户2文件不变核验通过。初轮测试版本夹具已修，Review误覆盖已恢复并原评审者核对，旧收尾锚点已修。详见 [验证记录](verification.md)、[交付记录](delivery.md)、[技术收尾](architecture-closeout.md)。最终保存/重建与远程主干尚待执行。
+
+
+## 0.6.1 安装与主干收尾完成说明（当前）
+
+- 成果与版本：本轮所有模板/规范/职责及其生成入口已保存，Plugin0.6.1、总纲0.32、文档协议0.15；安装测试夹具修为读取实际版本，正负例保留。
+- 验证与独立性：79项全集回归通过，版本/链接/生成/资源/实际安装核验通过；原sol medium评审者独立核对源码、恢复记录、真实CLI/缓存/角色与首轮用户文件证据，技术收尾无阻断。三图未变化，复用原实际渲染。
+- 实际交付：源码提交6beaa27后重建install/check通过，clean HEAD及767文件与0.6.1缓存相符，16Skills/6原生角色及65缓存引用正确。main已从37bce24普通快进并推送至6beaa27，远端SHA实际核对一致；包含透明披露的adb8bed/18d41cb祖先，没有强推或改写历史。
+- 配置保护观察：首轮两用户文件与原hash相同；提交后config.toml出现来源未知的区间变化。保留当前配置，重复安装前后两文件未变，不声称整个区间始终未改；原始快照、重复前基线和只读审计保留，详情见交付记录。
+- 保存与归档：本轮技术结论和长期模板/规范入口可达，记录按当前目录逻辑归档；工作结果与文档有效性分别保留，不物理迁移或删除其他worktree。本完成记录另行提交，最终同样重建/install/check并核对main远端，实际最新提交/包指纹在本机最终输出中，避免版本化文档自引用哈希。
+- 使用与限制：Codex实际缓存 `/Users/guoshencheng/.codex/plugins/cache/dev-flow-local/dev-flow/0.6.1`，原生入口 `/Users/guoshencheng/.codex/agents/`。Kimi仅同步源；当前既有会话自动重载、新会话真实模型专业行为及业务服务试用未执行，不虚构通过。
+- 正式记录：[交付](delivery.md)、[技术收尾](architecture-closeout.md)、[Review](review.md)、[验证](verification.md)。最终原始结果为本机 `.dev/runs/service-architecture-template/release-install-final.json`、`release-check-final.json`、`release-readback-final.json`、`release-git-final.json` 与 `user-preservation-final.json`。

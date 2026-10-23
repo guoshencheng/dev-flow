@@ -1,6 +1,6 @@
 ---
 title: 项目总架构模板 0.6.1 交付记录
-status: candidate
+status: current
 owner: operations
 updated: 2026-10-23
 ---
@@ -27,11 +27,20 @@ updated: 2026-10-23
 | 发布候选独立 Review | 37文件指纹与diff独立核对通过，无阻断 | 原C3语义按未变范围复用 |
 | Codex install/check 与读回 | 首次实际启用0.6.1，766文件三端一致、16Skills/6角色/65缓存引用、两用户文件未改 | 首轮为18d41cb加未提交候选；实际缓存见下 |
 | 独立技术收尾 | 只读复验实际CLI/包/缓存/角色/用户文件通过 | 整体完成仍依赖保存后重建及主干推送 |
-| 最终保存与重建安装 | 待执行 | 文档改变包指纹，保存后再 install/check |
-| main 快进与远程推送核对 | 待执行 | 普通推送并读取远端 SHA |
+| 保存后重建安装 | 提交 `6beaa27` 后 install/check及clean HEAD读回通过，767文件源码/构建/缓存一致 | 完成记录保存后同样重建核验，最终原始结果单列 |
+| main 快进与远程推送核对 | `37bce24 → 6beaa27` 普通快进推送成功，ls-remote核对与本地main相同，工作区干净 | 完成记录随最终main提交同步，禁止强推 |
 
 ## 交付结论
 
-首轮实际安装与独立读回已通过，缓存为 `/Users/guoshencheng/.codex/plugins/cache/dev-flow-local/dev-flow/0.6.1`，受管角色位于 `/Users/guoshencheng/.codex/agents/`；尚待最终保存重建及主干推送，不以首轮证明最终提交。安装/启用、缓存与源码一致、原生角色注册和新会话实际加载分别记录；Kimi 本轮只同步可打包源，不视为原生安装。本轮新的业务项目试用或模型行为演练未执行，既有三图未变时复用原渲染证据。
+0.6.1已构建、安装启用，首轮独立核验及提交后重建/install/check和真实主干推送均通过。缓存为 `/Users/guoshencheng/.codex/plugins/cache/dev-flow-local/dev-flow/0.6.1`，受管角色位于 `/Users/guoshencheng/.codex/agents/`。首个交付提交为 `6beaa27`；本完成记录另行提交同步，最终实际HEAD、全包缓存与远端SHA通过下述最终原始结果核对，不把首轮快照当最终副本。安装/启用、缓存与源码一致、原生角色注册和新会话实际加载分别记录；Kimi 本轮只同步可打包源，不视为原生安装。本轮新的业务项目试用或模型行为演练未执行，既有三图未变时复用原渲染证据。
 
 原始输出、用户文件指纹及包/缓存比对保存在本机 `.dev/runs/service-architecture-template/`；正式结论保存在本篇、[Review](review.md)、[验证记录](verification.md)和唯一 [Progress](Progress.md)。完整提交和远程结果以执行后的记录为准。
+
+
+## 配置保护观察与最终核对方式
+
+初轮安装后的两用户文件与05:57初始指纹相同，独立执行者也核验通过。14:10提交后检查发现 `config.toml` 已在区间内变化，AGENTS.md仍同原指纹；只有初始hash和秒级时间，来源无法确定，不能归因为本脚本、CLI或并发宿主中的任一方。主 Agent 未恢复或覆盖配置。以当前配置在内存中作新的安装前快照，重复执行同一0.6.1 install/check，前后两文件逐字节相同；该结果只证明此次操作未新增配置改动，不声称全程始终未变。独立执行者只读确认这种证据边界。
+
+最终副本采用同样的安装前后比较，保留初始及重复操作的不同基线。最终保存后重建/install/check，核对clean HEAD、包内 source_commit、767文件源码/构建/缓存、16Skills/6角色/65引用及远端main SHA；原始结果使用本机 `release-install-final.json`、`release-check-final.json`、`release-readback-final.json`、`release-git-final.json`、`user-preservation-final.json`。文件中不写其自身哈希，实际最新提交由main HEAD定位。
+
+已完成记录与长期资产维护，无已知内容/安装阻断。Kimi原生安装、此既有聊天自动重载及新会话模型行为演练未执行；新版文件及注册已可供后续会话读取，不能把缓存正确升级成已验证专业行为。

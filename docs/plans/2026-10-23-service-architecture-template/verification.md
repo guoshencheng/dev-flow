@@ -65,3 +65,11 @@ updated: 2026-10-23
 - 原始结果：本机 `release-install-initial.json`、`release-check-initial.json`、`release-readback-initial.json`、`release-tests.json`；首次安装来自基线18d41cb及未提交候选，最终提交后仍需重建验明clean HEAD。
 - 方法语义、图示与表格：原C3独立结论及未改三图的真实渲染证据复用，发布增量独立复核通过；不把静态/缓存检查当成新会话加载或业务项目效果。
 - 当前安装边界：Codex本地缓存及个人受管Agent；Kimi仅生成同步未安装。记录保存后再执行最终install/check和远端核对，结果见[交付记录](delivery.md)。
+
+
+## 提交后与主干交付核验
+
+- `6beaa27` 保存38文件完整成果；提交后重建安装与check通过，包767文件三端一致，包source_commit与clean HEAD相同，16Skills/6原生角色/65引用与关键模板/职责检查通过。
+- main从37bce24普通快进并push至6beaa27，`git ls-remote --heads origin main`实际核对等于本地main，工作区干净；没有强推或删除无关worktree。
+- 配置观察分段：首轮两文件与原始指纹相同；提交后config.toml出现区间变化，来源未知。保留当前配置，重复install/check前后两文件字节相同；原始hash未覆盖，未将来源未知说成安装导致或全程未变。原评审者已只读审计证据边界。
+- 完成记录另行保存后，最终再次install/check，逐文件/提交tree/用户当前配置前后及远端SHA以 `release-readback-final.json` / `release-git-final.json` 等原始结果核对；相同测试/方法代码不重复无关全集回归。
