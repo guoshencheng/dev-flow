@@ -4,60 +4,23 @@
 
 ## 分区、分层架构总览
 
-问题：控制面与内网执行端各负责什么，如何通信？目标示意；外框分别代表网络区域和主机，控制面子框代表进程/运行单元，编排器内框代表同一进程中的逻辑组件。包含不表示调用，带标签的边表示运行通信或数据访问。图省略鉴权、重连与多副本细节。
+问题：控制面与内网执行端各负责什么，如何通信？目标示意；外框分别代表云端控制面的部署范围和内网主机，控制面子框代表进程/运行单元，编排器内框代表同一进程中的逻辑组件。云端部署外框不表示内部数据库对公网暴露；管理入口和网关单独标明公网协议。包含不表示调用，带标签的边表示运行通信或数据访问。图省略内部网络划分、鉴权、重连与多副本细节。
 
-```mermaid
-flowchart TB
-  user["使用者"]
-  subgraph cloud["公网 · 控制面 / Cloud"]
-    web["Dashboard / REST API · 管理入口"]
-    subgraph orch["编排服务进程"]
-      direction LR
-      coordinator["协调模块 · 组织任务"]
-      scheduler["调度模块 · 分配执行端"]
-      registry["注册模块 · 管理在线执行端"]
-      coordinator -->|"进程内调用：请求调度"| scheduler
-      scheduler -->|"进程内查询：可用执行端"| registry
-    end
-    db[("任务 / 事件存储")]
-    gateway["Worker Gateway · 连接与消息路由"]
-    web -->|"提交 / 查询任务"| orch
-    orch -->|"读写任务与事件"| db
-    orch -->|"请求派发任务"| gateway
-    gateway -->|"转交结果 / 连接状态"| orch
-  end
-  subgraph intranet["内网 · 执行区"]
-    subgraph host["执行主机 A"]
-      worker["Worker Daemon · 连接与执行管理"]
-      executor["执行服务 · 运行任务"]
-      workspace["工作目录 / Shell · 任务资源"]
-      worker -->|"本机 API：启动 / 查询执行"| executor
-      executor -->|"读写文件 / 运行命令"| workspace
-    end
-  end
-  user -->|"HTTPS：管理任务"| web
-  worker -->|"主动建立 WSS / TLS 连接"| gateway
-  gateway -->|"已建立通道：派发任务"| worker
-  worker -->|"已建立通道：上报结果"| gateway
-```
+![运行拓扑目标示意：云端控制面与内网执行端](diagrams/system-runtime-overview.svg)
+
+[可编辑 SVG 源文件](diagrams/system-runtime-overview.svg)。参考布局展示边界、层带与内部模块；数据库和网关并列，只用真实连线表达访问关系。
 
 读图结论：控制面管理任务与调度，执行端在内网运行任务；连接由 Worker 发起，任务通过已建立连接下发。网络连通不证明鉴权或权限已实现，实际设计仍需给出相关契约。
 
 ## 模块依赖图
 
-问题：业务策略怎样避免依赖外部 SDK？目标示意；所有实线箭头表示源码依赖，虚线表示实现端口。装配根同时引用用例与适配器并完成注入，省略无关模块；图中方向不是请求执行顺序。
+问题：`OrderService` 怎样使用内层契约而不依赖 ORM？与后文订单分层图相同的虚构目标；实线箭头从依赖方指向被依赖模块/类型，虚线箭头从外层实现指向内层端口。装配根的灰色实线只表示源码引用，实际注入行为见正文；图中方向不表示请求执行顺序。
 
-```mermaid
-flowchart LR
-  root["装配根"] --> usecase["任务用例"]
-  root --> adapter["外部执行适配器"]
-  usecase --> domain["领域规则"]
-  usecase --> port["执行端口 · 由用例层拥有"]
-  adapter -.->|"实现"| port
-  adapter --> sdk["外部服务 SDK"]
-```
+![模块源码依赖目标示意](diagrams/service-module-dependencies.svg)
 
-读图结论：用例通过自己拥有的端口调用外部能力；运行时会进入适配器，源码依赖仍朝向内层契约。
+[可编辑 SVG 源文件](diagrams/service-module-dependencies.svg)。装配根创建仓储实现并注入 Service；这与图中源码引用是不同关系，未另加注入边。接口适配依赖应用，应用依赖领域和自己拥有的端口，持久化适配实现端口并映射领域对象；实际代码不采用显式接口时按函数端口或真实符号改写。
+
+读图结论：运行时 Service 经端口进入仓储实现，源码仍依赖内层契约。装配根可以引用外层实现，但应用层不能据此反向导入 ORM。
 
 ## 跨端协作时序图
 
@@ -177,42 +140,15 @@ erDiagram
 
 ## 服务端整洁架构分层与业务数据示例
 
-以下三图描述同一个虚构的“创建草稿订单”目标方案，供[服务端架构视图](../../../references/architecture/technical-diagrams.md#服务端架构视图)改写使用，未对应任何真实项目。示例代码位置及 schema 名称也均为占位；采用时替换为已核验的源码/契约，并标明版本与覆盖。逻辑层均属于同一服务进程，分层不表示拆分部署。
+以下分层图、对应的[模块依赖图](#模块依赖图)、业务时序及 ER 图描述同一个虚构的“创建草稿订单”目标方案，供[服务端架构视图](../../../references/architecture/technical-diagrams.md#服务端架构视图)改写使用，未对应任何真实项目。示例代码位置及 schema 名称也均为占位；采用时替换为已核验的源码/契约，并标明版本与覆盖。逻辑层均属于同一服务进程，分层不表示拆分部署。
 
 ### 分层图及职责映射
 
-问题：`OrderService` 如何组织业务，同时不依赖 HTTP/ORM？实线箭头表示源码依赖，虚线箭头分别标注端口实现或装配注入。图省略 Web 框架和数据库驱动的内部组件；运行时读写顺序见下一张时序图。
+问题：接口适配、应用、领域、基础设施和装配各负责什么？目标示意；外框代表同一服务进程，内部框只表示逻辑归属。分层图不画依赖/调用边，避免结构与执行顺序混读；具体源码关系见[独立模块依赖图](#模块依赖图)，运行时读写见后文时序图。
 
-```mermaid
-flowchart TB
-  subgraph composition["装配入口 · 创建依赖与注入"]
-    bootstrap["bootstrap · 路由注册与装配"]
-  end
-  subgraph inbound["接口适配层 · HTTP 输入输出转换"]
-    controller["OrderController · 身份解析与 DTO 转换"]
-  end
-  subgraph application["应用层 · 业务操作与所需端口"]
-    service["OrderService.createDraft · 权限与用例编排"]
-    port["OrderRepository · 原子保存与查询契约"]
-  end
-  subgraph domain["领域层 · 业务对象与不变量"]
-    order["Order / OrderItem · 明细校验与金额计算"]
-  end
-  subgraph infrastructure["基础设施层 · 持久化适配"]
-    repository["SqlOrderRepository · 事务与模型映射"]
-    orm["ORM / 数据库驱动"]
-  end
-  controller -->|"源码依赖"| service
-  service -->|"源码依赖"| order
-  service -->|"源码依赖"| port
-  repository -.->|"实现端口"| port
-  repository -->|"源码依赖：映射领域对象"| order
-  repository -->|"源码依赖"| orm
-  bootstrap -->|"源码依赖"| controller
-  bootstrap -->|"源码依赖"| service
-  bootstrap -->|"源码依赖"| repository
-  bootstrap -.->|"将仓储实现注入 Service"| service
-```
+![整洁架构逻辑分层目标示意](diagrams/service-clean-layers.svg)
+
+[可编辑 SVG 源文件](diagrams/service-clean-layers.svg)。应用和领域置于核心区，基础设施位于外部适配区；装配入口负责创建及注入。直接使用 `CreateDraftOrderUsecase` 的项目保留其真实名称，不额外新增 Service 转调层。
 
 | 层次 | 示例职责与代码位置（均为占位） |
 | --- | --- |

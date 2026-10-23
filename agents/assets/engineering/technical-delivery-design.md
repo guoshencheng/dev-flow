@@ -46,7 +46,7 @@ iteration: iteration-id
 
 〈先说明整体方案，再解释为什么采用这一方案。让读者读完本节就能理解主要改动。〉
 
-按[技术图示规范](../../references/architecture/technical-diagrams.md)表达结构/边界变化或引用有效现状图；图旁说明现状/目标、范围、包含和连线含义、依据及省略项。[图示示例](../architecture/examples/technical-diagrams.md)只供改写。
+按[技术图示规范](../../references/architecture/technical-diagrams.md)表达结构/边界变化或引用有效现状图；图旁说明现状/目标、范围、包含和连线含义、依据及省略项。[图示示例](../architecture/examples/technical-diagrams.md)只供改写。结构总览、分层、模块依赖与部署拓扑优先用可编辑 SVG，按分区/层带/嵌套模块布局；复杂分层与源码依赖分图，相对嵌入并提供源文件入口。业务时序、流程、状态及 ER 优先用 Mermaid，实际渲染须核验。
 
 ### 技术反馈与方案比较
 

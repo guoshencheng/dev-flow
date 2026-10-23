@@ -1,6 +1,8 @@
 # Codex / Kimi Plugin 安装与维护
 
-当前源码 0.6.1 提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-23-service-architecture-template/Progress.md)。
+当前源码 0.6.2 提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-23-architecture-svg/Progress.md)。
+
+0.6.2 调整架构结构图的默认表达：系统总览、整洁架构分层、模块依赖与部署拓扑优先使用可编辑 SVG，采用分区、层带和嵌套模块布局；归属、源码依赖与运行通信分开说明，业务时序、流程、状态和 ER 继续优先 Mermaid。新增三张可编辑 SVG 示例并同步总架构、现状地图、研发设计与 Review 模板，核对浏览器实际呈现。属于文档/方法兼容维护，递增 patch；总纲 0.32、文档协议 0.15、能力和安装机制不变。
 
 0.6.1 完善架构文档模板与规范：项目总架构作为跨迭代长期基线，所有迭代架构变化（含重大调整）统一放在研发设计，技术收尾依据实际结果回写总架构并记录前后版本和证据。服务端明确分层图、Service/Usecase 操作清单、具体业务时序和 ER 图，现状地图作为总架构的支撑资料；相关 Review、职责、目录及索引同步。属于文档/方法的兼容维护，递增 patch；总纲 0.32、文档协议 0.15、安装机制不变。
 

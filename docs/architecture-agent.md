@@ -86,3 +86,9 @@ v0.3 技术约定、代码规范与格式配置的检查见[本轮记录](../rev
 本轮 0.6.1 完善模板与规范，独立复核、图示渲染、内容/引用及实际安装交付状态见[本轮 Progress](plans/2026-10-23-service-architecture-template/Progress.md)；尚未在真实业务服务上验证梳理效果，不将示例渲染等同于业务项目架构核验。
 
 本轮补充统一总架构与迭代分工：总架构默认 `docs/dev-flow/architecture/design.md` 或项目已有权威位置，现状地图是其核验章节/支撑资料；迭代研发设计引用基线并维护架构增量，技术收尾按最终源码/产物及核验证据同步实际有效部分，记录前后版本与环境覆盖。模板、职责正文、目录/索引及相关规范同步调整，验证范围仍见同一 Progress。
+
+## SVG 结构图表达维护（2026-10-23，0.6.2）
+
+[技术图示规范](../agents/references/architecture/technical-diagrams.md)将结构总览、整洁架构分层、模块依赖与部署拓扑默认调整为可编辑SVG；时序、流程、状态及ER优先Mermaid。配套[示例](../agents/assets/architecture/examples/technical-diagrams.md)用独立图表达归属、源码依赖及运行拓扑，保留可编辑文字、相对嵌入和源文件入口。相关总架构、现状、研发设计和Review模板同步。
+
+图示语义及1280宽浏览器呈现经独立复核，运行示例的云端部署边界与公网入口歧义已修正。此为方法/模板及安装交付验证，真实项目采用后的架构效果不在本轮冒认；发布、宿主实际缓存及主干状态见[本轮Progress](plans/2026-10-23-architecture-svg/Progress.md)。
