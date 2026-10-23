@@ -12,6 +12,18 @@
 
 读图结论：控制面管理任务与调度，执行端在内网运行任务；连接由 Worker 发起，任务通过已建立连接下发。网络连通不证明鉴权或权限已实现，实际设计仍需给出相关契约。
 
+### 不看图时的运行结构说明
+
+以下仍为虚构目标，依据是本例设计约定；未对应项目源码。云端部署范围包含 Web Dashboard / REST API、编排服务进程、PostgreSQL / Event Store 和 Worker Gateway；Web与网关是公网入口，部署在云端不表示数据库对公网暴露。编排服务内部包含 AI Coordinator、Workflow Engine、Task Scheduler、Worker Registry 四个逻辑模块；主机A和主机B各包含一个Worker Daemon，操作系统示意分别为macOS/Windows、Linux/Docker。本图未定义这些模块的源码依赖、端口实现或具体注入方式，不能由布局推断。
+
+| 关系类型 | 主体 → 对象 | 具体含义与条件 | 依据及状态 |
+| --- | --- | --- | --- |
+| 运行调用 | Web Dashboard / REST API → Global Orchestrator | 提交/查询任务；具体进程间协议未在本例约定 | 虚构目标；运行总览设计 |
+| 数据访问 | Global Orchestrator → PostgreSQL / Event Store | 读写任务和事件；网关请求不以数据库作为必经转发节点 | 虚构目标；运行总览设计 |
+| 双向运行协作 | Global Orchestrator ↔ Worker Gateway | 编排器请求派发，网关转交结果/连接状态 | 虚构目标；运行总览设计 |
+| 主动建连 | 主机A的Worker、主机B的Worker → Worker Gateway | 各自主动建立WSS/TLS连接，无需内网开放入站端口 | 虚构目标；非源码依赖 |
+| 通道消息 | Worker Gateway → Worker；Worker → Worker Gateway | 在已建立通道上分别下发任务、上报结果，TLS不自动说明双向身份认证 | 虚构目标；鉴权/重连另定 |
+
 ## 模块依赖图
 
 问题：`OrderService` 怎样使用内层契约而不依赖 ORM？与后文订单分层图相同的虚构目标；实线箭头从依赖方指向被依赖模块/类型，虚线箭头从外层实现指向内层端口。装配根的灰色实线只表示源码引用，实际注入行为见正文；图中方向不表示请求执行顺序。
@@ -21,6 +33,24 @@
 [可编辑 SVG 源文件](diagrams/service-module-dependencies.svg)。装配根创建仓储实现并注入 Service；这与图中源码引用是不同关系，未另加注入边。接口适配依赖应用，应用依赖领域和自己拥有的端口，持久化适配实现端口并映射领域对象；实际代码不采用显式接口时按函数端口或真实符号改写。
 
 读图结论：运行时 Service 经端口进入仓储实现，源码仍依赖内层契约。装配根可以引用外层实现，但应用层不能据此反向导入 ORM。
+
+### 不看图时的源码、实现与注入关系
+
+本表的名称与订单分层图、时序/ER一致，全部为虚构目标和占位源码位置。下面的箭头仅用于文字明确双方与方向，每行的关系类型独立解释；表中装配参数是本例新增的明确设计约定，不代表已有项目实现。本例SQL服务启动时，bootstrap先创建SqlOrderRepository实例，再构造OrderService(repository)并传入该仓储实例，随后构造OrderController(service)并传入该Service实例，最后注册路由；其他环境的实现选择未约定。
+
+| 关系类型 | 主体 | 关系对象 | 具体含义、注入目标与条件 | 依据及状态（均为占位） |
+| --- | --- | --- | --- | --- |
+| 源码依赖 | bootstrap | OrderController、OrderService、SqlOrderRepository | 装配根引用三者的构造入口；创建和传入行为见下方注入行 | 示例 `bootstrap`；虚构目标 |
+| 源码依赖 | OrderController | OrderService | Controller依赖应用业务入口，不直接读取持久化实现 | 示例 `adapters/http/OrderController`；虚构目标 |
+| 源码依赖 | OrderService | OrderRepository | 依赖应用层自己拥有的保存/查询端口 | 示例 `application/OrderService`、`application/ports/OrderRepository`；虚构目标 |
+| 源码依赖 | OrderService | Order / OrderItem | 使用领域对象及业务规则 | 示例 `application/OrderService`、`domain/Order`与`domain/OrderItem`；虚构目标 |
+| 源码依赖 | SqlOrderRepository | Order / OrderItem | 持久化适配映射领域对象 | 示例 `infrastructure/SqlOrderRepository`；虚构目标 |
+| 源码依赖 | SqlOrderRepository | ORM / 数据库驱动 | 技术库依赖留在基础设施层 | 示例 `infrastructure/SqlOrderRepository`；具体库未指定，虚构目标 |
+| 端口实现 | SqlOrderRepository | OrderRepository（应用层拥有） | 外层持久化适配实现内层端口；与Service源码引用端口是两种关系 | 示例仓储实现与应用层端口；虚构目标 |
+| 装配注入 | bootstrap | OrderService的构造参数repository | 创建SqlOrderRepository实例，作为OrderRepository传入Service；本例服务启动采用SQL实现，其他环境选择未约定 | 示例 `bootstrap`；参数名为本例约定，虚构目标 |
+| 装配注入 | bootstrap | OrderController的构造参数service | 将已装配的OrderService实例传入Controller，再注册路由 | 示例 `bootstrap`；参数名为本例约定，虚构目标 |
+
+关键限制：OrderService允许依赖领域与应用层端口，禁止导入SqlOrderRepository、ORM或HTTP框架类型；Order / OrderItem不依赖HTTP和数据库类型。运行时Service经端口进入仓储实现，这个调用不意味着源码反向依赖。示例采用构造参数装配；使用函数集合或工厂参数的项目按真实符号和条件表达，未使用DI容器并不构成缺层。
 
 ## 跨端协作时序图
 
@@ -159,6 +189,8 @@ erDiagram
 | 装配 | `bootstrap` 创建仓储实现并注入 Service，再注册 Controller；只负责装配，不决定业务规则 |
 
 读图结论：Service 通过自己所需的端口使用外部持久化能力，运行调用进入仓储实现，源码依赖仍向内。项目若直接使用 `CreateDraftOrderUsecase.execute`，替换应用层名称即可，无需同时增加 Service 与 Usecase 两个转调层。
+
+无图分层结论：同一服务进程包含接口适配层、应用核心、基础设施层及装配入口；应用核心包含应用层和领域层。OrderController及响应/错误映射属于接口适配层；OrderService和由应用层拥有的OrderRepository属于应用层；Order与OrderItem属于领域层；SqlOrderRepository和ORM/数据库驱动属于基础设施层；bootstrap属于装配入口。各层职责/占位代码见上表，源码依赖、端口实现与两个构造参数注入关系统一见[文字关系清单](#不看图时的源码实现与注入关系)（本例同一虚构目标版本），不另复制第二份关系事实。
 
 ### 业务操作清单与具体时序
 

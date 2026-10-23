@@ -92,3 +92,9 @@ v0.3 技术约定、代码规范与格式配置的检查见[本轮记录](../rev
 [技术图示规范](../agents/references/architecture/technical-diagrams.md)将结构总览、整洁架构分层、模块依赖与部署拓扑默认调整为可编辑SVG；时序、流程、状态及ER优先Mermaid。配套[示例](../agents/assets/architecture/examples/technical-diagrams.md)用独立图表达归属、源码依赖及运行拓扑，保留可编辑文字、相对嵌入和源文件入口。相关总架构、现状、研发设计和Review模板同步。
 
 图示语义及1280宽浏览器呈现经独立复核，运行示例的云端部署边界与公网入口歧义已修正。此为方法/模板及安装交付验证，真实项目采用后的架构效果不在本轮冒认；发布、宿主实际缓存及主干状态见[本轮Progress](plans/2026-10-23-architecture-svg/Progress.md)。
+
+## 关键架构关系无图阅读（2026-10-23，0.6.3）
+
+[图示规范](../agents/references/architecture/technical-diagrams.md#关键架构关系的无图阅读)明确即使不看图，也能从正文或表格读出关键架构关系；分层/包含、源码依赖、端口实现和装配注入分别给出主体、对象、方向、依据及状态，装配记录具体创建/选择、注入目标和条件。模板及Order/运行拓扑例子落实文字字段，Review先无图复原再核对，技术收尾同步文字与图；总架构权威位置与迭代增量分工不变。
+
+本轮独立内容复核关闭了示例装配创建链隐含的问题；不改SVG，复用其0.6.2实际呈现证据。新要求提供可检索文字语义，不承诺所有AI自动读取附件；独立复核、安装与主干结果见[本轮Progress](plans/2026-10-23-architecture-text-relations/Progress.md)。
