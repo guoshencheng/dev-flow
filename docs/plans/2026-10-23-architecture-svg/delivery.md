@@ -1,6 +1,6 @@
 ---
 title: 0.6.2 SVG模板发布与主干交付
-status: active
+status: completed
 updated: 2026-10-23
 ---
 
@@ -18,7 +18,7 @@ updated: 2026-10-23
 | 源码/构建/缓存一致 | package-files清单逐文件SHA256与源码、plugin-source和实际缓存一致；三张SVG及关键模板可达且文本符合新默认 | 通过：774文件逐一一致，三张SVG和六处关键默认内容可达 |
 | 六职责与16Skills | 原生受管角色正文/归属/缓存链接检查，角色不固定模型 | 通过：6职责、16Skills、65条缓存资源链接与角色正文/归属正确 |
 | 用户配置保留 | 安装前后config.toml及AGENTS.md字节指纹相同，不改写用户指引 | 通过：两文件相对安装前指纹均未变，未读取/保存正文 |
-| 最终提交与主干 | 保存后按clean HEAD重建安装核验，普通推送main，远端SHA等于本地HEAD且无残余修改 | 待执行 |
+| 最终提交与主干 | 保存后按clean HEAD重建安装核验，普通推送main，远端SHA等于本地HEAD且无残余修改 | 通过：15b0662干净HEAD重装核验并已普通推送main，远端SHA一致；完成记录保存后再核对最终HEAD |
 
 本地目标为Codex，Kimi仅生成同步未原生安装。文件启用/注册可核验，新会话能力发现刷新不以本次既有会话快照冒认。原始命令、指纹和配置保留结果保存在本机`.dev/runs/architecture-svg/`，只记录必要事实不保存配置正文。最终结果随实际执行更新。
 
@@ -30,3 +30,12 @@ updated: 2026-10-23
 - 规范、示例、总架构/现状/研发设计/Review模板及长期能力说明均已同步；总纲协议、目录协议与安装机制不变，无代码缺陷或未关闭图示阻断。
 
 原始证据为`release-install-initial.json`、`release-check-initial.json`、`release-readback-initial.json`、`release-tests.log`、`release-link-check.json`，均位于本机`.dev/runs/architecture-svg/`。提交记录和最终clean HEAD安装/主干核对待本节后续记录。
+
+## clean HEAD 与远程主干结果
+
+- 内容提交15b066284800f5858c785d5dc5663c7c57b407f0包含19文件完整成果。提交后实际重建安装，package-files.source_commit等于该HEAD，working_tree_changes为空；逐文件、SVG、关键文本、角色与用户配置保留检查全部通过，工作区干净。
+- 本次clean HEAD包摘要`cdfbf221b9d1788620c14a9f42303dafc2f015bd8af9024f7cb0c74c16e5b125`，774文件；原始结果为`release-install-candidate.json`、`release-check-candidate.json`、`release-readback-candidate.json`。它与初次包摘要不同，是收尾记录/提交来源更新后的预期结果；SVG及方法9文件未变，旧图示语义/视觉证据仍覆盖。
+- `git push origin main`成功：e06ff5e→15b0662；随后`git ls-remote --heads origin main`等于完整内容提交SHA。未强推，未修改其他worktree。
+- 本完成记录保存后，最终HEAD继续按同一安装/check/逐文件/配置保留规则核对，原始结果使用`*-final.json`；最后普通推送完成记录并比对远端与本地HEAD。记录自身提交号不嵌入包内，避免循环改写；最终SHA在本轮完成说明及本机`release-git-final.json`登记。
+
+文档与长期资产收尾完成，无未关闭阻断；安装工具/生成职责正文未变，仅版本身份和模板资源随本版交付。后续新迭代再次安装前须继续升级版本。新会话需要通过宿主发现读取0.6.2资源；本次既有会话的技能清单不作为重新发现证据。
