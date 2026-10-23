@@ -2,12 +2,16 @@
 id: REVIEW-case-management
 title: 测试用例文档方案与规范更新评审
 status: completed
-version: 6
+version: 7
 owner: coordinator
 iteration: 2026-10-23-case-management-and-execution
 ---
 
 # 测试用例文档方案与规范更新评审
+
+## 测试执行用词澄清（流程版本5）
+
+用户要求统一“每次测试执行”，一个迭代可有多次执行，每次单独保存执行表。当前设计v7和现行规范/模板已同步，生成入口、版本一致性、相对链接及安装/check通过。本次仅主Agent定向文字核对，未新增独立评审或业务执行；下方独立评审仍绑定当时的设计v6和0.6.4规范候选。详细交付见Progress顶部。
 
 ## 现行规范和模板更新评审（流程版本4）
 

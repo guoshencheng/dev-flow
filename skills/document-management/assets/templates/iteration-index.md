@@ -49,7 +49,7 @@ Progress 须从开始覆盖最终目标的全部阶段：整体流程展示与�
 | 正式测试用例 | 项目现行 `docs/dev-flow/acceptance/cases.md`；已有位置沿用 | 候选完整后维护 | 可提交文字列表，全量/增量共用；独立Review，按需策略/技术说明 |
 | 实施授权 | 原确认记录或本索引 | 待填写 | 已展示的范围/结果/验证/交付版本、用户答复与来源、明确开工范围；可与设计确认合并 |
 | 实施 | `engineering/implementation-plan.md`、`engineering/handoff.md` | 待填写 | 计划复核、切片、集成版本、自测与完整候选交接 |
-| 验收执行记录（本地） | `.dev/runs/<迭代ID>/acceptance/<runID>/report.md` | 本地维护，不提交 | 按编号逐条回填结果，截图等证明可选；索引不复制执行表/附件 |
+| 验收执行记录（本地） | `.dev/runs/<迭代ID>/acceptance/<runID>/report.md` | 本地维护，不提交 | 一个迭代可多次测试执行，每次用独立runID单独保存执行表；按编号回填，证明可选，索引不复制明细/附件 |
 | 运维/交付 | `operations/delivery.md` | 待填写 | 实际启动/产物/目标环境/版本、结果和恢复 |
 | 架构技术收尾 | `architecture/closeout.md` | 待填写 | 设计差异、实现 Review、验收/交付结果、总架构同步前后版本/范围/证据与环境覆盖、其他资产及遗留 |
 
