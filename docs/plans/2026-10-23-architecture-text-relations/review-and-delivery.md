@@ -1,6 +1,6 @@
 ---
 title: 0.6.3独立复核与安装交付
-status: active
+status: completed
 updated: 2026-10-23
 ---
 
@@ -40,7 +40,7 @@ updated: 2026-10-23
 | 实际宿主 | install后check，CLI实际enabled/version/source | 通过：CLI实际enabled=true、0.6.3、来源本仓库构建 |
 | 包/源码/缓存 | Git管理文件清单逐一SHA及关键新文字、3SVG、16Skills/6职责/缓存链接 | 通过：777文件逐一一致；3SVG/9处关键文字/16Skills/6职责/65缓存链接 |
 | 用户配置保留 | 当前config.toml和AGENTS.md在安装区间前后字节一致 | 通过：两个用户文件前后SHA不变，未写个人指引 |
-| 提交与主干 | clean HEAD重装且source_commit一致；普通推main，远端SHA相同，工作区干净 | 待执行 |
+| 提交与主干 | clean HEAD重装且source_commit一致；普通推main，远端SHA相同，工作区干净 | 通过：daf88b6干净HEAD重装核验并已推main，远端SHA一致；完成记录保存后再核对最终HEAD |
 
 原始输出在本机`.dev/runs/architecture-text-relations/`，配置仅存指纹不存正文。Kimi仅生成同步，不做原生安装；现有会话能力快照刷新、真实项目采用效果不在本轮冒认。结果随实际执行追加，未执行保持未完成。
 
@@ -55,3 +55,11 @@ updated: 2026-10-23
 实际install/check通过，缓存`/Users/guoshencheng/.codex/plugins/cache/dev-flow-local/dev-flow/0.6.3`，构建目录本仓库`.dev-flow/plugin-source`。777文件源码/构建/缓存SHA逐一一致，三SVG、9处新规范/模板/示例文字、16Skills、6原生职责及65个角色缓存资源链接通过；config.toml与AGENTS.md安装前后字节指纹未变。包清单摘要`a8001ee011f0882b51a149aaf66ea5f6efad03ea156a4825d28d6bd07781866c`，source_commit=382d472加未提交差异，初次结果不当作clean HEAD构建。
 
 独立评审者亲自重复manage_plugin check与完整readback，核对实际启用/来源、逐文件、资源与配置保留，通过；生成check也再次通过。完整候选的无图关系及图文一致性无未关闭阻断，规范/示例、总架构/现状/研发设计、Review与收尾及长期能力说明已同步。原始输出`release-install-initial.json`、`release-check-initial.json`、`release-readback-initial.json`均在本机运行目录。提交后的最终包及远端SHA待继续核对。
+
+## 干净提交与主干交付
+
+内容提交daf88b69c3074509904d787674d3b6d53f1d92f5包含本轮18文件。提交后重新install/check及逐文件读回，source_commit与HEAD一致、working_tree_changes为空，777文件三端一致；3SVG、9处文字/模板、6职责/16Skills/65缓存链接及两用户文件安装前后SHA再次通过。包清单摘要`d653cd0aca48a062491234284a22691c7117148cecd0a6b3711c7422f8afc8d9`；原始证据`release-install-candidate.json`、`release-check-candidate.json`、`release-readback-candidate.json`。
+
+已普通推送main：382d472→daf88b6，`git ls-remote --heads origin main`与内容提交SHA相同，工作区干净。未改其他worktree或安装工具。规范/模板/示例、Review/收尾与长期能力说明同步，无未关闭技术或图文阻断。
+
+本完成记录保存后以最终HEAD继续执行同样安装/check、逐文件/关键内容/资源及配置保留核验，结果为本机`release-install-final.json`、`release-check-final.json`、`release-readback-final.json`；随后普通推送并核对本地/远端SHA及干净状态，写入`release-git-final.json`。记录自身提交号不嵌入包内，避免循环改写；最终提交号在完成说明交付。包清单摘要随记录/提交来源更新属预期，正式9内容及未改SVG的原验证仍有效。
