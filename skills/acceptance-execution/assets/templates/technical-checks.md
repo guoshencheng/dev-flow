@@ -8,7 +8,7 @@ iteration: iteration-id
 
 # 技术验证拆解与对齐 Review
 
-默认保存为 `docs/dev-flow/iterations/<迭代ID>/acceptance/technical-checks.md`。承接[用户验收用例](../../../acceptance-case-design/assets/templates/acceptance-cases.md)的技术检查，供研发、测试与 Review 使用；技术方法不另设人工审批。优先复用 `docs/dev-flow/` 内已有权威文档；目录外文档按共同文档协议整理迁入。
+本模板仅在复杂专项或既有技术映射确有需要时采用；简单用例列表和执行表无需另建本文件。单次执行拆解默认留在忽略的 `.dev/runs/<迭代ID>/acceptance/<runID>/technical-checks.md`；有长期复用价值的技术约束/自动化入口按项目工程文档维护。承接[用户验收用例](../../../acceptance-case-design/assets/templates/acceptance-cases.md)的技术检查，供研发、测试与 Review 使用；技术方法不另设人工审批。优先复用 `docs/dev-flow/` 内已有权威文档；目录外文档按共同文档协议整理迁入。
 
 ## 有效输入与版本
 
@@ -43,4 +43,4 @@ iteration: iteration-id
 5. 两层环境、模拟、未覆盖与交付边界一致，关联检查及方案变化能定位受影响用例。
 6. 执行报告可以按用户用例汇总；必需检查失败或未完成，所属用例不能标为通过。
 
-方案遗漏回研发，行为歧义回产品；改变已确认预期只重新确认受影响部分。实际运行结果另入运行报告，Review 不代替执行。
+方案遗漏回研发，行为歧义回产品；改变已确认预期只重新确认受影响部分。实际运行结果另入本地执行表，不提交Git；截图等附件可选，必要实际观察不能被局部成功替代。Review 不代替执行。

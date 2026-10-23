@@ -1,22 +1,26 @@
 ---
 name: acceptance-execution
-description: 对可运行候选执行界面、API、数据、E2E 与交付用例，保存证据、反馈问题并进行定向复验。
+description: 按可读用例逐项执行界面、API、数据、E2E与交付验证，将结果和可选证明记录到本地执行表并复验。
 ---
 
 # 验收执行与复验
 
-接收有效用例、固定候选、实际环境、身份/数据及交付入口，核验版本和执行依赖。优先复用项目已有 runner，明确 Mock 与真实链路边界。
+接收用例文档、可运行候选、环境和必要身份/数据，优先复用现有 runner 或实际操作入口，明确真实链路与 Mock 范围。
 
-按被测对象选择下列方法，记录每项真实结果与证据。发现问题立即反馈；作者推进新候选时保留被测版本或暂停受影响检查。修复后复验原问题、相邻契约和相关回归。
+用例文档提交 Git；每轮执行另建本地表，默认 `.dev/runs/<迭代ID>/acceptance/<runID>/report.md`。先列出本轮全量或增量所选编号，默认“未执行”，逐条实际操作并及时回填；中断后继续剩余项。执行表及截图、录屏、日志等附件不提交，不回写用例文档或其他可提交文档。
 
-交接逐必需用例结果、候选/环境、命令/证据、缺陷/复验与未执行项，由测试职责判断范围内结论。端口/健康正常、Mock 或局部通过不能替代约定真实 E2E。
+表格记录用例、是否通过、实际结果/备注，以及可选证明链接。状态用“通过 / 不通过 / 未执行 / 待人工验证”；无法执行写清原因。证明有就附，没有可写“无”，不因缺少截图或附件单独判未通过；没有实际执行或没有判断所需的实际观察时，不能标通过。
+
+AI 无法完成的人工项留待人工，收到明确的实际验证反馈后填入同一轮本地表。失败及时反馈；修复后执行原场景及相关回归，在备注保留原问题和复验情况。不能用服务可访问、截图或局部成功代替用例要求的完整链路。
+
+结束前逐编号核对本轮所选用例是否都有记录，未执行、失败和待人工项如实保留。主 Agent 维护总体流程状态，执行明细及附件继续留在忽略目录。
 
 ## 按需读取
 
 - [界面及交互](references/frontend-and-ui.md)。
 - [真实接口和数据](references/backend-and-api.md)。
 - [完整链路和交付](references/end-to-end-and-delivery.md)。
-- [运行、证据、缺陷和复验](references/execution-and-feedback.md)。
-- [结果模板](assets/templates/acceptance-report.md)。
-- [技术检查模板](assets/templates/technical-checks.md)。
+- [执行、反馈与复验](references/execution-and-feedback.md)。
+- [本地执行表模板](assets/templates/acceptance-report.md)。
+- [技术检查模板](assets/templates/technical-checks.md)，仅确需额外技术说明时使用。
 - [缺陷与复验模板](assets/templates/defect.md)。

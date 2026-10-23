@@ -2,7 +2,7 @@
 
 面向 Codex 与 Kimi 的六职责研发协作插件。流程、专业职责和操作技能分别维护：`dev-flow` 只安排阶段、依赖、授权和完成条件；六职责 Agent 提示词承担专业判断；操作 Skills 提供具体方法与工具。项目业务事实保存在所属项目。
 
-当前源码版本 **0.6.3**，总纲 **0.32**：即使不看图，也能从正文或表格读出关键架构关系；明确分层/包含、源码依赖、端口实现与装配注入的文字字段，模板、示例、Review和收尾同步。结构图优先可编辑 SVG，业务时序及 ER 优先 Mermaid；项目总架构/迭代研发设计分工、目录协议 0.15 和原生 Agent 注册保持不变，验证与宿主安装状态见[本轮 Progress](docs/plans/2026-10-23-architecture-text-relations/Progress.md)。
+当前源码版本 **0.6.4**，总纲 **0.33**：测试用例以可提交的中文列表维护，全量与增量共用；每轮执行表及截图等可选证明另存忽略目录，不提交。真实验证与附件有无分开判断，不默认要求技术拆解或新工具。架构图示、原生Agent注册与既有流程阶段保留；文档协议0.16，验证及安装状态见[本轮 Progress](docs/plans/2026-10-23-case-management-and-execution/Progress.md)。
 
 ## 能力入口
 
@@ -30,7 +30,7 @@
 | [codebase-mapping](skills/codebase-mapping/SKILL.md) | 代码业务链、模块、调用/依赖、数据与符号现状地图 |
 | [regression-verification](skills/regression-verification/SKILL.md) | 目标失败、旧新对照和测试保护有效性 |
 | [defect-diagnosis](skills/defect-diagnosis/SKILL.md) | 最小复现、假设实验、未知根因与修复建议 |
-| [acceptance-case-design](skills/acceptance-case-design/SKILL.md) | 正式用例、技术覆盖和证据要求 |
+| [acceptance-case-design](skills/acceptance-case-design/SKILL.md) | 文字用例列表、增量维护和覆盖核对 |
 | [acceptance-execution](skills/acceptance-execution/SKILL.md) | 界面/API/E2E/交付用例执行、缺陷和复验 |
 | [runtime-operations](skills/runtime-operations/SKILL.md) | 环境/配置、启动停止、运行版本与信号诊断 |
 | [release-and-recovery](skills/release-and-recovery/SKILL.md) | 分别按授权进行发布、回退/恢复及资源退役 |
@@ -49,7 +49,7 @@ python3 scripts/manage_plugin.py check
 
 新文件先纳入 Git，安装只打包受管理源码；同一命令将六职责注册到 `CODEX_HOME/agents/`（默认 `~/.codex/agents/`），无需另行配置。检查实际启用、缓存/源码指纹、Skill、角色及资源；同名冲突或用户修改会报错并保留内容，不改全局指引。插件页面安装目前没有已核实的自动注册入口；采用上述命令完成注册。原生发现/派发需在新会话核验。Kimi 使用独立安装/重载路径，见[安装指南](docs/plugin.md)。
 
-完整任务使用 `$dev-flow`；说“开始收尾”进入[收尾流程](skills/dev-flow/references/closeout.md)。主 Agent 核对完整候选 Review、必要验证、技术收尾及交付，再调用 Git 保存与文档归档。已有同范围授权复用，缺少必需证据保持未完成。仅文档整理按明确范围裁剪。
+完整任务使用 `$dev-flow`；说“开始收尾”进入[收尾流程](skills/dev-flow/references/closeout.md)。主 Agent 核对完整候选 Review、必要验证、技术收尾及交付，再调用 Git 保存与文档归档。已有同范围授权复用，未完成必需实际验证保持未完成；截图等证明附件可选。仅文档整理按明确范围裁剪。
 
 直接在线阅读项目文档可使用 [document-management](skills/document-management/references/document-preview.md) 中的脚本，显式传项目根路径；文档与独立原型仍由所属项目维护，预览 URL 依赖实际运行服务。
 

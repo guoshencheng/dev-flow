@@ -1,3 +1,5 @@
+> 2026-10-23 / 0.6.4 当前约定：用例使用可提交的中文列表，全量与增量共用；每轮执行表和可选截图等证明另存忽略目录，不提交。技术拆解按需，不默认要求。方法权威见[用例设计](../skills/acceptance-case-design/SKILL.md)和[验收执行](../skills/acceptance-execution/SKILL.md)；下方建设与评测保留当时事实，不自动成为当前附加要求。
+
 ---
 
 > 2026-10-21 结构调整：当前专业责任源为 [agents/prompts/acceptance.md](../agents/prompts/acceptance.md)，操作路由见 [能力清单](../capabilities.json)。长篇规范和模板随职责参考/资产或对应操作 Skill。下文首版建设及既有验证记录保留历史版本事实；本轮实际结果见[实施进度](plans/2026-10-21-agent-skill-reorganization/Progress.md)，不因迁移自动视为行为或原生派发通过。
