@@ -5,10 +5,11 @@
 | 资产 | 默认位置与维护内容 |
 | --- | --- |
 | 工程索引 | `engineering/index.md`：真实安装单元、命令、代码映射和权威入口 |
+| 项目总架构输入 | `architecture/design.md` 或项目已有权威位置：跨迭代基线，迭代研发设计引用其版本与变化；收尾定向同步实际生效部分 |
 | 研发设计 | `iterations/<迭代ID>/engineering/design.md`：业务链路、架构及实现的统一设计 |
 | 独立 Review | `iterations/<迭代ID>/engineering/review.md`：设计、计划、完整实现的对象版本、发现、处理和复核 |
 | 实施计划 | `iterations/<迭代ID>/engineering/implementation-plan.md`：步骤、依赖、自测、集成与交付安排 |
-| 架构技术收尾 | `iterations/<迭代ID>/architecture/closeout.md`：实际实现与设计差异、验证、资产和遗留 |
+| 架构技术收尾 | `iterations/<迭代ID>/architecture/closeout.md`：实际实现与设计差异、验证、项目总架构同步前后版本/范围/证据、其他资产和遗留 |
 | 工程交接 | `iterations/<迭代ID>/engineering/handoff.md` 或现行任务/PR：候选、自测、启动与待验项 |
 | 规范、自动化与源码 | 复用项目权威位置，文档引用实际配置和代码 |
 

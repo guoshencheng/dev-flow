@@ -16,9 +16,9 @@
 
 ## 架构
 
-`docs/dev-flow/architecture/index.md` 指向实际系统、模块地图、契约、技术基线、决定/例外及改进。schema/API/源码保留工程权威位置，用来源提交、路径/符号和实际覆盖定位现状，不把尚未实现的目标记为当前事实。
+`docs/dev-flow/architecture/index.md` 指向项目总架构的唯一权威位置，默认 `docs/dev-flow/architecture/design.md`，已有有效总架构沿用原位置。总架构保存跨迭代实际系统、整洁架构分层、Service/Usecase 清单、核心业务时序、ER/数据契约、技术基线及约束；现状核验/模块地图作为其章节或按需支撑资料，引用权威图与清单，不另维护同范围完整基线。schema/API/源码保留工程权威位置，以来源提交、路径/符号和覆盖定位现状。
 
-迭代统一设计/Review/计划位于 `engineering/`，技术收尾位于 `architecture/closeout.md`；[架构职责](../../../agents/prompts/architecture.md)核验内容。历史决定保留替代关系，未证实建议登记待办，不升级成通用要求。
+所有迭代架构变化统一在 `engineering/design.md`，含重大系统调整及迁移，引用总架构输入版本、变化及收尾同步项；Review/计划同在 `engineering/`。`architecture/closeout.md` 由[架构职责](../../../agents/prompts/architecture.md)核对最终源码/产物、Review 和实际验证/交付，定向回写总架构及支撑资料的已实现有效事实，记录前后版本、范围、候选/证据及环境覆盖。无需变化也记录复用依据；未实现、未确认或待核验方案留在迭代及明确目标/差距中，不转成当前事实，未部署不称生产已生效。历史决定保留替代关系，未证实建议登记待办，不升级成通用要求。
 
 ## 研发
 

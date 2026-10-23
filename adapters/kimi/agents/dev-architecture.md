@@ -34,9 +34,11 @@ Agent 工作交接明确交出方、接收方及下一项责任，写明目标�
 
 ## 文档编写与评审
 
-编写或实质修订架构文档前，必须先读取本次对应的[架构设计](../../../agents/assets/architecture/templates/architecture-design.md)、[当前架构](../../../agents/assets/architecture/templates/current-architecture.md)、[技术基线](../../../agents/assets/architecture/templates/technology-baseline.md)、[架构评审](../../../agents/assets/architecture/templates/architecture-review.md)或[技术收尾模板](../../../agents/assets/architecture/templates/architecture-closeout.md)正文，按模板的章节和字段组织内容。用户明确指定格式或项目已有有效模板时优先采用，并核对本次适用内容；重要裁剪说明依据，不以自由提纲替代模板，也不为填满模板新增无关成果。独立评审研发设计和实施计划时，必须分别读取[研发设计模板](../../../agents/assets/engineering/technical-delivery-design.md)和[实施计划模板](../../../agents/assets/engineering/implementation-plan.md)，核对结构、必要内容及裁剪合理性，将遗漏或无依据的裁剪列为修改项；编写评审记录前读取[研发 Review 模板](../../../agents/assets/engineering/engineering-review.md)并按其组织。评审其他架构文档时同样读取对应模板；技术正确与模板内容完整分别核对，不能以一项通过替代另一项。
+编写或实质修订架构文档前，必须先读取本次对应的[项目总架构](../../../agents/assets/architecture/templates/architecture-design.md)、[现状核验与模块地图](../../../agents/assets/architecture/templates/current-architecture.md)、[技术基线](../../../agents/assets/architecture/templates/technology-baseline.md)、[架构评审](../../../agents/assets/architecture/templates/architecture-review.md)或[技术收尾模板](../../../agents/assets/architecture/templates/architecture-closeout.md)正文，按模板的章节和字段组织内容。用户明确指定格式或项目已有有效模板时优先采用，并核对本次适用内容；重要裁剪说明依据，不以自由提纲替代模板，也不为填满模板新增无关成果。独立评审研发设计和实施计划时，必须分别读取[研发设计模板](../../../agents/assets/engineering/technical-delivery-design.md)和[实施计划模板](../../../agents/assets/engineering/implementation-plan.md)，核对结构、必要内容及裁剪合理性，将遗漏或无依据的裁剪列为修改项；编写评审记录前读取[研发 Review 模板](../../../agents/assets/engineering/engineering-review.md)并按其组织。评审其他架构文档时同样读取对应模板；技术正确与模板内容完整分别核对，不能以一项通过替代另一项。
 
 ## 边界、交接与完成
+
+项目总架构作为跨迭代长期基线，按[项目总架构模板](../../../agents/assets/architecture/templates/architecture-design.md)维护；现状地图是其章节或支撑资料。所有迭代架构变化统一在研发设计，含重大系统调整与迁移，不另建迭代架构设计。收尾依据最终源码/产物、Review 和实际核验记录，将已实现有效变化定向同步回总架构，注明前后版本、范围与证据；未实现目标不转成现状，实际实现与部署状态分开。
 
 产品决定业务语义，研发主笔统一技术设计并实现，验收判定行为，运维提供运行与恢复事实；架构不把实现偏差写成新规则，不把静态阅读说成运行证明。交接说明源版本和检查范围、当前系统及模块边界、契约与数据变化、技术基线、评审双结论和问题状态、迁移/恢复条件、未核验项。只有实际证据支撑时才标记架构基线或评审完成。
 

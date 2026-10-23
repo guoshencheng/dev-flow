@@ -174,3 +174,147 @@ erDiagram
 ```
 
 读图结论：每个事件属于一个任务，一个任务可暂时没有事件。ER 图不说明事件投递顺序，也不证明采用事件溯源；需要这些保证时另写契约。
+
+## 服务端整洁架构分层与业务数据示例
+
+以下三图描述同一个虚构的“创建草稿订单”目标方案，供[服务端架构视图](../../../references/architecture/technical-diagrams.md#服务端架构视图)改写使用，未对应任何真实项目。示例代码位置及 schema 名称也均为占位；采用时替换为已核验的源码/契约，并标明版本与覆盖。逻辑层均属于同一服务进程，分层不表示拆分部署。
+
+### 分层图及职责映射
+
+问题：`OrderService` 如何组织业务，同时不依赖 HTTP/ORM？实线箭头表示源码依赖，虚线箭头分别标注端口实现或装配注入。图省略 Web 框架和数据库驱动的内部组件；运行时读写顺序见下一张时序图。
+
+```mermaid
+flowchart TB
+  subgraph composition["装配入口 · 创建依赖与注入"]
+    bootstrap["bootstrap · 路由注册与装配"]
+  end
+  subgraph inbound["接口适配层 · HTTP 输入输出转换"]
+    controller["OrderController · 身份解析与 DTO 转换"]
+  end
+  subgraph application["应用层 · 业务操作与所需端口"]
+    service["OrderService.createDraft · 权限与用例编排"]
+    port["OrderRepository · 原子保存与查询契约"]
+  end
+  subgraph domain["领域层 · 业务对象与不变量"]
+    order["Order / OrderItem · 明细校验与金额计算"]
+  end
+  subgraph infrastructure["基础设施层 · 持久化适配"]
+    repository["SqlOrderRepository · 事务与模型映射"]
+    orm["ORM / 数据库驱动"]
+  end
+  controller -->|"源码依赖"| service
+  service -->|"源码依赖"| order
+  service -->|"源码依赖"| port
+  repository -.->|"实现端口"| port
+  repository -->|"源码依赖：映射领域对象"| order
+  repository -->|"源码依赖"| orm
+  bootstrap -->|"源码依赖"| controller
+  bootstrap -->|"源码依赖"| service
+  bootstrap -->|"源码依赖"| repository
+  bootstrap -.->|"将仓储实现注入 Service"| service
+```
+
+| 层次 | 示例职责与代码位置（均为占位） |
+| --- | --- |
+| 接口适配 | `adapters/http/OrderController.createDraft` 解析可信身份与请求格式，将业务错误映射为 HTTP 结果 |
+| 应用 | `application/OrderService.createDraft` 检查用例权限、调用领域构造、经本层 `ports/OrderRepository` 保存；不导入 ORM |
+| 领域 | `domain/Order.createDraft` 校验至少一条明细、数量为正整数、单价为非负整数分，计算总额；`OrderItem` 不依赖 HTTP 或数据库类型 |
+| 基础设施 | `infrastructure/SqlOrderRepository.save` 将领域订单映射到 ORDER/ORDER_ITEM，在一个数据库事务中保存，提交确认后才返回成功 |
+| 装配 | `bootstrap` 创建仓储实现并注入 Service，再注册 Controller；只负责装配，不决定业务规则 |
+
+读图结论：Service 通过自己所需的端口使用外部持久化能力，运行调用进入仓储实现，源码依赖仍向内。项目若直接使用 `CreateDraftOrderUsecase.execute`，替换应用层名称即可，无需同时增加 Service 与 Usecase 两个转调层。
+
+### 业务操作清单与具体时序
+
+| 业务操作/入口 | Service 及方法 | 输入、结果与错误 | 领域规则/协作 | 时序与模型 |
+| --- | --- | --- | --- | --- |
+| 创建草稿订单 / `POST /orders/drafts` | `OrderService.createDraft` | 可信身份、明细 → 草稿订单 ID/总额；拒绝、无效明细、确定保存失败、提交结果未知 | `Order.createDraft`；`OrderRepository.save` 原子保存订单及明细 | 下图；ORDER/ORDER_ITEM，示例 `schema/order.sql` |
+
+问题：这个 Service 具体执行什么规则，何时能够返回成功？前置条件是 Controller 已完成身份验证和请求格式检查；Service 继续核对用例权限，示例不接受请求体自行指定订单拥有者。实线为同步调用，虚线为响应；参与者“仓储实现”是运行时注入的端口实现，不表示应用源码直接引用它。
+
+```mermaid
+sequenceDiagram
+  actor C as 调用方
+  participant API as OrderController
+  participant S as OrderService
+  participant D as Order / OrderItem
+  participant R as SqlOrderRepository
+  participant DB as 数据库
+  C->>API: POST /orders/drafts（明细）
+  API->>API: 验证身份、解析 DTO
+  alt 身份或请求格式无效
+    API-->>C: 拒绝，不进入业务操作
+  else 身份与格式有效
+    API->>S: createDraft（可信身份，明细）
+    S->>S: 检查创建权限，确定 ownerId
+    alt 无创建权限
+      S-->>API: 业务拒绝，无数据写入
+      API-->>C: 无权限
+    else 允许创建
+      S->>D: createDraft（ownerId，明细）
+      D->>D: 检查明细非空、数量及单价，计算总额
+      alt 明细违反领域规则
+        D-->>S: 无效明细
+        S-->>API: 校验失败，无数据写入
+        API-->>C: 明细错误
+      else 领域对象有效
+        D-->>S: 草稿订单（ID、明细、总额）
+        S->>R: 经 OrderRepository.save 保存完整订单
+        R->>DB: BEGIN；写 ORDER 及 ORDER_ITEM；COMMIT
+        Note over R,DB: 一个事务；不允许仅持久化订单而丢失明细
+        alt 提交确认成功
+          DB-->>R: COMMIT 已确认
+          R-->>S: 保存成功
+          S-->>API: 订单 ID 与总额
+          API-->>C: 创建成功
+        else 写入失败且回滚已确认
+          DB-->>R: 失败，ROLLBACK 已确认
+          R-->>S: 确定保存失败，无新增记录
+          S-->>API: 保存失败，可重新发起
+          API-->>C: 未创建成功
+        else 提交时连接中断，结果未知
+          DB--xR: 提交确认未收到
+          R-->>S: 提交结果未知
+          S-->>API: 结果未知及已生成订单 ID
+          API-->>C: 按订单 ID 查询确认，暂不重新创建
+        end
+      end
+    end
+  end
+```
+
+读图结论：成功响应以仓储提交确认为前提；权限或领域拒绝不触发写入。提交结果未知时通过另行定义的鉴权查询 `OrderRepository.findById` 确认，查询暂未找到也不能在原事务仍可能提交时直接认定失败；只有最终结果确认后再决定下一动作。图仅展开创建链路，查询链路、身份系统内部步骤和具体驱动事务指令省略；不承诺自动重试、幂等或网络故障后一定回滚。采用时按项目真实恢复契约补齐。
+
+### 数据模型关系与 ER 图
+
+问题：此业务操作最终保存哪些关联数据，由谁保证关系？下图是示例持久化模型，ORDER 映射领域 `Order`，ORDER_ITEM 映射其明细；订单域拥有二者，`SqlOrderRepository` 负责读写。键和字段是虚构契约，不是现有数据库事实。
+
+```mermaid
+erDiagram
+  ORDER ||--|{ ORDER_ITEM : "包含明细"
+  ORDER {
+    string id PK
+    string owner_id "身份系统 ID，逻辑引用"
+    string status "draft"
+    int total_amount "整数分"
+  }
+  ORDER_ITEM {
+    string id PK
+    string order_id FK
+    int line_no
+    string product_name "业务快照"
+    int quantity "正整数"
+    int unit_price "非负整数分"
+  }
+```
+
+读图结论：每条明细属于且仅属于一个订单，每个成功创建的草稿订单至少有一条明细；领域校验和原子保存共同保证这一要求。`order_id` 在示例中是真实 FK，`owner_id` 仅逻辑引用身份系统，不声明跨库外键。完整约束以采用后的权威 schema 为准。
+
+| 关键约束/生命周期 | 示例责任与依据 |
+| --- | --- |
+| ORDER.id、ORDER_ITEM.id 唯一；同一订单 line_no 唯一 | 示例 schema 主键及 `UNIQUE(order_id, line_no)`；仓储遵守数据库约束 |
+| 订单至少一条明细，数量/单价合法，总额等于明细金额之和 | `Order.createDraft` 领域不变量；`OrderRepository.save` 整体原子保存，不能仅凭 FK 声称全部得到保证 |
+| 创建结果 status=draft，拥有者来自可信身份 | Service 确定拥有者，领域构造草稿；创建失败按时序区分回滚确认与结果未知 |
+| 明细依附订单整体保存，产品名称/单价为业务快照 | 本例无独立明细删除操作；订单删除、后续状态迁移及保留期限不在本示例范围，真实设计须按需求说明 |
+
+三图交叉核对：操作清单中的 `OrderService.createDraft` 对应分层图应用层和时序主编排者；时序保存的订单及明细对应 ER 两实体，原子性由仓储端口契约承接。ER 不表达事务先后，分层图不表达调用时间，时序参与者也不自动成为独立部署单元。

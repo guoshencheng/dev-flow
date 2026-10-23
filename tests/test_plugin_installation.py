@@ -27,6 +27,8 @@ class PluginPackageTests(unittest.TestCase):
             target = self.root / relative
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(source / relative, target)
+        self.version = json.loads((self.root / 'plugin.json').read_text())['version']
+        self.other_version = self.version + '-stale'
         subprocess.run(['git', 'init', '-q', str(self.root)], check=True)
         subprocess.run(['git', 'add', '.'], cwd=self.root, check=True)
         subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.com', 'commit', '-qm', 'fixture'], cwd=self.root, check=True)
@@ -95,7 +97,7 @@ class PluginPackageTests(unittest.TestCase):
         role = personal / 'agents/custom.toml'
         role.write_text('name = "custom"\ndeveloper_instructions = "用户角色"\n')
         cached = self.base / 'cache'
-        entry = {'pluginId': manager.PLUGIN_ID, 'enabled': True, 'version': '0.6.0',
+        entry = {'pluginId': manager.PLUGIN_ID, 'enabled': True, 'version': self.version,
                  'source': {'path': str(self.root / '.dev-flow/plugin-source')}}
         present = []
         def fake_cli(args):
@@ -174,7 +176,7 @@ class PluginPackageTests(unittest.TestCase):
 
     def test_active_version_and_source_must_match_before_registration(self):
         cached = self.base / 'cache'
-        entry = {'pluginId': manager.PLUGIN_ID, 'enabled': True, 'version': '0.5.2',
+        entry = {'pluginId': manager.PLUGIN_ID, 'enabled': True, 'version': self.other_version,
                  'source': {'path': str(self.root / '.dev-flow/plugin-source')}}
         def fake_cli(args):
             if args == ['plugin', 'marketplace', 'list']:
@@ -186,19 +188,19 @@ class PluginPackageTests(unittest.TestCase):
                 return {'installed': [entry]}
             return {}
         with patch.object(manager, 'cli', side_effect=fake_cli):
-            for version in ('0.5.2', None):
+            for version in (self.other_version, None):
                 entry['version'] = version
                 with self.assertRaisesRegex(ValueError, '版本'):
                     manager.install(self.root)
                 self.assertFalse((self.base / 'codex/agents/dev_product.toml').exists())
-            entry['version'] = '0.6.0'
+            entry['version'] = self.version
             entry['source']['path'] = str(self.base / 'foreign')
             with self.assertRaisesRegex(ValueError, '来源'):
                 manager.install(self.root)
             self.assertFalse((self.base / 'codex/agents/dev_product.toml').exists())
             entry['source']['path'] = str(self.root / '.dev-flow/plugin-source')
             manager.install(self.root)
-            for version in ('0.5.2', None):
+            for version in (self.other_version, None):
                 entry['version'] = version
                 with self.assertRaisesRegex(ValueError, '版本'):
                     manager.check(self.root)

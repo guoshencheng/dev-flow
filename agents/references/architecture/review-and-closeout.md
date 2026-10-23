@@ -55,6 +55,8 @@
 
 ## 将结论写回项目
 
-用实际源码更新当前架构和模块地图，保留已确认目标及未实现差距；关联本次复盘、来源版本和检查覆盖。旧决策被替换时记录替代关系；改进登记待办与责任、依赖、验证方式，后续实施后按真实证据关闭。复核无变化的资产可沿用原证据并记录本次核验范围，不改写成全仓已重新检查。
+架构收尾核对迭代 `engineering/design.md` 的变化与同步项，依据最终源码/产物、完整 Review 及实际验证/交付记录，定向更新项目总架构和其权威支撑资料中的已实现有效事实；总架构默认 `docs/dev-flow/architecture/design.md`，已有有效入口沿用。核对分层/模块、Service/Usecase、核心业务时序、ER/数据关系及约束，记录同步前后版本、受影响章节、来源迭代与候选、运行环境和检查覆盖，实际实现与已部署/生产生效分开。无需变化时记录复用依据；未实现、未确认或待核验的方案留在迭代研发设计和总架构明确的目标/差距区，不覆写当前事实。现状地图只补源码与核验信息，不另维护同范围完整基线。旧决策被替换时记录替代关系；改进登记待办与责任、依赖、验证方式，后续实施后按真实证据关闭。复核无变化的资产可沿用原证据并记录本次核验范围，不改写成全仓已重新检查。
 
-使用[技术收尾模板](../../assets/architecture/templates/architecture-closeout.md)与[项目资产协议](../../../skills/document-management/references/professional-assets.md#架构)。独立实现 Review 的发现、处理和定向复核维护在 `engineering/review.md`，技术收尾引用其有效结论及正式验收、交付原记录。共性方法在项目中确有效果后提出通用 Skill 改进候选，未验证的偏好不直接成为所有项目的新要求。
+使用[技术收尾模板](../../assets/architecture/templates/architecture-closeout.md)与[项目资产协议](../../../skills/document-management/references/professional-assets.md#架构)。
+
+尚未建立总架构时，用[项目总架构模板](../../assets/architecture/templates/architecture-design.md)建立可核验范围内的实际基线并明示缺口；必要同步未完成时技术收尾保持未完成，不以迭代归档代替资产同步。独立实现 Review 的发现、处理和定向复核维护在 `engineering/review.md`，技术收尾引用其有效结论及正式验收、交付原记录。共性方法在项目中确有效果后提出通用 Skill 改进候选，未验证的偏好不直接成为所有项目的新要求。

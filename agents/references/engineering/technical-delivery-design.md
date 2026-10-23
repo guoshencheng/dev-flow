@@ -1,6 +1,6 @@
 # 统一研发设计与跨职责 Review
 
-完整功能的默认主文档是 `docs/dev-flow/iterations/<迭代ID>/engineering/design.md`。研发主笔，将架构与具体实现合在同一篇；重大系统专题才按需另建架构设计。已有有效权威文件可经迭代索引映射复用。使用[设计模板](../../assets/engineering/technical-delivery-design.md)，按任务裁剪。
+完整功能的默认主文档是 `docs/dev-flow/iterations/<迭代ID>/engineering/design.md`。研发主笔，将本轮架构变化与具体实现合在同一篇，包含重大系统调整、跨域变化与迁移，不另建迭代架构设计。项目总架构按[总架构模板](../../assets/architecture/templates/architecture-design.md)长期维护，本篇引用其输入版本、变化前后、受影响视图和收尾同步项；收尾将实际有效结果回写总架构。已有有效权威文件可经迭代索引映射复用。使用[设计模板](../../assets/engineering/technical-delivery-design.md)，按任务裁剪。
 
 ## 设计前的真实技术反馈
 
@@ -17,6 +17,9 @@
 按[技术图示规范](../architecture/technical-diagrams.md)选图并使用[可改写示例](../../assets/architecture/examples/technical-diagrams.md)。整体思路先说明本次系统/模块边界变化，结构不变时引用有效现状图。跨参与者交互、异步完成或失败恢复用时序图，条件分支与循环用流程图；生命周期、实体关系或部署变化按需补相应视图。图紧邻相关链路，标明现状/目标、范围、节点与箭头语义、有效依据和省略项；受理响应不等同于最终成功，具体契约仍引用权威来源。局部线性修改说明无需补图的依据，不按固定张数产出。
 
 方案和实现 Review 核对图型、边界/方向、图文/契约及候选一致性，实际渲染后检查可读性；实现变化同步受影响图示。未渲染部分如实交接，语法检查不证明技术正确或可读。
+
+服务端设计须按[服务端架构视图](../architecture/technical-diagrams.md#服务端架构视图)提供或引用整洁架构分层图及源码映射、Service/Usecase 业务操作清单、核心操作的具体业务时序和数据模型 ER 图；在[设计模板](../../assets/engineering/technical-delivery-design.md)第三、四节填写。Service 与 Usecase 按项目实际组织，局部改动复用有效基线并标明覆盖，无适用数据关系时说明依据，通用裁剪不能省略尚未建立的服务基线。
+
 
 ## 独立 Review 与实施交接
 

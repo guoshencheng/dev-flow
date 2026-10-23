@@ -1,6 +1,8 @@
 # Codex / Kimi Plugin 安装与维护
 
-当前源码 0.6.0 提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-23-native-subagent-registration/Progress.md)。
+当前源码 0.6.1 提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-23-service-architecture-template/Progress.md)。
+
+0.6.1 完善架构文档模板与规范：项目总架构作为跨迭代长期基线，所有迭代架构变化（含重大调整）统一放在研发设计，技术收尾依据实际结果回写总架构并记录前后版本和证据。服务端明确分层图、Service/Usecase 操作清单、具体业务时序和 ER 图，现状地图作为总架构的支撑资料；相关 Review、职责、目录及索引同步。属于文档/方法的兼容维护，递增 patch；总纲 0.32、文档协议 0.15、安装机制不变。
 
 0.6.0 新增 Codex 安装命令自动注册六职责原生子 Agent：install 同时写入受管角色、升级同步正文和资源路径，check 核验全部六份配置，remove 清理受管注册。同名外来角色、用户修改和来源冲突会明确报错并保留内容。属于兼容安装能力新增，递增 minor；总纲仍为 0.32，Kimi 安装机制不变。
 
@@ -104,7 +106,7 @@ Plugin 0.2.0、总纲 v0.25 和执行协议 v0.12 新增[首次实施人工同�
 
 Plugin 0.2.1、总纲 v0.26 明确现有 $dev-flow 的[一条指令收尾](../skills/dev-flow/references/closeout.md)入口：`使用 $dev-flow 收尾当前迭代，把文档和长期资产沉淀好。` 正常交付已包含文档收尾；补做时直接同步相关资产、总结、遗留与项目入口并核验归档条件，不重启实施流程。候选清单声明的 Skills 和状态 schema 保持不变，属于兼容的方法维护，验证见[收尾记录](../reviews/2026-10-12-iteration-closeout.md)。
 
-Plugin 0.2.2、总纲 v0.27 将既有代码/验证/集成方法接入收尾，直接说“开始收尾”默认包含[代码收尾](../skills/git-workflow/references/git-and-worktree.md#代码收尾)和文档沉淀。相关成果无其他约定时形成本地提交，保留无关修改；推送/PR/合并/发布沿用已有授权，仅文档任务裁剪代码动作。候选清单声明的 Skills、状态 schema 和安装行为不变，属于兼容方法维护；范围和证据见[代码收尾记录](../reviews/2026-10-12-code-closeout.md)。
+Plugin 0.2.2、总纲 v0.27 将既有代码/验证/集成方法接入收尾，直接说“开始收尾”默认包含[代码收尾](../skills/git-workflow/references/git-and-worktree.md#代码收尾与资源交接)和文档沉淀。相关成果无其他约定时形成本地提交，保留无关修改；推送/PR/合并/发布沿用已有授权，仅文档任务裁剪代码动作。候选清单声明的 Skills、状态 schema 和安装行为不变，属于兼容方法维护；范围和证据见[代码收尾记录](../reviews/2026-10-12-code-closeout.md)。
 
 ```sh
 python3 scripts/manage_plugin.py remove

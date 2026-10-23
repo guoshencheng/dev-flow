@@ -12,7 +12,7 @@ owner: architecture
 
 更新日期：2026-10-21。专业入口为[dev-architecture](../agents/prompts/architecture.md)。本轮新流程已有源码、安装及隔离代表场景证据，尚未以真实业务 UI 项目验证完整协作；历史评测只证明各自原对象与范围。
 
-架构在产品/UI 候选期间基于真实代码反馈功能位置、交互形式、成本及状态 UI 的必要性。完整功能的架构和具体实现由研发主笔统一写入 `engineering/design.md`，架构执行者独立 Review 模块、依赖、契约、数据、权限与恢复；发现和定向复核写入 `engineering/review.md`。重大系统专题仍可按需另建架构设计，每轮默认不另产架构方案。
+架构在产品/UI 候选期间基于真实代码反馈功能位置、交互形式、成本及状态 UI 的必要性。完整功能的架构和具体实现由研发主笔统一写入 `engineering/design.md`，架构执行者独立 Review 模块、依赖、契约、数据、权限与恢复；发现和定向复核写入 `engineering/review.md`。项目总架构作为长期唯一基线，所有迭代架构变化含重大系统调整统一写入研发设计；收尾依据实际有效结果更新总架构并记录版本与来源。
 
 架构独立复核 `engineering/implementation-plan.md` 的依赖、测试保护、集成及交付。实施前核对有效业务完成标准、设计/计划 Review 与授权；正式 TC 在完整实现后维护、独立 Review 并执行。完整候选形成后架构独立 Review 全部代码变化；实际验收和交付核验后在 `architecture/closeout.md` 核对设计差异、真实结果、长期资产和遗留。模板见[技术收尾](../agents/assets/architecture/templates/architecture-closeout.md)。
 
@@ -53,9 +53,9 @@ owner: architecture
 
 ## 项目文档与共享
 
-优先沿用项目权威目录，无规范时使用 `docs/dev-flow/architecture/`：index/system/modules 保存当前事实，stack 保存技术/工具链和交付基线，decisions 保存重要取舍；本轮统一设计和独立 Review 在迭代 `engineering/`，技术收尾在迭代 `architecture/`，debt 关联改进。代码规范使用 `docs/dev-flow/engineering/code-standards.md` 并链接实际配置与命令。小工程允许合并，复杂业务域按需拆分。架构可在需求中、重要变更后、发布前或用户授权的定期窗口参与联合维护检查，和测试以同一版本核对 ARC/OUT/TC 关系；已验证的当前事实写回长期入口，被替代的完整方案才按协议归档，不能把最新有效架构移入历史。普通历史由 Git 保存，完整替换方案按协议归档。
+优先沿用项目权威目录，无规范时使用 `docs/dev-flow/architecture/`：index 关联项目总架构的唯一权威位置（默认 design.md，已有 system.md 等有效位置沿用），modules 按需保存其核验/源码映射支撑，stack 保存技术/工具链和交付基线，decisions 保存重要取舍；本轮统一设计和独立 Review 在迭代 `engineering/`，技术收尾在迭代 `architecture/`，debt 关联改进。代码规范使用 `docs/dev-flow/engineering/code-standards.md` 并链接实际配置与命令。小工程允许合并，复杂业务域按需拆分。架构可在需求中、重要变更后、发布前或用户授权的定期窗口参与联合维护检查，和测试以同一版本核对 ARC/OUT/TC 关系；已验证的当前事实写回长期入口，被替代的完整方案才按协议归档，不能把最新有效架构移入历史。普通历史由 Git 保存，完整替换方案按协议归档。
 
-随包提供[当前地图](../agents/assets/architecture/templates/current-architecture.md)、[技术基线](../agents/assets/architecture/templates/technology-baseline.md)、[重大系统专题设计](../agents/assets/architecture/templates/architecture-design.md)、[专项代码复核](../agents/assets/architecture/templates/architecture-review.md)和[技术收尾](../agents/assets/architecture/templates/architecture-closeout.md)模板，复用共享 Vite 文档预览。项目事实留在项目，经过验证的通用方法再沉淀到本 Skill。
+随包提供[当前地图](../agents/assets/architecture/templates/current-architecture.md)、[技术基线](../agents/assets/architecture/templates/technology-baseline.md)、[项目总架构](../agents/assets/architecture/templates/architecture-design.md)、[专项代码复核](../agents/assets/architecture/templates/architecture-review.md)和[技术收尾](../agents/assets/architecture/templates/architecture-closeout.md)模板，复用共享 Vite 文档预览。项目事实留在项目，经过验证的通用方法再沉淀到本 Skill。
 
 ## 验证状态
 
@@ -78,3 +78,11 @@ v0.3 技术约定、代码规范与格式配置的检查见[本轮记录](../rev
 ## Kimi 宿主接入（2026-10-09）
 
 本职责已提供独立 Kimi Markdown Agent 入口，与 Codex 角色参考从共用 Skill 元信息生成；专业方法仍只在 Skill/参考维护。Kimi 2.1.1 已通过原生发现、派发、包内文件读取和交接的模型替身冒烟；真实模型的专业行为及项目结果尚未验证，不能将接入检查登记为专业验收。见 [适配记录](../reviews/2026-10-09-kimi-agent-adaptation.md)及 [执行说明](integrations/kimi-agent-configuration.md)。
+
+## 服务端架构视图补充（2026-10-23，0.6.1）
+
+[研发设计模板](../agents/assets/engineering/technical-delivery-design.md)、[项目总架构](../agents/assets/architecture/templates/architecture-design.md)与[当前地图](../agents/assets/architecture/templates/current-architecture.md)明确服务端的整洁架构分层图/源码映射、Service/Usecase 业务操作清单、具体业务时序和数据模型 ER 图；相关 Review 模板承接交叉核对。共享规则见[服务端架构视图](../agents/references/architecture/technical-diagrams.md#服务端架构视图)，[订单三图示例](../agents/assets/architecture/examples/technical-diagrams.md#服务端整洁架构分层与业务数据示例)为虚构教学资产。
+
+本轮 0.6.1 完善模板与规范，独立复核、图示渲染、内容/引用及实际安装交付状态见[本轮 Progress](plans/2026-10-23-service-architecture-template/Progress.md)；尚未在真实业务服务上验证梳理效果，不将示例渲染等同于业务项目架构核验。
+
+本轮补充统一总架构与迭代分工：总架构默认 `docs/dev-flow/architecture/design.md` 或项目已有权威位置，现状地图是其核验章节/支撑资料；迭代研发设计引用基线并维护架构增量，技术收尾按最终源码/产物及核验证据同步实际有效部分，记录前后版本与环境覆盖。模板、职责正文、目录/索引及相关规范同步调整，验证范围仍见同一 Progress。

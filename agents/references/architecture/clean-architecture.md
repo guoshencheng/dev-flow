@@ -24,6 +24,14 @@ API DTO、数据库行、UI 表单值、领域对象用途分别明确；必要�
 
 ## 目录示例与跨域调用
 
+### 服务端的 Service / Usecase 映射
+
+梳理服务端时，先从 API、消息处理器或定时任务定位业务操作，再映射到应用层的 Service；项目直接用 `CreateOrderUsecase.execute` 等用例承接时，沿用 Usecase，不额外包一层仅转调的 Service。`OrderService.createDraft` 与 `CreateDraftOrderUsecase.execute` 可以是同一业务操作的两种组织方式；名称不决定架构层次。
+
+应用 Service/Usecase 组织一次业务操作，负责用例级权限、规则调用、事务要求及端口协作；领域实体、值对象或领域服务拥有业务不变量。名为 Service 的类也可能只是领域策略或外部 SDK 封装，须按真实职责标注，不一律划入应用层。Controller/API 属于接口适配，HTTP 参数解析不等于完整业务逻辑；Repository 接口按消费者需要归内层，ORM/SQL 实现在外层，装配入口注入实现。
+
+文档用分层图和层次/源码映射说明这些关系，用 Service/Usecase 操作清单连接接口入口、核心业务时序和数据模型。具体字段、图示及复用要求见[服务端架构视图](technical-diagrams.md#服务端架构视图)。现状缺少独立业务层或存在框架耦合时记录实际位置和偏差，不把目标分层画成已实现，也不为填模板强造抽象。
+
 有多个稳定业务能力的工程可参考下列局部结构；名称、语言和目录不是强制标准：
 
 ```text
