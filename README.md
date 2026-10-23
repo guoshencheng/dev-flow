@@ -2,7 +2,7 @@
 
 面向 Codex 与 Kimi 的六职责研发协作插件。流程、专业职责和操作技能分别维护：`dev-flow` 只安排阶段、依赖、授权和完成条件；六职责 Agent 提示词承担专业判断；操作 Skills 提供具体方法与工具。项目业务事实保存在所属项目。
 
-当前源码版本 **0.5.2**，总纲 **0.32**：六职责 Agent 提示词直接要求编写前读取对应模板正文、按模板组织内容，评审时核对结构、必要内容及裁剪依据；用户指定格式和项目有效模板优先。既有流程确认、设计/实施授权、Review、验收与交付条件继续适用。实际验证与 Codex 安装状态见[本轮 Progress](docs/plans/2026-10-23-agent-template-contract/Progress.md)。
+当前源码版本 **0.6.0**，总纲 **0.32**：现有安装命令同时注册六个 Codex 原生职责 Agent，升级同步正文与资源路径，检查和卸载管理受管配置，保留用户已有角色与指引。模板使用、流程确认、设计/实施授权、Review、验收与交付条件继续适用。实际验证与安装状态见[本轮 Progress](docs/plans/2026-10-23-native-subagent-registration/Progress.md)。
 
 ## 能力入口
 
@@ -47,7 +47,7 @@ python3 scripts/manage_plugin.py install
 python3 scripts/manage_plugin.py check
 ```
 
-新文件先纳入 Git，安装只打包受管理源码。检查实际启用、缓存/源码指纹、声明 Skill 与角色资源；不注册个人 Agent，不改写全局用户指引。新会话能力发现、原生派发、隔离工具案例和真实项目验证分别记录。Kimi 使用独立原生安装/重载路径，见[安装指南](docs/plugin.md)。
+新文件先纳入 Git，安装只打包受管理源码；同一命令将六职责注册到 `CODEX_HOME/agents/`（默认 `~/.codex/agents/`），无需另行配置。检查实际启用、缓存/源码指纹、Skill、角色及资源；同名冲突或用户修改会报错并保留内容，不改全局指引。插件页面安装目前没有已核实的自动注册入口；采用上述命令完成注册。原生发现/派发需在新会话核验。Kimi 使用独立安装/重载路径，见[安装指南](docs/plugin.md)。
 
 完整任务使用 `$dev-flow`；说“开始收尾”进入[收尾流程](skills/dev-flow/references/closeout.md)。主 Agent 核对完整候选 Review、必要验证、技术收尾及交付，再调用 Git 保存与文档归档。已有同范围授权复用，缺少必需证据保持未完成。仅文档整理按明确范围裁剪。
 
@@ -63,4 +63,4 @@ python3 scripts/manage_plugin.py check
 
 历史版本的职责能力编号和验证记录保留原事实：[旧能力目录](docs/history/2026-10-21-role-capabilities.md)、[评测入口](evals/)。导航可更新到现行源，旧结果不能折算成本轮实现、宿主加载或真实业务项目通过。
 
-解除安装使用 `python3 scripts/manage_plugin.py remove`；Kimi 使用 `/plugins remove dev-flow`。源码、个人配置和业务项目资产保留。
+解除安装使用 `python3 scripts/manage_plugin.py remove`，同时清理归属明确且未被修改的六角色；其他个人配置、源码和业务项目资产保留。Kimi 使用 `/plugins remove dev-flow`。

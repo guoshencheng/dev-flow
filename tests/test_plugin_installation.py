@@ -1,5 +1,6 @@
 """隔离验证插件打包、缓存核验及用户配置不变。"""
 import json
+import os
 from pathlib import Path
 import shutil
 import subprocess
@@ -16,6 +17,8 @@ class PluginPackageTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.base = Path(self.temp.name)
+        self.environment = patch.dict(os.environ, {'CODEX_HOME': str(self.base / 'codex')})
+        self.environment.start()
         self.root = self.base / 'repo'
         self.root.mkdir()
         source = Path(__file__).resolve().parents[1]
@@ -29,6 +32,7 @@ class PluginPackageTests(unittest.TestCase):
         subprocess.run(['git', '-c', 'user.name=Test', '-c', 'user.email=test@example.com', 'commit', '-qm', 'fixture'], cwd=self.root, check=True)
 
     def tearDown(self):
+        self.environment.stop()
         self.temp.cleanup()
 
     def test_package_without_setup_and_rebuild(self):
@@ -82,13 +86,16 @@ class PluginPackageTests(unittest.TestCase):
 
     def test_install_check_remove_preserve_user_configuration(self):
         personal = self.base / 'personal'
+        self.environment.stop()
+        self.environment = patch.dict(os.environ, {'CODEX_HOME': str(personal)})
+        self.environment.start()
         (personal / 'agents').mkdir(parents=True)
         guide = personal / 'AGENTS.md'
         guide.write_text('已有流程指引')
         role = personal / 'agents/custom.toml'
-        role.write_text('用户角色')
+        role.write_text('name = "custom"\ndeveloper_instructions = "用户角色"\n')
         cached = self.base / 'cache'
-        entry = {'pluginId': manager.PLUGIN_ID, 'enabled': True,
+        entry = {'pluginId': manager.PLUGIN_ID, 'enabled': True, 'version': '0.6.0',
                  'source': {'path': str(self.root / '.dev-flow/plugin-source')}}
         present = []
         def fake_cli(args):
@@ -104,12 +111,16 @@ class PluginPackageTests(unittest.TestCase):
                 present.clear()
             return {}
         with patch.object(manager, 'cli', side_effect=fake_cli), patch.object(Path, 'home', return_value=personal):
-            self.assertEqual(manager.install(self.root)['skills'], 16)
+            installed = manager.install(self.root)
+            self.assertEqual(installed['skills'], 16)
+            self.assertEqual(installed['native_agents']['count'], 6)
+            self.assertEqual(len(list((personal / 'agents').glob('dev_*.toml'))), 6)
             self.assertTrue(manager.check(self.root)['source_matches_cache'])
             manager.remove(self.root)
         self.assertEqual(guide.read_text(), '已有流程指引')
-        self.assertEqual(role.read_text(), '用户角色')
-        self.assertEqual(set(personal.iterdir()), {personal / 'agents', guide})
+        self.assertEqual(role.read_text(), 'name = "custom"\ndeveloper_instructions = "用户角色"\n')
+        self.assertEqual(list((personal / 'agents').iterdir()), [role])
+        self.assertFalse((personal / 'dev-flow/native-agents.json').exists())
         self.assertFalse((self.root / '.dev-flow/plugin-install.json').exists())
 
     def test_foreign_marketplace_stops_install(self):
@@ -117,6 +128,80 @@ class PluginPackageTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 manager.install(self.root)
         self.assertFalse((self.root / '.dev-flow/plugin-source').exists())
+
+    def test_native_conflict_stops_before_plugin_cli(self):
+        personal = self.base / 'codex/agents'
+        personal.mkdir(parents=True)
+        target = personal / 'dev_product.toml'
+        target.write_text('personal role')
+        with patch.object(manager, 'cli') as command:
+            with self.assertRaisesRegex(ValueError, '冲突'):
+                manager.install(self.root)
+        command.assert_not_called()
+        self.assertEqual(target.read_text(), 'personal role')
+
+    def test_corrupt_installed_cache_does_not_register_roles(self):
+        cached = self.base / 'cache'
+        def fake_cli(args):
+            if args == ['plugin', 'marketplace', 'list']:
+                return {'marketplaces': []}
+            if args[:2] == ['plugin', 'add']:
+                shutil.copytree(self.root / '.dev-flow/plugin-source', cached)
+                (cached / 'agents/dev_product.toml').write_text('tampered')
+                return {'installedPath': str(cached)}
+            if args == ['plugin', 'list', '--marketplace', manager.MARKETPLACE]:
+                return {'installed': [{'pluginId': manager.PLUGIN_ID, 'enabled': True}]}
+            return {}
+        with patch.object(manager, 'cli', side_effect=fake_cli):
+            with self.assertRaisesRegex(ValueError, '内容不匹配'):
+                manager.install(self.root)
+        self.assertFalse((self.base / 'codex/agents/dev_product.toml').exists())
+        self.assertFalse((self.root / '.dev-flow/plugin-install.json').exists())
+
+    def test_modified_owned_role_stops_remove_before_plugin_cli(self):
+        cached = Path(manager.build(self.root)['build_root'])
+        from native_agents import NativeAgents
+        registry = NativeAgents(self.root)
+        with registry.locked():
+            _, snapshot = registry.preflight()
+            registry.register(cached, snapshot, self.root / '.dev-flow/plugin-install.json', {})
+        (registry.agents / 'dev_product.toml').write_text('edited')
+        with patch.object(manager, 'cli') as command:
+            with self.assertRaisesRegex(ValueError, '修改'):
+                manager.remove(self.root)
+        command.assert_not_called()
+        self.assertTrue(registry.state.exists())
+
+    def test_active_version_and_source_must_match_before_registration(self):
+        cached = self.base / 'cache'
+        entry = {'pluginId': manager.PLUGIN_ID, 'enabled': True, 'version': '0.5.2',
+                 'source': {'path': str(self.root / '.dev-flow/plugin-source')}}
+        def fake_cli(args):
+            if args == ['plugin', 'marketplace', 'list']:
+                return {'marketplaces': []}
+            if args[:2] == ['plugin', 'add']:
+                shutil.copytree(self.root / '.dev-flow/plugin-source', cached, dirs_exist_ok=True)
+                return {'installedPath': str(cached)}
+            if args == ['plugin', 'list', '--marketplace', manager.MARKETPLACE]:
+                return {'installed': [entry]}
+            return {}
+        with patch.object(manager, 'cli', side_effect=fake_cli):
+            for version in ('0.5.2', None):
+                entry['version'] = version
+                with self.assertRaisesRegex(ValueError, '版本'):
+                    manager.install(self.root)
+                self.assertFalse((self.base / 'codex/agents/dev_product.toml').exists())
+            entry['version'] = '0.6.0'
+            entry['source']['path'] = str(self.base / 'foreign')
+            with self.assertRaisesRegex(ValueError, '来源'):
+                manager.install(self.root)
+            self.assertFalse((self.base / 'codex/agents/dev_product.toml').exists())
+            entry['source']['path'] = str(self.root / '.dev-flow/plugin-source')
+            manager.install(self.root)
+            for version in ('0.5.2', None):
+                entry['version'] = version
+                with self.assertRaisesRegex(ValueError, '版本'):
+                    manager.check(self.root)
 
     def test_missing_prompt_and_routed_skill_are_rejected(self):
         (self.root / 'agents/prompts/product.md').unlink()

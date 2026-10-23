@@ -12,6 +12,7 @@ import sys
 import tempfile
 
 from sync_host_agents import check as check_host_agents, load_capabilities
+from native_agents import NativeAgents
 
 
 PLUGIN_ID = "dev-flow@dev-flow-local"
@@ -134,7 +135,23 @@ def installed_entry():
     return next((p for p in cli(["plugin", "list", "--marketplace", MARKETPLACE])["installed"] if p["pluginId"] == PLUGIN_ID), None)
 
 
+def verify_active_cache(root, entry, cached):
+    """The local install record alone cannot prove which version is active."""
+    version = json.loads((cached / "plugin.json").read_text())["version"]
+    if not entry.get("version") or entry["version"] != version:
+        raise ValueError("实际启用插件版本与安装缓存不一致，请运行 install")
+    source = entry.get("source", {}).get("path")
+    if not source or Path(source).resolve() != (root / ".dev-flow/plugin-source").resolve():
+        raise ValueError("实际启用插件来源与当前仓库不一致，保留角色配置")
+
+
 def install(root):
+    with NativeAgents(root).locked() as agents:
+        _, snapshot = agents.preflight()
+        return install_locked(root, agents, snapshot)
+
+
+def install_locked(root, agents, snapshot):
     build_root = root / ".dev-flow/plugin-source"
     existing = next((m for m in cli(["plugin", "marketplace", "list"])["marketplaces"] if m["name"] == MARKETPLACE), None)
     if existing and Path(existing["root"]).resolve() != build_root:
@@ -149,11 +166,18 @@ def install(root):
     if not entry or not entry["enabled"]:
         raise ValueError("插件尚未实际安装并启用")
     skills = validate_bundle(cached)
-    atomic_text(root / ".dev-flow/plugin-install.json", json.dumps({"plugin_id": PLUGIN_ID, "plugin_root": str(cached)}, indent=2) + "\n")
-    return {"plugin_id": PLUGIN_ID, "build": info, "skills": len(skills)}
+    verify_active_cache(root, entry, cached)
+    registered = agents.register(cached, snapshot, root / ".dev-flow/plugin-install.json",
+                                {"plugin_id": PLUGIN_ID, "plugin_root": str(cached)})
+    return {"plugin_id": PLUGIN_ID, "build": info, "skills": len(skills), "native_agents": registered}
 
 
 def check(root):
+    with NativeAgents(root).locked() as agents:
+        return check_locked(root, agents)
+
+
+def check_locked(root, agents):
     entry = installed_entry()
     if not entry or not entry["enabled"]:
         raise ValueError("当前用户没有启用 " + PLUGIN_ID)
@@ -164,15 +188,24 @@ def check(root):
         raise ValueError("安装记录不属于本插件")
     cached = Path(record["plugin_root"])
     skills = validate_bundle(cached)
+    verify_active_cache(root, entry, cached)
     inventory = json.loads((cached / "package-files.json").read_text())
     source_files = tracked(root)
     if set(source_files) != set(inventory["files"]) or any(
             digest(root / name) != expected for name, expected in inventory["files"].items()):
         raise ValueError("源码已变化，运行 install 重建并刷新插件")
-    return {"plugin_id": PLUGIN_ID, "enabled": True, "source_matches_cache": True, "skills": len(skills)}
+    registered = agents.check(cached)
+    return {"plugin_id": PLUGIN_ID, "enabled": True, "source_matches_cache": True,
+            "skills": len(skills), "native_agents": registered}
 
 
 def remove(root):
+    with NativeAgents(root).locked() as agents:
+        _, snapshot = agents.preflight(removing=True)
+        return remove_locked(root, agents, snapshot)
+
+
+def remove_locked(root, agents, snapshot):
     entry = installed_entry()
     if entry and Path(entry["source"]["path"]).resolve() != (root / ".dev-flow/plugin-source").resolve():
         raise ValueError("同名插件已经换成其他来源，保留并报告")
@@ -181,9 +214,7 @@ def remove(root):
     existing = next((m for m in cli(["plugin", "marketplace", "list"])["marketplaces"] if m["name"] == MARKETPLACE), None)
     if existing and Path(existing["root"]).resolve() == root / ".dev-flow/plugin-source":
         cli(["plugin", "marketplace", "remove", MARKETPLACE])
-    record = root / ".dev-flow/plugin-install.json"
-    if record.exists():
-        record.unlink()
+    agents.remove(snapshot, root / ".dev-flow/plugin-install.json")
     return {"plugin_id": PLUGIN_ID, "source_and_project_assets_preserved": True}
 
 

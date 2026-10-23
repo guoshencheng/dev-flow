@@ -1,6 +1,8 @@
 # Codex / Kimi Plugin 安装与维护
 
-当前源码 0.5.2 提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-23-agent-template-contract/Progress.md)。
+当前源码 0.6.0 提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-23-native-subagent-registration/Progress.md)。
+
+0.6.0 新增 Codex 安装命令自动注册六职责原生子 Agent：install 同时写入受管角色、升级同步正文和资源路径，check 核验全部六份配置，remove 清理受管注册。同名外来角色、用户修改和来源冲突会明确报错并保留内容。属于兼容安装能力新增，递增 minor；总纲仍为 0.32，Kimi 安装机制不变。
 
 0.5.2 在六职责提示词正文中直接明确模板使用要求：编写或实质修订前读取对应模板正文，按其章节和字段组织内容；评审时读取被评对象模板，核对结构、必要内容和重要裁剪依据，将遗漏或无依据的裁剪列为修改项。模板仍独立维护，用户指定格式与项目已有有效模板优先，不为填满模板新增无关成果。研发设计/计划及其架构评审有直接模板入口，两端生成配置同步承载要求。本版是既有模板规则的兼容维护，递增 patch；总纲 0.32、能力声明和安装机制不变。
 
@@ -16,7 +18,7 @@
 
 agents/prompts 是专业责任唯一维护源，capabilities.json 声明本包 Skill 与角色路由；生成器组合 common.md 与完整专业提示词，并将链接按各宿主入口位置重新定位。生成物不手工编辑；生成一致性不证明原生发现/派发。资源声明及递归引用由打包检查验证，未声明、缺失或越界不能靠简单数量检查通过。
 
-Codex agents/*.toml 已内嵌公共约束与职责正文，但仍为参考入口，不自动注册个人 Agent。优先使用宿主实际已加载的职责 Agent；使用未加载角色的 Harness 通用子 Agent 时才补充缺失正文，并记录真实方式。Kimi 清单声明六个原生职责入口，实际加载后同样不重读同源正文。没有 setup，不维护全局 AGENTS.md，不把 Codex 安装视作 Kimi 已安装。
+0.4.x–0.5.x 的 Codex agents/*.toml 只作参考入口；自 0.6.0 起安装命令将其转换为内嵌公共约束与职责正文的受管个人角色。优先使用宿主实际已加载的职责 Agent；使用未加载角色的 Harness 通用子 Agent 时才补充缺失正文，并记录真实方式。Kimi 清单声明六个原生职责入口，实际加载后同样不重读同源正文。没有额外 setup，不维护全局 AGENTS.md，不把 Codex 安装视作 Kimi 已安装。
 
 总纲 0.30 是归属调整，保留 0.29 的有效设计/重要取舍、独立设计/计划 Review、明确范围实施授权、连续实现/自测、完整候选后正式 TC/独立 Review/验收及交付关系；状态 schema 仍为 1。旧记录只按真实来源恢复，不倒填执行，也不重新索取已有同范围授权。
 
@@ -29,9 +31,19 @@ python3 scripts/manage_plugin.py install
 python3 scripts/manage_plugin.py check
 ```
 
-新文件先纳入 Git。install 构建 Git 管理的当前源码，排除依赖缓存、构建产物、本机运行数据与真实环境变量文件；注册本地 marketplace，并通过 Codex 安装/更新插件。它核验安装缓存指纹与候选清单声明的 Skills，不创建原生 Agent、不写个人 AGENTS.md 或全局 Skill 链接。
+新文件先纳入 Git。install 构建 Git 管理的当前源码，排除依赖缓存、构建产物、本机运行数据与真实环境变量文件；注册本地 marketplace，并通过 Codex 安装/更新插件。核验缓存指纹、实际启用及候选声明的 Skills 后，自动注册 `dev_product`、`dev_visual`、`dev_architecture`、`dev_engineering`、`dev_acceptance`、`dev_operations` 六个原生 Agent。不写个人 AGENTS.md、config.toml 或全局 Skill 链接，不固定模型/推理强度。
 
-本机安装路径保存在源码仓库的 `.dev-flow/plugin-install.json`，只用于只读检查缓存；它不是项目资产或 Agent 初始化状态。`check` 核验实际启用、包内容和源码一致性。能力列表未刷新时在新会话核验发现，必要时重启宿主。
+角色目录为 `$CODEX_HOME/agents/`，未设置时为 `~/.codex/agents/`。归属与指纹保存在同一 Codex 用户根目录的 `dev-flow/native-agents.json`；`native-agents.lock` 串行化本工具操作，卸载后保留锁文件。仓库 `.dev-flow/plugin-install.json` 保存实际缓存路径。角色正文的本地链接绑定已核验缓存，以百分号编码处理空格/括号等字符。
+
+`check` 同时核验实际启用、包/源码一致性、六角色归属及预期正文；缺失时重新 install 可修复。安装前发现非受管同名文件、其他 TOML 声明同名角色、目标链接或用户修改会停止；请先另存个人修改或移开冲突文件再重试，不会静默覆盖。不能可靠识别外来 TOML 顶层 name 时保守拒绝并指出文件。普通文件提交失败会回滚角色和记录字节；外部 CLI 状态及旧缓存不属于文件事务，失败后修复环境并重新 install，不保证原角色资源仍可运行。突然断电或强制终止不保证多文件原子性。
+
+原生角色发现与文件注册分别核验；能力列表未刷新时在新会话检查，必要时重启宿主。项目级 `.codex/agents/` 可能影响当前项目角色选择，使用实际派发元数据确认角色，不以文件存在代替已加载。注册仅支持本轮已验证的 macOS/Unix Python 3.9+ 环境。
+
+### 插件页面安装的边界
+
+截至 2026-10-23，官方 [Subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents) 将独立角色入口定义在个人/项目 agents 目录；[插件打包文档](https://developers.openai.com/plugins/build/plugins) 没有说明包内 agents 自动注册或安装后回调。Hooks 安装后须用户信任，SessionStart 也不等同安装事件；onboardingSkill 须运行 setup。因此不能保证只在插件页面点击安装就自动注册六角色。本轮通过上述现有 install 命令完成注册，不添加 Hooks 或额外 setup。
+
+页面直接禁用/卸载不会触发本工具的角色清理；受管安装应使用 remove 命令完整移除。页面操作后 check 会报告未启用，重新 install 可恢复。PATH CLI 与桌面捆绑版本可能不同，实际版本及原生演练结果见本轮 Progress。
 
 共享文档预览默认不再复制到业务项目。使用已安装 `skills/document-management` 目录中的阅读器脚本，并传入项目目录和文档根目录：
 
@@ -42,7 +54,7 @@ node "$DOCUMENT_SKILL_DIR/assets/document-workspace/scripts/preview.mjs" \
 
 脚本首次运行时按锁文件在插件模板目录准备依赖，后续项目共享该依赖；项目只保存文档源文件和 `.dev` 运行记录。需要项目级定制时才使用 `preview.mjs init` 复制兼容工程。
 
-源码远程为 [guoshencheng/dev-flow](https://github.com/guoshencheng/dev-flow)。新环境可克隆后执行上述命令；从其他安装入口使用插件时，按该宿主的安装/更新机制处理，均无需初始化 Agent。当前版本没有 MCP 服务、后台常驻进程或生命周期 Hooks。
+源码远程为 [guoshencheng/dev-flow](https://github.com/guoshencheng/dev-flow)。新环境克隆后执行上述命令即可安装并注册六职责；其他安装入口仅按其宿主能力加载插件，不推定已完成 Codex 角色注册。当前版本没有 MCP 服务、后台常驻进程或生命周期 Hooks。
 
 ## Kimi 安装与双端维护
 
@@ -98,7 +110,7 @@ Plugin 0.2.2、总纲 v0.27 将既有代码/验证/集成方法接入收尾，�
 python3 scripts/manage_plugin.py remove
 ```
 
-remove 只解除当前仍属于本仓库构建来源的插件和 marketplace，并删除本地安装路径记录；保留源码、用户配置和业务项目资产。用户在宿主页面关闭或卸载插件无需额外解除 Agent。
+remove 先核对归属与用户修改，再解除当前仍属于本仓库来源的插件和 marketplace，并删除六个受管角色、角色归属记录和本地安装路径记录；保留源码、无关用户配置和业务项目资产。受管角色已被修改时整体拒绝卸载，保留资源供用户另存修改后重试。无归属记录时不删除个人角色。外部 CLI 移除成功后若文件清理失败会明确报错，不声称全部已移除；可重试 remove，或 install 恢复安装。
 
 ## 历史迁移
 

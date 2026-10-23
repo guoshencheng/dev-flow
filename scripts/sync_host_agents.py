@@ -152,7 +152,7 @@ def expected_files(root):
             routed = "、".join(spec["skills"])
             instructions = f"{body}\n\n本职责可按任务选用已声明的操作 Skills：{routed}。按宿主实际发现的包内路径读取；无法定位时说明缺口，不猜测开发机器路径。\n"
             if host == "codex":
-                files[relative] = ("# 由 scripts/sync_host_agents.py 生成；Codex 角色参考，不自动注册。\n"
+                files[relative] = ("# 由 scripts/sync_host_agents.py 生成；安装命令注册到 Codex 个人角色目录。\n"
                     f'name = "dev_{role}"\n'
                     f'description = {json.dumps(spec["description"], ensure_ascii=False)}\n'
                     f'developer_instructions = {json.dumps(instructions, ensure_ascii=False)}\n')
@@ -175,7 +175,7 @@ def check(root):
         mismatches.extend(f"{directory}/{name}" for name in sorted(found - wanted))
     if mismatches:
         raise ValueError("宿主入口未同步，运行 python3 scripts/sync_host_agents.py --write：" + ", ".join(mismatches))
-    return {"hosts": ["codex-reference", "kimi-native"], "roles": len(ROLES),
+    return {"hosts": ["codex-installable", "kimi-native"], "roles": len(ROLES),
             "shared_skills": len(load_capabilities(root)["skills"]), "synchronized": True}
 
 

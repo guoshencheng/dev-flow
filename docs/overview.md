@@ -1,6 +1,6 @@
 # Dev Flow 当前能力概览
 
-日期：2026-10-23。当前源码 Plugin **0.5.2**、流程总纲 **0.32**，共 **16 个 Skill** 和六职责提示词。本轮唯一总体状态是[六职责 Agent 模板使用要求 Progress](plans/2026-10-23-agent-template-contract/Progress.md)，实际验证及安装状态由其关联，[安装方法](plugin.md)单独维护。六职责正文明确编写前读取对应模板、按模板组织内容及评审时核对模板和裁剪依据。版本声明不替代实际启用、缓存和新会话发现结果。
+日期：2026-10-23。当前源码 Plugin **0.6.0**、流程总纲 **0.32**，共 **16 个 Skill** 和六职责提示词。本轮唯一总体状态是[原生子 Agent 注册 Progress](plans/2026-10-23-native-subagent-registration/Progress.md)，实际验证及安装状态由其关联，[安装方法](plugin.md)单独维护。现有安装命令同步注册六个 Codex 原生职责，升级/检查/卸载管理受管副本，保留模板要求与其他流程约定。版本声明不替代实际启用、缓存和新会话发现结果。
 
 ## 能力分层
 
@@ -34,7 +34,7 @@
 - [实现Review](../reviews/2026-10-21-agent-skill-reorganization-implementation.md)、[规划边界Review](../reviews/2026-10-21-agent-skill-reorganization-boundaries.md)。
 - [文档归类](document-organization.md)、[权威归属](document-ownership.md)、[生成器](../scripts/sync_host_agents.py)和[能力声明](../capabilities.json)。
 
-Codex参考入口不自动注册个人角色；Kimi生成原生入口且需分别安装/重载。按用户本轮选择先完成Codex，Kimi留待原生会话更新。新会话的能力刷新、隔离工具样本、Harness专业演练、原生角色发现和真实项目验证分别登记。
+Codex 的 install 命令自动注册六个受管原生角色，插件页面安装无已核实的自动注册入口；Kimi 生成原生入口且需分别安装/重载。本轮交付 Codex，Kimi 留待原生会话更新。新会话的能力刷新、隔离工具样本、Harness 专业演练、原生角色发现和真实项目验证分别登记。
 
 历史建设、48项能力编号与旧版本评测保留原事实，[旧能力目录](history/2026-10-21-role-capabilities.md)可追溯；不以旧结果宣称新结构已通过。未来按真实调用需要提取操作Skill，不按角色名或文档数量增加入口。
 
