@@ -1,6 +1,8 @@
 # Codex / Kimi Plugin 安装与维护
 
-当前源码 0.6.5 提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-23-case-management-and-execution/Progress.md)。
+当前源码 0.6.6 提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](dev-flow/iterations/2026-10-24-function-first-spec/Progress.md)。
+
+0.6.6 将通用产品规格改为按功能与用户任务展开，字段、权限、计算、边界和恢复归属具体功能，验收例子就近表达；章节按实际任务裁剪，保留已有编号并按需附录追溯。同步产品 Skill、规格协议、角色及下游引用入口，新增通用收藏示例。属于兼容文档/方法维护，递增 patch；总纲协议版本、能力声明与安装机制不变。
 
 0.6.5 统一测试执行语境的“每轮”为“每次测试执行”：一个迭代可以有多次测试执行，每次使用独立runID并单独保存执行表；同一次执行中断后继续原表，新的一次执行保留此前记录。同步规范、模板与验收职责入口；属于兼容措辞澄清，递增patch。总纲/文档协议版本、schema和工具算法不变。
 

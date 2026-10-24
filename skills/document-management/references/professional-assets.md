@@ -4,7 +4,7 @@
 
 ## 产品
 
-`docs/dev-flow/product/index.md` 指向当前任务/规则及有效规格；迭代规格默认 `iterations/<ID>/product/spec.md`。来源包括原用户要求、有效决定、RULE/AC、原型 PT/源码版本/场景与模拟范围。参考记录保留来源、观察条件、适用/不适用和采用/放弃理由。原型走查、代理检查和真实用户反馈分别记录。
+`docs/dev-flow/product/index.md` 指向当前任务/规则及有效规格；迭代规格默认 `iterations/<ID>/product/spec.md`。来源包括原用户要求、有效决定、功能段落/已有 RULE/AC、原型 PT/源码版本/场景与模拟范围。参考记录保留来源、观察条件、适用/不适用和采用/放弃理由。原型走查、代理检查和真实用户反馈分别记录。
 
 规格的正确内容与更新由[产品职责](../../../agents/prompts/product.md)负责，字段/表达使用[规格 Skill](../../product-specification/SKILL.md)。不能按日期或实现现状默默替代业务规则。
 

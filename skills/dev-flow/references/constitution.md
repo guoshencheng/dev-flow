@@ -14,7 +14,7 @@
 
 | 职责 | 对象与应交接的结论 |
 | --- | --- |
-| [产品](../../../agents/prompts/product.md) | 用户任务、流程、规则、业务预期、原型可用性；交出有效 RULE/AC 与未决 |
+| [产品](../../../agents/prompts/product.md) | 用户任务、流程、规则、业务预期、原型可用性；交出按功能组织的有效需求、可观察验收预期、已有编号追溯与未决 |
 | [视觉](../../../agents/prompts/visual.md) | 层级、布局、Tokens、组件、状态和响应呈现；交出实际渲染检查及限制 |
 | [架构](../../../agents/prompts/architecture.md) | 业务边界、依赖、契约和技术约束；独立技术 Review 与实际架构收尾 |
 | [研发](../../../agents/prompts/engineering.md) | 真实代码成本反馈、统一设计和计划、实现、集成、自测与完整候选 |
