@@ -1,6 +1,6 @@
 ---
 title: 通用需求按功能展开总体进度
-status: active
+status: completed
 updated: 2026-10-24
 workflow_version: 1
 ---
@@ -48,4 +48,13 @@ workflow_version: 1
 
 - 版本：兼容文档/方法维护，0.6.5 → 0.6.6；总纲协议仍为 0.33。
 - 路径：核对候选 → 同步版本与入口 → 纳管新文件并验证 → 本地提交 → 本机 install/check → 核对产物和缓存 → 完成说明。
-- 当前：进行中。Kimi 只生成同步入口，不推定其宿主已经安装或重载。
+- 当前：本机首轮 install/check 已通过，启用与源码缓存一致，16 Skills 和六职责注册完整；完成交付记录后再次构建安装核对最终记录候选。Kimi 只生成同步入口，不推定其宿主已经安装或重载。
+
+### 实际交付记录
+
+- 源码内容提交：`7fc37f0`，位于 `main`，基线 `4a2688c`；未推送远端。
+- 版本：0.6.6；`python3 -m unittest discover -s tests` 全部 79 项通过（包含隔离安装与用户配置保留测试）。同步检查及差异检查通过。
+- 构建产物：`/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/plugin-source`。
+- 实际安装缓存：`/Users/guoshencheng/.codex/plugins/cache/dev-flow-local/dev-flow/0.6.6`。
+- `install` 成功，`check` 返回 `enabled: true`、`source_matches_cache: true`、16 Skills、六职责；角色目录 `/Users/guoshencheng/.codex/agents`。
+- 完成说明：通用功能导向需求表达已随本机 Codex 插件交付。Kimi 尚未执行原生安装/重载；当前会话已加载能力不据此声称刷新，新会话核验发现，必要时重启宿主。
