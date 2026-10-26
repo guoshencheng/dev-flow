@@ -1,6 +1,6 @@
 ---
 title: 独立收尾 Skill 与长期文档回写
-status: active
+status: completed
 updated: 2026-10-26
 workflow_version: 1
 ---
@@ -24,9 +24,9 @@ workflow_version: 1
 ## 目标与当前状态
 
 - 整体结束条件：收尾请求能进入独立 Skill；实际完成相关资料盘点与有效内容回写；回写与复用均能追溯到来源和权威入口；必要同步缺口不能被总结或归档掩盖；既有验证、交付及授权边界保留；候选验证及安装 check 通过。
-- 当前阶段：版本与 Codex 本机交付。
-- 当前动作与执行者：完整 C1 已通过独立静态 Review、18项隔离安装测试和独立于Skill作者的四次前向行为检查；主 Agent 已核验实际结果文件，准备源码保存和本机安装。
-- 下一步及进入条件：install/check核验实际启用及缓存指纹，再完成独立技术收尾与最终记录保存。
+- 当前阶段：本轮源码、文档同步与独立技术收尾已完成；最终交付以本轮固定提交候选为核验对象。
+- 当前动作与执行者：主Agent保存最终记录并在同一交付操作中从本轮提交的隔离副本重建安装、检查缓存；实际最终命令结果留本机`install-final.json`、`check-final.json`并由完成说明报告，不递归修改已打包记录。
+- 后续入口：新会话核验Skill发现，真实业务项目按独立任务试用；其他会话的共享工作区修改不在本轮交付范围。
 - 待决：具体 Skill 名称、现有收尾参考的迁移/引用关系和最小记录形式，在设计阶段确定；不要求提前创建新的平行文档账本。
 
 ## 总体里程碑
@@ -37,8 +37,8 @@ workflow_version: 1
 | 能力、调用与写入边界设计 | 完成 | 主 Agent 主笔，独立执行者复核 | 有效流程确认 | [设计 v1 与计划 v2 独立通过](engineering/review.md)，P1-1/P1-2 关闭 |
 | Skill、路由与关联文档实现 | 完成 | 主 Agent | 有效设计及本范围实施授权 | 新增 Skill 及发现元数据、路由/模板/长期说明和能力声明，0.7.0 入口已同步；待完整候选验证 |
 | 完整候选 Review 与验证 | 完成 | 独立执行者，主 Agent 修订 | 固定完整候选 | [C1 独立静态 Review](engineering/review.md#implementation-r1)、quick_validate、生成/引用检查、18项隔离安装测试及四次合成行为检查通过 |
-| 版本与 Codex 本机交付 | 进行中 | 主 Agent | 候选验证通过 | 双清单及生成入口已同步0.7.0；新文件已纳管；install/check待实际执行 |
-| 长期文档同步与整体完成 | 待开始 | 主 Agent | 实际候选及交付结果 | 更新本仓库相关长期入口，说明实际变化、复用、遗留及安装限制；本页记录结果 |
+| 版本与 Codex 本机交付 | 完成 | 主 Agent | 候选验证通过 | 0.7.0双清单与生成入口同步，源码提交afca71a，install/check实际启用且缓存/源码一致；最终记录纳管后再重建核对 |
+| 长期文档同步与整体完成 | 完成 | 主 Agent、独立架构执行者 | 实际候选及交付结果 | 长期入口已同步，见下表；[独立技术收尾](architecture/closeout.md)无阻断，最终记录与本轮提交候选一并保存交付 |
 
 ## 验证与独立性
 
@@ -55,6 +55,7 @@ workflow_version: 1
 | 主 Agent → `closeout_review` 独立架构执行者 | 设计 v1、计划 v1/v2；用户已确认本页范围；仅可写 `engineering/review.md` | 实际以 sol medium 独立评审，设计 v1、计划 v2 通过，P1-1/P1-2 关闭 |
 | 主 Agent → `closeout_review` 完整候选 Review | C1 23个实现文件及精确指纹；同一开始基线；仅追加 Review | 输入字节逐项一致；需求符合性和实现质量静态通过；不将待执行行为/安装写为交付通过 |
 | 主 Agent → `closeout_behavior` 独立验收执行者 | 新 Skill、合成项目 a/b/c 和原始请求；仅可写本地 behavior 目录 | 实际使用sol medium建立预期并执行四次请求，未参与Skill主笔；无实质缺陷；主Agent已核对结果文件和指纹 |
+| `closeout_review` → 主 Agent 技术收尾交接 | 提交afca71a/C1、初次安装缓存和真实测试/行为结果；仅新增技术收尾文档 | [技术收尾](architecture/closeout.md)无架构阻断；主Agent核验输入、长期回写和共享工作区边界，接续最终固定候选打包与核验 |
 
 ## 有效决定、证据与恢复提示
 
@@ -74,6 +75,22 @@ workflow_version: 1
 - 前向行为检查：三个合成项目、四次实际收尾请求均达到相应文档预期；18个初始文件指纹匹配，45条本地链接无缺失，无实质Skill缺陷。执行者独立于Skill作者，同一执行者制定用例并操作，不冒称独立用例Review或真实项目专业验收。
 - 主Agent核验行为结果：9个已写文件的实际SHA256与执行表一致，10个未修改原文件与初始指纹一致，引用检查无缺失。逐项用例、执行表及原始指纹留 `.dev/runs/iteration-closeout-skill/behavior/`，不提交；此处只保存流程层结论和取得方式。
 - `python3 scripts/manage_plugin.py build`：内部候选构建通过，793文件；最终包随交付记录完成后重新构建核验。
+
+## 实际源码与本机交付
+
+- 源码内容提交：`afca71a`，分支`main`，开始基线`10c6e124447c6c8013935ece937221f269f074c6`；27个本轮文件，无混入其他会话计划，未推送远端。
+- `python3 scripts/manage_plugin.py install`：成功。0.7.0构建793文件，产物根目录`/Users/guoshencheng/Documents/work/dev-flow/.dev-flow/plugin-source`，包清单SHA256为`674d4661a330ecae3cdcb24c5ab85cd89e96c7c9294100e74577ab3e7e49e554`。
+- 实际缓存：`/Users/guoshencheng/.codex/plugins/cache/dev-flow-local/dev-flow/0.7.0`。首轮`check`返回`enabled: true`、`source_matches_cache: true`、17 Skills和六职责；受管角色目录`/Users/guoshencheng/.codex/agents`。原始结果留本机`install-initial.json`、`check-initial.json`。
+- 交付记录与独立技术收尾新增后由主Agent再次保存、重建安装和check；最终命令结果与源码提交由完成说明报告，不递归改写每次包指纹。
+- Kimi清单和职责入口已生成并检查，未执行Kimi原生安装/重载。当前会话已加载旧技能目录，未据此声称完成新会话能力发现；下一新会话核验，必要时重启宿主。
+
+### 共享工作区并发变化与最终候选
+
+初次源码提交和install/check完成后，其他会话修改了公共/专业职责提示词、生成入口及文档/图示模板。它们不是C1，未经过本轮Review；保留原工作区，不回退、不纳入本轮提交或安装。原工作区因这些变化不再等于初次缓存，不能继续声明两者整体一致。
+
+本轮最终交付仅在afca71a之上保存本目录技术收尾及记录，使用该提交的隔离Git副本构建；将已验证包交给原来源目录和既有管理器安装逻辑，保留原marketplace及角色归属，不修改安装脚本。最终核验实际启用/来源、包内全量指纹、17个Skill和六职责，同时将“缓存与本轮提交候选一致”及“共享工作区与缓存因其他会话修改而不同”分别报告。该隔离是执行层调整，不改变已确认范围、权限或Skill语义。
+
+最终操作原始记录留 `.dev/runs/iteration-closeout-skill/`。若最终操作失败，恢复本页进行中状态并处理，不以首轮成功替代失败结果；实际最终提交和检查结果由会话完成说明交接。
 
 ## 本轮资料盘点与长期文档回写
 

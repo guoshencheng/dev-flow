@@ -65,4 +65,4 @@ version: 1
 
 新增能力后现有安装测试中固定 Skill 数量预期应跟随真实候选清单校验，保留打包和配置保护断言；不修改安装脚本。执行相关隔离安装测试、构建及 Codex install/check，记录实际版本和缓存。Kimi 只同步生成清单，不声明已安装或发现。收尾后同步本仓库 README、安装指南及权威归属等实际受影响长期入口，保留新会话发现限制。
 
-设计、计划及完整候选 Review 见 [review.md](review.md) 的实际轮次；总体状态由 [Progress](../Progress.md) 维护，技术收尾依据实际结果记录，未执行不预填通过。
+设计、计划及完整候选 Review 见 [review.md](review.md) 的实际轮次；[独立技术收尾](../architecture/closeout.md)已依据提交afca71a、合成行为和初次本机交付完成。总体状态及最终固定候选交付由 [Progress](../Progress.md)维护，未执行的新会话发现和Kimi安装不预填通过。

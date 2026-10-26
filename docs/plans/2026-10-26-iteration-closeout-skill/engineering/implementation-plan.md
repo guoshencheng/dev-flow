@@ -44,8 +44,10 @@ version: 2
 
 实时进展统一见 [Progress](../Progress.md)。实际发现、修订与复核记录到 Review，行为原始执行记录留本地忽略目录；本篇只记录安排与重要调整。
 
+初次源码提交和安装完成后发现其他会话修改共享工作区。最终操作改为只提交本轮记录，并在该提交的隔离Git副本构建、核验并安装；保留原来源目录及角色归属，不改管理脚本、不纳入或回退他人未完成修改。最终核验缓存与本轮提交候选，全工作区差异另行如实说明。此项是输入隔离调整，原Skill语义及C1 Review范围不变。
+
 ## 七、引用与关联文档
 
 - [设计](design.md)、[唯一 Progress](../Progress.md)。
 - [总纲](../../../../skills/dev-flow/references/constitution.md)、[文档管理](../../../../skills/document-management/SKILL.md)、[Git 工作流](../../../../skills/git-workflow/SKILL.md)。
-- Review 和技术收尾在实际形成后补真实入口。
+- [Review](review.md)、[独立技术收尾](../architecture/closeout.md)；技术收尾绑定提交afca71a和初次安装，最终记录候选的命令结果由Progress及完成说明交接。
