@@ -34,3 +34,15 @@ updated: 2026-10-26
 ## 下一项工作交接
 
 交出方为本独立架构执行者；接收方为主 Agent。交出对象是上述固定组合候选及本静态 Review，可进入合并，无源码必须修改项。主 Agent 接续纳管当前 UI Progress 补记和本文件，保留三份无关未暂存文档，完成合并 tip、回归、受管安装迁移和实际交付记录；如规则或 25 个实现文件改变，先重核清单和受影响的 C1/九例证据，再决定是否需要定向复评或复验。
+
+## 主干集成与来源迁移后定向复核（2026-10-26 16:43 +08:00）
+
+- **对象和祖先关系：** 当前 `main=618727ce0ffbd8781c4721ed3a0525f43e6a4dd1`，父提交含 `de0b491` 与完整 UI tip `cfcb41a`；`git merge-base --is-ancestor cfcb41a main` 实际退出码 0。首次来源迁移核对时组合候选的 25 个实现文件仍与 `combined-candidate.json` 原指纹一致，未产生需要重审 UI 规则语义的源码修改。先前“待完成中断合并”的文字仅描述上一轮检查时点。
+- **测试和生成：** [组合测试日志](../../../../.dev/runs/ui-main-integration/tests.log)记录 79 项通过、25.889 秒；本次 `sync_host_agents.py --check` 返回两宿主、六角色、17 Skills 同步。它们证明各自执行范围，不代替真实用户 UI 决定。
+- **受管安装实际结果：** [remove 日志](../../../../.dev/runs/ui-main-integration/remove-worktree.log)记录旧来源受管清理并保留源码/项目资产；[install 日志](../../../../.dev/runs/ui-main-integration/install.log)记录从主仓库构建 805 文件、包哈希 `fc198ec2b66400b750fd311dea7c13e41c47e35a9965b0bac0b63eaed249ccf8`；[check 日志](../../../../.dev/runs/ui-main-integration/check.log)记录 `enabled: true`、`source_matches_cache: true`、17 Skills、六角色。本机 `.dev-flow/plugin-install.json` 指向 0.8.1 缓存；真实角色 registry 的 `source_root` 为主仓库、`plugin_root` 为该缓存。首次迁移核对时 25 个实现文件在源和缓存逐字节匹配；六角色实际字节与 registry 指纹及安装器 `render_agents(cache)` 的预期输出均匹配。受管角色会把包内相对链接渲染成缓存绝对路径，因此不应要求其与包内原始 TOML 字节相同。
+- **保留与限制：** 三份原有文档审阅效率未暂存记录仍与 `preexisting-unstaged.json` 指纹一致，未进入本次主干提交。主 Agent 报告已将 891 个原始运行文件逐字节复制到主仓库并保留回滚快照；本评审只核对了两组九例执行表和 `prior-install` 快照入口，未独立逐项重算全部 891 文件。受管 `archive_worktree` 返回“The task's primary checkout cannot be removed.”，原 worktree 因宿主主检出限制保留，未用 CLI 绕过；安装来源已迁主仓库，该资源限制不推翻主干集成结论。Kimi 原生安装及新会话能力发现仍未执行。
+- **当前结论：** 主干集成与首次受管来源迁移在上述证据范围内通过，无新增架构/确认语义问题。本文及技术收尾的新增文字写入发生在上述 install/check 之后；主 Agent 纳管最终文档后须再次 install/check，验证最终源码和缓存一致，不能提前复用本次 `source_matches_cache` 结论。
+
+### README 与安装说明链接定向复核
+
+主 Agent 在首次 0.8.1 安装后将 `README.md` 和 `docs/plugin.md` 顶部“本轮 Progress”链接改指当前 [UI Progress](../Progress.md)。我逐项核对两处 diff，均仅替换相对链接目标，目标文件存在；版本、UI 规则、文档审阅规则和生成配置正文未变。当前组合清单相对工作树仅这两个文件指纹变化，另外 23 个实现文件仍匹配清单。旧 C1/九例对规则语义的结论继续适用；这两处文档目标变化需随最终文档重新打包并 install/check，首次缓存哈希不覆盖当前源码。

@@ -1,6 +1,6 @@
 ---
 title: UI 方案确认优化架构技术收尾
-version: 1
+version: 2
 status: current
 updated: 2026-10-26
 ---
@@ -89,3 +89,11 @@ updated: 2026-10-26
 ## 七、引用更新与下一步入口
 
 本篇与[设计](../engineering/design.md)、[计划](../engineering/implementation-plan.md)、[独立 Review](../engineering/review.md)、[用例](../acceptance/cases.md)及两组执行表绑定。主 Agent 核对本篇输入和实际安装来源后，更新唯一 [Progress](../Progress.md) 的技术收尾、最终打包/检查及限制；我无权改写设计/计划引用和总体状态。若后续源码或规则变化，先确认 C1 Review/九例证据仍覆盖，再定向复评、复验。本次技术收尾完成不等于迭代归档、真实 UI 决定或最终文档产物交付已完成。
+
+## 八、主干集成技术收尾补充（v2，2026-10-26）
+
+以上第一至第七章保留 0.8.0 隔离 worktree 交付时的事实和当时未完成项，不作为当前 0.8.1 主干状态。主干集成已另由[组合候选 Review 及后置复核](../engineering/merge-review.md)检查。当前 `main=618727ce0ffbd8781c4721ed3a0525f43e6a4dd1`，`cfcb41a` 是其祖先；首次来源迁移核对时 25 个 UI 实现文件在源码和 0.8.1 缓存均与组合清单指纹一致。随后 README/插件说明各有一处 Progress 相对链接改指本轮现行入口，另外 23 个实现文件仍保持指纹，规则正文、版本和生成配置未变。UI 总纲 0.34、执行协议 0.18、schema 1 的边界保持，文档审阅的源内容优先规则与 UI 确认分别适用，没有引入新的确认语义或自动拦截能力。
+
+本轮合并后的现有 79 项测试日志通过，六职责/两宿主生成检查通过。主 Agent 按受管生命周期从旧 worktree 来源 remove，再从主仓库 install/check；[安装日志](../../../../.dev/runs/ui-main-integration/install.log)与[检查日志](../../../../.dev/runs/ui-main-integration/check.log)显示 0.8.1、805 文件、包哈希 `fc198ec2b66400b750fd311dea7c13e41c47e35a9965b0bac0b63eaed249ccf8`，当时 `enabled` 和 `source_matches_cache` 均为 true。独立抽查显示 25 个实现文件源/缓存字节相同，六角色实际文件与 registry 指纹和安装器渲染预期一致，registry 来源指向主仓库。三份文档审阅效率迭代的原未暂存记录仍保持原指纹，不混入本次主干提交。原九例执行记录及回滚快照已在主仓库保留；九例仍限合成项目与各自观察边界，不能称真实用户确认或生产验收。
+
+原 worktree 的归档受宿主主检出限制：主 Agent 报告受管工具拒绝“The task's primary checkout cannot be removed.”，未用 CLI 绕过。该 worktree 作为本聊天主检出保留，安装来源已经迁回主仓库；清理未完成是资源遗留，不阻断已核实的主干合并。Kimi 原生安装和新会话能力发现仍未核验。主 Agent 后续纳管本篇及最终 Progress 后，还须从主仓库重跑 install/check 并记录新的最终包指纹；此处不预填未来结果。技术收尾的当前结论为：**主干规则与架构边界已核对通过，首次 0.8.1 受管交付有实际检查证据，最终文档重打包及 worktree 资源遗留分别承接。**

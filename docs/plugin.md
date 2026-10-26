@@ -1,6 +1,6 @@
 # Codex / Kimi Plugin 安装与维护
 
-当前源码 0.8.1 提供流程入口、四个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 17 个 Skill；独立 `iteration-closeout` 组织收尾资料盘点及项目级通用文档实际回写。六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-26-document-review-efficiency/Progress.md)。
+当前源码 0.8.1 提供流程入口、四个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 17 个 Skill；独立 `iteration-closeout` 组织收尾资料盘点及项目级通用文档实际回写。六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-26-ui-confirmation/Progress.md)。
 
 0.8.1 在 0.8.0 的 UI 确认规则上合入文档审阅效率优化：自查/Review 默认直接读取源内容、差异和依据；新图、布局/标签及相关呈现条件变化时定向观察，未变且有效的对象/环境证据可复用。提供阅读链接不自动要求打开浏览器；按检查目标选择源文件、本地或 URL 检查、渲染导出、浏览器截图及必要的 Computer Use，保留用户指定范围和工具要求。公共/专业职责、图示规范和相关模板同步，属于兼容方法维护，递增 patch；沿用总纲 0.34、执行协议 0.18、文档协议 0.16、能力清单与安装机制。0.7.1 仅为本轮未安装的内部候选，实际交付为包含双方成果的 0.8.1。
 

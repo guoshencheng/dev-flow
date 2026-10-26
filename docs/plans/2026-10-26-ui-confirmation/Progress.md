@@ -1,6 +1,6 @@
 ---
 title: UI 方案确认与实施边界优化
-status: active
+status: complete
 updated: 2026-10-26
 workflow_version: 1
 ---
@@ -10,15 +10,24 @@ workflow_version: 1
 ## 主干合并与收尾接续（当前）
 
 - 用户本次明确授权：“收尾吧，合并到主干”。复用本轮有效流程、设计、Review 和验收，接续本地合并、组合验证、本机安装来源迁回主仓库及 worktree 整理；不包含远端推送。
-- 当前阶段：主干 `677107c` 已包含文档审阅效率优化；接续另一会话中断的 UI 合并，`MERGE_HEAD` 为 `f3fadfb`，冲突已解决且版本候选为 0.8.1。本轮补齐完整 `cfcb41a` 的记录与技术收尾，保留双方有效规则。
-- 本轮操作位置：`/Users/guoshencheng/Documents/work/dev-flow`，目标分支 `main`。原 worktree 当前 `codex/ui-confirmation` / `cfcb41a` 保持完整，安装来源在迁回前仍是该 worktree / 0.8.0。
+- 当前阶段：主干合并与技术收尾完成。`de0b491` 接续原中断合并，`618727c` 合入完整 `cfcb41a`；祖先关系检查通过，双方有效规则保留。组合版本为0.8.1，已完成主仓库受管安装/检查及独立技术核验。
+- 本轮操作位置：`/Users/guoshencheng/Documents/work/dev-flow`，目标分支 `main`。安装来源已从原worktree/0.8.0迁回主仓库，当前缓存为 `/Users/guoshencheng/.codex/plugins/cache/dev-flow-local/dev-flow/0.8.1`。
 - 已保存原暂存/未暂存补丁、状态、引用和未暂存文件指纹到 `.dev/runs/ui-main-integration/`；原文档评审效率迭代的三份未暂存记录保持原样。UI 隔离执行记录已按字节复制到主仓库忽略目录 `.dev/runs/ui-confirmation/`，便于整理 worktree 后恢复。
-- 当前动作：组合候选独立 Review 与定向验证；核对暂存归属后完成中断合并，再将完整分支 tip 记录到主干。
-- 下一步：合并后核对当前主干祖先关系和规则、升级版本/生成一致性，执行本机受管来源迁移及 install/check；最终保存记录，确认必要证据已保留再归档本轮 managed worktree。
+- 验证结果：独立组合Review及[主干技术收尾补充](architecture/closeout.md#八主干集成技术收尾补充v22026-10-26)通过，79项现有测试通过（25.889秒），生成一致性及相关Markdown链接检查通过；最终资料纳管后按本仓库约定再次同步安装包，实际最终结果以 `install-final.log/check-final.log` 为准。
+- 后续入口：从主仓库main及本页继续维护。宿主禁止归档本聊天主检出，保留该目录并同步已合并代码；安装管理继续从主仓库执行。Kimi原生更新和新会话发现按需单独核验。
 - 完成条件：主干包含 `cfcb41a`；组合候选评审与适用检查通过；0.8.1 来源为主仓库且 cache/源码/六职责一致；长期入口和本页有真实最终记录，原有无关改动保留。
-- 适用限制：既有九例为合成行为，复用以规则未变为前提；Kimi 原生更新和真实业务验证不在本次接续范围。下方先前隔离交付结果保留为历史来源，不表示当前主干交付已经完成。
+- 适用限制：既有九例为合成行为，复用以规则未变为前提；Kimi 原生更新和真实业务验证不在本次接续范围。下方先前隔离交付结果保留为历史来源，当前主干结果以本节及最终安装日志为准。
 
-## 流程方案与用户确认
+### 本次接续的实际交付与资源
+
+- 组合候选沿用总纲0.34/执行协议0.18，插件0.8.1保留UI规则并合入既有文档审阅效率优化。独立评审确认两份权威规则分别与已审来源一致，旧九例及相关Review按未变范围复用；本次另执行组合候选的79项现有测试。
+- 受管迁移：先核对旧来源六角色实际字节与归属记录，保存旧0.8.0源包、六角色及注册快照到主仓库 `.dev/runs/ui-main-integration/prior-install/`；从原worktree运行remove保留源码资产，再从主仓库运行install/check成功，不手改归属记录。
+- 首次主干安装：805文件，清单SHA256 `fc198ec2b66400b750fd311dea7c13e41c47e35a9965b0bac0b63eaed249ccf8`；`enabled/source_matches_cache`均为true，17 Skills、六角色，registry的source_root为主仓库。日志见 `.dev/runs/ui-main-integration/{remove-worktree,install,check}.log`。最终资料保存后的包以同目录 `install-final.log/check-final.log` 为准。
+- 本机安装从当前工作树构建，文件清单覆盖三份既有未暂存记录的真实字节；这三份记录未纳入本轮提交，其初始SHA保存在 `preexisting-unstaged.json`，后续核对仍一致。
+- 原worktree的891份运行/回滚文件已按字节核对保留到主仓库；受管归档工具返回“The task's primary checkout cannot be removed.”，因此保留主检出并记录此限制。该目录不再是安装来源，后续维护以主仓库为准。
+- 完成记录与主干来源入口同步到本页、README和插件说明。原架构收尾中的worktree0.8.0结果保留为历史，本次独立集成补充见[架构技术收尾](architecture/closeout.md)。没有推送远端，也没有执行Kimi原生安装/重载。
+
+## 首次隔离交付的流程方案与用户确认（历史）
 
 - 目标：补强 UI 方案的用户确认要求，避免将功能范围授权、AI 走查或测试通过当作新增 UI 取舍的确认，同时保留有效确认复用。
 - 用户来源：先询问“涉及到UI改动，并没有找用户确认，现在的流程是否有问题？”，在问题分析后要求“好的，继续推进优化吧”。此前答复授权推进优化准备；完整路径展示后用户明确“继续推进”，合并确认本轮流程及实施、验证和本机交付。
