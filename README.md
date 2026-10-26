@@ -2,7 +2,7 @@
 
 面向 Codex 与 Kimi 的六职责研发协作插件。流程、专业职责和操作技能分别维护：`dev-flow` 只安排阶段、依赖、授权和完成条件；六职责 Agent 提示词承担专业判断；操作 Skills 提供具体方法与工具。项目业务事实保存在所属项目。
 
-当前源码版本 **0.7.0**，总纲 **0.33**：新增独立 [iteration-closeout](skills/iteration-closeout/SKILL.md)，将“开始收尾”明确接入已有资料盘点、专业结论核对和项目级通用文档实际回写；Progress 单列文档同步完成条件。保留既有设计/实施授权、验收交付、文档协议 0.16 及安装机制；验证和安装状态见[本轮 Progress](docs/plans/2026-10-26-iteration-closeout-skill/Progress.md)。
+当前源码版本 **0.8.0**，总纲 **0.34**：新增或改变 UI 方案（含纯视觉变化）须先展示可审阅候选并取得用户确认，再进入对应正式实现；恢复有效设计、精确调整指令、规范内实现细节及明确自主委托按来源/范围复用。实施中偏离已确认 UI 回到受影响决定。保留独立 [iteration-closeout](skills/iteration-closeout/SKILL.md)、文档协议 0.16 及现有安装机制；状态 schema 1 和核验算法不变，不能自动发现未声明 UI 确认。验证和安装状态见[本轮 Progress](docs/plans/2026-10-26-ui-confirmation/Progress.md)。
 
 ## 能力入口
 

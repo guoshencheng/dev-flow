@@ -1,6 +1,8 @@
 # Codex / Kimi Plugin 安装与维护
 
-当前源码 0.7.0 提供流程入口、四个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 17 个 Skill；新增独立 `iteration-closeout` 组织收尾资料盘点及项目级通用文档实际回写。六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-26-iteration-closeout-skill/Progress.md)。
+当前源码 0.8.0 提供流程入口、四个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 17 个 Skill；独立 `iteration-closeout` 组织收尾资料盘点及项目级通用文档实际回写。六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-26-ui-confirmation/Progress.md)。
+
+0.8.0 / 总纲 0.34 / 执行协议 0.18 明确 [UI 方案展示与用户确认](../skills/dev-flow/references/execution-contract.md#ui-方案展示与用户确认)：新增或改变布局、形式、风格、状态呈现及响应方案等，含纯视觉变化，在对应正式实现前展示可审阅候选并取得用户确认；隔离原型可先用于审阅，不能先替换正式产品路径再追认。恢复有效设计、精确指令、规范内细节及明确自主委托按实际覆盖复用，实施中偏离重新处理受影响决定。新增/改变方案的确认边界收紧，按 0.x 不兼容流程调整递增 minor；旧项目复用真实有效依据，不追溯改写历史。状态 schema 1、核验算法、能力声明和安装机制保持，模板及独立 Review 加强漏项核对，不宣称自动识别 UI 漏报或真实展示。Codex/Kimi 生成入口同步，Kimi 原生更新仍单独执行。
 
 0.7.0 新增 [iteration-closeout](../skills/iteration-closeout/SKILL.md)：直接使用 `$iteration-closeout` 或说“开始收尾”，盘点本轮已有资料、核对有效增量并实际回写项目长期权威文档，记录正文更新或有依据的复用及未决承接。既有收尾入口继续可达，Dev Flow 保留整体结束条件，文档管理与 Git 保留各自操作权威；Progress 单列文档同步，必需回写未完成不结束。属于兼容能力新增，递增 minor；总纲 0.33、文档协议 0.16、状态 schema 和安装机制保持。
 
