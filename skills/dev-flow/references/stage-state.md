@@ -44,6 +44,10 @@
 
 ### 确认、Review 与证据
 
+涉及 UI 的范围先执行[UI 方案展示与用户确认](execution-contract.md#ui-方案展示与用户确认)。在 Progress 记录变化分类、展示对象/版本、实际入口和真实答复/复用来源。需要结构化登记时，用 `kind: confirmation`、建议 `stage: ui-design-confirmation` 的 gate 绑定实际 UI artifact 版本，以 `required_coverage/coverage` 标明页面/状态/端或现有 UI ID，并纳入对应 scope 的 `before_implementation` 或其 `after` 依赖；确认明确合并实施授权时才填写 `authorizes`。已有有效确认、精确指令或自主委托引用真实来源与覆盖；无 UI 说明裁剪，不造空 gate。
+
+现有核验可报告已声明 gate 的 pending、覆盖不足和输入失效；没有新增必填 UI 分类字段或自动发现能力。主 Agent 与独立 Review 必须核对 UI 范围及所需依赖是否遗漏，不能将脚本通过当作已展示/已确认，也不能用 `not_applicable` 代替仍需用户决定的新方案。
+
 - **confirmation**：提供 `source`（用户消息/既有确认来源）、`quote`（必要原话）。`coverage` 只列答复明确支持的内容，不能从“按此布局”推导其他规则或尚未写出的 TC 已确认；待决内容保留在正文。已有有效确认引用原来源，不再问一次。正式用例在既有预期内细化时无需例行人工确认；有歧义或新增业务只确认受影响部分。
 - **实施授权**：含正式实现的 scope，必须在 `before_implementation` 或其 `after` 依赖中关联有效、passed 的 confirmation；该确认的 `authorizes: ["scope-ID"]` 明确覆盖本范围。仅 confirmation 可声明 `authorizes`，列表成员须为已登记 scope；普通设计确认、AI Review、未关联或不适用授权均不能放行。可在同一 gate 合并设计/用例和多个范围的实施同意，仍须分别核对其他前置。`inputs` 绑定已展示范围/预期/验证/交付的摘要或规格版本，`record/source/quote` 引用真实答复；范围变化更新受影响输入版本与授权，不能保留旧版本假装有效。
 - **review**：提供 `actor`、`mode`（`self/independent/delegated`）、`checks`（具体核对项）和 `findings`（明确零发现写 `[]`）。发现项含 `text`、`severity: blocking/nonblocking`、`status: open/closed`；开放阻断项不能 passed。标准/系统范围从 `before_implementation` 出发，经单范围授权及 `after` 依赖闭包中的归属 Review 必须为 `mode: independent` 才能开工；从 `before_finish` 出发的归属 Review 同理决定完成。不能把 Review 移到 `after` 或省略 `requires_independent` 来绕过。跨范围合并授权后的依赖可能含另一快路径的作者自查，这时用 `review_scopes` 标明实际归属；缺失时标准/系统范围保持未通过。直接门槛或单范围授权链已指明归属，声明其他 scope 会被判冲突。`delegated` 只表示委派，不能单独证明独立性。快路径或纯文档任务的作者自查仍可如实用 `self`。执行者仍需核对作者身份、实际上下文与完整 Review 范围，脚本仅检查声明的一致性。
