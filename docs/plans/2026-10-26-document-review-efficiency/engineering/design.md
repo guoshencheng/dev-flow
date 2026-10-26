@@ -1,6 +1,6 @@
 ---
 title: 文档审阅与呈现检查效率优化设计
-status: implemented-source
+status: implemented
 version: 1
 ---
 
@@ -8,7 +8,7 @@ version: 1
 
 版本 1；原始要求是降低文档自查/Review 中例行 Computer Use 的成本，用户明确要求按已展示方向优化。总体进度见 [Progress](../Progress.md)，复核见 [Review](review.md)，执行见 [实施计划](implementation-plan.md)。
 
-当前结果：规则源码及两端职责入口已实现，C2 独立 Review 和适用验证通过；首阶段仅交源码。用户现已授权接续 0.7.1 版本与本机安装，当前实际结果见 Progress，不改变已通过的规则设计。
+当前结果：规则源码及两端职责入口已实现，C2 独立 Review、八场景决策及适用验证通过。接续阶段保留并合入 UI 确认规则，0.8.1 已在主干并迁回主仓安装来源，79 项整合回归及本机 check 通过；本轮记录收尾后重包核验的实际结果见 Progress，不改变已通过的文档审阅方法。
 
 ## 一、本次要完成什么
 
