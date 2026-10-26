@@ -158,6 +158,6 @@ Markdown/MDX 推荐 YAML 元信息：`id`、`title`、`status`、`version`、`ow
 
 业务规则优先使用 Agent 可直接读取的 Markdown、结构化数据或源码；可交互说明采用 MDX/React 或原型 HTML。已有 Office、PDF 和设计文件保留原件，建立有来源、同版本的可读说明或预览导出。渲染衍生产物不产生第二套权威规则。
 
-按[文档预览指南](document-preview.md)实际启动 Vite。运行记录保存当前 origin、项目、允许目录与进程，长期索引保存源路径、启动命令和场景路由；本机端口不作为永久链接。Agent 通过 `preview.mjs url --project <项目> --file <项目相对文件>` 核验服务与文件并取得实际地址。
+需要提供 Web 阅读入口，或需要在项目阅读器中检查呈现/交互时，按[文档预览指南](document-preview.md)复用或实际启动阅读服务；其他内容或呈现检查按[检查目标](document-preview.md#选择检查方式)选择工具，不因维护文档或查看独立图示例行启动 Vite。运行记录保存当前 origin、项目、允许目录与进程，长期索引保存源路径、启动命令和场景路由；本机端口不作为永久链接。Agent 通过 `preview.mjs url --project <项目> --file <项目相对文件>` 核验服务与文件并取得实际地址。
 
 确定性地址规则为 `实际 origin + /view/ + 逐段 URL 编码的项目相对路径`。原文件入口为 `/__docs/file/` 加同样编码路径。Markdown 相对链接和资源链接在预览中解析；可操作 HTML 的状态参数来自其实际场景定义。文件移动或服务重启后重新生成并验证地址，不凭历史端口猜测服务已启动。

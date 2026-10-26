@@ -1,6 +1,8 @@
 # Codex / Kimi Plugin 安装与维护
 
-当前源码 0.7.0 提供流程入口、四个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 17 个 Skill；新增独立 `iteration-closeout` 组织收尾资料盘点及项目级通用文档实际回写。六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-26-iteration-closeout-skill/Progress.md)。
+当前源码 0.7.1 提供流程入口、四个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 17 个 Skill；独立 `iteration-closeout` 组织收尾资料盘点及项目级通用文档实际回写。六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-26-document-review-efficiency/Progress.md)。
+
+0.7.1 明确文档自查/Review 默认直接读取源内容、差异和依据；新图、布局/标签及相关呈现条件变化时定向观察，未变且有效的对象/环境证据可复用。提供阅读链接不自动要求打开浏览器；按检查目标选择源文件、本地或 URL 检查、渲染导出、浏览器截图及必要的 Computer Use，保留用户指定范围和工具要求。公共/专业职责、图示规范和相关模板同步，属于兼容方法维护，递增 patch；总纲、文档协议、能力清单与安装机制不变。
 
 0.7.0 新增 [iteration-closeout](../skills/iteration-closeout/SKILL.md)：直接使用 `$iteration-closeout` 或说“开始收尾”，盘点本轮已有资料、核对有效增量并实际回写项目长期权威文档，记录正文更新或有依据的复用及未决承接。既有收尾入口继续可达，Dev Flow 保留整体结束条件，文档管理与 Git 保留各自操作权威；Progress 单列文档同步，必需回写未完成不结束。属于兼容能力新增，递增 minor；总纲 0.33、文档协议 0.16、状态 schema 和安装机制保持。
 
