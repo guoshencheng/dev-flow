@@ -1,6 +1,6 @@
 {
   "name": "dev-flow",
-  "version": "0.6.7",
+  "version": "0.7.0",
   "repository": "https://github.com/guoshencheng/dev-flow",
   "description": "流程编排、六职责 Agent 与可复用操作 Skills：Git、派发、文档、设计、研发、验收、运行交付及会话监控。",
   "skills": "./skills/",

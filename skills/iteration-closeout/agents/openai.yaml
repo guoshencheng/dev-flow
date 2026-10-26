@@ -1,0 +1,4 @@
+interface:
+  display_name: "迭代收尾与文档沉淀"
+  short_description: "盘点本轮已有资料并实际回写项目长期文档，核对保存、交付和遗留承接"
+  default_prompt: "使用 $iteration-closeout 收尾当前迭代，梳理已有资料并将有效变化回写项目级通用文档。"

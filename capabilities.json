@@ -146,6 +146,7 @@
   ],
   "skills": [
     "dev-flow",
+    "iteration-closeout",
     "git-workflow",
     "subagent-coordination",
     "document-management",
@@ -193,7 +194,8 @@
       "prompt": "agents/prompts/architecture.md",
       "skills": [
         "codebase-mapping",
-        "git-workflow"
+        "git-workflow",
+        "iteration-closeout"
       ],
       "resources": [
         "agents/references/architecture",

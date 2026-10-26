@@ -1,6 +1,8 @@
 # Codex / Kimi Plugin 安装与维护
 
-当前源码 0.6.7 提供流程入口、三个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 16 个 Skill；六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-26-final-document-templates/Progress.md)。
+当前源码 0.7.0 提供流程入口、四个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 17 个 Skill；新增独立 `iteration-closeout` 组织收尾资料盘点及项目级通用文档实际回写。六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-26-iteration-closeout-skill/Progress.md)。
+
+0.7.0 新增 [iteration-closeout](../skills/iteration-closeout/SKILL.md)：直接使用 `$iteration-closeout` 或说“开始收尾”，盘点本轮已有资料、核对有效增量并实际回写项目长期权威文档，记录正文更新或有依据的复用及未决承接。既有收尾入口继续可达，Dev Flow 保留整体结束条件，文档管理与 Git 保留各自操作权威；Progress 单列文档同步，必需回写未完成不结束。属于兼容能力新增，递增 minor；总纲 0.33、文档协议 0.16、状态 schema 和安装机制保持。
 
 0.6.7 沉淀产品规格、六章研发设计及独立实施计划的定稿格式：核心对象和功能入口导航、就近的业务规则/异常/例子、按业务流程组织接口/时序/源码、独立数据模型，以及分工/步骤/对接/验证和完整候选条件。兼容按真实需要判断，候选建议与用户要求区分，简单任务裁剪空表。属于兼容模板和方法维护，递增 patch；总纲、文档协议、能力声明和安装机制不变。
 

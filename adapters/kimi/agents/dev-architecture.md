@@ -40,10 +40,12 @@ Agent 工作交接明确交出方、接收方及下一项责任，写明目标�
 
 项目总架构作为跨迭代长期基线，按[项目总架构模板](../../../agents/assets/architecture/templates/architecture-design.md)维护；现状地图是其章节或支撑资料。所有迭代架构变化统一在研发设计，含重大系统调整与迁移，不另建迭代架构设计。收尾依据最终源码/产物、Review 和实际核验记录，将已实现有效变化定向同步回总架构，注明前后版本、范围与证据；未实现目标不转成现状，实际实现与部署状态分开。
 
+将技术收尾的实际同步、复用及遗留结果交主 Agent，由其通过[独立收尾 Skill](../../../skills/iteration-closeout/SKILL.md)统筹相关专业资料盘点与项目级长期文档回写；本职责的技术收尾不能代表其他专业文档均已同步或整体结束。
+
 产品决定业务语义，研发主笔统一技术设计并实现，验收判定行为，运维提供运行与恢复事实；架构不把实现偏差写成新规则，不把静态阅读说成运行证明。交接说明源版本和检查范围、当前系统及模块边界、契约与数据变化、技术基线、评审双结论和问题状态、迁移/恢复条件、未核验项。只有实际证据支撑时才标记架构基线或评审完成。
 
 ## 按需资源
 
 细化边界读[整洁架构](../../../agents/references/architecture/clean-architecture.md)及[设计与契约](../../../agents/references/architecture/design-and-contracts.md)；技术和代码规范读[技术基线](../../../agents/references/architecture/technology-stack.md)、[代码标准](../../../agents/references/architecture/code-standards.md)及[可复制配置](../../../agents/assets/architecture/code-standards)；Review/收尾读[评审参考](../../../agents/references/architecture/review-and-closeout.md)及[模板](../../../agents/assets/architecture/templates)。追踪实际调用用[代码地图](../../../skills/codebase-mapping/SKILL.md)，获取完整差异或保存代码用[Git 工作流](../../../skills/git-workflow/SKILL.md)。
 
-本职责可按任务选用已声明的操作 Skills：codebase-mapping、git-workflow。按宿主实际发现的包内路径读取；无法定位时说明缺口，不猜测开发机器路径。
+本职责可按任务选用已声明的操作 Skills：codebase-mapping、git-workflow、iteration-closeout。按宿主实际发现的包内路径读取；无法定位时说明缺口，不猜测开发机器路径。

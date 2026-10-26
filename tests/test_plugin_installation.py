@@ -40,7 +40,11 @@ class PluginPackageTests(unittest.TestCase):
     def test_package_without_setup_and_rebuild(self):
         result = manager.build(self.root)
         bundle = Path(result['build_root'])
-        self.assertEqual(len(manager.validate_bundle(bundle)), 16)
+        expected_skills = json.loads((self.root / 'capabilities.json').read_text())['skills']
+        self.assertEqual(manager.validate_bundle(bundle), expected_skills)
+        self.assertIn('iteration-closeout', expected_skills)
+        closeout_skill = 'skills/iteration-closeout/SKILL.md'
+        self.assertEqual((bundle / closeout_skill).read_bytes(), (self.root / closeout_skill).read_bytes())
         self.assertFalse((bundle / 'skills/dev-flow-setup').exists())
         self.assertFalse((bundle / 'scripts/setup_plugin.py').exists())
         original = result['package_hash']
@@ -114,7 +118,8 @@ class PluginPackageTests(unittest.TestCase):
             return {}
         with patch.object(manager, 'cli', side_effect=fake_cli), patch.object(Path, 'home', return_value=personal):
             installed = manager.install(self.root)
-            self.assertEqual(installed['skills'], 16)
+            expected_skills = json.loads((self.root / 'capabilities.json').read_text())['skills']
+            self.assertEqual(installed['skills'], len(expected_skills))
             self.assertEqual(installed['native_agents']['count'], 6)
             self.assertEqual(len(list((personal / 'agents').glob('dev_*.toml'))), 6)
             self.assertTrue(manager.check(self.root)['source_matches_cache'])

@@ -2,7 +2,7 @@
 
 面向 Codex 与 Kimi 的六职责研发协作插件。流程、专业职责和操作技能分别维护：`dev-flow` 只安排阶段、依赖、授权和完成条件；六职责 Agent 提示词承担专业判断；操作 Skills 提供具体方法与工具。项目业务事实保存在所属项目。
 
-当前源码版本 **0.6.7**，总纲 **0.33**：产品规格以核心对象及功能导航开篇，按用户操作展开，规则、恢复和例子就近说明；研发设计采用六章，接口、时序、源码及依赖归入相关业务流程，数据模型独立说明；实施计划保留独立分工、顺序、对接、验证与完整候选条件。兼容先判断必要性，用户要求与作者建议分别表达。测试用例与每次执行记录的边界、架构图示、原生 Agent 注册及既有流程阶段保持；文档协议 0.16，验证及安装状态见[本轮 Progress](docs/plans/2026-10-26-final-document-templates/Progress.md)。
+当前源码版本 **0.7.0**，总纲 **0.33**：新增独立 [iteration-closeout](skills/iteration-closeout/SKILL.md)，将“开始收尾”明确接入已有资料盘点、专业结论核对和项目级通用文档实际回写；Progress 单列文档同步完成条件。保留既有设计/实施授权、验收交付、文档协议 0.16 及安装机制；验证和安装状态见[本轮 Progress](docs/plans/2026-10-26-iteration-closeout-skill/Progress.md)。
 
 ## 能力入口
 
@@ -20,6 +20,7 @@
 
 | Skill | 操作对象 |
 | --- | --- |
+| [iteration-closeout](skills/iteration-closeout/SKILL.md) | 本轮资料盘点、有效变化提炼、项目长期文档实际回写与收尾结果 |
 | [git-workflow](skills/git-workflow/SKILL.md) | 基线、分支/worktree、完整差异、提交、冲突与已授权集成 |
 | [subagent-coordination](skills/subagent-coordination/SKILL.md) | 能力发现、任务包、隔离写入、派发/等待与结果收集 |
 | [document-management](skills/document-management/SKILL.md) | 文档目录/索引/版本/链接、Web 阅读、总结与逻辑归档 |
@@ -36,7 +37,7 @@
 | [release-and-recovery](skills/release-and-recovery/SKILL.md) | 分别按授权进行发布、回退/恢复及资源退役 |
 | [codex-session-monitor](skills/codex-session-monitor/SKILL.md) | 授权范围内的会话状态跟踪、去重和通知 |
 
-加上流程入口共 16 个 Skill。数量是当前清单结果，不作为未来能力建设目标。独立 Git、文档、派发等操作不强制启动完整研发流程；流程可安排对应职责按需调用 Skill。模型与强度遵循本次用户和宿主设置。
+加上流程入口共 17 个 Skill。数量是当前清单结果，不作为未来能力建设目标。独立 Git、文档、派发等操作不强制启动完整研发流程；流程可安排对应职责按需调用 Skill。模型与强度遵循本次用户和宿主设置。
 
 ## 安装与使用
 
@@ -49,7 +50,7 @@ python3 scripts/manage_plugin.py check
 
 新文件先纳入 Git，安装只打包受管理源码；同一命令将六职责注册到 `CODEX_HOME/agents/`（默认 `~/.codex/agents/`），无需另行配置。检查实际启用、缓存/源码指纹、Skill、角色及资源；同名冲突或用户修改会报错并保留内容，不改全局指引。插件页面安装目前没有已核实的自动注册入口；采用上述命令完成注册。原生发现/派发需在新会话核验。Kimi 使用独立安装/重载路径，见[安装指南](docs/plugin.md)。
 
-完整任务使用 `$dev-flow`；说“开始收尾”进入[收尾流程](skills/dev-flow/references/closeout.md)。主 Agent 核对完整候选 Review、必要验证、技术收尾及交付，再调用 Git 保存与文档归档。已有同范围授权复用，未完成必需实际验证保持未完成；截图等证明附件可选。仅文档整理按明确范围裁剪。
+完整任务使用 `$dev-flow`；直接使用 `$iteration-closeout` 或说“开始收尾”进入[独立收尾 Skill](skills/iteration-closeout/SKILL.md)。主 Agent 盘点已有资料，取得相关专业结论，将有效变化实际写回项目长期文档，记录来源、目标、更新或复用依据与遗留；再按[流程门槛](skills/dev-flow/references/closeout.md)核对 Review、验证、技术收尾、交付和保存。必需回写未完成不能只凭总结或归档结束，已有同范围授权复用。仅文档整理按明确范围裁剪。
 
 直接在线阅读项目文档可使用 [document-management](skills/document-management/references/document-preview.md) 中的脚本，显式传项目根路径；文档与独立原型仍由所属项目维护，预览 URL 依赖实际运行服务。
 
