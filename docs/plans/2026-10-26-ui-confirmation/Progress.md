@@ -1,6 +1,6 @@
 ---
 title: UI 方案确认与实施边界优化
-status: active
+status: complete
 updated: 2026-10-26
 workflow_version: 1
 ---
@@ -23,9 +23,9 @@ workflow_version: 1
 ## 目标与当前状态
 
 - 基线：`main` / `10c6e124447c6c8013935ece937221f269f074c6`；插件 0.6.7，总纲 0.33，执行协议 0.17。
-- 当前阶段：C1 完整评审、用例覆盖核对及九个隔离场景通过，进入本机交付。
+- 当前阶段：本轮完成。完整 C1、九例隔离行为、独立技术收尾和包含收尾记录的本机安装/检查均已通过。
 - 主 Agent 维护总体进度并主笔；独立执行者承担设计/计划和完整候选评审，按实际需要承担隔离行为验证。派发时使用用户允许的 sol medium 或 luna max，不将本次模型选择写入通用规则。
-- 下一步：九个场景与完整评审已核对通过；从本轮隔离候选安装并核对实际版本、角色及指纹。原工作区其他未提交文档优化不纳入本次交付，保留待其独立集成。
+- 下一入口：新会话加载0.8.0，从本worktree继续维护。原工作区其他未提交文档优化不纳入本次交付，保留待其独立集成；Kimi原生更新和真实项目应用按需另行执行。
 - 实际实施位置：隔离 worktree `/Users/guoshencheng/.codex/worktrees/ui-confirmation/dev-flow`，基线 `afca71a`（0.7.0）。主工作区另有文档评审效率迭代，保留其内容；集成及版本核定前核对实际变化。
 - 已有无关工作：`docs/plans/2026-10-26-iteration-closeout-skill/` 为另一活动迭代，保留其内容；正式修改和版本/安装前重新检查工作树及共享文件变化，避免覆盖或混入未评审候选。
 - 整体结束条件：规则覆盖确认触发、展示对象、版本/来源、授权复用及实施中变化；相关入口一致；独立评审和适用检查通过；版本与生成入口一致；实际 install/check 核验成功；记录源码、产物/缓存位置及未覆盖限制。
@@ -39,21 +39,47 @@ workflow_version: 1
 | 独立设计 Review 与实施计划复核 | 完成 | 独立执行者 / 主 Agent | [Review D1/P1](engineering/review.md)，设计 v1、计划 v1 通过 |
 | 协议、职责、模板及必要核验实现 | 完成 | 主 Agent | 设计/计划有效且本范围授权成立；相关权威入口与引用一致 |
 | 完整候选 Review 与验证 | 完成 | 独立执行者 / 主 Agent | 固定候选；覆盖新增 UI 未确认、纯视觉改动、已有确认复用、用户明确指令、实施中偏离和无 UI 场景；工具变更执行有意义的回归 |
-| 版本升级及 Codex 本机交付 | 进行中 | 主 Agent | 定稿后按兼容性核定版本，双清单升级，生成入口 write/check，新文件纳管，适用测试通过，install/check 核验实际资源与指纹 |
-| 长期入口同步与收尾 | 待开始 | 主 Agent | 保存真实评审/验证结果，复核完整范围和交付限制，提供完成说明及本页入口 |
+| 版本升级及 Codex 本机交付 | 完成 | 主 Agent | 定稿后按兼容性核定版本，双清单升级，生成入口 write/check，新文件纳管，适用测试通过，install/check 核验实际资源与指纹 |
+| 长期入口同步与收尾 | 完成 | 主 Agent / 独立架构 | [技术收尾](architecture/closeout.md)已完成；正文回写见下方；包含收尾文件的安装/检查通过 |
 
 ## 派发与工作交接
 
 | 对象与执行者 | 输入和写入边界 | 实际结果与下一动作 |
 | --- | --- | --- |
 | ui_rule_review 独立架构 | 设计v1、计划v1；只写本轮review.md | D1/P1、C1完整Review及九例用例覆盖Review通过 |
-| ui_pending_behavior 独立验收 | C1；UI-01/02/05/08；只写本机behavior/pending，自有浏览器 | 四例通过，实际查看候选；资源清理中 |
+| ui_pending_behavior 独立验收 | C1；UI-01/02/05/08；只写本机behavior/pending，自有浏览器 | 四例通过，实际查看候选；测试标签和自有服务均已关闭 |
 | ui_reuse_behavior 独立验收 | C1；UI-03/04/06/07/09；只写本机behavior/reuse | 五例通过，限流程分流、源码边界及局部函数验证 |
 
 实际派发均使用用户允许的 sol medium；角色已加载，不重复读取维护源。评审者和行为执行者均未主笔规则。
+
+## 实际交付与来源
+
+- 源码实施提交：`f3fadfb`，分支 `codex/ui-confirmation`；原工作区 `main` 的其他未提交源码保留，未混入本轮安装或合并主分支。
+- Codex 本机安装已成功，随后 `check` 返回 `enabled: true`、`source_matches_cache: true`、17 Skills、6 个受管职责；25 个 C1 实现文件逐字节与安装缓存一致。
+- 产物源：`/Users/guoshencheng/.codex/worktrees/ui-confirmation/dev-flow/.dev-flow/plugin-source`；缓存：`/Users/guoshencheng/.codex/plugins/cache/dev-flow-local/dev-flow/0.8.0`。继续安装/核验从此 worktree 执行，本轮保留 worktree 作为实际来源。
+- 来源迁移：首次从 worktree 安装被现有角色归属保护拒绝，未修改原安装。随后将原 0.7.0 构建源、注册记录及六受管角色备份到本机 `.dev/runs/ui-confirmation/pre-migration/`；从原来源运行受管 `remove` 保留源码资产，再从 worktree 执行 `install/check` 成功。未修改安装脚本或手改归属记录绕过保护。
+- 初次成功安装包清单 SHA256：`cd277f5bdbcafb32a4e4da3fc071dbb3425e08c459e0e3d2e797639423059798`。收尾文档纳管后已重新构建、安装和检查通过：799文件，包清单SHA256 `5322adab170f8fbe7d3be53f35bb25dcb1605f3dfe4dcecb97e8c82218345722`，原始结果见 `install-closeout.log/check-closeout.log`。最终完成记录保存后的产物指纹以本机 `install-final.log/check-final.log` 及缓存 `package-files.json` 为准。
+- 验证与安装原始日志：`.dev/runs/ui-confirmation/{unit-tests,build,install,check}.log`；真实行为执行表及附件保存在同目录 `behavior/`，不提交。
+- 本轮 Chrome 测试标签和自有预览服务已关闭；历史答复中的本机 URL 为执行时入口，不能作为当前可访问交付。
+- Kimi 清单/职责入口已同步；未执行 Kimi 原生安装/重载，也未在新会话验证 Codex 能力发现。用户后续新会话加载当前安装，必要时重启宿主。
+
+## 文档盘点与回写
+
+按 `iteration-closeout` 盘点本轮设计、计划、Review、有效规则和实际验证；长期增量已写入既有权威正文，实例资料保留本目录。
+
+| 来源与有效范围 | 长期权威入口 | 实际更新或复用依据 |
+| --- | --- | --- |
+| UI 确认触发、候选展示、复用与变更边界 | 执行协议 0.18、总纲 0.34、Skill 入口与任务路由 | 已更新正文，明确纯视觉触发和正式实现入口核对 |
+| 产品/视觉/研发职责承接 | 三职责维护源及 Codex/Kimi 生成入口 | 已同步候选、确认版本与用户来源、实现中偏离处理；其他职责正文复用 |
+| 范围与决定记录、独立漏项核对 | Progress、产品/视觉规格、实施计划和 Review 模板 | 已更新正文；状态协议说明现有 gate 登记方式与不能自动发现漏报的限制 |
+| 隔离候选与正式实现 | React 原型 Skill | 已更新入口，受控候选可在设计授权内制作，不先替换正式产品路径追认 |
+| 实际能力与安装版本 | README、docs/plugin.md、双清单及生成清单 | 已记录 0.8.0 收紧影响及未改变 schema/算法/安装机制；实际来源迁移记录在本页 |
+| 完整实现 Review、用例及隔离验证 | 本轮 Review、可读用例、忽略目录执行表 | 持久用例纳管，执行明细留本机，不作为真实用户确认或业务生产验收 |
+
+不涉及业务数据库/API、生产运行或新的组件系统，相关长期资产无增量，不制造空文档。未来若要自动识别未声明 UI 范围，需要另行设计机器可核验的分类与迁移，不把本轮流程指令改进说成已实现拦截。
 
 ## 有效依据与验证记录
 
 - 问题分析依据：`skills/dev-flow/references/execution-contract.md` 的用户确认范围、产品/UI 技术反馈和实施中变更闸门，以及 `stage-state.md` 的核验边界。
 - 当前规则已有业务确认和实施授权；待改善的是 UI 方案触发、实际展示要求和依赖遗漏检查。具体历史案例未逐项核实，不预判每个案例均属执行违规。
-- C1含25个实现文件，清单 `.dev/runs/ui-confirmation/candidate-c1.json`，SHA256 `4ce5be7eabe0aa14744283e3fced4f2664d6518195060d1ead2202134ef4cb07`；基线 `afca71a`。生成write/check通过（17 Skills、六职责），24个变更Markdown本地路径缺失0，差异格式检查通过。版本候选为0.8.0/总纲0.34/执行协议0.18；现有79项测试全部通过（26.169秒），打包通过（798文件，4,882,409字节）；完整候选静态Review与九例覆盖Review通过，独立行为执行九例符合预期。原始执行表和记录仅留 `.dev/runs/ui-confirmation/behavior/`；合成场景不代表真实用户确认或业务生产验收。Codex安装尚未执行。
+- C1含25个实现文件，清单 `.dev/runs/ui-confirmation/candidate-c1.json`，SHA256 `4ce5be7eabe0aa14744283e3fced4f2664d6518195060d1ead2202134ef4cb07`；基线 `afca71a`。生成write/check通过（17 Skills、六职责），24个变更Markdown本地路径缺失0，差异格式检查通过。实际交付版本为0.8.0/总纲0.34/执行协议0.18；现有79项测试全部通过（26.169秒），打包通过（798文件，4,882,409字节）；完整候选静态Review与九例覆盖Review通过，独立行为执行九例符合预期。原始执行表和记录仅留 `.dev/runs/ui-confirmation/behavior/`；合成场景不代表真实用户确认或业务生产验收。Codex安装与包含收尾记录的重包检查已通过；最终完成记录保存后再次同步安装包，最新指纹及源码一致结论以 `install-final.log/check-final.log` 的实际结果为准。

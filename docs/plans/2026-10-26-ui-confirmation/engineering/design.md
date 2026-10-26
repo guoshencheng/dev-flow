@@ -6,7 +6,7 @@ status: candidate
 
 # UI 方案确认与实施边界设计
 
-本稿版本 1，依据用户对多个 UI 改动未确认案例的反馈及本会话“继续推进”授权形成。总体状态见 [Progress](../Progress.md)，计划见 [实施计划](implementation-plan.md)，[独立 Review D1](review.md#design-r1)已通过。插件的流程架构权威为 [总纲](../../../../skills/dev-flow/references/constitution.md)，职责维护源为 `agents/prompts/`；没有独立项目总架构，本轮仅核对现有流程/职责/核验边界。
+本稿版本 1，依据用户对多个 UI 改动未确认案例的反馈及本会话“继续推进”授权形成。总体状态见 [Progress](../Progress.md)，计划见 [实施计划](implementation-plan.md)，[独立 Review D1](review.md#design-r1)已通过；最终实际技术结论见[架构技术收尾](../architecture/closeout.md)，交付与限制见 Progress。插件的流程架构权威为 [总纲](../../../../skills/dev-flow/references/constitution.md)，职责维护源为 `agents/prompts/`；没有独立项目总架构，本轮仅核对现有流程/职责/核验边界。
 
 ## 一、本次要完成什么
 
