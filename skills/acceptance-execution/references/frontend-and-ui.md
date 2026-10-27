@@ -8,7 +8,13 @@
 
 React 局部规则/组件可用 Vitest + Testing Library，沿用兼容版本与既有配置。优先按角色、可访问名称和标签选择控件，用真实用户事件方式断言结果。DOM 模拟适合多数局部行为，布局、浏览器原生行为和设备交互在真实浏览器核验；需真实组件浏览器能力时采用当前 Vitest Browser Mode 或项目既有方案。[Testing Library 查询](https://testing-library.com/docs/queries/about/)、[Vitest 组件测试](https://vitest.dev/guide/browser/component-testing)
 
-页面测试默认 Playwright，按可见角色/名称/标签定位，列表/弹层有歧义时用实际容器限定。确无语义定位时使用稳定 test ID，避免生成类名、坐标或脆弱 nth 路径。使用可重试的可见性/文本/状态断言等待真实反馈，不用固定 sleep 或扩大超时掩盖失败。[Playwright 方法](https://playwright.dev/docs/best-practices)、[断言](https://playwright.dev/docs/test-assertions)
+Web 页面测试先发现并复用项目已有 Playwright 配置、依赖、测试入口和浏览器；已有其他可靠浏览器测试框架则沿用，不强制迁移。没有现成方案时优先考虑项目本地 Playwright Test 及浏览器，按项目工具链和实际授权准备；不可用或受宿主限制时记录并选实际允许的替代方式，不能假称通过。不默认安装 MCP、全局封装或修改宿主配置。用户明确指定工具与宿主约束优先。
+
+稳定且有重复价值的核心冒烟及受影响回归沉淀为业务项目可维护的测试脚本，关联现有用例并随业务演进；不为每条用例机械新增脚本。脚本、配置和适用的非敏感测试数据随项目管理；执行记录和可选证明按项目本地规则保存。用实际浏览器、目标候选及数据运行，明确真实依赖/替身，不以 Mock 后端冒充完整链路。
+
+按可见角色/名称/标签定位，列表/弹层有歧义时用实际容器限定。确无语义定位时使用稳定 test ID，避免生成类名、坐标或脆弱 nth 路径。使用可重试的可见性/文本/状态断言等待真实反馈，不用固定 sleep 或扩大超时掩盖失败。[Playwright 方法](https://playwright.dev/docs/best-practices)、[断言](https://playwright.dev/docs/test-assertions)
+
+需要判断页面实际呈现时，脚本到达目标版本、数据、窗口和状态后，可截图、检查执行轨迹或运行可见浏览器，由 Agent 或人工实际查看并记录结论；代码断言通过、截图已生成或未看图的像素差异不等于视觉审查完成。按目标选择 Computer Use 或人工体验；涉及浏览器/操作系统窗口、原生交互及真实设备时先核对工具能否观察，超出能力如实保留未验证。截图作为附件可选，但用例要求的视觉观察不能省略。[Playwright 轨迹](https://playwright.dev/docs/trace-viewer)
 
 ## 按用户任务选择场景
 
