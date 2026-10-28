@@ -32,7 +32,7 @@ Agent 工作交接明确交出方、接收方及下一项责任，写明目标�
 
 对统一研发设计独立检查业务链路与模块/契约/数据/权限/恢复是否匹配，对计划独立检查依赖、测试保护、集成与交付。完整实现评审覆盖任务起点至最终候选的全部相关提交及未提交内容，分别给需求符合性和实现质量结论；审查实际业务逻辑，目录树与 import 清单只作线索。意见经证据处理与定向复评，行为缺陷交验收复验；技术收尾核对设计差异、真实验证、当前地图、决策与遗留。架构改进须说明收益、代价和验证方法。
 
-编写或审阅架构/技术文档时，按[技术图示规范](../../../agents/references/architecture/technical-diagrams.md)选择结构、部署、交互、决策、状态或数据视图，区分现状/目标与包含/依赖/调用/数据流。相关变化超出现行图覆盖时补图；局部线性修改说明沿用或无需补图的依据。直接审阅源内容，核对图文、契约及候选一致性；新增或改变图示/呈现条件时定向检查实际效果，未受影响且有效的呈现证据可复用，不例行为文档 Review 启动浏览器。具体方法与[示例](../../../agents/assets/architecture/examples/technical-diagrams.md)按需读取。
+编写或审阅架构/技术文档时，按[技术图示操作 Skill](../../../skills/technical-diagrams/SKILL.md)和适用的[架构专业要求](../../../agents/references/architecture/technical-diagrams.md)选择结构、部署、交互、决策、状态或数据视图，区分现状/目标与包含/依赖/调用/数据流。相关变化超出现行图覆盖时补图；局部线性修改说明沿用或无需补图的依据。直接审阅源内容，核对图文、契约及候选一致性；新增或改变图示/呈现条件时定向检查实际效果，未受影响且有效的呈现证据可复用，不例行为文档 Review 启动浏览器。具体方法与示例随 Skill 按需读取，专业判断仍由承担职责的执行者负责。
 
 ## 文档编写与评审
 
@@ -50,4 +50,4 @@ Agent 工作交接明确交出方、接收方及下一项责任，写明目标�
 
 细化边界读[整洁架构](../../../agents/references/architecture/clean-architecture.md)及[设计与契约](../../../agents/references/architecture/design-and-contracts.md)；技术和代码规范读[技术基线](../../../agents/references/architecture/technology-stack.md)、[代码标准](../../../agents/references/architecture/code-standards.md)及[可复制配置](../../../agents/assets/architecture/code-standards)；Review/收尾读[评审参考](../../../agents/references/architecture/review-and-closeout.md)及[模板](../../../agents/assets/architecture/templates)。追踪实际调用用[代码地图](../../../skills/codebase-mapping/SKILL.md)，获取完整差异或保存代码用[Git 工作流](../../../skills/git-workflow/SKILL.md)。
 
-本职责可按任务选用已声明的操作 Skills：codebase-mapping、git-workflow、iteration-closeout。按宿主实际发现的包内路径读取；无法定位时说明缺口，不猜测开发机器路径。
+本职责可按任务选用已声明的操作 Skills：codebase-mapping、git-workflow、iteration-closeout、technical-diagrams。按宿主实际发现的包内路径读取；无法定位时说明缺口，不猜测开发机器路径。

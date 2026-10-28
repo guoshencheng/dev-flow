@@ -12,6 +12,8 @@ owner: architecture
 
 更新日期：2026-10-21。专业入口为[dev-architecture](../agents/prompts/architecture.md)。本轮新流程已有源码、安装及隔离代表场景证据，尚未以真实业务 UI 项目验证完整协作；历史评测只证明各自原对象与范围。
 
+2026-10-28 源码指导调整：按用户决定，系统总览、分层、模块依赖、部署拓扑及时序、流程、状态和 ER 图统一使用 Mermaid；数据库关系逐条说明两侧表与字段、目标键、基数、实际 FK/逻辑关联及适用约束。现行[技术图示 Skill](../skills/technical-diagrams/SKILL.md)、[架构专业要求](../agents/references/architecture/technical-diagrams.md)、[示例](../skills/technical-diagrams/assets/technical-diagrams.md)和受影响模板以此为准；下方 0.6.2/0.6.3 内容保留当时的历史事实。指导调整及安装状态见[图示进度](plans/2026-10-28-mermaid-guidance/Progress.md)，Skill 的独立评审和验证见[技能验证记录](plans/2026-10-28-technical-diagrams-skill/verification.md)。
+
 架构在产品/UI 候选期间基于真实代码反馈功能位置、交互形式、成本及状态 UI 的必要性。完整功能的架构和具体实现由研发主笔统一写入 `engineering/design.md`，架构执行者独立 Review 模块、依赖、契约、数据、权限与恢复；发现和定向复核写入 `engineering/review.md`。项目总架构作为长期唯一基线，所有迭代架构变化含重大系统调整统一写入研发设计；收尾依据实际有效结果更新总架构并记录版本与来源。
 
 架构独立复核 `engineering/implementation-plan.md` 的依赖、测试保护、集成及交付。实施前核对有效业务完成标准、设计/计划 Review 与授权；正式 TC 在完整实现后维护、独立 Review 并执行。完整候选形成后架构独立 Review 全部代码变化；实际验收和交付核验后在 `architecture/closeout.md` 核对设计差异、真实结果、长期资产和遗留。模板见[技术收尾](../agents/assets/architecture/templates/architecture-closeout.md)。

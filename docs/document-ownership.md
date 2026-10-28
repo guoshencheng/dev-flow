@@ -1,6 +1,6 @@
 # 文档与资产职责归属
 
-更新日期：2026-10-26。适用范围：当前 0.7.0 的六职责提示词、17 个 Skills、专业参考及共享资产。构建/安装与本轮验证见[独立收尾 Skill 进度](plans/2026-10-26-iteration-closeout-skill/Progress.md)；0.4.0 重组的历史证据保留原事实，不折算本轮验证。
+更新日期：2026-10-28。适用范围：六职责提示词、操作 Skills、专业参考及共享资产；新增技术图示 Skill 仍为[源码候选](plans/2026-10-28-technical-diagrams-skill/Progress.md)。0.7.0 的构建/安装与验证见[独立收尾 Skill 进度](plans/2026-10-26-iteration-closeout-skill/Progress.md)；0.4.0 重组的历史证据保留原事实，不折算本轮验证。
 
 ## 唯一权威源
 
@@ -15,6 +15,7 @@
 | 实际派发与等待 | [subagent-coordination](../skills/subagent-coordination/SKILL.md) | 组装上下文、独立性与资源核验、收集返回；不裁定专业通过 |
 | 目录、索引、版本、链接、预览、总结保存及归档 | [document-management](../skills/document-management/SKILL.md) | 接收专业有效结论，不自行决定规则正确性或迭代完成 |
 | 专业可复用操作 | [capabilities.json](../capabilities.json) 声明的各 Skill | 明确操作触发与输入输出；不改成另一个完整职责入口 |
+| 技术图示操作 | [technical-diagrams](../skills/technical-diagrams/SKILL.md) | 选图、Mermaid、ER 字段关系表达、图示示例与呈现检查；架构专业判断及服务端视图要求保留架构参考 |
 | 项目事实及业务决定 | 所属项目的现行权威资产 | 通用提示词、默认规范与项目具体版本分别维护 |
 
 ## 共同使用不改变专业主责

@@ -10,7 +10,7 @@
 
 按稳定契约连续实现和集成，前端核对实际交互状态与数据行为，后端核对不变量、权限、错误与兼容。新目标行为应有能捕获旧失败的检查；事后补测须证明旧错误实现失败、新候选通过，环境失败不能充当目标失败。未知根因先在同条件复现，提出假设并用实验定位，再做有边界的修复和相关回归；重构、升级、迁移需检查消费者、行为保持与恢复条件。完整候选应能运行核心任务，包含配置、锁定依赖、实际构建或启动入口和自测证据。
 
-编写或审阅架构/技术文档时，按[技术图示规范](../references/architecture/technical-diagrams.md)选择结构、部署、交互、决策、状态或数据视图，区分现状/目标与包含/依赖/调用/数据流。相关变化超出现行图覆盖时补图；局部线性修改说明沿用或无需补图的依据。直接审阅源内容，核对图文、契约及候选一致性；新增或改变图示/呈现条件时定向检查实际效果，未受影响且有效的呈现证据可复用，不例行为文档 Review 启动浏览器。具体方法与[示例](../assets/architecture/examples/technical-diagrams.md)按需读取。
+编写或审阅架构/技术文档时，按[技术图示操作 Skill](../../skills/technical-diagrams/SKILL.md)和适用的[架构专业要求](../references/architecture/technical-diagrams.md)选择结构、部署、交互、决策、状态或数据视图，区分现状/目标与包含/依赖/调用/数据流。相关变化超出现行图覆盖时补图；局部线性修改说明沿用或无需补图的依据。直接审阅源内容，核对图文、契约及候选一致性；新增或改变图示/呈现条件时定向检查实际效果，未受影响且有效的呈现证据可复用，不例行为文档 Review 启动浏览器。具体方法与示例随 Skill 按需读取，专业判断仍由承担职责的执行者负责。
 
 ## 文档编写与评审
 
@@ -26,4 +26,4 @@
 
 ## 按需资源
 
-统一设计、计划与实现细则读[研发设计](../references/engineering/technical-delivery-design.md)、[基线与计划](../references/engineering/baseline-and-plan.md)、[切片集成](../references/engineering/slices-and-integration.md)及[模板](../assets/engineering/)；前端、兼容、意见闭环及交接分别读[前端实现](../references/engineering/frontend-implementation.md)、[兼容变化](../references/engineering/compatible-changes.md)、[评审反馈](../references/engineering/review-feedback.md)、[交接参考](../references/engineering/handoff.md)。目标失败与回归用[回归验证](../../skills/regression-verification/SKILL.md)，未知原因用[缺陷诊断](../../skills/defect-diagnosis/SKILL.md)，复用现有组件用[组件复用](../../skills/component-reuse/SKILL.md)。
+统一设计、计划与实现细则读[研发设计](../references/engineering/technical-delivery-design.md)、[基线与计划](../references/engineering/baseline-and-plan.md)、[切片集成](../references/engineering/slices-and-integration.md)及[模板](../assets/engineering/)；前端、兼容、意见闭环及交接分别读[前端实现](../references/engineering/frontend-implementation.md)、[兼容变化](../references/engineering/compatible-changes.md)、[评审反馈](../references/engineering/review-feedback.md)、[交接参考](../references/engineering/handoff.md)。目标失败与回归用[回归验证](../references/engineering/test-first-and-regression.md)，未知原因用[缺陷诊断](../references/engineering/diagnosis.md)，复用现有组件用[组件复用](../../skills/component-reuse/SKILL.md)。

@@ -29,15 +29,14 @@
 | [component-reuse](skills/component-reuse/SKILL.md) | 组件/API发现、示例预览、源码文件集复制与主题接入 |
 | [visual-verification](skills/visual-verification/SKILL.md) | 真实页面、内容/状态/窗口的呈现检查与复验 |
 | [codebase-mapping](skills/codebase-mapping/SKILL.md) | 代码业务链、模块、调用/依赖、数据与符号现状地图 |
-| [regression-verification](skills/regression-verification/SKILL.md) | 目标失败、旧新对照和测试保护有效性 |
-| [defect-diagnosis](skills/defect-diagnosis/SKILL.md) | 最小复现、假设实验、未知根因与修复建议 |
+| [technical-diagrams](skills/technical-diagrams/SKILL.md) | 独立或跨职责生成、维护与核验 Mermaid 技术图及 ER 关联字段 |
 | [acceptance-case-design](skills/acceptance-case-design/SKILL.md) | 文字用例列表、增量维护和覆盖核对 |
 | [acceptance-execution](skills/acceptance-execution/SKILL.md) | 界面/API/E2E/交付用例执行、缺陷和复验 |
 | [runtime-operations](skills/runtime-operations/SKILL.md) | 环境/配置、启动停止、运行版本与信号诊断 |
 | [release-and-recovery](skills/release-and-recovery/SKILL.md) | 分别按授权进行发布、回退/恢复及资源退役 |
 | [codex-session-monitor](skills/codex-session-monitor/SKILL.md) | 授权范围内的会话状态跟踪、去重和通知 |
 
-加上流程入口共 17 个 Skill。数量是当前清单结果，不作为未来能力建设目标。独立 Git、文档、派发等操作不强制启动完整研发流程；流程可安排对应职责按需调用 Skill。模型与强度遵循本次用户和宿主设置。
+当前源码能力清单加上流程入口共 16 个 Skill；新图示能力及入口清理尚未安装到宿主。数量是当前清单结果，不作为未来能力建设目标。独立 Git、文档、派发等操作不强制启动完整研发流程；流程可安排对应职责按需调用 Skill。模型与强度遵循本次用户和宿主设置。
 
 ## 安装与使用
 
@@ -59,7 +58,8 @@ python3 scripts/manage_plugin.py check
 - [本轮设计与归纳图](docs/plans/2026-10-21-agent-skill-reorganization.md)、[迁移清单](docs/plans/2026-10-21-agent-skill-reorganization/migration-plan.md)、[总体进度](docs/plans/2026-10-21-agent-skill-reorganization/Progress.md)。
 - [边界评审](reviews/2026-10-21-agent-skill-reorganization-boundaries.md)、[职责建设与验证](docs/agent-development.md)、[文档归类](docs/document-organization.md)、[权威归属](docs/document-ownership.md)。
 - [阶段状态核验](skills/dev-flow/references/stage-state.md)：检查声明的版本/候选/依赖，不证明真实执行和专业质量。
-- [技术图示规范](agents/references/architecture/technical-diagrams.md)统一选图、边界/箭头语义及图示 Review；[可改写示例](agents/assets/architecture/examples/technical-diagrams.md)。
+- [技术图示 Skill](skills/technical-diagrams/SKILL.md)维护选图、Mermaid 表达及[可改写示例](skills/technical-diagrams/assets/technical-diagrams.md)；[架构专业要求](agents/references/architecture/technical-diagrams.md)维护服务端视图和专业判断。
+- 研发缺陷诊断和目标失败、回归保护方法分别见[研发诊断参考](agents/references/engineering/diagnosis.md)和[回归验证参考](agents/references/engineering/test-first-and-regression.md)，不再作为独立 Skill 入口。
 - [技术基线](agents/references/architecture/technology-stack.md)、[代码规范](agents/references/architecture/code-standards.md)、[UI 基准](agents/references/visual/ui-baseline.md)分别维护唯一专业来源，项目具体版本和例外留项目。
 
 历史版本的职责能力编号和验证记录保留原事实：[旧能力目录](docs/history/2026-10-21-role-capabilities.md)、[评测入口](evals/)。导航可更新到现行源，旧结果不能折算成本轮实现、宿主加载或真实业务项目通过。

@@ -1,6 +1,6 @@
 # Dev Flow 当前能力概览
 
-日期：2026-10-23。当前源码 Plugin **0.6.5**、流程总纲 **0.33**，共 **16 个 Skill** 和六职责提示词。本轮状态见[用例文档与执行记录调整 Progress](plans/2026-10-23-case-management-and-execution/Progress.md)，[安装方法](plugin.md)单独维护。用例采用可提交文字列表，全量/增量共用；每次测试执行的执行表及截图等可选证明独立保存在忽略目录，不提交。既有架构规范、原生Agent注册与阶段依赖沿用；源码版本不代替实际启用、缓存和新会话发现结果。
+更新日期：2026-10-28。当前源码候选包含 **16 个 Skill** 和六职责提示词，具体清单以 [capabilities.json](../capabilities.json) 为准；[图示 Skill 建设](plans/2026-10-28-technical-diagrams-skill/Progress.md)和[Skill 价值盘点](plans/2026-10-28-skill-value-audit/Progress.md)记录本轮调整。源码清单不代表宿主已安装或新会话已发现；版本、安装及更新方式见[插件说明](plugin.md)。用例仍采用可提交文字列表，全量和增量共用；每次执行表及可选证明保存在忽略目录。
 
 ## 能力分层
 
@@ -16,7 +16,7 @@
 
 三个公共操作分别是[Git](../skills/git-workflow/SKILL.md)、[subagent](../skills/subagent-coordination/SKILL.md)、[文档管理](../skills/document-management/SKILL.md)。Git保存/集成不裁定业务验收；派发/结果收集不等于专业通过；文档归档不自动表示整体完成。
 
-专业操作覆盖产品规格、原型、组件接入、呈现检查、代码地图、回归、诊断、正式用例、验收执行、运行、发布恢复；会话监控保持独立授权范围。完整清单见[README](../README.md)。
+专业操作覆盖产品规格、原型、组件接入、呈现检查、代码地图、技术图示、正式用例、验收执行、运行与发布恢复；诊断和回归方法由研发职责参考承接，会话监控保持独立授权范围。完整清单见[README](../README.md)。
 
 ## 协作与完成
 
@@ -34,8 +34,8 @@
 - [实现Review](../reviews/2026-10-21-agent-skill-reorganization-implementation.md)、[规划边界Review](../reviews/2026-10-21-agent-skill-reorganization-boundaries.md)。
 - [文档归类](document-organization.md)、[权威归属](document-ownership.md)、[生成器](../scripts/sync_host_agents.py)和[能力声明](../capabilities.json)。
 
-Codex 的 install 命令自动注册六个受管原生角色，插件页面安装无已核实的自动注册入口；Kimi 生成原生入口且需分别安装/重载。本轮交付 Codex，Kimi 留待原生会话更新。新会话的能力刷新、隔离工具样本、Harness 专业演练、原生角色发现和真实项目验证分别登记。
+Codex 的 install 命令自动注册六个受管原生角色，插件页面安装无已核实的自动注册入口；Kimi 生成原生入口且需分别安装/重载。各次交付的实际宿主、版本及核验范围按相应进度记录，新会话能力刷新、隔离工具样本、原生角色发现和真实项目验证分别登记。
 
 历史建设、48项能力编号与旧版本评测保留原事实，[旧能力目录](history/2026-10-21-role-capabilities.md)可追溯；不以旧结果宣称新结构已通过。未来按真实调用需要提取操作Skill，不按角色名或文档数量增加入口。
 
-主干集成维护版 0.4.1 保留既有技术图示规范，迁入职责参考、示例和统一设计模板；实际验证与交付见[收尾记录](../reviews/2026-10-22-main-integration.md)。
+历史主干集成维护版 0.4.1 的图示规范及验证见[收尾记录](../reviews/2026-10-22-main-integration.md)；现行图示操作与专业判断以当前职责参考和 Skill 为准。

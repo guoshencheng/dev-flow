@@ -142,7 +142,12 @@
     "skills/react-prototyping/scripts/design-template.test.mjs",
     "skills/react-prototyping/scripts/prototype.py",
     "skills/release-and-recovery/assets/templates/delivery-record.md",
-    "skills/release-and-recovery/assets/templates/incident-and-recovery.md"
+    "skills/release-and-recovery/assets/templates/incident-and-recovery.md",
+    "skills/technical-diagrams/SKILL.md",
+    "skills/technical-diagrams/references/diagram-method.md",
+    "skills/technical-diagrams/assets/technical-diagrams.md",
+    "agents/references/engineering/diagnosis.md",
+    "agents/references/engineering/test-first-and-regression.md"
   ],
   "skills": [
     "dev-flow",
@@ -155,13 +160,12 @@
     "component-reuse",
     "visual-verification",
     "codebase-mapping",
-    "regression-verification",
-    "defect-diagnosis",
     "acceptance-case-design",
     "acceptance-execution",
     "runtime-operations",
     "release-and-recovery",
-    "codex-session-monitor"
+    "codex-session-monitor",
+    "technical-diagrams"
   ],
   "roles": {
     "product": {
@@ -195,7 +199,8 @@
       "skills": [
         "codebase-mapping",
         "git-workflow",
-        "iteration-closeout"
+        "iteration-closeout",
+        "technical-diagrams"
       ],
       "resources": [
         "agents/references/architecture",
@@ -206,9 +211,8 @@
       "description": "研发设计、实现与修复：统一技术方案、连续实现、回归与完整候选交接",
       "prompt": "agents/prompts/engineering.md",
       "skills": [
-        "regression-verification",
-        "defect-diagnosis",
-        "component-reuse"
+        "component-reuse",
+        "technical-diagrams"
       ],
       "resources": [
         "agents/references/engineering",
