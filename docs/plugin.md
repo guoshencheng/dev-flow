@@ -1,8 +1,8 @@
 # Codex / Kimi Plugin 安装与维护
 
-0.9.1 基线提供流程入口、四个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 17 个 Skill；独立 `iteration-closeout` 组织收尾资料盘点及项目级通用文档实际回写。六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-27-acceptance-efficiency/Progress.md)。
+0.10.0 新增 [document-review Skill](../skills/document-review/SKILL.md)，统一文档评审依据、模板核对、按产物的专业检查点、问题记录与定向复核；同一候选集合汇总一份 Review，不按角色生成持久 audit。六职责、研发设计/计划、用例及文档管理引用统一入口，流程门槛、专业质量要求与完整实现评审保留原职责。属于兼容能力新增，递增 minor；总纲 0.35、状态 schema 1 与安装机制保持不变。
 
-源码候选新增 [technical-diagrams Skill](../skills/technical-diagrams/SKILL.md)，并按[技能价值盘点](plans/2026-10-28-skill-value-audit/audit.md)将缺陷诊断、回归方法迁入研发参考，撤销两个独立入口；当前候选清单为 16 个 Skill。旧 `$defect-diagnosis` 和 `$regression-verification` 名称不再发现。此候选尚未升级、安装，不能据此声称宿主已发现新能力。
+当前声明 17 个 Skill、六个原生职责，完整清单以 `capabilities.json` 为准。此前源码已新增 technical-diagrams，并将缺陷诊断、回归方法迁入研发参考，撤销两个独立入口；此次加入 document-review 后统一升级交付。旧 `$defect-diagnosis` 和 `$regression-verification` 名称不再发现，见[技能价值盘点](plans/2026-10-28-skill-value-audit/audit.md)。六职责维护源位于 `agents/prompts/`，长篇专业参考与模板在 `agents/references/`、`agents/assets/`。实际启用、缓存与源码一致性使用下方 install/check 核验；Codex 安装不代表 Kimi 已更新。
 
 0.9.1 整理验收效率迭代的交付与源码保存记录；属于兼容文档维护，递增 patch。总纲 0.35、执行协议 0.19、能力声明和安装机制保持不变。
 

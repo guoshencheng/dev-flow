@@ -16,7 +16,7 @@ ${base_prompt}
 
 在约定的写入范围内工作，维护唯一权威来源和必要的引用；共享文件明确写入者，保留他人及无关改动。专业判断由承担该职责的执行者作出，操作 Skill 和生成模板只提供方法，不能代替结论。按当前任务、证据和可用工具选择所需资源，不为读取资源而扩大任务。
 
-文档自查和 Review 默认直接审阅源内容、差异及依据；按变化和检查目标决定是否需要实际呈现/交互，再选择工具。提供阅读链接不自动触发浏览器或 Computer Use；必要观察和有效证据复用按[文档检查方式](../../../skills/document-management/references/document-preview.md#选择检查方式)执行，用户明确的检查范围与工具要求优先。
+文档自查和 Review 使用 [document-review](../../../skills/document-review/SKILL.md)，按产物组织一次评审并统一汇总结论；专业质量由对应职责判断，流程进入条件由总纲维护。
 
 Agent 工作交接明确交出方、接收方及下一项责任，写明目标与实际完成范围、输入和候选版本、授权和写入边界、产物位置、判断依据、真实执行与验证结果、未执行或失效的证据、阻断和下游依赖。接收方核对输入及进入条件，主 Agent 核验后更新迭代独立 Progress；各职责只引用，不另建总体进度。向用户汇报成果称“完成说明”，不能替代 Agent 工作交接。作者自查、代理操作、独立评审、用户反馈和生产结果分别记录；不能把文件生成、工具运行或委派本身说成专业通过。无实际独立执行时明示独立性限制。模型及推理强度遵循本次用户与宿主设置。
 
@@ -34,7 +34,7 @@ Agent 工作交接明确交出方、接收方及下一项责任，写明目标�
 
 ## 文档编写与评审
 
-编写或实质修订视觉规格前，必须先读取[视觉规格模板](../../../agents/assets/visual/design-spec.md)正文，按模板的章节和字段组织内容。用户明确指定格式或项目已有有效模板时优先采用，并核对本次适用内容；重要裁剪说明依据，不以自由提纲替代模板，也不为填满模板新增无关成果。评审视觉文档时，必须读取对应模板，核对结构、必要内容及裁剪合理性，将遗漏或无依据的裁剪列为修改项；参与技术设计等跨职责评审时读取被评对象的模板，在视觉职责范围核对呈现承接。模板与文字核对直接读源内容，实际页面/组件的呈现检查按本次视觉变化执行；仅文字修订不自动触发浏览器走查。
+编写或实质修订视觉规格前，必须先读取[视觉规格模板](../../../agents/assets/visual/design-spec.md)正文，按模板的章节和字段组织内容。用户明确指定格式或项目已有有效模板时优先采用，并核对本次适用内容；重要裁剪说明依据，不以自由提纲替代模板，也不为填满模板新增无关成果。文档自查和评审使用 [document-review](../../../skills/document-review/SKILL.md)，按被评产物选择模板、依据和专业检查点。
 
 ## 边界、交接与完成
 
@@ -46,4 +46,4 @@ Agent 工作交接明确交出方、接收方及下一项责任，写明目标�
 
 视觉取舍读[方向参考](../../../agents/references/visual/reference-and-direction.md)，页面与多端规则读[系统与页面](../../../agents/references/visual/system-and-pages.md)，通用 UI 基准读[UI 基线](../../../agents/references/visual/ui-baseline.md)，成果字段读[视觉规格](../../../agents/references/visual/specification-contract.md)及[模板](../../../agents/assets/visual/design-spec.md)。检索与接入组件用[组件复用](../../../skills/component-reuse/SKILL.md)，制作原型用[React 原型](../../../skills/react-prototyping/SKILL.md)，核验渲染用[视觉验证](../../../skills/visual-verification/SKILL.md)。
 
-本职责可按任务选用已声明的操作 Skills：component-reuse、react-prototyping、visual-verification。按宿主实际发现的包内路径读取；无法定位时说明缺口，不猜测开发机器路径。
+本职责可按任务选用已声明的操作 Skills：component-reuse、react-prototyping、visual-verification、document-review。按宿主实际发现的包内路径读取；无法定位时说明缺口，不猜测开发机器路径。

@@ -155,6 +155,7 @@
     "git-workflow",
     "subagent-coordination",
     "document-management",
+    "document-review",
     "product-specification",
     "react-prototyping",
     "component-reuse",
@@ -174,7 +175,8 @@
       "skills": [
         "product-specification",
         "react-prototyping",
-        "document-management"
+        "document-management",
+        "document-review"
       ],
       "resources": [
         "agents/references/product"
@@ -186,7 +188,8 @@
       "skills": [
         "component-reuse",
         "react-prototyping",
-        "visual-verification"
+        "visual-verification",
+        "document-review"
       ],
       "resources": [
         "agents/references/visual",
@@ -200,7 +203,8 @@
         "codebase-mapping",
         "git-workflow",
         "iteration-closeout",
-        "technical-diagrams"
+        "technical-diagrams",
+        "document-review"
       ],
       "resources": [
         "agents/references/architecture",
@@ -212,7 +216,8 @@
       "prompt": "agents/prompts/engineering.md",
       "skills": [
         "component-reuse",
-        "technical-diagrams"
+        "technical-diagrams",
+        "document-review"
       ],
       "resources": [
         "agents/references/engineering",
@@ -225,7 +230,8 @@
       "skills": [
         "acceptance-case-design",
         "acceptance-execution",
-        "document-management"
+        "document-management",
+        "document-review"
       ]
     },
     "operations": {
@@ -234,7 +240,8 @@
       "skills": [
         "runtime-operations",
         "release-and-recovery",
-        "document-management"
+        "document-management",
+        "document-review"
       ]
     }
   },

@@ -2,7 +2,7 @@
 
 面向 Codex 与 Kimi 的六职责研发协作插件。流程、专业职责和操作技能分别维护：`dev-flow` 只安排阶段、依赖、授权和完成条件；六职责 Agent 提示词承担专业判断；操作 Skills 提供具体方法与工具。项目业务事实保存在所属项目。
 
-当前源码版本 **0.9.1**，总纲 **0.35**：提前执行适用真实冒烟，按影响选择用例，区分阻碍测试的缺陷与集中修复项，合并定向 Review、复验及回归；Web 复用项目 Playwright 和脚本，需要视觉判断时实际观察画面。0.9.1 整理本轮交付记录；保留 UI 方案确认、文档审阅效率规则、独立 [iteration-closeout](skills/iteration-closeout/SKILL.md)、文档协议 0.16 和安装机制；状态 schema 1 及核验算法不变。验证和安装状态见[本轮 Progress](docs/plans/2026-10-27-acceptance-efficiency/Progress.md)。
+当前源码版本 **0.10.0**，总纲 **0.35**：新增 [document-review](skills/document-review/SKILL.md)，按产物选择依据和专业检查点，同一候选集合汇总一份 Review，六职责及相关方法统一引用；流程门槛、专业质量要求与代码实现评审继续保留。当前共 17 个 Skill。总纲、状态 schema 1 及安装机制保持不变；本地安装核验使用 `python3 scripts/manage_plugin.py check`。
 
 ## 能力入口
 
@@ -24,6 +24,7 @@
 | [git-workflow](skills/git-workflow/SKILL.md) | 基线、分支/worktree、完整差异、提交、冲突与已授权集成 |
 | [subagent-coordination](skills/subagent-coordination/SKILL.md) | 能力发现、任务包、隔离写入、派发/等待与结果收集 |
 | [document-management](skills/document-management/SKILL.md) | 文档目录/索引/版本/链接、Web 阅读、总结与逻辑归档 |
+| [document-review](skills/document-review/SKILL.md) | 按产物选择文档评审依据与专业检查点，统一 Review 结论及定向复核 |
 | [product-specification](skills/product-specification/SKILL.md) | 将任务与决定表达为流程、状态、RULE/可观察 AC |
 | [react-prototyping](skills/react-prototyping/SKILL.md) | 原型构建、设计工作台、多端场景与真实预览 |
 | [component-reuse](skills/component-reuse/SKILL.md) | 组件/API发现、示例预览、源码文件集复制与主题接入 |

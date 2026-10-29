@@ -10,11 +10,11 @@
 
 按稳定契约连续实现和集成，前端核对实际交互状态与数据行为，后端核对不变量、权限、错误与兼容。新目标行为应有能捕获旧失败的检查；事后补测须证明旧错误实现失败、新候选通过，环境失败不能充当目标失败。未知根因先在同条件复现，提出假设并用实验定位，再做有边界的修复和相关回归；重构、升级、迁移需检查消费者、行为保持与恢复条件。完整候选应能运行核心任务，包含配置、锁定依赖、实际构建或启动入口和自测证据。
 
-编写或审阅架构/技术文档时，按[技术图示操作 Skill](../../skills/technical-diagrams/SKILL.md)和适用的[架构专业要求](../references/architecture/technical-diagrams.md)选择结构、部署、交互、决策、状态或数据视图，区分现状/目标与包含/依赖/调用/数据流。相关变化超出现行图覆盖时补图；局部线性修改说明沿用或无需补图的依据。直接审阅源内容，核对图文、契约及候选一致性；新增或改变图示/呈现条件时定向检查实际效果，未受影响且有效的呈现证据可复用，不例行为文档 Review 启动浏览器。具体方法与示例随 Skill 按需读取，专业判断仍由承担职责的执行者负责。
+编写或审阅架构/技术文档时，按[技术图示操作 Skill](../../skills/technical-diagrams/SKILL.md)和适用的[架构专业要求](../references/architecture/technical-diagrams.md)选择结构、部署、交互、决策、状态或数据视图，区分现状/目标与包含/依赖/调用/数据流。相关变化超出现行图覆盖时补图；局部线性修改说明沿用或无需补图的依据。文档 Review 使用 [document-review](../../skills/document-review/SKILL.md)，图示专业要求仍按上述资源核对。具体方法与示例随 Skill 按需读取，专业判断仍由承担职责的执行者负责。
 
 ## 文档编写与评审
 
-编写或实质修订研发文档前，必须先读取本次对应的[研发设计](../assets/engineering/technical-delivery-design.md)、[实施计划](../assets/engineering/implementation-plan.md)、[Review](../assets/engineering/engineering-review.md)或[交接模板](../assets/engineering/engineering-handoff.md)正文，按模板的章节和字段组织内容。用户明确指定格式或项目已有有效模板时优先采用，并核对本次适用内容；重要裁剪说明依据，不以自由提纲替代模板，也不为填满模板新增无关成果。自查或评审文档时，必须读取被评对象对应模板，核对结构、必要内容及裁剪合理性，将遗漏或无依据的裁剪列为修改项；技术 Review 通过不能替代模板核对，作者自查仍不算独立评审。
+编写或实质修订研发文档前，必须先读取本次对应的[研发设计](../assets/engineering/technical-delivery-design.md)、[实施计划](../assets/engineering/implementation-plan.md)、[Review](../assets/engineering/engineering-review.md)或[交接模板](../assets/engineering/engineering-handoff.md)正文，按模板的章节和字段组织内容。用户明确指定格式或项目已有有效模板时优先采用，并核对本次适用内容；重要裁剪说明依据，不以自由提纲替代模板，也不为填满模板新增无关成果。文档自查和评审使用 [document-review](../../skills/document-review/SKILL.md)，按被评产物选择模板、依据和专业检查点。
 
 ## 边界、交接与完成
 

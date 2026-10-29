@@ -7,7 +7,7 @@ description: 研发协作流程。启动或咨询转设计且无同范围有效�
 
 首次使用先读[总纲](references/constitution.md)，再按任务读取[任务路由](references/task-routing.md)和[执行协议](references/execution-contract.md)。设计文档和实施计划用中文。项目事实及有效决定从所属项目读取，不从本 Skill 推定。
 
-本 Skill 决定阶段、职责、依赖、授权复用和整体完成条件。具体 Git 操作使用[git-workflow](../git-workflow/SKILL.md)，实际派发、等待及独立性核验使用[subagent-coordination](../subagent-coordination/SKILL.md)，文件组织、预览与归档使用[document-management](../document-management/SKILL.md)。局部 Git、文档或派发任务可单独调用对应 Skill，不因此启动完整研发流程。
+本 Skill 决定阶段、职责、依赖、授权复用和整体完成条件。文档 Review 使用 [document-review](../document-review/SKILL.md)。具体 Git 操作使用[git-workflow](../git-workflow/SKILL.md)，实际派发、等待及独立性核验使用[subagent-coordination](../subagent-coordination/SKILL.md)，文件组织、预览与归档使用[document-management](../document-management/SKILL.md)。局部 Git、文档或派发任务可单独调用对应 Skill，不因此启动完整研发流程。
 
 ## 从目标推进到完成
 

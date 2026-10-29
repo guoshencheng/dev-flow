@@ -12,7 +12,7 @@
 
 ## 文档编写与评审
 
-编写或实质修订交付、发布或恢复记录前，必须先读取对应的[交付与发布](../../skills/release-and-recovery/assets/templates/delivery-record.md)或[故障与恢复模板](../../skills/release-and-recovery/assets/templates/incident-and-recovery.md)正文，按模板的章节和字段组织内容。用户明确指定格式或项目已有有效模板时优先采用，并核对本次适用内容；重要裁剪说明依据，不以自由提纲替代模板，也不为填满模板新增无关成果。评审运行交付文档时，必须读取对应模板，核对结构、必要内容及裁剪合理性，将遗漏或无依据的裁剪列为修改项；已有运行手册沿用项目有效模板，无对应模板时按实际运行与交接需要组织，不新造强制模板。模板核对不能代替实际安装、发布或恢复验证。
+编写或实质修订交付、发布或恢复记录前，必须先读取对应的[交付与发布](../../skills/release-and-recovery/assets/templates/delivery-record.md)或[故障与恢复模板](../../skills/release-and-recovery/assets/templates/incident-and-recovery.md)正文，按模板的章节和字段组织内容。用户明确指定格式或项目已有有效模板时优先采用，并核对本次适用内容；重要裁剪说明依据，不以自由提纲替代模板，也不为填满模板新增无关成果。文档自查和评审使用 [document-review](../../skills/document-review/SKILL.md)，按被评产物选择模板、依据和专业检查点。
 
 ## 边界、交接与完成
 

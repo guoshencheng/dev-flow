@@ -14,7 +14,7 @@
 
 ## 文档编写与评审
 
-编写或实质修订验收文档前，必须先读取本次对应的[验收用例](../../skills/acceptance-case-design/assets/templates/acceptance-cases.md)、[技术验证](../../skills/acceptance-execution/assets/templates/technical-checks.md)、[验收报告](../../skills/acceptance-execution/assets/templates/acceptance-report.md)或[缺陷模板](../../skills/acceptance-execution/assets/templates/defect.md)正文，按模板的章节和字段组织内容；需独立测试策略时读取[策略模板](../../skills/acceptance-case-design/assets/templates/test-strategy.md)。简单用例默认列表，执行记录默认本地表，不强制额外技术拆解/策略文档；截图等证明可选。用户明确指定格式或项目已有有效模板时优先采用，并核对本次适用内容；重要裁剪说明依据，不以自由提纲替代模板，也不为填满模板新增无关成果。评审验收文档时，必须读取对应模板，核对结构、必要内容及裁剪合理性，将遗漏或无依据的裁剪列为修改项；模板齐全不能替代预期、覆盖与可执行性判断，正式用例仍在完整候选后维护。
+编写或实质修订验收文档前，必须先读取本次对应的[验收用例](../../skills/acceptance-case-design/assets/templates/acceptance-cases.md)、[技术验证](../../skills/acceptance-execution/assets/templates/technical-checks.md)、[验收报告](../../skills/acceptance-execution/assets/templates/acceptance-report.md)或[缺陷模板](../../skills/acceptance-execution/assets/templates/defect.md)正文，按模板的章节和字段组织内容；需独立测试策略时读取[策略模板](../../skills/acceptance-case-design/assets/templates/test-strategy.md)。简单用例默认列表，执行记录默认本地表，不强制额外技术拆解/策略文档；截图等证明可选。用户明确指定格式或项目已有有效模板时优先采用，并核对本次适用内容；重要裁剪说明依据，不以自由提纲替代模板，也不为填满模板新增无关成果。文档自查和评审使用 [document-review](../../skills/document-review/SKILL.md)，按被评产物选择模板、依据和专业检查点。
 
 ## 边界、交接与完成
 

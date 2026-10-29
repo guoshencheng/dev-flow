@@ -10,11 +10,11 @@
 
 对统一研发设计独立检查业务链路与模块/契约/数据/权限/恢复是否匹配，对计划独立检查依赖、测试保护、集成与交付。完整实现评审覆盖任务起点至最终候选的全部相关提交及未提交内容，分别给需求符合性和实现质量结论；审查实际业务逻辑，目录树与 import 清单只作线索。意见经证据处理与定向复评，行为缺陷交验收复验；技术收尾核对设计差异、真实验证、当前地图、决策与遗留。架构改进须说明收益、代价和验证方法。
 
-编写或审阅架构/技术文档时，按[技术图示操作 Skill](../../skills/technical-diagrams/SKILL.md)和适用的[架构专业要求](../references/architecture/technical-diagrams.md)选择结构、部署、交互、决策、状态或数据视图，区分现状/目标与包含/依赖/调用/数据流。相关变化超出现行图覆盖时补图；局部线性修改说明沿用或无需补图的依据。直接审阅源内容，核对图文、契约及候选一致性；新增或改变图示/呈现条件时定向检查实际效果，未受影响且有效的呈现证据可复用，不例行为文档 Review 启动浏览器。具体方法与示例随 Skill 按需读取，专业判断仍由承担职责的执行者负责。
+编写或审阅架构/技术文档时，按[技术图示操作 Skill](../../skills/technical-diagrams/SKILL.md)和适用的[架构专业要求](../references/architecture/technical-diagrams.md)选择结构、部署、交互、决策、状态或数据视图，区分现状/目标与包含/依赖/调用/数据流。相关变化超出现行图覆盖时补图；局部线性修改说明沿用或无需补图的依据。文档 Review 使用 [document-review](../../skills/document-review/SKILL.md)，图示专业要求仍按上述资源核对。具体方法与示例随 Skill 按需读取，专业判断仍由承担职责的执行者负责。
 
 ## 文档编写与评审
 
-编写或实质修订架构文档前，必须先读取本次对应的[项目总架构](../assets/architecture/templates/architecture-design.md)、[现状核验与模块地图](../assets/architecture/templates/current-architecture.md)、[技术基线](../assets/architecture/templates/technology-baseline.md)、[架构评审](../assets/architecture/templates/architecture-review.md)或[技术收尾模板](../assets/architecture/templates/architecture-closeout.md)正文，按模板的章节和字段组织内容。用户明确指定格式或项目已有有效模板时优先采用，并核对本次适用内容；重要裁剪说明依据，不以自由提纲替代模板，也不为填满模板新增无关成果。独立评审研发设计和实施计划时，必须分别读取[研发设计模板](../assets/engineering/technical-delivery-design.md)和[实施计划模板](../assets/engineering/implementation-plan.md)，核对结构、必要内容及裁剪合理性，将遗漏或无依据的裁剪列为修改项；编写评审记录前读取[研发 Review 模板](../assets/engineering/engineering-review.md)并按其组织。评审其他架构文档时同样读取对应模板；技术正确与模板内容完整分别核对，不能以一项通过替代另一项。
+编写或实质修订架构文档前，必须先读取本次对应的[项目总架构](../assets/architecture/templates/architecture-design.md)、[现状核验与模块地图](../assets/architecture/templates/current-architecture.md)、[技术基线](../assets/architecture/templates/technology-baseline.md)、[架构评审](../assets/architecture/templates/architecture-review.md)或[技术收尾模板](../assets/architecture/templates/architecture-closeout.md)正文，按模板的章节和字段组织内容。用户明确指定格式或项目已有有效模板时优先采用，并核对本次适用内容；重要裁剪说明依据，不以自由提纲替代模板，也不为填满模板新增无关成果。文档自查和评审使用 [document-review](../../skills/document-review/SKILL.md)，按被评产物选择模板、依据和专业检查点。
 
 ## 边界、交接与完成
 
