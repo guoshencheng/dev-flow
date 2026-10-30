@@ -1,10 +1,14 @@
 # Codex / Kimi Plugin 安装与维护
 
-0.8.2 插件完整性迭代提供流程入口、四个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 17 个 Skill；独立 `iteration-closeout` 组织收尾资料盘点及项目级通用文档实际回写。六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-28-plugin-integrity/Progress.md)。
+0.10.0 新增 [document-review Skill](../skills/document-review/SKILL.md)，统一文档评审依据、模板核对、按产物的专业检查点、问题记录与定向复核；同一候选集合汇总一份 Review，不按角色生成持久 audit。六职责、研发设计/计划、用例及文档管理引用统一入口，流程门槛、专业质量要求与完整实现评审保留原职责。属于兼容能力新增，递增 minor；总纲 0.35、状态 schema 1 与安装机制保持不变。
 
-工作区另有尚未升级、安装的 [technical-diagrams Skill 候选](../skills/technical-diagrams/SKILL.md)，此前使候选清单达到 18 个 Skill；其验证及交付边界见[图示 Skill 进度](plans/2026-10-28-technical-diagrams-skill/Progress.md)。本轮按[技能价值盘点](plans/2026-10-28-skill-value-audit/audit.md)撤销两个常规研发方法的独立入口，方法迁入研发参考，当前源码候选为 16 个 Skill；旧 `$defect-diagnosis` 和 `$regression-verification` 不再发现。此候选尚未升级、安装，不据此声称宿主已发现新能力。
+当前声明 17 个 Skill、六个原生职责，完整清单以 `capabilities.json` 为准。此前源码已新增 technical-diagrams，并将缺陷诊断、回归方法迁入研发参考，撤销两个独立入口；此次加入 document-review 后统一升级交付。旧 `$defect-diagnosis` 和 `$regression-verification` 名称不再发现，见[技能价值盘点](plans/2026-10-28-skill-value-audit/audit.md)。六职责维护源位于 `agents/prompts/`，长篇专业参考与模板在 `agents/references/`、`agents/assets/`。实际启用、缓存与源码一致性使用下方 install/check 核验；Codex 安装不代表 Kimi 已更新。
 
-0.8.2 修复文档预览首次运行准备依赖后插件自检误报：仅将共享阅读器的 `skills/document-management/assets/document-workspace/node_modules/` 视为运行时生成目录，不把它当作包文件核验，且该目录本身不能是符号链接。清单内文件仍逐项核验，其他位置的新增文件仍报错；运行依赖的内容不由插件包指纹检查。属于兼容修复，递增 patch；总纲与能力声明不变。
+0.9.1 整理验收效率迭代的交付与源码保存记录；属于兼容文档维护，递增 patch。总纲 0.35、执行协议 0.19、能力声明和安装机制保持不变。
+
+0.9.0 / 总纲 0.35 / 执行协议 0.19 增加早期真实冒烟和可复用用例；按变化、共享依赖和风险选测，区分阻碍继续安全有效测试的问题与可集中修复的问题，修复后合并定向 Review、原场景复验及相关回归。Web 优先复用项目 Playwright 或可靠既有框架，适合的稳定路径沉淀在业务项目；必要画面需实际审查截图或浏览器，用户工具要求与宿主约束优先，不要求安装 MCP。属于兼容能力新增，递增 minor；状态 schema、核验算法和安装机制不变，不自动证明真实项目行为或 Kimi 已更新。
+
+0.8.2 修复文档预览准备依赖后插件自检误报：共享阅读器的 `skills/document-management/assets/document-workspace/node_modules/` 作为运行时目录处理，该目录本身不能是符号链接；包内文件仍逐项核验，其他位置新增文件仍报错。修复及验证记录见[插件完整性进度](plans/2026-10-28-plugin-integrity/Progress.md)。
 
 0.8.1 在 0.8.0 的 UI 确认规则上合入文档审阅效率优化：自查/Review 默认直接读取源内容、差异和依据；新图、布局/标签及相关呈现条件变化时定向观察，未变且有效的对象/环境证据可复用。提供阅读链接不自动要求打开浏览器；按检查目标选择源文件、本地或 URL 检查、渲染导出、浏览器截图及必要的 Computer Use，保留用户指定范围和工具要求。公共/专业职责、图示规范和相关模板同步，属于兼容方法维护，递增 patch；沿用总纲 0.34、执行协议 0.18、文档协议 0.16、能力清单与安装机制。0.7.1 仅为本轮未安装的内部候选，实际交付为包含双方成果的 0.8.1。
 
