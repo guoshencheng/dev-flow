@@ -37,7 +37,7 @@ node "$DOCUMENT_SKILL_DIR/assets/document-workspace/scripts/preview.mjs" \
   serve --project /项目绝对路径 --roots docs/dev-flow,design --port 0
 ```
 
-首次直启时脚本按 `package-lock.json` 在共享阅读器模板目录准备依赖；其他项目复用同一份依赖，不创建 `tools/design-docs`。项目只需保留文档源文件和 `.dev/previews/documents.json` 运行记录。运行记录和健康接口包含阅读器模板版本/指纹，便于核对实际候选。
+首次直启时脚本按 `package-lock.json` 在共享阅读器模板目录准备依赖；其他项目复用同一份依赖，不创建 `tools/design-docs`。插件自检不将该阅读器的运行时 `node_modules` 当作包文件，也不核验其中的依赖内容；包本身仍按文件清单校验。项目只需保留文档源文件和 `.dev/previews/documents.json` 运行记录。运行记录和健康接口包含阅读器模板版本/指纹，便于核对实际候选。
 
 需要项目级修改阅读器或兼容旧项目时，仍可复制源码到项目：
 

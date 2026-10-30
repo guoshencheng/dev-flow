@@ -1,8 +1,10 @@
 # Codex / Kimi Plugin 安装与维护
 
-0.8.1 基线提供流程入口、四个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 17 个 Skill；独立 `iteration-closeout` 组织收尾资料盘点及项目级通用文档实际回写。六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-26-ui-confirmation/Progress.md)。
+0.8.2 插件完整性迭代提供流程入口、四个公共操作 Skill、十一个专业操作 Skill 和会话监控，共 17 个 Skill；独立 `iteration-closeout` 组织收尾资料盘点及项目级通用文档实际回写。六职责本质工作由生成配置内嵌的提示词承载，维护源位于 agents/prompts。长篇专业参考与写作模板在 agents/references、agents/assets，操作工具与模板随相关 Skill。实际安装与验证状态见[本轮 Progress](plans/2026-10-28-plugin-integrity/Progress.md)。
 
-源码候选新增 [technical-diagrams Skill](../skills/technical-diagrams/SKILL.md)，并按[技能价值盘点](plans/2026-10-28-skill-value-audit/audit.md)将缺陷诊断、回归方法迁入研发参考，撤销两个独立入口；当前候选清单为 16 个 Skill。旧 `$defect-diagnosis` 和 `$regression-verification` 名称不再发现。此候选尚未升级、安装，不能据此声称宿主已发现新能力。
+工作区另有尚未升级、安装的 [technical-diagrams Skill 候选](../skills/technical-diagrams/SKILL.md)，此前使候选清单达到 18 个 Skill；其验证及交付边界见[图示 Skill 进度](plans/2026-10-28-technical-diagrams-skill/Progress.md)。本轮按[技能价值盘点](plans/2026-10-28-skill-value-audit/audit.md)撤销两个常规研发方法的独立入口，方法迁入研发参考，当前源码候选为 16 个 Skill；旧 `$defect-diagnosis` 和 `$regression-verification` 不再发现。此候选尚未升级、安装，不据此声称宿主已发现新能力。
+
+0.8.2 修复文档预览首次运行准备依赖后插件自检误报：仅将共享阅读器的 `skills/document-management/assets/document-workspace/node_modules/` 视为运行时生成目录，不把它当作包文件核验，且该目录本身不能是符号链接。清单内文件仍逐项核验，其他位置的新增文件仍报错；运行依赖的内容不由插件包指纹检查。属于兼容修复，递增 patch；总纲与能力声明不变。
 
 0.8.1 在 0.8.0 的 UI 确认规则上合入文档审阅效率优化：自查/Review 默认直接读取源内容、差异和依据；新图、布局/标签及相关呈现条件变化时定向观察，未变且有效的对象/环境证据可复用。提供阅读链接不自动要求打开浏览器；按检查目标选择源文件、本地或 URL 检查、渲染导出、浏览器截图及必要的 Computer Use，保留用户指定范围和工具要求。公共/专业职责、图示规范和相关模板同步，属于兼容方法维护，递增 patch；沿用总纲 0.34、执行协议 0.18、文档协议 0.16、能力清单与安装机制。0.7.1 仅为本轮未安装的内部候选，实际交付为包含双方成果的 0.8.1。
 

@@ -18,6 +18,8 @@ from native_agents import NativeAgents
 PLUGIN_ID = "dev-flow@dev-flow-local"
 MARKETPLACE = "dev-flow-local"
 EXCLUDED = {".git", ".dev-flow", "node_modules", "dist", "__pycache__"}
+# 文档阅读器首次运行时按锁文件在安装包内准备依赖；它们不是插件包内容。
+PREVIEW_DEPENDENCIES = Path("skills/document-management/assets/document-workspace/node_modules")
 
 
 def run(argv, cwd):
@@ -51,7 +53,10 @@ def atomic_text(path, value):
 
 def validate_bundle(root):
     root = Path(root)
-    inventory = json.loads((root / "package-files.json").read_text())
+    manifest = root / "package-files.json"
+    if manifest.is_symlink():
+        raise ValueError("安装包指纹清单不能是链接：" + str(manifest))
+    inventory = json.loads(manifest.read_text())
     if inventory["owner"] != "dev-flow":
         raise ValueError("安装包不属于 Dev Flow")
     for relative, expected in inventory["files"].items():
@@ -61,7 +66,24 @@ def validate_bundle(root):
         file = candidate.resolve()
         if root.resolve() not in file.parents or candidate.is_symlink() or not file.is_file() or digest(file) != expected:
             raise ValueError("安装包路径或内容不匹配：" + relative)
-    actual = {p.relative_to(root).as_posix() for p in root.rglob("*") if p.is_file() and p.name != "package-files.json"}
+    actual = set()
+    for directory, subdirectories, filenames in os.walk(root, followlinks=False):
+        parent = Path(directory)
+        for name in list(subdirectories):
+            child = parent / name
+            if child.relative_to(root) == PREVIEW_DEPENDENCIES:
+                if child.is_symlink():
+                    raise ValueError("文档预览依赖目录不能是链接：" + str(child))
+                subdirectories.remove(name)
+            elif child.is_symlink():
+                raise ValueError("安装包目录不能是链接：" + str(child))
+        for name in filenames:
+            candidate = parent / name
+            if candidate.is_symlink() or not candidate.is_file():
+                raise ValueError("安装包路径不是实际文件：" + str(candidate))
+            relative = candidate.relative_to(root)
+            if relative != Path("package-files.json"):
+                actual.add(relative.as_posix())
     if actual != set(inventory["files"]):
         raise ValueError("安装包文件与指纹清单不一致")
     check_host_agents(root)

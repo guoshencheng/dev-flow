@@ -58,6 +58,51 @@ class PluginPackageTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             manager.validate_bundle(bundle)
 
+    def test_only_preview_runtime_dependencies_are_excluded(self):
+        bundle = Path(manager.build(self.root)['build_root'])
+        deps = bundle / manager.PREVIEW_DEPENDENCIES
+        (deps / 'vite').mkdir(parents=True)
+        (deps / 'vite/package.json').write_text('{}')
+        (deps / '.bin').mkdir()
+        (deps / '.bin/vite').symlink_to('../vite/package.json')
+        expected = json.loads((self.root / 'capabilities.json').read_text())['skills']
+        self.assertEqual(manager.validate_bundle(bundle), expected)
+
+        # 只允许这一处运行依赖；同名目录和其他新增文件仍会被拒绝。
+        unexpected = bundle / 'skills/dev-flow/node_modules/extra.txt'
+        unexpected.parent.mkdir()
+        unexpected.write_text('unexpected')
+        with self.assertRaisesRegex(ValueError, '指纹清单不一致'):
+            manager.validate_bundle(bundle)
+        unexpected.unlink()
+        (bundle / 'skills/dev-flow/SKILL.md').write_text('tampered')
+        with self.assertRaisesRegex(ValueError, '内容不匹配'):
+            manager.validate_bundle(bundle)
+
+    def test_preview_dependencies_directory_cannot_be_symlink(self):
+        bundle = Path(manager.build(self.root)['build_root'])
+        outside = self.base / 'outside-dependencies'
+        outside.mkdir()
+        (bundle / manager.PREVIEW_DEPENDENCIES).symlink_to(outside, target_is_directory=True)
+        with self.assertRaisesRegex(ValueError, '依赖目录不能是链接'):
+            manager.validate_bundle(bundle)
+
+    def test_unexpected_links_and_nested_manifest_are_rejected(self):
+        bundle = Path(manager.build(self.root)['build_root'])
+        extra = bundle / 'skills/dev-flow/unexpected'
+        outside = self.base / 'outside'
+        outside.mkdir()
+        for target in (outside, outside / 'missing'):
+            with self.subTest(target=target):
+                extra.symlink_to(target, target_is_directory=True)
+                with self.assertRaisesRegex(ValueError, '链接|实际文件'):
+                    manager.validate_bundle(bundle)
+                extra.unlink()
+        nested_manifest = bundle / 'skills/dev-flow/package-files.json'
+        nested_manifest.write_text('{}')
+        with self.assertRaisesRegex(ValueError, '指纹清单不一致'):
+            manager.validate_bundle(bundle)
+
     def test_stage_checker_and_example_survive_packaging(self):
         source = Path(__file__).resolve().parents[1]
         names = ['skills/dev-flow/scripts/check_iteration.py',
@@ -122,6 +167,10 @@ class PluginPackageTests(unittest.TestCase):
             self.assertEqual(installed['skills'], len(expected_skills))
             self.assertEqual(installed['native_agents']['count'], 6)
             self.assertEqual(len(list((personal / 'agents').glob('dev_*.toml'))), 6)
+            self.assertTrue(manager.check(self.root)['source_matches_cache'])
+            dependency = cached / manager.PREVIEW_DEPENDENCIES / 'vite/package.json'
+            dependency.parent.mkdir(parents=True)
+            dependency.write_text('{}')
             self.assertTrue(manager.check(self.root)['source_matches_cache'])
             manager.remove(self.root)
         self.assertEqual(guide.read_text(), '已有流程指引')
